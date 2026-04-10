@@ -1,0 +1,15 @@
+{
+  "short_name": "SimRail Tools",
+  "name": "",
+  "icons": [
+    {
+      "src": "ssp.svg",
+      "type": "image/svg",
+      "sizes": "100x100"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
