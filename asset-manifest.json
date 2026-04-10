@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "./static/css/main.07589837.css",
-    "main.js": "./static/js/main.2cc6780b.js",
-    "static/js/206.32806a96.chunk.js": "./static/js/206.32806a96.chunk.js",
-    "index.html": "./index.html"
+    "main.css": "/simrail-tools-html/static/css/main.07589837.css",
+    "main.js": "/simrail-tools-html/static/js/main.5901978a.js",
+    "static/js/206.32806a96.chunk.js": "/simrail-tools-html/static/js/206.32806a96.chunk.js",
+    "index.html": "/simrail-tools-html/index.html"
   },
   "entrypoints": [
     "static/css/main.07589837.css",
-    "static/js/main.2cc6780b.js"
+    "static/js/main.5901978a.js"
   ]
 }
