@@ -1,6 +1,6 @@
 {
-  "short_name": "SimRail Tools",
-  "name": "",
+  "short_name": "SimRail Track Overview",
+  "name": "SimRail Track Overview",
   "icons": [
     {
       "src": "ssp.svg",
