@@ -5,11 +5,14 @@ import { SR_DATA } from '../../functions/getSimRailData/getSimRailData';
 import SimRailSSP_SVG from './ssp-worker/ssp-areas/area1/ssp-svg-area';
 import SSP_OptionsMenu from './ssp-options/ssp-options';
 import SimRailSSP_Header from './ssp-header/ssp-header';
+import SimRailSSP_Disclaimer from '../../functions/sspDisclamer/ssp-disclaimer';
 
 export interface AreaProps {
     areaID: string
     areaDisplayTitle: string
 }
+
+const DISCLAIMER_KEY = "ssp_disclaimer_alpha0.0.1"
 
 export default function SimRailStreckenspiegel() {
 
@@ -43,10 +46,6 @@ export default function SimRailStreckenspiegel() {
             areaID: 'sspArea1',
             areaDisplayTitle: 'L001 : Katowice - Zawiercie'
         },
-        {
-            areaID: 'sspArea2',
-            areaDisplayTitle: 'L004 : Gora Wl. - Korytow'
-        },
     ]
 
     const [GET_serverList, SET_serverList] = useState<SimRailDataTypes.ServerData[]>([]);
@@ -57,6 +56,12 @@ export default function SimRailStreckenspiegel() {
     const [selectedArea, SET_selectedArea] = useState<AreaProps>(areaList[0])
     const [isShowLongStationNames, SET_showLongStationsNames] = useState<boolean>(true);
     const [isShowTestTrains, setShowTestTrains] = useState<boolean>(false);
+    const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
+
+    useEffect(() => {
+        const accepted = localStorage.getItem(DISCLAIMER_KEY) === "true";
+        setShowDisclaimer(!accepted);
+    }, [])
 
     useEffect(() => {
         // fetch SimRail Server
@@ -148,6 +153,9 @@ export default function SimRailStreckenspiegel() {
     return (
         <>
             <div className='sspContainer'>
+                {showDisclaimer &&
+                    <SimRailSSP_Disclaimer DISCLAIMER_KEY={DISCLAIMER_KEY} showDisclaimer={showDisclaimer} setShowDisclaimer={setShowDisclaimer} />
+                }
                 <SimRailSSP_Header/>
                 <SimRailSSP_SVG SSP_SVG_ITEMS={SSP_SVG_ITEMS} />
                 <SSP_OptionsMenu SSP_OPTIONS={SSP_OPTIONS} />

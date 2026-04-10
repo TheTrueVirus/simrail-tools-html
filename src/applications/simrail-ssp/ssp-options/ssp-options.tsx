@@ -59,20 +59,25 @@ export default function SSP_OptionsMenu({ SSP_OPTIONS }: ISelfProps) {
                         </div>
                         <div>Long Stations</div>
                     </div>
-                    <div className='sspOption_showTestTrains'>
-                        <div>
-                            <label className='optionCheckboxSlider'>
-                                <input
-                                    type="checkbox"
-                                    className='optionCheckbox'
-                                    checked={SSP_OPTIONS.OPTION_SHOWTESTTRAINS.isShowTestTrains}
-                                    onChange={(e) => SSP_OPTIONS.OPTION_SHOWTESTTRAINS.setShowTestTrains(e.target.checked)}
-                                />
-                                <span className='checkboxSlider'></span>
-                            </label>
-                        </div>
-                        <div>Show Test Trains (DEV ONLY)</div>
-                    </div>
+                    {/* if non dev environement, remove option */}
+                    { process.env.NODE_ENV === 'development'
+                        ?
+                            <div className='sspOption_showTestTrains'>
+                                <div>
+                                    <label className='optionCheckboxSlider'>
+                                        <input
+                                            type="checkbox"
+                                            className='optionCheckbox'
+                                            checked={SSP_OPTIONS.OPTION_SHOWTESTTRAINS.isShowTestTrains}
+                                            onChange={(e) => SSP_OPTIONS.OPTION_SHOWTESTTRAINS.setShowTestTrains(e.target.checked)}
+                                        />
+                                        <span className='checkboxSlider'></span>
+                                    </label>
+                                </div>
+                                <div>Show Test Trains (DEV ONLY)</div>
+                            </div>
+                        : <></>
+                    }
                 </div>
                 <div className='sspOptionsHeader'>
                     <div className={`openOptionsButton ${showOptionsMenu ? 'rotateOptionsArrow' : ''}`} onClick={() => SET_showOptionsMenu(!showOptionsMenu)}>⇧</div>

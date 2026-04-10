@@ -23,7 +23,7 @@ export function AreaSelection({ areaOptions }: ISelfProps) {
                 <div className='selectionText'>AREA = </div>
                 <div className='selectionList'>
                     <div className='areaSelectionList'>
-                        <div className="selectedOption" onClick={() => changeListOpen(!isListOpen)}>{areaOptions.getArea.areaDisplayTitle}</div>
+                        <div className="selectedOption" onClick={() => changeListOpen(false)}>{areaOptions.getArea.areaDisplayTitle}</div>
                         <div className={`optionList ${isListOpen ? 'isOpen' : ''}`}>
                             {areaOptions.areaList.map((area) => (
                                 <div key={area.areaID} className='option' onClick={() => setAreaAndClose(area)}>

@@ -13,24 +13,18 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <div className='index_container'>
-      {/* <CustomErrorHandler/> */}
-      <div className='indexElement_routesContainer'>
+    <div className='index'>
+      <div className='index_routes'>
         <BrowserRouter>
-          <div className='indexElement_mainContainer'>
-            <SideBar />
+          <div className='index_main'>
+            {/* <SideBar /> */}
           </div>
           <Routes>
-            <Route path='' element={<></>} />
-            <Route path='/applications/simrail-ssp' element={<SimRailStreckenspiegel />} />
+            <Route path='' element={<SimRailStreckenspiegel />} />
           </Routes>
         </BrowserRouter>
       </div>
     </div>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

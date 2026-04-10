@@ -39,6 +39,7 @@ M610,200 630,220 M610,220 630,200
 
         //
         //#region OLD KATOWICE
+        /*
         //!
         //! [OLD] KATOWICE LEFT SWITCHFIELD
         {
@@ -89,6 +90,7 @@ M640,140 660,180 M610,300 650,260 660,240 M630,260 650,280
 M820,160 860,240 M840,160 870,220`,
             trackColor: 'none'
         },
+        */
         //#endregion
 
         //
