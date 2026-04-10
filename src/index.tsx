@@ -15,12 +15,12 @@ root.render(
   <React.StrictMode>
     <div className='index'>
       <div className='index_routes'>
-        <BrowserRouter>
+        <BrowserRouter basename='/simrail-tools-html'>
           <div className='index_main'>
             {/* <SideBar /> */}
           </div>
           <Routes>
-            <Route path='' element={<SimRailStreckenspiegel />} />
+            <Route path='/' element={<SimRailStreckenspiegel />} />
           </Routes>
         </BrowserRouter>
       </div>
