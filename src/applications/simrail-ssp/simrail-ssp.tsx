@@ -2,7 +2,7 @@ import './sspStyles.css'
 import { useEffect, useState } from "react"
 import { SimRailDataTypes } from "../../types/simrail-data-types";
 import { SR_DATA } from '../../functions/getSimRailData/getSimRailData';
-import SimRailSSP_SVG from './ssp-worker/ssp-areas/area1/ssp-svg-area';
+import SimRailSSP_SVG from './ssp-worker/ssp-svg-area';
 import SSP_OptionsMenu from './ssp-options/ssp-options';
 import SimRailSSP_Header from './ssp-header/ssp-header';
 import SimRailSSP_Disclaimer from '../../functions/sspDisclamer/ssp-disclaimer';

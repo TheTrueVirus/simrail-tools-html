@@ -1,8 +1,8 @@
 import { JSX, useEffect, useRef, useState } from "react";
-import { SimRailDataTypes } from "../../../../../types/simrail-data-types";
-import { SVG_WORKER } from "../../svgCreator/svg-worker";
-import { SSP_DATA_TYPES } from "../../ssp-data/ssp-data-types";
-import { AreaProps } from "../../../simrail-ssp";
+import { SimRailDataTypes } from "../../../types/simrail-data-types";
+import { SVG_WORKER } from "./svgCreator/svg-creator";
+import { SSP_DATA_TYPES } from "./ssp-data/ssp-data-types";
+import { AreaProps } from "../simrail-ssp";
 import './svgStyles.css'
 
 interface ISelfProps {
