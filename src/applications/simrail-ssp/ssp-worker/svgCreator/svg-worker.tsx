@@ -26,7 +26,7 @@ export namespace SVG_WORKER {
         const svg = () => {
             return Object.entries(track_data).map(([index, track]) => (
                 <>
-                    <g id={track.trackID}>
+                    <g id={`group-${track.trackID}`}>
                         <path id={track.trackID} d={track.trackSVG} stroke={track.trackColor} strokeWidth={strokeWidth} fill="none" />
                     </g>
                 </>
@@ -160,8 +160,10 @@ export namespace SVG_WORKER {
                     case 'trackMarker':
                         return (
                             <>
-                                <rect x={(node.nodePos.x - 0.4) - (node.text ? node.text.length * 2.8 : 0)} y={node.nodePos.y - 4} fill="black" width={node.text ? node.text.length * 10 * 0.58 : 20} height={8} />
-                                <text x={node.nodePos.x - (node.text ? node.text.length * 2.8 : 0)} y={node.nodePos.y + 3} fill="white" strokeWidth={0} textAnchor="start" fontSize={10}>{node.text}</text>
+                                <g id={`$nodeGroup_{node.nodeID}`}>
+                                    <rect x={(node.nodePos.x - 0.4) - (node.text ? node.text.length * 2.8 : 0)} y={node.nodePos.y - 4} fill="black" width={node.text ? node.text.length * 10 * 0.58 : 20} height={8} />
+                                    <text x={node.nodePos.x - (node.text ? node.text.length * 2.8 : 0)} y={node.nodePos.y + 3} fill="white" strokeWidth={0} textAnchor="start" fontSize={10}>{node.text}</text>
+                                </g>
                             </>
                         )
                     case 'dispatchingPost':
@@ -169,35 +171,39 @@ export namespace SVG_WORKER {
                             case 'relay':
                                 return (
                                     <>
-                                        <rect x={nx - 2} y={ny - 2} width={34} height={24} stroke="white" fill='none' strokeWidth={1} />
-                                        <rect x={nx} y={ny} width={30} height={20} stroke="white" fill='none' strokeWidth={1} />
-                                        {/* LEFT TO RIGHT LINES */}
-                                        <line x1={nx + 24} x2={nx + 30} y1={ny} y2={ny + 5} stroke="white" strokeWidth={1} />
-                                        <line x1={nx + 16} x2={nx + 30} y1={ny} y2={ny + 10} stroke="white" strokeWidth={1} />
-                                        <line x1={nx + 8} x2={nx + 30} y1={ny} y2={ny + 15} stroke="white" strokeWidth={1} />
-                                        <line x1={nx} x2={nx + 30} y1={ny} y2={ny + 20} stroke="white" strokeWidth={1} />
-                                        <line x1={nx} x2={nx + 22} y1={ny + 5} y2={ny + 20} stroke="white" strokeWidth={1} />
-                                        <line x1={nx} x2={nx + 14} y1={ny + 10} y2={ny + 20} stroke="white" strokeWidth={1} />
-                                        <line x1={nx} x2={nx + 6} y1={ny + 15} y2={ny + 20} stroke="white" strokeWidth={1} />
-                                        {/* RIGHT TO LEFT LINES */}
-                                        <line x1={nx + 24} x2={nx + 30} y1={ny + 20} y2={ny + 15} stroke="white" strokeWidth={1} />
-                                        <line x1={nx + 16} x2={nx + 30} y1={ny + 20} y2={ny + 10} stroke="white" strokeWidth={1} />
-                                        <line x1={nx + 8} x2={nx + 30} y1={ny + 20} y2={ny + 5} stroke="white" strokeWidth={1} />
-                                        <line x1={nx} x2={nx + 30} y1={ny + 20} y2={ny} stroke="white" strokeWidth={1} />
-                                        <line x1={nx} x2={nx + 22} y1={ny + 15} y2={ny} stroke="white" strokeWidth={1} />
-                                        <line x1={nx} x2={nx + 14} y1={ny + 10} y2={ny} stroke="white" strokeWidth={1} />
-                                        <line x1={nx} x2={nx + 6} y1={ny + 5} y2={ny} stroke="white" strokeWidth={1} />
-                                        <rect x={nx + 7.5} y={ny + 3} width={15} height={4} stroke="black" fill="white" strokeWidth={2} />
-                                        <circle cx={nx + 15} cy={ny + 13} r={3} fill="white" stroke="black" strokeWidth={2} />
+                                        <g id={`nodeGroup-${node.nodeID}`}>
+                                            <rect x={nx - 2} y={ny - 2} width={34} height={24} stroke="white" fill='none' strokeWidth={1} />
+                                            <rect x={nx} y={ny} width={30} height={20} stroke="white" fill='none' strokeWidth={1} />
+                                            {/* LEFT TO RIGHT LINES */}
+                                            <line x1={nx + 24} x2={nx + 30} y1={ny} y2={ny + 5} stroke="white" strokeWidth={1} />
+                                            <line x1={nx + 16} x2={nx + 30} y1={ny} y2={ny + 10} stroke="white" strokeWidth={1} />
+                                            <line x1={nx + 8} x2={nx + 30} y1={ny} y2={ny + 15} stroke="white" strokeWidth={1} />
+                                            <line x1={nx} x2={nx + 30} y1={ny} y2={ny + 20} stroke="white" strokeWidth={1} />
+                                            <line x1={nx} x2={nx + 22} y1={ny + 5} y2={ny + 20} stroke="white" strokeWidth={1} />
+                                            <line x1={nx} x2={nx + 14} y1={ny + 10} y2={ny + 20} stroke="white" strokeWidth={1} />
+                                            <line x1={nx} x2={nx + 6} y1={ny + 15} y2={ny + 20} stroke="white" strokeWidth={1} />
+                                            {/* RIGHT TO LEFT LINES */}
+                                            <line x1={nx + 24} x2={nx + 30} y1={ny + 20} y2={ny + 15} stroke="white" strokeWidth={1} />
+                                            <line x1={nx + 16} x2={nx + 30} y1={ny + 20} y2={ny + 10} stroke="white" strokeWidth={1} />
+                                            <line x1={nx + 8} x2={nx + 30} y1={ny + 20} y2={ny + 5} stroke="white" strokeWidth={1} />
+                                            <line x1={nx} x2={nx + 30} y1={ny + 20} y2={ny} stroke="white" strokeWidth={1} />
+                                            <line x1={nx} x2={nx + 22} y1={ny + 15} y2={ny} stroke="white" strokeWidth={1} />
+                                            <line x1={nx} x2={nx + 14} y1={ny + 10} y2={ny} stroke="white" strokeWidth={1} />
+                                            <line x1={nx} x2={nx + 6} y1={ny + 5} y2={ny} stroke="white" strokeWidth={1} />
+                                            <rect x={nx + 7.5} y={ny + 3} width={15} height={4} stroke="black" fill="white" strokeWidth={2} />
+                                            <circle cx={nx + 15} cy={ny + 13} r={3} fill="white" stroke="black" strokeWidth={2} />
+                                        </g>
                                     </>
                                 )
                             case 'computer':
                                 return (
                                     <>
-                                        <rect x={nx - 2} y={ny - 2} width={34} height={24} stroke="white" fill='none' strokeWidth={1} />
-                                        <rect x={nx} y={ny} width={30} height={20} stroke="white" fill='none' strokeWidth={1} />
-                                        <rect x={nx + 7.5} y={ny + 3} width={15} height={4} stroke="black" fill="white" strokeWidth={2} />
-                                        <circle cx={nx + 15} cy={ny + 13} r={3} fill="white" stroke="black" strokeWidth={2} />
+                                        <g id={`$nodeGroup_{node.nodeID}`}>
+                                            <rect x={nx - 2} y={ny - 2} width={34} height={24} stroke="white" fill='none' strokeWidth={1} />
+                                            <rect x={nx} y={ny} width={30} height={20} stroke="white" fill='none' strokeWidth={1} />
+                                            <rect x={nx + 7.5} y={ny + 3} width={15} height={4} stroke="black" fill="white" strokeWidth={2} />
+                                            <circle cx={nx + 15} cy={ny + 13} r={3} fill="white" stroke="black" strokeWidth={2} />
+                                        </g>
                                     </>
                                 )
                             default:
@@ -213,7 +219,7 @@ export namespace SVG_WORKER {
 
                         const pr = node.stationPrefix ?? 'NA'
                         const sn = node.stationName ?? 'Loading...'
-                        const fs = 14
+                        const fs = 18
                         const nodeText = () => {
                             if(node.stationName && node.stationPrefix) {
                                 if (isShowLongStationNames) {
@@ -240,9 +246,10 @@ export namespace SVG_WORKER {
 
                         return (
                             <>
-                                <text x={nx} y={ny} stroke={snColor} fill={snColor} textAnchor="middle" strokeWidth={1} fontSize={fs}>{`${nodeText()}`}</text>
-                                <text x={nx} y={ny+4} textAnchor="middle" stroke={takenColor()} fill={takenColor()} strokeWidth={1} fontSize={fs}>{"_".repeat(nodeText().length)}</text>
-                                {/* <text x={nx} y={ny-25} textAnchor="middle" stroke={takenColor()} strokeWidth={5} fill={takenColor()}>{'■'}</text> */}
+                                <g id={`$nodeGroup_{node.nodeID}`}>
+                                    <text x={nx} y={ny} stroke={snColor} fill={snColor} textAnchor="middle" strokeWidth={1} fontSize={fs}>{`${nodeText()}`}</text>
+                                    <text x={nx} y={ny+4} textAnchor="middle" stroke={takenColor()} fill={takenColor()} strokeWidth={1} fontSize={fs}>{"_".repeat(nodeText().length)}</text>
+                                </g>
                             </>
                         )
                     case 'platform':
@@ -251,8 +258,10 @@ export namespace SVG_WORKER {
 
                         return (
                             <>
-                                <rect x={nx} y={ny} width={node.width} height={node.height} fill={platformColor} />
-                                <text x={nx + ((node.width ?? 50) / 2)} y={ny + 2.5 + ((node.height ?? 10) / 2)} textAnchor="middle" fontSize={8} fill="black" stroke="black" strokeWidth={0.5}>{node.text}</text>
+                                <g id={`$nodeGroup_{node.nodeID}`}>
+                                    <rect x={nx} y={ny} width={node.width} height={node.height} fill={platformColor} />
+                                    <text x={nx + ((node.width ?? 50) / 2)} y={ny + 2.5 + ((node.height ?? 10) / 2)} textAnchor="middle" fontSize={8} fill="black" stroke="black" strokeWidth={0.5}>{node.text}</text>
+                                </g>
                             </>
                         )
                     case 'simpleText':
@@ -280,11 +289,26 @@ export namespace SVG_WORKER {
                     case 'differentScreenMarker':
                         return (
                             <>
-                                <line x1={nx+10} x2={nx+15} y1={ny-12} y2={ny-12} stroke="lightblue" strokeWidth={1.3} />
-                                <line x1={nx+5} x2={nx+10.3} y1={ny-7} y2={ny-12.2} stroke="lightblue" strokeWidth={1.3} />
-                                <line x1={nx} x2={nx+15} y1={ny-7} y2={ny-7} stroke="lightblue" strokeWidth={1.2} />
-                                <line x1={nx} x2={nx+15} y1={ny-4} y2={ny-4} stroke="lightblue" strokeWidth={1.2} />
-                                <text x={nx+20} y={ny-5} stroke="white" fill="white" fontSize={12} strokeWidth={0.5}>{node.text ?? 'Unknown'}</text>
+                                <g id={`$nodeGroup_{node.nodeID}`}>
+                                    <line x1={nx+10} x2={nx+15} y1={ny-12} y2={ny-12} stroke="lightblue" strokeWidth={1.3} />
+                                    <line x1={nx+5} x2={nx+10.3} y1={ny-7} y2={ny-12.2} stroke="lightblue" strokeWidth={1.3} />
+                                    <line x1={nx} x2={nx+15} y1={ny-7} y2={ny-7} stroke="lightblue" strokeWidth={1.2} />
+                                    <line x1={nx} x2={nx+15} y1={ny-4} y2={ny-4} stroke="lightblue" strokeWidth={1.2} />
+                                    <text x={nx+20} y={ny-5} stroke="white" fill="white" fontSize={12} strokeWidth={0.5}>{node.text ?? 'Unknown'}</text>
+                                </g>
+                            </>
+                        )
+                    case 'trackBreakMarker':
+
+                        const marker = node.breakMarker
+                        const color = 'rgb(200, 0, 255)'
+
+                        return(
+                            <>
+                                <g id={`$nodeGroup_{node.nodeID}`}>
+                                    <text x={marker?.firstMarker.x} y={marker?.firstMarker.y} textAnchor="middle" stroke={color} fill={color} fontSize={16} strokeWidth={0.5}>{`[${node.text}]`}</text>
+                                    <text x={marker?.secondMarker.x} y={marker?.secondMarker.y} textAnchor="middle" stroke={color} fill={color} fontSize={16} strokeWidth={0.5}>{`[${node.text}]`}</text>
+                                </g>
                             </>
                         )
                     default:
