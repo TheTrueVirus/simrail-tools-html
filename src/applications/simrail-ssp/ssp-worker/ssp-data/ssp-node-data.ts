@@ -11,7 +11,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             text: 'Gliwice',
         },
         {
-            nodeID: 'screenMarker-Gliwice',
+            nodeID: 'screenMarker-Tychy',
             nodeType: 'differentScreenMarker',
             nodePos: { x: 20, y: 300 },
             text: 'Tychy / Bielsko-Biała',
@@ -19,8 +19,28 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         {
             nodeID: 'screenMarker-SDandowka',
             nodeType: 'differentScreenMarker',
-            nodePos: { x: 1900, y: 300 },
-            text: 'S. Dandowka',
+            nodePos: { x: 1850, y: 310 },
+            text: 'S. Dańdówka',
+        },
+        {
+            nodeID: 'trackBreakMarker-Bedzin_DabrowaGornicza',
+            nodePos: { x: 0, y: 0 },
+            nodeType: 'trackBreakMarker',
+            text: 'A',
+            breakMarker: {
+                firstMarker: { x: 2530, y: 140 },
+                secondMarker: { x: 40, y: 550 }
+            }
+        },
+        {
+            nodeID: 'trackBreakMarker-LazyLB_LazyLA',
+            nodePos: { x: 0, y: 0 },
+            nodeType: 'trackBreakMarker',
+            text: 'B',
+            breakMarker: {
+                firstMarker: { x: 2530, y: 420 },
+                secondMarker: { x: 40, y: 780 }
+            }
         },
         //#endregion
 
@@ -442,7 +462,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             nodeType: 'stationName',
             stationPrefix: 'SG',
             stationName: 'Sosnowiec Główny',
-            nodePos: { x: 1650, y: 110 },
+            nodePos: { x: 1630, y: 110 },
         },
         {
             nodeID: 'peron_SG_p1',
@@ -520,6 +540,23 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             nodePos: { x: 1820, y: 200 },
             text: '4a',
         },
+        //#endregion
+
+        //#region [Spl] Sosn. Poludniowy
+        {
+            nodeID: 'dispatchingPost_SosnowiecPoludniowy',
+            nodeType: 'dispatchingPost',
+            nodePos: { x: 1560, y: 290 },
+            postType: 'computer'
+        },
+        {
+            nodeID: 'stationName-SosnowiecPoludniowy',
+            nodeType: 'stationName',
+            stationPrefix: 'Spł1',
+            stationName: 'Sosnowiec Południowy',
+            nodePos: { x: 1700, y: 240 },
+        },
+
         //#endregion
 
         //#region SG <-> B
