@@ -44,14 +44,14 @@ export default function SimRailStreckenspiegel() {
     const areaList = [
         {
             areaID: 'sspArea1',
-            areaDisplayTitle: 'L001 : Katowice - Zawiercie'
+            areaDisplayTitle: 'P1 | Katowice - [Lazy]'
         },
     ]
 
     const [GET_serverList, SET_serverList] = useState<SimRailDataTypes.ServerData[]>([]);
     const [GET_stationList, SET_stationList] = useState<SimRailDataTypes.StationData[]>([]);
     const [fetchedTrains, SET_fetchedTrains] = useState<SimRailDataTypes.TrainData[]>([]);
-    const [selectedServer, SET_selectedServer] = useState<string>('de1');
+    const [selectedServer, SET_selectedServer] = useState<string>('int1');
     const [GET_areaList] = useState<AreaProps[]>(areaList);
     const [selectedArea, SET_selectedArea] = useState<AreaProps>(areaList[0])
     const [isShowLongStationNames, SET_showLongStationsNames] = useState<boolean>(true);
