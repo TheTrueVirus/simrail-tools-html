@@ -21,7 +21,7 @@ export namespace SVG_WORKER {
 
     export function drawTracksOntoSVG(track_data: SSP_DATA_TYPES.TRACK[]) {
 
-        const strokeWidth: number = 2;
+        const strokeWidth: number = 2.5;
 
         const svg = () => {
             return Object.entries(track_data).map(([index, track]) => (
