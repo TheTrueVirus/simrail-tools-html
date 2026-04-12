@@ -16,6 +16,8 @@ interface ISelfProps {
     }
 }
 
+const isDev = process.env.NODE_ENV === 'development'
+
 export default function SimRailSSP_SVG( {SSP_SVG_ITEMS} : ISelfProps) {
 
     const trainList = SSP_SVG_ITEMS.trainList;
@@ -232,10 +234,14 @@ export default function SimRailSSP_SVG( {SSP_SVG_ITEMS} : ISelfProps) {
 
                         {/* <text x={2560/2} y={40} fontSize={50} fill='orange' stroke='orange' textAnchor="middle">CURRENTLY IN DEVELOPMENT</text> */}
                         {/* <text x={2560/2} y={1430} fontSize={50} fill='orange' stroke='orange' textAnchor="middle">CURRENTLY IN DEVELOPMENT</text> */}
-                        <rect x={0} y={0} width={2560} height={1440} stroke="orange" fill="none" strokeWidth={0.2} />
 
-
-                        <line x1={0} x2={2560} y1={350} y2={350} stroke="gray" strokeWidth={1} strokeDasharray={5} strokeDashoffset={5} strokeLinecap="round"/>
+                        {isDev &&
+                            <>
+                                <line x1={0} x2={2560} y1={350} y2={350} stroke="gray" strokeWidth={1} strokeDasharray={5} strokeDashoffset={5} strokeLinecap="round"/>
+                                <line x1={0} x2={2560} y1={700} y2={700} stroke="gray" strokeWidth={1} strokeDasharray={5} strokeDashoffset={5} strokeLinecap="round"/>
+                                <rect x={0} y={0} width={2560} height={1440} stroke="orange" fill="none" strokeWidth={0.2} />
+                            </>
+                        }
                     </svg>
                 </div>
             </div>
