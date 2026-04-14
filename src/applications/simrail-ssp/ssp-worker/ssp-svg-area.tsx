@@ -7,7 +7,7 @@ import './svgStyles.css'
 
 interface ISelfProps {
     SSP_SVG_ITEMS: {
-        trainList: SimRailDataTypes.TrainData[],
+        trainList: SimRailDataTypes.FilteredTrainList[],
         stationList: SimRailDataTypes.StationData[],
         selectedArea: AreaProps,
         isShowLongStationNames: boolean,
@@ -18,7 +18,7 @@ interface ISelfProps {
 
 const isDev = process.env.NODE_ENV === 'development'
 
-export default function SimRailSSP_SVG( {SSP_SVG_ITEMS} : ISelfProps) {
+export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
 
     const trainList = SSP_SVG_ITEMS.trainList;
     const stationList = SSP_SVG_ITEMS.stationList;
@@ -79,7 +79,7 @@ export default function SimRailSSP_SVG( {SSP_SVG_ITEMS} : ISelfProps) {
     }, [selectedArea])
 
     useEffect(() => {
-        if(!isShowTestTrains) {
+        if (!isShowTestTrains) {
             SET_testTrainSVG([<></>])
             return;
         };
@@ -179,35 +179,28 @@ export default function SimRailSSP_SVG( {SSP_SVG_ITEMS} : ISelfProps) {
     }
 
     function trainsCounter() {
-        
-        const trainsControlledByPlayers = trainList.filter((train) => train.TrainData.ControlledBySteamID !== null).length
+
+        const trainsControlledByPlayers = trainList.filter((train) => train.ControlledBy === 'user').length
         const allTrainsCount = trainList.length;
         return `Trains: ${trainsControlledByPlayers}/${allTrainsCount}`
     }
-    
+
     function stationsCounter() {
         const stationsControlledByPlayers = stationList.filter((station) => station.DispatchedBy.length > 0).length
         const allStationsCount = stationList.length
-        
+
         return `Stations: ${stationsControlledByPlayers}/${allStationsCount}`
+    }
+
+    function onContextMenuSVG(event: React.MouseEvent<SVGSVGElement>) {
+        event.preventDefault();
+        console.log(event)
     }
 
     return (
         <>
             <div className="ssp-container">
                 <div className="svg-container">
-                    <div className="infoContainer">
-                        <div className="showTestTrains">
-                        </div>
-                        <div className="trainsCounter">{trainsCounter()}</div>
-                        <div className="stationsCounter">{stationsCounter()}</div>
-                        <div className="svgCoordinates">
-                            Coords:
-                            {mouseSvgPos
-                                ? `x: ${mouseSvgPos.x.toFixed(1)}, y: ${mouseSvgPos.y.toFixed(1)}`
-                                : 'x: -, y: -'}
-                        </div>
-                    </div>
                     <svg
                         ref={svgRef}
                         viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
@@ -221,6 +214,7 @@ export default function SimRailSSP_SVG( {SSP_SVG_ITEMS} : ISelfProps) {
                         onMouseMove={onPanMove}
                         onMouseUp={onPanEnd}
                         onMouseLeave={onMouseLeaveSvg}
+                        onContextMenu={onContextMenuSVG}
                     >
                         <g id="ssp-tracks">{trackSVG}</g>
 
@@ -237,12 +231,22 @@ export default function SimRailSSP_SVG( {SSP_SVG_ITEMS} : ISelfProps) {
 
                         {isDev &&
                             <>
-                                <line x1={0} x2={2560} y1={350} y2={350} stroke="gray" strokeWidth={1} strokeDasharray={5} strokeDashoffset={5} strokeLinecap="round"/>
-                                <line x1={0} x2={2560} y1={700} y2={700} stroke="gray" strokeWidth={1} strokeDasharray={5} strokeDashoffset={5} strokeLinecap="round"/>
+                                <line x1={0} x2={2560} y1={350} y2={350} stroke="gray" strokeWidth={1} strokeDasharray={5} strokeDashoffset={5} strokeLinecap="round" />
+                                <line x1={0} x2={2560} y1={700} y2={700} stroke="gray" strokeWidth={1} strokeDasharray={5} strokeDashoffset={5} strokeLinecap="round" />
                                 <rect x={0} y={0} width={2560} height={1440} stroke="orange" fill="none" strokeWidth={0.2} />
                             </>
                         }
                     </svg>
+                </div>
+            </div>
+            <div className="infoContainer">
+                <div className="trainsCounter">{trainsCounter()}</div>
+                <div className="stationsCounter">{stationsCounter()}</div>
+                <div className="svgCoordinates">
+                    Coords:
+                    {mouseSvgPos
+                        ? `x: ${mouseSvgPos.x.toFixed(1)}, y: ${mouseSvgPos.y.toFixed(1)}`
+                        : 'x: -, y: -'}
                 </div>
             </div>
         </>
