@@ -24,7 +24,13 @@ export interface SSP_OPTIONS_TYPES {
         isShowTestTrains: boolean,
         setShowTestTrains: (value: boolean) => void
     }
+    OPTION_SHOWHEADER: {
+        showHeader: boolean
+        setShowHeader: (value: boolean) => void
+    }
 }
+
+const isDev = process.env.NODE_ENV === 'development'
 
 interface ISelfProps {
     SSP_OPTIONS: SSP_OPTIONS_TYPES
@@ -32,9 +38,31 @@ interface ISelfProps {
 
 export default function SSP_OptionsMenu({ SSP_OPTIONS }: ISelfProps) {
 
+    const optionsListToRender = [
+        {
+            optionsID: 'option_longStationNames',
+            optionsName: 'Short Station Names',
+            optionsValue: SSP_OPTIONS.OPTION_SHOWSTATIONNAMES.isShowLongStationNames,
+            optionsState: SSP_OPTIONS.OPTION_SHOWSTATIONNAMES.SET_showLongStationsNames,
+            isDevOnly: false
+        },
+        {
+            optionsID: 'option_showHeader',
+            optionsName: 'Show Header',
+            optionsValue: SSP_OPTIONS.OPTION_SHOWHEADER.showHeader,
+            optionsState: SSP_OPTIONS.OPTION_SHOWHEADER.setShowHeader,
+            isDevOnly: false
+        },
+        {
+            optionsID: 'option_showTestTrains_DEV',
+            optionsName: 'Show Test Trains [DEV ONLY]',
+            optionsValue: SSP_OPTIONS.OPTION_SHOWTESTTRAINS.isShowTestTrains,
+            optionsState: SSP_OPTIONS.OPTION_SHOWTESTTRAINS.setShowTestTrains,
+            isDevOnly: true
+        },
+    ]
+
     const [showOptionsMenu, SET_showOptionsMenu] = useState<boolean>(false);
-
-
 
     return (
         <>
@@ -44,39 +72,15 @@ export default function SSP_OptionsMenu({ SSP_OPTIONS }: ISelfProps) {
             </div>
             <div className={`sspOptionsContainer`}>
                 <div className={`sspOptions ${showOptionsMenu ? 'optionsOpen' : ''}`}>
-                    <div className='sspOption_stationNameLength'>
-                        <div>Short Stations</div>
-                        <div>
-                            <label className='optionCheckboxSlider'>
-                                <input
-                                    type="checkbox"
-                                    className='optionCheckbox'
-                                    checked={SSP_OPTIONS.OPTION_SHOWSTATIONNAMES.isShowLongStationNames}
-                                    onChange={(e) => SSP_OPTIONS.OPTION_SHOWSTATIONNAMES.SET_showLongStationsNames(e.target.checked)}
-                                />
-                                <span className='checkboxSlider'></span>
-                            </label>
-                        </div>
-                        <div>Long Stations</div>
-                    </div>
-                    {/* if non dev environement, remove option */}
-                    { process.env.NODE_ENV === 'development'
-                        ?
-                            <div className='sspOption_showTestTrains'>
-                                <div>
-                                    <label className='optionCheckboxSlider'>
-                                        <input
-                                            type="checkbox"
-                                            className='optionCheckbox'
-                                            checked={SSP_OPTIONS.OPTION_SHOWTESTTRAINS.isShowTestTrains}
-                                            onChange={(e) => SSP_OPTIONS.OPTION_SHOWTESTTRAINS.setShowTestTrains(e.target.checked)}
-                                        />
-                                        <span className='checkboxSlider'></span>
-                                    </label>
+                    {
+                        optionsListToRender.map((option) => (
+                            <>
+                                <div className='optionRow' id={option.optionsID}>
+                                    
+                                    <div>{option.optionsName}</div>
                                 </div>
-                                <div>Show Test Trains (DEV ONLY)</div>
-                            </div>
-                        : <></>
+                            </>
+                        ))
                     }
                 </div>
                 <div className='sspOptionsHeader'>
