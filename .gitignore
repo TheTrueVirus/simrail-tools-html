@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+/srto_testing_webserver
 
 # production
 /build
