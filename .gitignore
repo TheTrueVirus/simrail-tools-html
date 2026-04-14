@@ -26,3 +26,4 @@ yarn-error.log*
 notizen
 src/functions/customErrorHandler/errorHandler.tsx
 src/functions/customErrorHandler/errorHandlerStyles.css
+src/functions/appcontext/appcontext.tsx
