@@ -35,7 +35,7 @@ export namespace SVG_WORKER {
         return svg()
     }
 
-    export function drawSignalsOntoSVG(signal_data: SSP_DATA_TYPES.SIGNAL[], trainList: SimRailDataTypes.TrainData[]) {
+    export function drawSignalsOntoSVG(signal_data: SSP_DATA_TYPES.SIGNAL[], trainList: SimRailDataTypes.FilteredTrainList[]) {
 
 
         const svg = () => {
@@ -83,7 +83,7 @@ export namespace SVG_WORKER {
         return svg()
     }
 
-    export function drawTrainsOntoSVG(signal_data: SSP_DATA_TYPES.SIGNAL[], trainList: SimRailDataTypes.TrainData[]) {
+    export function drawTrainsOntoSVG(signal_data: SSP_DATA_TYPES.SIGNAL[], trainList: SimRailDataTypes.FilteredTrainList[]) {
 
         const svg = () => {
             return trainList.flatMap((train) => {
@@ -135,7 +135,7 @@ export namespace SVG_WORKER {
                                         textAnchor="middle"
                                         strokeWidth={0}>
                                         {train.TrainNoLocal}
-                                        <title>{`Train: ${train.TrainNoLocal}\nType: ${train.TrainName}\nStart: ${train.StartStation}\nEnd: ${train.EndStation}`}</title>
+                                        <title>{`Train: ${train.TrainNoLocal}\nType: ${train.Type}\nStart: ${train.StartStation}\nEnd: ${train.EndStation}`}</title>
                                     </text>
                                 </g>
                             </>
@@ -222,7 +222,7 @@ export namespace SVG_WORKER {
                         const fs = 18
                         const nodeText = () => {
                             if(node.stationName && node.stationPrefix) {
-                                if (isShowLongStationNames) {
+                                if (!isShowLongStationNames) {
                                     return node.stationName
                                 } else {
                                     return node.stationPrefix
