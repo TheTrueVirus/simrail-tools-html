@@ -10,24 +10,28 @@ interface ISelfProps {
         serverOptions: {
             serverList: SimRailDataTypes.ServerData[]
             getServer: string,
-            setServer: (v: string) => void
+            setServer: React.Dispatch<React.SetStateAction<string>>
         },
         areaOptions: {
             areaList: AreaProps[],
             getArea: AreaProps,
-            setArea: (v: AreaProps) => void
+            setArea: React.Dispatch<React.SetStateAction<AreaProps>>
         },
         stationNameOptions: {
             isShowLongStationNames: boolean
-            SET_showLongStationsNames: (v: boolean) => void
+            SET_showLongStationsNames: React.Dispatch<React.SetStateAction<boolean>>
         },
         testTrainOptions: {
             isShowTestTrains: boolean
-            setShowTestTrains: (v: boolean) => void
+            setShowTestTrains: React.Dispatch<React.SetStateAction<boolean>>
         },
         showHeaderOptions: {
             showHeader: boolean
-            setShowHeader: (v: boolean) => void
+            setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
+        }
+        extendedViewOption: {
+            allowExtendedView: boolean,
+            setAllowExtendedView: React.Dispatch<React.SetStateAction<boolean>>
         }
     }
 }
@@ -108,7 +112,15 @@ export default function SimRailSSP_Header({ sspOptions }: ISelfProps) {
             optionValue: sspOptions.testTrainOptions.isShowTestTrains,
             optionSetter: sspOptions.testTrainOptions.setShowTestTrains,
             isDevOption: true
-        }
+        },
+        {
+            optionID: 'option-allowExtendedView',
+            optionName: 'Allow Extended View',
+            optionValue: sspOptions.extendedViewOption.allowExtendedView,
+            optionSetter: sspOptions.extendedViewOption.setAllowExtendedView,
+            isDevOption: false
+        },
+
     ]
 
 

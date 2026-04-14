@@ -47,6 +47,7 @@ export default function SimRailStreckenspiegel() {
     const [selectedArea, setArea] = useState<AreaProps>(areaList[0])
     const [isShowLongStationNames, SET_showLongStationsNames] = useState<boolean>(false);
     const [isShowTestTrains, setShowTestTrains] = useState<boolean>(false);
+    const [allowExtendedView, setAllowExtendedView] = useState(false);
     const [showHeader, setShowHeader] = useState<boolean>(true);
 
     useEffect(() => {
@@ -151,6 +152,10 @@ export default function SimRailStreckenspiegel() {
         showHeaderOptions: {
             showHeader,
             setShowHeader,
+        },
+        extendedViewOption: {
+            allowExtendedView,
+            setAllowExtendedView
         }
     }
 
@@ -159,8 +164,8 @@ export default function SimRailStreckenspiegel() {
         stationList,
         selectedArea,
         isShowLongStationNames,
-        isShowTestTrains,
-        setShowTestTrains
+        isShowTestTrains, setShowTestTrains,
+        allowExtendedView, setAllowExtendedView
     }
 
     return (

@@ -12,7 +12,9 @@ interface ISelfProps {
         selectedArea: AreaProps,
         isShowLongStationNames: boolean,
         isShowTestTrains: boolean
-        setShowTestTrains: (value: boolean) => void
+        setShowTestTrains: (v: boolean) => void
+        allowExtendedView: boolean
+        setAllowExtendedView: React.Dispatch<React.SetStateAction<boolean>>
     }
 }
 
@@ -26,6 +28,8 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
     const isShowLongStationNames = SSP_SVG_ITEMS.isShowLongStationNames
     const isShowTestTrains = SSP_SVG_ITEMS.isShowTestTrains
     const setShowTestTrains = SSP_SVG_ITEMS.setShowTestTrains
+    const allowExtendedView = SSP_SVG_ITEMS.allowExtendedView
+    const setAllowExtendedView = SSP_SVG_ITEMS.setAllowExtendedView
 
     const INITIAL_VIEWBOX = { x: 0, y: 0, width: 2560, height: 1440 };
     const MIN_VIEWBOX_WIDTH = 300;
@@ -55,6 +59,19 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
         };
     }
 
+    function clampViewBox(nextViewBox: typeof viewBox) {
+        if (allowExtendedView) return nextViewBox;
+
+        const maxX = Math.max(0, INITIAL_VIEWBOX.width - nextViewBox.width);
+        const maxY = Math.max(0, INITIAL_VIEWBOX.height - nextViewBox.height);
+
+        return {
+            ...nextViewBox,
+            x: Math.min(maxX, Math.max(0, nextViewBox.x)),
+            y: Math.min(maxY, Math.max(0, nextViewBox.y)),
+        };
+    }
+
     const { TRACK_DATA, SIGNAL_DATA, NODE_DATA } = SVG_WORKER.loadDataFromFile(selectedArea.areaID);
 
     useEffect(() => {
@@ -77,6 +94,11 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
         setIsPanning(false);
         panStartRef.current = null;
     }, [selectedArea])
+
+    useEffect(() => {
+        if (allowExtendedView) return;
+        setViewBox((prev) => clampViewBox(prev));
+    }, [allowExtendedView])
 
     useEffect(() => {
         if (!isShowTestTrains) {
@@ -112,7 +134,7 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
             const nextX = mouseSvgX - (mouseSvgX - prev.x) * appliedZoom;
             const nextY = mouseSvgY - (mouseSvgY - prev.y) * appliedZoom;
 
-            return { x: nextX, y: nextY, width: nextWidth, height: nextHeight };
+            return clampViewBox({ x: nextX, y: nextY, width: nextWidth, height: nextHeight });
         });
     }
 
@@ -146,11 +168,15 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
         const pixelDeltaX = event.clientX - panStart.x;
         const pixelDeltaY = event.clientY - panStart.y;
 
-        setViewBox((prev) => ({
-            ...prev,
-            x: prev.x - (pixelDeltaX / rect.width) * prev.width,
-            y: prev.y - (pixelDeltaY / rect.height) * prev.height,
-        }));
+        setViewBox((prev) => {
+            const nextViewBox = {
+                ...prev,
+                x: prev.x - (pixelDeltaX / rect.width) * prev.width,
+                y: prev.y - (pixelDeltaY / rect.height) * prev.height,
+            };
+
+            return clampViewBox(nextViewBox);
+        });
 
         panStartRef.current = { x: event.clientX, y: event.clientY };
     }
@@ -194,6 +220,12 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
 
     function onContextMenuSVG(event: React.MouseEvent<SVGSVGElement>) {
         event.preventDefault();
+
+        if (event.shiftKey) {
+            setAllowExtendedView((prev) => !prev);
+            return;
+        }
+
         console.log(event)
     }
 
@@ -247,6 +279,9 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
                     {mouseSvgPos
                         ? `x: ${mouseSvgPos.x.toFixed(1)}, y: ${mouseSvgPos.y.toFixed(1)}`
                         : 'x: -, y: -'}
+                </div>
+                <div className="svgCoordinates">
+                    Extended view: {allowExtendedView ? 'ON' : 'OFF'}
                 </div>
             </div>
         </>
