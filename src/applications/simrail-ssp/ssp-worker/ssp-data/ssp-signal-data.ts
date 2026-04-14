@@ -2037,17 +2037,17 @@ export const SSP_SIGNALS: SSP_DATA_TYPES.SIGNALS = {
         //
         {
             signalName: 'LB_Q125',
-            signalPos: { x: '2450', y: '440' },
+            signalPos: { x: '2450', y: '480' },
             isSignalABS: false,
             signalDirectionOnMap: 'left',
-            trainPos: { x: '2465', y: '440' }
+            trainPos: { x: '2465', y: '480' }
         },
         {
             signalName: 'LB_Q123',
-            signalPos: { x: '2450', y: '460' },
+            signalPos: { x: '2450', y: '500' },
             isSignalABS: false,
             signalDirectionOnMap: 'left',
-            trainPos: { x: '2465', y: '460' }
+            trainPos: { x: '2465', y: '500' }
         },
         {
             signalName: 'LB_G1',
@@ -2068,17 +2068,215 @@ export const SSP_SIGNALS: SSP_DATA_TYPES.SIGNALS = {
         //#region LAZY LB <-> LAZY LA
         {
             signalName: 'L1_2791',
-            signalPos: { x: '2510', y: '520' },
+            signalPos: { x: '2530', y: '520' },
             isSignalABS: true,
             signalDirectionOnMap: 'right',
-            trainPos: { x: '2495', y: '520' }
+            trainPos: { x: '2515', y: '520' }
         },
         {
             signalName: 'L1_2790',
-            signalPos: { x: '2510', y: '540' },
+            signalPos: { x: '2530', y: '540' },
             isSignalABS: true,
             signalDirectionOnMap: 'right',
-            trainPos: { x: '2495', y: '540' }
+            trainPos: { x: '2515', y: '540' }
+        },
+        {
+            signalName: 'L1_2781',
+            signalPos: { x: '140', y: '900' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '155', y: '900' }
+        },
+        {
+            signalName: 'L1_2780N',
+            signalPos: { x: '140', y: '920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '155', y: '920' }
+        },
+        //#endregion
+
+        //#region [LA] LAZY LA
+        //? 
+        //? EXIT SIGNALS UPPER FREIGHT GROUP
+        //? 
+        {
+            signalName: 'LA_F119',
+            signalPos: { x: '90', y: '720' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '105', y: '720' }
+        },
+        {
+            signalName: 'LA_F117',
+            signalPos: { x: '170', y: '740' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '185', y: '740' }
+        },
+        {
+            signalName: 'LA_F115',
+            signalPos: { x: '170', y: '760' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '185', y: '760' }
+        },
+        {
+            signalName: 'LA_F113',
+            signalPos: { x: '170', y: '780' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '185', y: '780' }
+        },
+        {
+            signalName: 'LA_F111',
+            signalPos: { x: '170', y: '800' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '185', y: '800' }
+        },
+        {
+            signalName: 'LA_F109',
+            signalPos: { x: '170', y: '820' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '185', y: '820' }
+        },
+        {
+            signalName: 'LA_F107',
+            signalPos: { x: '170', y: '840' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '185', y: '840' }
+        },
+        {
+            signalName: 'LA_F105',
+            signalPos: { x: '170', y: '860' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '185', y: '860' }
+        },
+        {
+            signalName: 'LA_F103',
+            signalPos: { x: '170', y: '880' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '185', y: '880' }
+        },
+        //?
+        //? ENTRY SIGNALS LEFT SIDE
+        //?
+        {
+            signalName: 'LA_E1',
+            signalPos: { x: '260', y: '900' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '245', y: '900' }
+        },
+        {
+            signalName: 'LA_E2',
+            signalPos: { x: '260', y: '920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '245', y: '920' }
+        },
+        //?
+        //? ENTRY SIGNALS + EXIT SIGNALS LOWER FREIGHT GROUP
+        //?
+        {
+            //? ENTRY SIGNAL LA_H324
+            signalName: 'LA_H324',
+            signalPos: { x: '100', y: '1060' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '85', y: '1060' }
+        },
+        {
+            signalName: 'LA_E124',
+            signalPos: { x: '330', y: '960' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '315', y: '960' }
+        },
+        {
+            signalName: 'LA_E126',
+            signalPos: { x: '330', y: '980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '315', y: '980' }
+        },
+        {
+            signalName: 'LA_E128',
+            signalPos: { x: '330', y: '1000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '315', y: '1000' }
+        },
+        {
+            signalName: 'LA_E130',
+            signalPos: { x: '330', y: '1020' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '315', y: '1020' }
+        },
+        {
+            signalName: 'LA_E132',
+            signalPos: { x: '330', y: '1040' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '315', y: '1040' }
+        },
+        {
+            signalName: 'LA_E134',
+            signalPos: { x: '330', y: '1060' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '315', y: '1060' }
+        },
+        {
+            signalName: 'LA_E136',
+            signalPos: { x: '330', y: '1080' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '315', y: '1080' }
+        },
+        {
+            signalName: 'LA_E138',
+            signalPos: { x: '330', y: '1100' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '315', y: '1100' }
+        },
+        //?
+        //? ENTRY SIGNALS RIGHT SIDE
+        //?
+        {
+            signalName: 'LA_D3',
+            signalPos: { x: '480', y: '880' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '495', y: '880' }
+        },
+        {
+            signalName: 'LA_C1',
+            signalPos: { x: '480', y: '900' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '495', y: '900' }
+        },
+        {
+            signalName: 'LA_C2',
+            signalPos: { x: '480', y: '920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '495', y: '920' }
+        },
+        {
+            signalName: 'LA_B',
+            signalPos: { x: '480', y: '940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '495', y: '940' }
         },
         //#endregion
     ]

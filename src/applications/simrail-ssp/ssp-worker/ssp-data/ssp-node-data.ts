@@ -1209,7 +1209,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region {LC] LAZY LC
+        //#region [LC] LAZY LC
         {
             nodeID: 'post_LazyLC',
             nodeType: 'dispatchingPost',
@@ -1378,27 +1378,109 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         {
             nodeID: 'tm-LB_LA_2795',
             nodeType: 'trackMarker',
-            nodePos: { x: 2470, y: 520 },
+            nodePos: { x: 2480, y: 520 },
             text: '2795',
         },
         {
             nodeID: 'tm-LB_LA_2794',
             nodeType: 'trackMarker',
-            nodePos: { x: 2470, y: 540 },
+            nodePos: { x: 2480, y: 540 },
             text: '2794',
         },
         {
-            nodeID: 'tm-LB_LA_2781_1',
+            nodeID: 'tm-LB_LA_2781',
             nodeType: 'trackMarker',
-            nodePos: { x: 2525, y: 520 },
+            nodePos: { x: 80, y: 900 },
             text: '2781',
         },
         {
-            nodeID: 'tm-LB_LA_2790_1',
+            nodeID: 'tm-LB_LA_2790',
             nodeType: 'trackMarker',
-            nodePos: { x: 2525, y: 540 },
+            nodePos: { x: 80, y: 920 },
             text: '2790',
         },
+        {
+            nodeID: 'tm-LB_LA_2781',
+            nodeType: 'trackMarker',
+            nodePos: { x: 200, y: 900 },
+            text: '2779',
+        },
+        {
+            nodeID: 'tm-LB_LA_2790',
+            nodeType: 'trackMarker',
+            nodePos: { x: 200, y: 920 },
+            text: '2778',
+        },
+        //#endregion
+
+        //#region [LA] LAZY LA
+        {
+            nodeID: 'post_LazyLA',
+            nodeType: 'dispatchingPost',
+            nodePos: { x: 320, y: 1120 },
+            postType: 'relay'
+        },
+        {
+            nodeID: 'station_LazyLA',
+            nodeType: 'stationName',
+            stationPrefix: 'ŁA',
+            stationName: 'Łazy Łc',
+            nodePos: { x: 420, y: 780 },
+        },
+        {
+            nodeID: 'tm-LA_119',
+            nodeType: 'trackMarker',
+            nodePos: { x: 210, y: 720 },
+            text: '119',
+        },
+        {
+            nodeID: 'tm-LA_117',
+            nodeType: 'trackMarker',
+            nodePos: { x: 210, y: 740 },
+            text: '117',
+        },
+        {
+            nodeID: 'tm-LA_115',
+            nodeType: 'trackMarker',
+            nodePos: { x: 210, y: 760 },
+            text: '115',
+        },
+        {
+            nodeID: 'tm-LA_113',
+            nodeType: 'trackMarker',
+            nodePos: { x: 210, y: 780 },
+            text: '113',
+        },
+        {
+            nodeID: 'tm-LA_111',
+            nodeType: 'trackMarker',
+            nodePos: { x: 210, y: 800 },
+            text: '111',
+        },
+        {
+            nodeID: 'tm-LA_109',
+            nodeType: 'trackMarker',
+            nodePos: { x: 210, y: 820 },
+            text: '109',
+        },
+        {
+            nodeID: 'tm-LA_107',
+            nodeType: 'trackMarker',
+            nodePos: { x: 210, y: 840 },
+            text: '107',
+        },
+        {
+            nodeID: 'tm-LA_105',
+            nodeType: 'trackMarker',
+            nodePos: { x: 210, y: 860 },
+            text: '105',
+        },
+        {
+            nodeID: 'tm-LA_103',
+            nodeType: 'trackMarker',
+            nodePos: { x: 210, y: 880 },
+            text: '103',
+        }
         //#endregion
     ]
 }
