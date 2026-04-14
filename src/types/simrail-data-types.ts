@@ -67,4 +67,16 @@ export namespace SimRailDataTypes {
         Type: "bot" | "user";
     }
 
+    export interface FilteredTrainList {
+        TrainNoLocal: string
+        Type: string
+        StartStation: string
+        EndStation: string
+        TrainData: {
+            SignalInFront: string
+            SignalInFrontSpeed: number
+            DistanceToSignalInFront: number
+        }
+        ControlledBy: 'bot' | 'user'
+    }
 }
