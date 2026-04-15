@@ -44,7 +44,30 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region KTC/Bry <-> KO
+        //
+        //#region SSP ANNOTATIONS AREA 1 [ROW1]
+        //
+
+
+        //#region KTC / Brynow <-> Katowice
+        {
+            nodeID: 'tm-Bry_BRY_1',
+            nodeType: 'trackMarker',
+            nodePos: { x: 80, y: 100 },
+            text: 'BRY_1',
+        },
+        {
+            nodeID: 'tm-20',
+            nodeType: 'trackMarker',
+            nodePos: { x: 150, y: 100 },
+            text: '20',
+        },
+        {
+            nodeID: 'tm-15',
+            nodeType: 'trackMarker',
+            nodePos: { x: 230, y: 100 },
+            text: '15',
+        },
         {
             nodeID: 'tm-21',
             nodeType: 'trackMarker',
@@ -293,7 +316,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region KO-KZ
+        //#region Katowice <-> Katowice Zawodzie
         {
             nodeID: 'tm-KO_KZ_1S',
             nodeType: 'trackMarker',
@@ -320,7 +343,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region [KZ] Kat. Zawodzie
+        //#region [KZ] Katowice Zawodzie
         {
             nodeID: 'post_KatowiceZawodzie',
             nodeType: 'dispatchingPost',
@@ -394,7 +417,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region KZ <-> SG
+        //#region Katowice Zawodzie <-> Sosnowiec Glowny
         {
             nodeID: 'peron_KSP',
             nodeType: 'platform',
@@ -404,11 +427,11 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             text: ''
         },
         {
-            nodeID: 'po_KSP',
+            nodeID: 'po-KatowiceSzopienicePoludniowe',
             nodeType: 'simpleText',
-            nodePos: { x: 1420, y: 130 },
+            nodePos: { x: 1420, y: 140 },
             text: 'K. Szopienice Płd.',
-            textSize: 8,
+            textSize: 12,
             strokeWidth: 0.5,
             textColor: 'white'
         },
@@ -450,7 +473,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region [SG] Sosn. Glowny
+        //#region [SG] Sosnowiec Glowny
         {
             nodeID: 'post_SosnowiecGlowny',
             nodeType: 'dispatchingPost',
@@ -542,7 +565,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region [Spl] Sosn. Poludniowy
+        //#region [Spl] Sosnowiec Poludniowy
         {
             nodeID: 'dispatchingPost_SosnowiecPoludniowy',
             nodeType: 'dispatchingPost',
@@ -559,7 +582,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
 
         //#endregion
 
-        //#region SG <-> B
+        //#region Sosnowiec Glowny <-> Bedzin
         {
             nodeID: 'tm-SG_B_3071',
             nodeType: 'trackMarker',
@@ -634,7 +657,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region B <-> DG
+        //#region Bedzin <-> Dabrowa Gornicza [ROW1]
         {
             nodeID: 'peron_BedzinMiasto1',
             nodeType: 'platform',
@@ -652,11 +675,11 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             text: ''
         },
         {
-            nodeID: 'po_BedzinMiasto',
+            nodeID: 'po-BedzinMiasto',
             nodeType: 'simpleText',
             nodePos: { x: 2405, y: 130 },
             text: 'Będzin Miasto',
-            textSize: 8,
+            textSize: 12,
             strokeWidth: 0.5,
             textColor: 'white'
         },
@@ -669,11 +692,11 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             text: ''
         },
         {
-            nodeID: 'po_BedzinKsawera',
+            nodeID: 'po-BedzinKsawera',
             nodeType: 'simpleText',
-            nodePos: { x: 65, y: 480 },
+            nodePos: { x: 70, y: 480 },
             text: 'Będzin Ksawera',
-            textSize: 8,
+            textSize: 12,
             strokeWidth: 0.5,
             textColor: 'white'
         },
@@ -701,7 +724,17 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             nodePos: { x: 2490, y: 180 },
             text: '3036',
         },
-        // SECOND SCREEN ROW
+        //#endregion
+
+        //
+        //#endregion
+        //
+
+        //
+        //#region SSP ANNOTATIONS AREA 1 [ROW2]
+        //
+        
+        //#region Bedzin <-> Dabrowa Gornicza [ROW1]
         {
             nodeID: 'tm-B_DG_3011',
             nodeType: 'trackMarker',
@@ -716,7 +749,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region Dabrowa Gornicza
+        //#region [DG] Dabrowa Gornicza
         {
             nodeID: 'post_DabrowaGornicza',
             nodeType: 'dispatchingPost',
@@ -752,7 +785,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region DG <-> DGZ
+        //#region Dabrowa Gornicza <-> Dabrowa Gornicza Zabkowice
         {
             nodeID: 'peron_DGGolonog',
             nodeType: 'platform',
@@ -762,11 +795,11 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             text: ''
         },
         {
-            nodeID: 'po_DGGolonog',
+            nodeID: 'po-DGGolonog',
             nodeType: 'simpleText',
             nodePos: { x: 500, y: 480 },
             text: 'D. G. Gołonóg',
-            textSize: 8,
+            textSize: 12,
             strokeWidth: 0.5,
             textColor: 'white'
         },
@@ -779,11 +812,11 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             text: ''
         },
         {
-            nodeID: 'po_DGGolonog',
+            nodeID: 'po-DGGolonog',
             nodeType: 'simpleText',
-            nodePos: { x: 580, y: 480 },
+            nodePos: { x: 580, y: 540 },
             text: 'D. G. Pogoria',
-            textSize: 8,
+            textSize: 12,
             strokeWidth: 0.5,
             textColor: 'white'
         },
@@ -837,7 +870,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region Dabrowa Gornicza Zabkowice
+        //#region [DZ] Dabrowa Gornicza Zabkowice
         {
             nodeID: 'post_DabrowaGorniczaZabkowice',
             nodeType: 'dispatchingPost',
@@ -1021,7 +1054,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region TRACKS DABROWA GORNICZA ZABKOWICE - LAZYLC
+        //#region Dabrowa Gornicza Zabkowice <-> Lazy LC
         {
             nodeID: 'tm-DZ_LC_2899D',
             nodeType: 'trackMarker',
@@ -1209,7 +1242,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region [LC] LAZY LC
+        //#region [LC] Lazy LC
         {
             nodeID: 'post_LazyLC',
             nodeType: 'dispatchingPost',
@@ -1255,7 +1288,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region LAZY LC <-> LAZY LB
+        //#region Lazy LC <-> Lazy LB
         {
             nodeID: 'tm-LC_LB_7CB_1',
             nodeType: 'trackMarker',
@@ -1300,7 +1333,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region [LB] LAZY LB
+        //#region [LB] Lazy LB
         {
             nodeID: 'post_LazyLB',
             nodeType: 'dispatchingPost',
@@ -1374,7 +1407,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region LAZYLB <-> LAZYLA
+        //#region Lazy LB <-> Lazy LA [ROW2]
         {
             nodeID: 'tm-LB_LA_2795',
             nodeType: 'trackMarker',
@@ -1387,6 +1420,17 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             nodePos: { x: 2480, y: 540 },
             text: '2794',
         },
+        //#endregion
+
+        //
+        //#endregion
+        //
+
+        //
+        //#region SSP ANNOTATIONS AREA 1 [ROW3]
+        //
+
+        //#region Lazy LB <-> Lazy LA [ROW3]
         {
             nodeID: 'tm-LB_LA_2781',
             nodeType: 'trackMarker',
@@ -1413,7 +1457,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
-        //#region [LA] LAZY LA
+        //#region [LA] Lazy LA
         {
             nodeID: 'post_LazyLA',
             nodeType: 'dispatchingPost',
@@ -1424,9 +1468,12 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             nodeID: 'station_LazyLA',
             nodeType: 'stationName',
             stationPrefix: 'ŁA',
-            stationName: 'Łazy Łc',
+            stationName: 'Łazy Ła',
             nodePos: { x: 420, y: 780 },
         },
+        //
+        // TRACK MARKER UPPER FREIGHT TRACKS
+        //
         {
             nodeID: 'tm-LA_119',
             nodeType: 'trackMarker',
@@ -1480,7 +1527,578 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
             nodeType: 'trackMarker',
             nodePos: { x: 210, y: 880 },
             text: '103',
-        }
+        },
+        //
+        // TRACK MARKER LOWER FREIGHT TRACKS
+        //
+        {
+            nodeID: 'tm-LA_124',
+            nodeType: 'trackMarker',
+            nodePos: { x: 280, y: 960 },
+            text: '124',
+        },
+        {
+            nodeID: 'tm-LA_126',
+            nodeType: 'trackMarker',
+            nodePos: { x: 280, y: 980 },
+            text: '126',
+        },
+        {
+            nodeID: 'tm-LA_128',
+            nodeType: 'trackMarker',
+            nodePos: { x: 280, y: 1000 },
+            text: '128',
+        },
+        {
+            nodeID: 'tm-LA_130',
+            nodeType: 'trackMarker',
+            nodePos: { x: 280, y: 1020 },
+            text: '130',
+        },
+        {
+            nodeID: 'tm-LA_132',
+            nodeType: 'trackMarker',
+            nodePos: { x: 280, y: 1040 },
+            text: '132',
+        },
+        {
+            nodeID: 'tm-LA_134',
+            nodeType: 'trackMarker',
+            nodePos: { x: 280, y: 1060 },
+            text: '134',
+        },
+        {
+            nodeID: 'tm-LA_136',
+            nodeType: 'trackMarker',
+            nodePos: { x: 280, y: 1080 },
+            text: '136',
+        },
+        {
+            nodeID: 'tm-LA_138b',
+            nodeType: 'trackMarker',
+            nodePos: { x: 190, y: 1100 },
+            text: '138b',
+        },
+        {
+            nodeID: 'tm-LA_138a',
+            nodeType: 'trackMarker',
+            nodePos: { x: 280, y: 1100 },
+            text: '138a',
+        },
+        {
+            nodeID: 'tm-LA_144',
+            nodeType: 'trackMarker',
+            nodePos: { x: 180, y: 1120 },
+            text: '144',
+        },
         //#endregion
+
+        //#region Lazy LA <-> Zawiercie
+        {
+            nodeID: 'tm-LA_ZW_3ZW',
+            nodeType: 'trackMarker',
+            nodePos: { x: 520, y: 880 },
+            text: '3ZW',
+        },
+        {
+            nodeID: 'tm-LA_ZW_1ZW',
+            nodeType: 'trackMarker',
+            nodePos: { x: 520, y: 900 },
+            text: '1ZW',
+        },
+        {
+            nodeID: 'tm-LA_ZW_2ZW',
+            nodeType: 'trackMarker',
+            nodePos: { x: 520, y: 920 },
+            text: '2ZW',
+        },
+        {
+            nodeID: 'tm-LA_ZW_4ZW',
+            nodeType: 'trackMarker',
+            nodePos: { x: 520, y: 940 },
+            text: '4ZW',
+        },
+        //#endregion
+
+        //#region [Zw] Zawiercie
+        {
+            nodeID: 'post_Zawiercie',
+            nodeType: 'dispatchingPost',
+            nodePos: { x: 900, y: 980 },
+            postType: 'relay'
+        },
+        {
+            nodeID: 'station_Zawiercie',
+            nodeType: 'stationName',
+            stationPrefix: 'Zw',
+            stationName: 'Zawiercie',
+            nodePos: { x: 950, y: 780 },
+        },
+        {
+            nodeID: 'peron_Zawiercie_P2',
+            nodeType: 'platform',
+            nodePos: { x: 1030, y: 905 },
+            width: 60,
+            height: 50,
+            text: 'Peron II'
+        },
+        {
+            nodeID: 'peron_Zawiercie_P1',
+            nodeType: 'platform',
+            nodePos: { x: 1005, y: 985 },
+            width: 85,
+            height: 10,
+            text: 'Peron I'
+        },
+        {
+            nodeID: 'tm-ZW_3e',
+            nodeType: 'trackMarker',
+            nodePos: { x: 630, y: 880 },
+            text: '3e',
+        },
+        {
+            nodeID: 'tm-ZW_3e',
+            nodeType: 'trackMarker',
+            nodePos: { x: 630, y: 880 },
+            text: '3e',
+        },
+        {
+            nodeID: 'tm-ZW_4b',
+            nodeType: 'trackMarker',
+            nodePos: { x: 705, y: 940 },
+            text: '4b',
+        },
+        {
+            nodeID: 'tm-ZW_104',
+            nodeType: 'trackMarker',
+            nodePos: { x: 730, y: 960 },
+            text: '104',
+        },
+        {
+            nodeID: 'tm-ZW_106',
+            nodeType: 'trackMarker',
+            nodePos: { x: 730, y: 980 },
+            text: '106',
+        },
+        {
+            nodeID: 'tm-ZW_108',
+            nodeType: 'trackMarker',
+            nodePos: { x: 730, y: 1000 },
+            text: '108',
+        },
+        {
+            nodeID: 'tm-ZW_110',
+            nodeType: 'trackMarker',
+            nodePos: { x: 730, y: 1020 },
+            text: '110',
+        },
+        {
+            nodeID: 'tm-ZW_112',
+            nodeType: 'trackMarker',
+            nodePos: { x: 730, y: 1040 },
+            text: '112',
+        },
+        {
+            nodeID: 'tm-ZW_114',
+            nodeType: 'trackMarker',
+            nodePos: { x: 730, y: 1060 },
+            text: '114',
+        },
+        {
+            nodeID: 'tm-ZW_116',
+            nodeType: 'trackMarker',
+            nodePos: { x: 730, y: 1080 },
+            text: '116',
+        },
+        {
+            nodeID: 'tm-ZW_118',
+            nodeType: 'trackMarker',
+            nodePos: { x: 730, y: 1100 },
+            text: '118',
+        },
+        {
+            nodeID: 'tm-ZW_120',
+            nodeType: 'trackMarker',
+            nodePos: { x: 730, y: 1120 },
+            text: '120',
+        },
+        {
+            nodeID: 'tm-ZW_3d',
+            nodeType: 'trackMarker',
+            nodePos: { x: 820, y: 880 },
+            text: '3d',
+        },
+        {
+            nodeID: 'tm-ZW_4c',
+            nodeType: 'trackMarker',
+            nodePos: { x: 920, y: 940 },
+            text: '4c',
+        },
+        {
+            nodeID: 'tm-ZW_3b',
+            nodeType: 'trackMarker',
+            nodePos: { x: 975, y: 880 },
+            text: '3b',
+        },
+        {
+            nodeID: 'tm-ZW_1b',
+            nodeType: 'trackMarker',
+            nodePos: { x: 980, y: 900 },
+            text: '1b',
+        },
+        {
+            nodeID: 'tm-ZW_2b',
+            nodeType: 'trackMarker',
+            nodePos: { x: 995, y: 960 },
+            text: '2b',
+        },
+        {
+            nodeID: 'tm-ZW_7',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1060, y: 840 },
+            text: '7',
+        },
+        {
+            nodeID: 'tm-ZW_5',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1060, y: 860 },
+            text: '5',
+        },
+        {
+            nodeID: 'tm-ZW_3',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1060, y: 880 },
+            text: '3',
+        },
+        {
+            nodeID: 'tm-ZW_1',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1060, y: 900 },
+            text: '1',
+        },
+        {
+            nodeID: 'tm-ZW_2',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1060, y: 960 },
+            text: '2',
+        },
+        {
+            nodeID: 'tm-ZW_4',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1060, y: 980 },
+            text: '4',
+        },
+        //#endregion
+
+        //#region Zawiercie <-> Myszkow / Gora Wlodowska
+
+            //#region Zawiercie <-> Myszkow
+        {
+            nodeID: 'po-ZawiercieBorowePole',
+            nodeType: 'simpleText',
+            nodePos: { x: 1440, y: 860 },
+            text: 'Zawiercie Borowe Pole',
+            textSize: 12,
+            strokeWidth: 0.5,
+            textColor: 'white'
+        },
+        {
+            nodeID: 'peron_ZawiercieBorowePole_p1',
+            nodeType: 'platform',
+            nodePos: { x: 1425, y: 887 },
+            width: 30,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'peron_ZawiercieBorowePole_p2',
+            nodeType: 'platform',
+            nodePos: { x: 1425, y: 923 },
+            width: 30,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'po-MyszkowMrzyglod',
+            nodeType: 'simpleText',
+            nodePos: { x: 1650, y: 860 },
+            text: 'Myszków Mrzygłód',
+            textSize: 12,
+            strokeWidth: 0.5,
+            textColor: 'white'
+        },
+        {
+            nodeID: 'peron_MyszkowMrzyglod_p1',
+            nodeType: 'platform',
+            nodePos: { x: 1660, y: 887 },
+            width: 30,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'peron_MyszkowMrzyglod_p2',
+            nodeType: 'platform',
+            nodePos: { x: 1610, y: 923 },
+            width: 30,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'tm-L1_2719',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1290, y: 900 },
+            text: '2719',
+        },
+        {
+            nodeID: 'tm-L1_2728',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1290, y: 920 },
+            text: '2728',
+        },
+        {
+            nodeID: 'tm-L1_2707',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1370, y: 900 },
+            text: '2707',
+        },
+        {
+            nodeID: 'tm-L1_2718',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1370, y: 920 },
+            text: '2718',
+        },
+        {
+            nodeID: 'tm-L1_2693',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1450, y: 900 },
+            text: '2693',
+        },
+        {
+            nodeID: 'tm-L1_2706',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1450, y: 920 },
+            text: '2706',
+        },
+        {
+            nodeID: 'tm-L1_2677',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1530, y: 900 },
+            text: '2677',
+        },
+        {
+            nodeID: 'tm-L1_2692',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1530, y: 920 },
+            text: '2692',
+        },
+        {
+            nodeID: 'tm-L1_2665',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1610, y: 900 },
+            text: '2665',
+        },
+        {
+            nodeID: 'tm-L1_2676',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1610, y: 920 },
+            text: '2676',
+        },
+        {
+            nodeID: 'tm-L1_2651',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1690, y: 900 },
+            text: '2651',
+        },
+        {
+            nodeID: 'tm-L1_2661',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1690, y: 920 },
+            text: '2661',
+        },
+        {
+            nodeID: 'tm-L1_2637',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1780, y: 900 },
+            text: '2637',
+        },
+        {
+            nodeID: 'tm-L1_2650',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1780, y: 920 },
+            text: '2650',
+        },
+        {
+            nodeID: 'tm-L1_2625',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1860, y: 900 },
+            text: '2625',
+        },
+        {
+            nodeID: 'tm-L1_2638',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1860, y: 920 },
+            text: '2638',
+        },
+
+
+        //#endregion
+
+
+            //#region Zawiercie <-> Gora Wlodowska
+        {
+            nodeID: 'tm-L4_2213',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1290, y: 880 },
+            text: '2213',
+        },
+        {
+            nodeID: 'tm-L4_2228',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1290, y: 940 },
+            text: '2228',
+        },
+        {
+            nodeID: 'tm-L4_2199',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1370, y: 880 },
+            text: '2199',
+        },
+        {
+            nodeID: 'tm-L4_2206',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1370, y: 940 },
+            text: '2206',
+        },
+        {
+            nodeID: 'tm-L4_2183',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1450, y: 880 },
+            text: '2183',
+        },
+        {
+            nodeID: 'tm-L4_2182',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1450, y: 940 },
+            text: '2182',
+        },
+        {
+            nodeID: 'tm-L4_2161',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1530, y: 880 },
+            text: '2161',
+        },
+        {
+            nodeID: 'tm-L4_2162',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1540, y: 1000 },
+            text: '2162',
+        },
+        {
+            nodeID: 'tm-L4_2141',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1610, y: 880 },
+            text: '2141',
+        },
+        {
+            nodeID: 'tm-L4_2142',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1620, y: 1000 },
+            text: '2142',
+        },
+        {
+            nodeID: 'tm-L4_2119',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1690, y: 880 },
+            text: '2141',
+        },
+        {
+            nodeID: 'tm-L4_2128',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1700, y: 1000 },
+            text: '2128',
+        },
+        {
+            nodeID: 'tm-L4_2103',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1780, y: 980 },
+            text: '2103',
+        },
+        {
+            nodeID: 'tm-L4_2114',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1780, y: 1000 },
+            text: '2114',
+        },
+        {
+            nodeID: 'tm-L4_2085',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1860, y: 980 },
+            text: '2085',
+        },
+        {
+            nodeID: 'tm-L4_2100',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1860, y: 1000 },
+            text: '2100',
+        },
+        {
+            nodeID: 'tm-L4_2073',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1940, y: 980 },
+            text: '2073',
+        },
+        {
+            nodeID: 'tm-L4_2086',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1940, y: 1000 },
+            text: '2086',
+        },
+        //#endregion
+
+        //#endregion
+
+        //#region [GW] Gora Wlodowska
+        {
+            nodeID: 'post_GoraWlodowska',
+            nodeType: 'dispatchingPost',
+            nodePos: { x: 1990, y: 1010 },
+            postType: 'computer'
+        },
+        {
+            nodeID: 'station_GoraWlodowska',
+            nodeType: 'stationName',
+            stationPrefix: 'GW',
+            stationName: 'Góra Włodowska',
+            nodePos: { x: 2080, y: 920 },
+        },
+        {
+            nodeID: 'tm-GW_3',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2080, y: 960 },
+            text: '3',
+        },
+        {
+            nodeID: 'tm-GW_1',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2080, y: 980 },
+            text: '1',
+        },
+        {
+            nodeID: 'tm-GW_2',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2080, y: 1000 },
+            text: '2',
+        },
+        {
+            nodeID: 'tm-GW_4',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2080, y: 1020 },
+            text: '4',
+        },
+        //#endregion
+
+        //
+        //#endregion
+        //
     ]
 }
