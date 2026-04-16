@@ -32,7 +32,7 @@ export default function SimRailStreckenspiegel() {
     const areaList = [
         {
             areaID: 'sspArea1',
-            areaDisplayTitle: 'P1 | Katowice - [Lazy LA]'
+            areaDisplayTitle: 'L001/L004 | Katowice - Warszawa'
         },
     ]
 
