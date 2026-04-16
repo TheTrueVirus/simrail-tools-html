@@ -26,6 +26,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 notizen
+changelog.md
 src/functions/customErrorHandler/errorHandler.tsx
 src/functions/customErrorHandler/errorHandlerStyles.css
 src/functions/appcontext/appcontext.tsx
+__stw-bilder
