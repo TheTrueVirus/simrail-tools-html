@@ -26,6 +26,7 @@
     "build:versioned": "node scripts/build-versioned.js",
     "serve:local": "node srto_testing_webserver/server.js",
     "start:local": "npm run build:versioned && npm run serve:local",
+    "shift:coords": "node scripts/coordinate-shifter/shift-coordinates.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
