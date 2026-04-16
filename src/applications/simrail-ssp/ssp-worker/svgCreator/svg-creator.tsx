@@ -108,12 +108,16 @@ export namespace SVG_WORKER {
                             const { x: tX, y: tY } = { x: Number(signal.trainPos.x), y: Number(signal.trainPos.y) }
                             switch (signal.signalDirectionOnMap) {
                                 case "left":
-                                    return { pathPoints: `M${tX},${tY} ${tX + 5},${tY - 7} ${tX + 50},${tY - 7} ${tX + 50},${tY + 7} ${tX + 5},${tY + 7} Z`, trainNumberPos: { x: `${tX + 27}`, y: `${tY + 4}` } }
+                                    return { pathPoints: `M${tX - 3},${tY} ${tX + 2},${tY - 7} ${tX + 53},${tY - 7} ${tX + 53},${tY + 7} ${tX + 2},${tY + 7} Z`, trainNumberPos: { x: `${tX + 27}`, y: `${tY + 5}` } }
 
                                 case "right":
-                                    return { pathPoints: `M${tX},${tY} ${tX - 5},${tY - 7} ${tX - 50},${tY - 7} ${tX - 50},${tY + 7} ${tX - 5},${tY + 7} Z`, trainNumberPos: { x: `${tX - 27}`, y: `${tY + 4}` } }
+                                    return { pathPoints: `M${tX + 3},${tY} ${tX - 2},${tY - 7} ${tX - 53},${tY - 7} ${tX - 53},${tY + 7} ${tX - 2},${tY + 7} Z`, trainNumberPos: { x: `${tX - 27}`, y: `${tY + 5}` } }
                             }
                         }
+
+                        const trainNumberColor = train.ControlledBy === 'user' ? 'rgb(0,255,255)' : 'white'
+                        const trainFillColor = train.ControlledBy === 'user' ? 'rgb(0, 0, 0)' : 'black'
+                        const trainStrokeColor = train.ControlledBy === 'user' ? 'rgb(0,255,255)' : 'rgb(100, 100, 100)'
 
                         const { pathPoints, trainNumberPos } = trainShapeCoords();
                         return (
@@ -122,16 +126,16 @@ export namespace SVG_WORKER {
                                     <path
                                         d={pathPoints}
                                         className={`${isTrainStoppedOnABS() ? 'trainStoppedAtABS' : ''}`}
-                                        stroke="lightblue"
-                                        fill="black"
+                                        stroke={trainStrokeColor}
+                                        fill={trainFillColor}
                                         strokeWidth={2}
                                     />
                                     <text
                                         x={trainNumberPos.x}
                                         y={trainNumberPos.y}
-                                        fontSize={13}
-                                        stroke="white"
-                                        fill="white"
+                                        fontSize={15}
+                                        stroke={trainNumberColor}
+                                        fill={trainNumberColor}
                                         textAnchor="middle"
                                         strokeWidth={0}>
                                         {train.TrainNoLocal}
@@ -160,7 +164,7 @@ export namespace SVG_WORKER {
                     case 'trackMarker':
                         return (
                             <>
-                                <g id={`$nodeGroup_{node.nodeID}`}>
+                                <g id={`nodeGroup_${node.nodeID}`}>
                                     <rect x={(node.nodePos.x - 0.4) - (node.text ? node.text.length * 2.8 : 0)} y={node.nodePos.y - 4} fill="black" width={node.text ? node.text.length * 10 * 0.58 : 20} height={8} />
                                     <text x={node.nodePos.x - (node.text ? node.text.length * 2.8 : 0)} y={node.nodePos.y + 3} fill="white" strokeWidth={0} textAnchor="start" fontSize={10}>{node.text}</text>
                                 </g>
@@ -171,7 +175,7 @@ export namespace SVG_WORKER {
                             case 'relay':
                                 return (
                                     <>
-                                        <g id={`nodeGroup-${node.nodeID}`}>
+                                        <g id={`nodeGroup_${node.nodeID}`}>
                                             <rect x={nx - 2} y={ny - 2} width={34} height={24} stroke="white" fill='none' strokeWidth={1} />
                                             <rect x={nx} y={ny} width={30} height={20} stroke="white" fill='none' strokeWidth={1} />
                                             {/* LEFT TO RIGHT LINES */}
@@ -198,7 +202,7 @@ export namespace SVG_WORKER {
                             case 'computer':
                                 return (
                                     <>
-                                        <g id={`$nodeGroup_{node.nodeID}`}>
+                                        <g id={`nodeGroup_${node.nodeID}`}>
                                             <rect x={nx - 2} y={ny - 2} width={34} height={24} stroke="white" fill='none' strokeWidth={1} />
                                             <rect x={nx} y={ny} width={30} height={20} stroke="white" fill='none' strokeWidth={1} />
                                             <rect x={nx + 7.5} y={ny + 3} width={15} height={4} stroke="black" fill="white" strokeWidth={2} />
@@ -221,7 +225,7 @@ export namespace SVG_WORKER {
                         const sn = node.stationName ?? 'Loading...'
                         const fs = 18
                         const nodeText = () => {
-                            if(node.stationName && node.stationPrefix) {
+                            if (node.stationName && node.stationPrefix) {
                                 if (!isShowLongStationNames) {
                                     return node.stationName
                                 } else {
@@ -233,7 +237,7 @@ export namespace SVG_WORKER {
                         }
                         const takenColor = () => {
                             if (isStationAvailableOnServer) {
-                                if(isStationAvailableOnServer.DispatchedBy.length <= 0) {
+                                if (isStationAvailableOnServer.DispatchedBy.length <= 0) {
                                     return 'lime'
 
                                 } else {
@@ -246,9 +250,10 @@ export namespace SVG_WORKER {
 
                         return (
                             <>
-                                <g id={`$nodeGroup_{node.nodeID}`}>
+                                <g id={`nodeGroup_${node.nodeID}`}>
                                     <text x={nx} y={ny} stroke={snColor} fill={snColor} textAnchor="middle" strokeWidth={1} fontSize={fs}>{`${nodeText()}`}</text>
-                                    <text x={nx} y={ny+4} textAnchor="middle" stroke={takenColor()} fill={takenColor()} strokeWidth={1} fontSize={fs}>{"_".repeat(nodeText().length)}</text>
+                                    <text x={nx} y={ny + 4} textAnchor="middle" stroke={takenColor()} fill={takenColor()} strokeWidth={1} fontSize={fs}>{"_".repeat(nodeText().length)}</text>
+                                    {/* <text x={nx} y={ny-25} textAnchor="middle" stroke={takenColor()} fill={takenColor()} strokeWidth={1} fontSize={fs}>{'■'}</text> */}
                                 </g>
                             </>
                         )
@@ -258,7 +263,7 @@ export namespace SVG_WORKER {
 
                         return (
                             <>
-                                <g id={`$nodeGroup_{node.nodeID}`}>
+                                <g id={`nodeGroup_${node.nodeID}`}>
                                     <rect x={nx} y={ny} width={node.width} height={node.height} fill={platformColor} />
                                     <text x={nx + ((node.width ?? 50) / 2)} y={ny + 2.5 + ((node.height ?? 10) / 2)} textAnchor="middle" fontSize={8} fill="black" stroke="black" strokeWidth={0.5}>{node.text}</text>
                                 </g>
@@ -267,34 +272,38 @@ export namespace SVG_WORKER {
                     case 'simpleText':
                         return (
                             <>
-                                <text
-                                    x={nx}
-                                    y={ny}
-                                    fontSize={node.textSize ?? 10}
-                                    stroke={node.textColor ?? 'white'}
-                                    textAnchor="middle"
-                                    fill={node.textColor}
-                                    strokeWidth={node.strokeWidth ?? 1}
-                                >
-                                    {node.text}
-                                </text>
+                                <g id={`nodeGroup_${node.nodeID}`}>
+                                    <text
+                                        x={nx}
+                                        y={ny}
+                                        fontSize={node.textSize ?? 10}
+                                        stroke={node.textColor ?? 'white'}
+                                        textAnchor="middle"
+                                        fill={node.textColor}
+                                        strokeWidth={node.strokeWidth ?? 1}
+                                    >
+                                        {node.text}
+                                    </text>
+                                </g>
                             </>
                         )
                     case 'simpleRect':
                         return (
                             <>
-                                <rect />
+                                <g id={`nodeGroup_${node.nodeID}`}>
+                                    <rect />
+                                </g>
                             </>
                         )
                     case 'differentScreenMarker':
                         return (
                             <>
-                                <g id={`$nodeGroup_{node.nodeID}`}>
-                                    <line x1={nx+10} x2={nx+15} y1={ny-12} y2={ny-12} stroke="lightblue" strokeWidth={1.3} />
-                                    <line x1={nx+5} x2={nx+10.3} y1={ny-7} y2={ny-12.2} stroke="lightblue" strokeWidth={1.3} />
-                                    <line x1={nx} x2={nx+15} y1={ny-7} y2={ny-7} stroke="lightblue" strokeWidth={1.2} />
-                                    <line x1={nx} x2={nx+15} y1={ny-4} y2={ny-4} stroke="lightblue" strokeWidth={1.2} />
-                                    <text x={nx+20} y={ny-5} stroke="white" fill="white" fontSize={12} strokeWidth={0.5}>{node.text ?? 'Unknown'}</text>
+                                <g id={`nodeGroup_${node.nodeID}`}>
+                                    <line x1={nx + 10} x2={nx + 15} y1={ny - 12} y2={ny - 12} stroke="lightblue" strokeWidth={1.3} />
+                                    <line x1={nx + 5} x2={nx + 10.3} y1={ny - 7} y2={ny - 12.2} stroke="lightblue" strokeWidth={1.3} />
+                                    <line x1={nx} x2={nx + 15} y1={ny - 7} y2={ny - 7} stroke="lightblue" strokeWidth={1.2} />
+                                    <line x1={nx} x2={nx + 15} y1={ny - 4} y2={ny - 4} stroke="lightblue" strokeWidth={1.2} />
+                                    <text x={nx + 20} y={ny - 5} stroke="white" fill="white" fontSize={16} strokeWidth={0.5}>{node.text ?? 'Unknown'}</text>
                                 </g>
                             </>
                         )
@@ -303,9 +312,9 @@ export namespace SVG_WORKER {
                         const marker = node.breakMarker
                         const color = 'rgb(200, 0, 255)'
 
-                        return(
+                        return (
                             <>
-                                <g id={`$nodeGroup_{node.nodeID}`}>
+                                <g id={`nodeGroup_${node.nodeID}`}>
                                     <text x={marker?.firstMarker.x} y={marker?.firstMarker.y} textAnchor="middle" stroke={color} fill={color} fontSize={16} strokeWidth={0.5}>{`[${node.text}]`}</text>
                                     <text x={marker?.secondMarker.x} y={marker?.secondMarker.y} textAnchor="middle" stroke={color} fill={color} fontSize={16} strokeWidth={0.5}>{`[${node.text}]`}</text>
                                 </g>
