@@ -11,8 +11,10 @@ interface ISelfProps {
         stationList: SimRailDataTypes.StationData[],
         selectedArea: AreaProps,
         isShowLongStationNames: boolean,
+
         isShowTestTrains: boolean
-        setShowTestTrains: (v: boolean) => void
+        setShowTestTrains: React.Dispatch<React.SetStateAction<boolean>>
+
         allowExtendedView: boolean
         setAllowExtendedView: React.Dispatch<React.SetStateAction<boolean>>
     }
@@ -31,7 +33,7 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
     const allowExtendedView = SSP_SVG_ITEMS.allowExtendedView
     const setAllowExtendedView = SSP_SVG_ITEMS.setAllowExtendedView
 
-    const INITIAL_VIEWBOX = { x: 0, y: 0, width: 2560, height: 1440 };
+    const INITIAL_VIEWBOX = { x: 0, y: 0, width: 2560, height: 2000 };
     const MIN_VIEWBOX_WIDTH = 300;
     const MAX_VIEWBOX_WIDTH = 2560;
 
@@ -263,9 +265,9 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
 
                         {isDev &&
                             <>
-                                <line x1={0} x2={2560} y1={350} y2={350} stroke="gray" strokeWidth={1} strokeDasharray={5} strokeDashoffset={5} strokeLinecap="round" />
-                                <line x1={0} x2={2560} y1={700} y2={700} stroke="gray" strokeWidth={1} strokeDasharray={5} strokeDashoffset={5} strokeLinecap="round" />
-                                <rect x={0} y={0} width={2560} height={1440} stroke="orange" fill="none" strokeWidth={0.2} />
+                                {/* <line x1={0} x2={2560} y1={350} y2={350} stroke="gray" strokeWidth={1} strokeDasharray={5} strokeDashoffset={5} strokeLinecap="round" /> */}
+                                {/* <line x1={0} x2={2560} y1={700} y2={700} stroke="gray" strokeWidth={1} strokeDasharray={5} strokeDashoffset={5} strokeLinecap="round" /> */}
+                                {/* <rect x={0} y={0} width={INITIAL_VIEWBOX.width} height={INITIAL_VIEWBOX.height} stroke="red" fill="rgba(10, 0, 0, 0.1)" strokeWidth={1} /> */}
                             </>
                         }
                     </svg>
@@ -275,14 +277,22 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
                 <div className="trainsCounter">{trainsCounter()}</div>
                 <div className="stationsCounter">{stationsCounter()}</div>
                 <div className="svgCoordinates">
-                    Coords:
                     {mouseSvgPos
-                        ? `x: ${mouseSvgPos.x.toFixed(1)}, y: ${mouseSvgPos.y.toFixed(1)}`
-                        : 'x: -, y: -'}
+                        ? `[x: ${mouseSvgPos.x.toFixed(1)} | y: ${mouseSvgPos.y.toFixed(1)}]`
+                        : '[x: - | y: -]'}
                 </div>
                 <div className="svgCoordinates">
                     Extended view: {allowExtendedView ? 'ON' : 'OFF'}
                 </div>
+                {isDev &&
+                    <>
+                        <div className="devInfo">
+                            <div className="tracksCount">{`Track Count: ${TRACK_DATA.length}`}</div>
+                            <div className="signalCount">{`SignalCount: ${SIGNAL_DATA.length}`}</div>
+                            <div className="nodesCount">{`Nodes Count: ${NODE_DATA.length}`}</div>
+                        </div>
+                    </>
+                }
             </div>
         </>
     )
