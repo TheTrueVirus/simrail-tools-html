@@ -2127,6 +2127,420 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         },
         //#endregion
 
+        //#region Gora Wlodowska <-> Psary [ROW 3]
+        {
+            nodeID: 'tm-GW_PS_2035',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2230, y: 800 },
+            text: '2035',
+        },
+        {
+            nodeID: 'tm-GW_PS_2050',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2230, y: 820 },
+            text: '2050',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_2023',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2310, y: 800 },
+            text: '2023',
+        },
+        {
+            nodeID: 'tm-GW_PS_2036',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2310, y: 820 },
+            text: '2036',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_2009',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2390, y: 800 },
+            text: '2009',
+        },
+        {
+            nodeID: 'tm-GW_PS_2022',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2390, y: 820 },
+            text: '2022',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1995',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2470, y: 800 },
+            text: '1995',
+        },
+        {
+            nodeID: 'tm-GW_PS_2008',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2470, y: 820 },
+            text: '2008',
+        },
+        //#endregion
+
+        //
+        //#endregion
+        //
+
+        //
+        //#region SSP AREA 1 [ROW4]
+        //
+
+        //#region Gora Wlodowska <-> Psary [ROW 4]
+        {
+            nodeID: 'tm-GW_PS_1981',
+            nodeType: 'trackMarker',
+            nodePos: { x: 70, y: 1060 },
+            text: '1981',
+        },
+        {
+            nodeID: 'tm-GW_PS_1994',
+            nodeType: 'trackMarker',
+            nodePos: { x: 70, y: 1080 },
+            text: '1994',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1967',
+            nodeType: 'trackMarker',
+            nodePos: { x: 150, y: 1060 },
+            text: '1967',
+        },
+        {
+            nodeID: 'tm-GW_PS_1980',
+            nodeType: 'trackMarker',
+            nodePos: { x: 150, y: 1080 },
+            text: '1980',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1951',
+            nodeType: 'trackMarker',
+            nodePos: { x: 230, y: 1060 },
+            text: '1951',
+        },
+        {
+            nodeID: 'tm-GW_PS_1966',
+            nodeType: 'trackMarker',
+            nodePos: { x: 230, y: 1080 },
+            text: '1966',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1935',
+            nodeType: 'trackMarker',
+            nodePos: { x: 310, y: 1060 },
+            text: '1935',
+        },
+        {
+            nodeID: 'tm-GW_PS_1950',
+            nodeType: 'trackMarker',
+            nodePos: { x: 310, y: 1080 },
+            text: '1950',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1917',
+            nodeType: 'trackMarker',
+            nodePos: { x: 390, y: 1060 },
+            text: '1917',
+        },
+        {
+            nodeID: 'tm-GW_PS_1936',
+            nodeType: 'trackMarker',
+            nodePos: { x: 390, y: 1080 },
+            text: '1936',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1897',
+            nodeType: 'trackMarker',
+            nodePos: { x: 470, y: 1060 },
+            text: '1897',
+        },
+        {
+            nodeID: 'tm-GW_PS_1918',
+            nodeType: 'trackMarker',
+            nodePos: { x: 470, y: 1080 },
+            text: '1918',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1881',
+            nodeType: 'trackMarker',
+            nodePos: { x: 550, y: 1060 },
+            text: '1881',
+        },
+        {
+            nodeID: 'tm-GW_PS_1898',
+            nodeType: 'trackMarker',
+            nodePos: { x: 550, y: 1080 },
+            text: '1898',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1859',
+            nodeType: 'trackMarker',
+            nodePos: { x: 630, y: 1060 },
+            text: '1859',
+        },
+        {
+            nodeID: 'tm-GW_PS_1882',
+            nodeType: 'trackMarker',
+            nodePos: { x: 630, y: 1080 },
+            text: '1882',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1841',
+            nodeType: 'trackMarker',
+            nodePos: { x: 710, y: 1060 },
+            text: '1841',
+        },
+        {
+            nodeID: 'tm-GW_PS_1858',
+            nodeType: 'trackMarker',
+            nodePos: { x: 710, y: 1080 },
+            text: '1858',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1827',
+            nodeType: 'trackMarker',
+            nodePos: { x: 790, y: 1060 },
+            text: '1827',
+        },
+        {
+            nodeID: 'tm-GW_PS_1842',
+            nodeType: 'trackMarker',
+            nodePos: { x: 790, y: 1080 },
+            text: '1842',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1807',
+            nodeType: 'trackMarker',
+            nodePos: { x: 870, y: 1060 },
+            text: '1827',
+        },
+        {
+            nodeID: 'tm-GW_PS_1828',
+            nodeType: 'trackMarker',
+            nodePos: { x: 870, y: 1080 },
+            text: '1828',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1789',
+            nodeType: 'trackMarker',
+            nodePos: { x: 950, y: 1060 },
+            text: '1789',
+        },
+        {
+            nodeID: 'tm-GW_PS_1806',
+            nodeType: 'trackMarker',
+            nodePos: { x: 950, y: 1080 },
+            text: '1806',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1773',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1030, y: 1060 },
+            text: '1773',
+        },
+        {
+            nodeID: 'tm-GW_PS_1788',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1030, y: 1080 },
+            text: '1788',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1759',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1110, y: 1060 },
+            text: '1759',
+        },
+        {
+            nodeID: 'tm-GW_PS_1774',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1110, y: 1080 },
+            text: '1774',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1743',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1190, y: 1060 },
+            text: '1743',
+        },
+        {
+            nodeID: 'tm-GW_PS_1758',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1190, y: 1080 },
+            text: '1758',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1727',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1270, y: 1060 },
+            text: '1727',
+        },
+        {
+            nodeID: 'tm-GW_PS_1742',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1270, y: 1080 },
+            text: '1742',
+        },
+
+        {
+            nodeID: 'tm-GW_PS_1713',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1350, y: 1060 },
+            text: '1713',
+        },
+        {
+            nodeID: 'tm-GW_PS_1726',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1350, y: 1080 },
+            text: '1726',
+        },
+        //#endregion
+
+        //#region [Ps] Psary
+        {
+            nodeID: 'post_Psary',
+            nodeType: 'dispatchingPost',
+            nodePos: { x: 1440, y: 1120 },
+            postType: 'computer'
+        },
+        {
+            nodeID: 'station_Psary',
+            nodeType: 'stationName',
+            stationPrefix: 'Ps',
+            stationName: 'Psary',
+            nodePos: { x: 1520, y: 1000 },
+        },
+        {
+            nodeID: 'tm-PS_3',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1540, y: 1040 },
+            text: '3',
+        },
+        {
+            nodeID: 'tm-PS_1',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1540, y: 1060 },
+            text: '1',
+        },
+        {
+            nodeID: 'tm-PS_2',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1540, y: 1080 },
+            text: '2',
+        },
+        {
+            nodeID: 'tm-PS_4',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1540, y: 1100 },
+            text: '4',
+        },
+        {
+            nodeID: 'tm-PS_6',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1540, y: 1120 },
+            text: '6',
+        },
+        //#endregion
+
+        //#region Psary <-> Knapowka
+        {
+            nodeID: 'tm-PS_KN_1673',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1710, y: 1060 },
+            text: '1673',
+        },
+        {
+            nodeID: 'tm-PS_KN_1686',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1710, y: 1080 },
+            text: '1686',
+        },
+
+        {
+            nodeID: 'tm-PS_KN_1655',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1790, y: 1060 },
+            text: '1655',
+        },
+        {
+            nodeID: 'tm-PS_KN_1674',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1790, y: 1080 },
+            text: '1674',
+        },
+
+        {
+            nodeID: 'tm-PS_KN_1641',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1870, y: 1060 },
+            text: '1641',
+        },
+        {
+            nodeID: 'tm-PS_KN_1656',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1870, y: 1080 },
+            text: '1656',
+        },
+
+        {
+            nodeID: 'tm-PS_KN_1625',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1950, y: 1060 },
+            text: '1625',
+        },
+        {
+            nodeID: 'tm-PS_KN_1642',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1950, y: 1080 },
+            text: '1642',
+        },
+
+        {
+            nodeID: 'tm-PS_KN_1611',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2030, y: 1060 },
+            text: '1611',
+        },
+        {
+            nodeID: 'tm-PS_KN_1624',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2030, y: 1080 },
+            text: '1624',
+        },
+        //#endregion
+
+        //#region [Kn]
+        {
+            nodeID: 'post_Knapowka',
+            nodeType: 'dispatchingPost',
+            nodePos: { x: 2100, y: 1090 },
+            postType: 'computer'
+        },
+        {
+            nodeID: 'station_Knapowka',
+            nodeType: 'stationName',
+            stationPrefix: 'Kn',
+            stationName: 'Knapówka',
+            nodePos: { x: 2120, y: 1000 },
+        },
+        //#endregion
+
         //
         //#endregion
         //
