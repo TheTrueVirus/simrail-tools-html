@@ -34,7 +34,7 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
     const setAllowExtendedView = SSP_SVG_ITEMS.setAllowExtendedView
 
     const INITIAL_VIEWBOX = { x: 0, y: 0, width: 2560, height: 2000 };
-    const MIN_VIEWBOX_WIDTH = 300;
+    const MIN_VIEWBOX_WIDTH = 400;
     const MAX_VIEWBOX_WIDTH = 2560;
 
     const [trackSVG, SET_trackSVG] = useState<JSX.Element[]>([]);
