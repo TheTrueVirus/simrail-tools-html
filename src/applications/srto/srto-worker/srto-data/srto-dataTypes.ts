@@ -1,4 +1,4 @@
-export namespace SSP_DATA_TYPES {
+export namespace SRTO_DataTypes {
 
     export interface TRACKS {
         [area: string]: TRACK[]

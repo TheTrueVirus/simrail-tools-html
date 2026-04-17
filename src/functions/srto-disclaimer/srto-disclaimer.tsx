@@ -1,4 +1,4 @@
-import './sspDisclaimer.css'
+import './srtoDisclaimer-styles.css'
 
 interface ISelfProps {
     DISCLAIMER_KEY: string
@@ -7,7 +7,7 @@ interface ISelfProps {
 }
 
 
-export default function SimRailSSP_Disclaimer({DISCLAIMER_KEY, showDisclaimer, setShowDisclaimer} : ISelfProps) {
+export default function SRTO_Disclaimer({DISCLAIMER_KEY, showDisclaimer, setShowDisclaimer} : ISelfProps) {
 
     const onUnderstand = () => {
         localStorage.setItem(DISCLAIMER_KEY, "true")

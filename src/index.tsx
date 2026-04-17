@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import SimRailStreckenspiegel from './applications/simrail-ssp/simrail-ssp';
+import SimRailTrackOverview from './applications/srto/srto';
 import './index.css';
 // import CustomErrorHandler from './functions/customErrorHandler/errorHandler';
 // import Main from './main-page/main';
@@ -21,7 +21,7 @@ root.render(
               {/* <SideBar /> */}
             </div>
             <Routes>
-              <Route path='/' element={<SimRailStreckenspiegel />} />
+              <Route path='/' element={<SimRailTrackOverview />} />
             </Routes>
           </BrowserRouter>
         </div>

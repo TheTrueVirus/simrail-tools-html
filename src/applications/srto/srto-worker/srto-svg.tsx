@@ -1,12 +1,12 @@
 import { JSX, useEffect, useRef, useState } from "react";
 import { SimRailDataTypes } from "../../../types/simrail-data-types";
-import { SVG_WORKER } from "./svgCreator/svg-creator";
-import { SSP_DATA_TYPES } from "./ssp-data/ssp-data-types";
-import { AreaProps } from "../simrail-ssp";
+import { SRTO_SVG_BUILDER } from "./svg-builder/svg-builder";
+import { SRTO_DataTypes } from "./srto-data/srto-dataTypes";
+import { AreaProps } from "../srto";
 import './svgStyles.css'
 
 interface ISelfProps {
-    SSP_SVG_ITEMS: {
+    SRTO_SVG_ITEMS: {
         trainList: SimRailDataTypes.FilteredTrainList[],
         stationList: SimRailDataTypes.StationData[],
         selectedArea: AreaProps,
@@ -22,16 +22,16 @@ interface ISelfProps {
 
 const isDev = process.env.NODE_ENV === 'development'
 
-export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
+export default function SRTO_SVG({ SRTO_SVG_ITEMS }: ISelfProps) {
 
-    const trainList = SSP_SVG_ITEMS.trainList;
-    const stationList = SSP_SVG_ITEMS.stationList;
-    const selectedArea = SSP_SVG_ITEMS.selectedArea;
-    const isShowLongStationNames = SSP_SVG_ITEMS.isShowLongStationNames
-    const isShowTestTrains = SSP_SVG_ITEMS.isShowTestTrains
-    const setShowTestTrains = SSP_SVG_ITEMS.setShowTestTrains
-    const allowExtendedView = SSP_SVG_ITEMS.allowExtendedView
-    const setAllowExtendedView = SSP_SVG_ITEMS.setAllowExtendedView
+    const trainList = SRTO_SVG_ITEMS.trainList;
+    const stationList = SRTO_SVG_ITEMS.stationList;
+    const selectedArea = SRTO_SVG_ITEMS.selectedArea;
+    const isShowLongStationNames = SRTO_SVG_ITEMS.isShowLongStationNames
+    const isShowTestTrains = SRTO_SVG_ITEMS.isShowTestTrains
+    const setShowTestTrains = SRTO_SVG_ITEMS.setShowTestTrains
+    const allowExtendedView = SRTO_SVG_ITEMS.allowExtendedView
+    const setAllowExtendedView = SRTO_SVG_ITEMS.setAllowExtendedView
 
     const INITIAL_VIEWBOX = { x: 0, y: 0, width: 2560, height: 2000 };
     const MIN_VIEWBOX_WIDTH = 400;
@@ -74,15 +74,15 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
         };
     }
 
-    const { TRACK_DATA, SIGNAL_DATA, NODE_DATA } = SVG_WORKER.loadDataFromFile(selectedArea.areaID);
+    const { TRACK_DATA, SIGNAL_DATA, NODE_DATA } = SRTO_SVG_BUILDER.loadDataFromFile(selectedArea);
 
     useEffect(() => {
 
         if (!TRACK_DATA) return;
-        const TRACK_SVG = SVG_WORKER.drawTracksOntoSVG(TRACK_DATA);
-        const SIGNAL_SVG = SVG_WORKER.drawSignalsOntoSVG(SIGNAL_DATA, trainList);
-        const TRAIN_SVG = SVG_WORKER.drawTrainsOntoSVG(SIGNAL_DATA, trainList);
-        const NODE_SVG = SVG_WORKER.drawNotationsOntoSVG(NODE_DATA, stationList, isShowLongStationNames);
+        const TRACK_SVG = SRTO_SVG_BUILDER.drawTracksOntoSVG(TRACK_DATA);
+        const SIGNAL_SVG = SRTO_SVG_BUILDER.drawSignalsOntoSVG(SIGNAL_DATA, trainList);
+        const TRAIN_SVG = SRTO_SVG_BUILDER.drawTrainsOntoSVG(SIGNAL_DATA, trainList);
+        const NODE_SVG = SRTO_SVG_BUILDER.drawNotationsOntoSVG(NODE_DATA, stationList, isShowLongStationNames);
 
         SET_trackSVG(TRACK_SVG)
         SET_signalSVG(SIGNAL_SVG)
@@ -108,7 +108,7 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
             return;
         };
 
-        const TESTTRAIN_SVG = SVG_WORKER.drawTestTrainsOntoSVG(SIGNAL_DATA);
+        const TESTTRAIN_SVG = SRTO_SVG_BUILDER.drawTestTrainsOntoSVG(SIGNAL_DATA);
 
         SET_testTrainSVG(TESTTRAIN_SVG);
     }, [isShowTestTrains, SIGNAL_DATA])
@@ -233,14 +233,14 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
 
     return (
         <>
-            <div className="ssp-container">
+            <div className="srto-container">
                 <div className="svg-container">
                     <svg
                         ref={svgRef}
                         viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
                         preserveAspectRatio="xMinYMin meet"
-                        id="sspSVG"
-                        className="ssp_svg"
+                        id="srto-svg"
+                        className="srto-svg"
                         width={'100%'}
                         height={'100%'}
                         onWheel={onWheelZoom}
@@ -250,15 +250,15 @@ export default function SimRailSSP_SVG({ SSP_SVG_ITEMS }: ISelfProps) {
                         onMouseLeave={onMouseLeaveSvg}
                         onContextMenu={onContextMenuSVG}
                     >
-                        <g id="ssp-tracks">{trackSVG}</g>
+                        <g id="srto-tracks">{trackSVG}</g>
 
-                        <g id="ssp-nodes">{nodeSVG}</g>
+                        <g id="srto-nodes">{nodeSVG}</g>
 
-                        <g id="ssp-signals">{signalSVG}</g>
+                        <g id="srto-signals">{signalSVG}</g>
 
-                        <g id="ssp-trains" className={`${isShowTestTrains ? 'hideTrainsFromPane' : ''}`}>{trainSVG}</g>
+                        <g id="srto-trains" className={`${isShowTestTrains ? 'hideTrainsFromPane' : ''}`}>{trainSVG}</g>
 
-                        <g id="ssp-testTrains" className={`${!isShowTestTrains ? 'hideTrainsFromPane' : ''}`}>{testTrainSVG}</g>
+                        <g id="srto-testTrains" className={`${!isShowTestTrains ? 'hideTrainsFromPane' : ''}`}>{testTrainSVG}</g>
 
                         {/* <text x={2560/2} y={40} fontSize={50} fill='orange' stroke='orange' textAnchor="middle">CURRENTLY IN DEVELOPMENT</text> */}
                         {/* <text x={2560/2} y={1430} fontSize={50} fill='orange' stroke='orange' textAnchor="middle">CURRENTLY IN DEVELOPMENT</text> */}

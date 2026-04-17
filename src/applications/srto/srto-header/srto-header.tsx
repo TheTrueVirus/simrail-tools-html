@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import './sspHeaderStyles.css'
+import './srto-headerStyles.css'
 import { SimRailDataTypes } from '../../../types/simrail-data-types'
-import { AreaProps } from '../simrail-ssp'
+import { AreaProps } from '../srto'
 
 const isDev = process.env.NODE_ENV === 'development'
 
 interface ISelfProps {
-    sspOptions: {
+    srtoOptions: {
         serverOptions: {
             serverList: SimRailDataTypes.ServerData[]
             getServer: string,
@@ -54,14 +54,14 @@ const serverTimeOffset = {
     "pl5": -4,
 }
 
-export default function SimRailSSP_Header({ sspOptions }: ISelfProps) {
+export default function SRTO_Header({ srtoOptions }: ISelfProps) {
 
     const [isOptionsOpen, setOptionsOpen] = useState<boolean>(false);
     const [openServerList, setOpenServerList] = useState<boolean>(false);
     const serverListRef = useRef<HTMLDivElement>(null);
 
-    const selectedServer = sspOptions.serverOptions.getServer
-    const showHeader = sspOptions.showHeaderOptions.showHeader
+    const selectedServer = srtoOptions.serverOptions.getServer
+    const showHeader = srtoOptions.showHeaderOptions.showHeader
 
     useEffect(() => {
         if (openServerList && serverListRef.current) {
@@ -88,12 +88,12 @@ export default function SimRailSSP_Header({ sspOptions }: ISelfProps) {
     }
 
     function setNewServerAndCloseList(serverCode: string) {
-        sspOptions.serverOptions.setServer(serverCode);
+        srtoOptions.serverOptions.setServer(serverCode);
         setOpenServerList(false);
     }
 
     function setNewAreaAndClose(area: AreaProps) {
-        sspOptions.areaOptions.setArea(area);
+        srtoOptions.areaOptions.setArea(area);
         // setOpenAreaList(false);
     }
 
@@ -102,22 +102,22 @@ export default function SimRailSSP_Header({ sspOptions }: ISelfProps) {
         {
             optionID: 'option-stationNames',
             optionName: 'Show Short Station Names',
-            optionValue: sspOptions.stationNameOptions.isShowLongStationNames,
-            optionSetter: sspOptions.stationNameOptions.SET_showLongStationsNames,
+            optionValue: srtoOptions.stationNameOptions.isShowLongStationNames,
+            optionSetter: srtoOptions.stationNameOptions.SET_showLongStationsNames,
             isDevOption: false
         },
         {
             optionID: 'option-showTestTrains_DEV',
             optionName: 'Show Test Trains [DEV ONLY]',
-            optionValue: sspOptions.testTrainOptions.isShowTestTrains,
-            optionSetter: sspOptions.testTrainOptions.setShowTestTrains,
+            optionValue: srtoOptions.testTrainOptions.isShowTestTrains,
+            optionSetter: srtoOptions.testTrainOptions.setShowTestTrains,
             isDevOption: true
         },
         {
             optionID: 'option-allowExtendedView',
             optionName: 'Allow Extended View',
-            optionValue: sspOptions.extendedViewOption.allowExtendedView,
-            optionSetter: sspOptions.extendedViewOption.setAllowExtendedView,
+            optionValue: srtoOptions.extendedViewOption.allowExtendedView,
+            optionSetter: srtoOptions.extendedViewOption.setAllowExtendedView,
             isDevOption: false
         },
 
@@ -128,12 +128,12 @@ export default function SimRailSSP_Header({ sspOptions }: ISelfProps) {
 
     return (
         <>
-            <div className={`sspHeaderContainer ${!showHeader ? 'hideHeader' : ''}`}>
+            <div className={`srtoHeaderContainer ${!showHeader ? 'hideHeader' : ''}`}>
                 <div className='headerTitleContainer'>
-                    <div className='sspHeaderTitle'>SRTO : {sspOptions.areaOptions.getArea.areaDisplayTitle}</div>
+                    <div className='srtoHeaderTitle'>SRTO : {srtoOptions.areaOptions.getArea.areaDisplayTitle}</div>
                 </div>
                 <div className='clockContainer'>
-                    <div className='sspClock'>{getCurrentTime()}</div>
+                    <div className='srtoClock'>{getCurrentTime()}</div>
                 </div>
                 <div className='headerOptionsContainer'>
                     <div className='openOptionsButtonContainer' onClick={() => { setOptionsOpen(prev => !prev) }}>
@@ -151,7 +151,7 @@ export default function SimRailSSP_Header({ sspOptions }: ISelfProps) {
                                 <div className='serverListTitle'>SELECT A SERVER</div>
                                 <div className='serverListContainer'>
                                     {
-                                        sspOptions.serverOptions.serverList.map((server) => (
+                                        srtoOptions.serverOptions.serverList.map((server) => (
                                             <>
                                                 <div
                                                     className={`serverOption ${selectedServer === server.ServerCode ? '' : ''}`}

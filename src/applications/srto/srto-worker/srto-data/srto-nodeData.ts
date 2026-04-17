@@ -1,7 +1,7 @@
-import { SSP_DATA_TYPES } from "./ssp-data-types";
+import { SRTO_DataTypes } from "./srto-dataTypes"
 
-export const SSP_NODES: SSP_DATA_TYPES.NODES = {
-    "sspArea1": [
+export const SRTO_Nodes: SRTO_DataTypes.NODES = {
+    "area1": [
 
         //#region Additional Annotations (Track Breaks / Different Screen Areas)
         {
@@ -51,7 +51,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         //#endregion
 
         //
-        //#region SSP AREA 1 [ROW1]
+        //#region SRTO AREA 1 [ROW1]
         //
 
         //#region KTC / Brynow <-> Katowice
@@ -744,7 +744,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         //
 
         //
-        //#region SSP AREA 1 [ROW2]
+        //#region SRTO AREA 1 [ROW2]
         //
 
         //#region Bedzin <-> Dabrowa Gornicza [ROW1]
@@ -1457,7 +1457,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         //
 
         //
-        //#region SSP AREA 1 [ROW3]
+        //#region SRTO AREA 1 [ROW3]
         //
 
         //#region Lazy LB <-> Lazy LA [ROW3]
@@ -2186,7 +2186,7 @@ export const SSP_NODES: SSP_DATA_TYPES.NODES = {
         //
 
         //
-        //#region SSP AREA 1 [ROW4]
+        //#region SRTO AREA 1 [ROW4]
         //
 
         //#region Gora Wlodowska <-> Psary [ROW 4]

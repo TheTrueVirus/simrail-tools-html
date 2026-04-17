@@ -1,15 +1,15 @@
-import { SSP_DATA_TYPES } from "./ssp-data-types"
+import { SRTO_DataTypes } from "./srto-dataTypes"
 
 const AREA1_ROW1_Y_SHIFT = 0;
 const AREA1_ROW2_Y_SHIFT = 0;
 const AREA1_ROW3_Y_SHIFT = 0;
 
 
-export const SSP_SIGNALS: SSP_DATA_TYPES.SIGNALS = {
-    "sspArea1": [
+export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
+    "area1": [
 
         //
-        //#region SSP AREA 1 [ROW1]
+        //#region SRTO AREA 1 [ROW1]
         //
 
         //#region KTC / Brynow + ABS to/from Katowice
@@ -1164,7 +1164,7 @@ export const SSP_SIGNALS: SSP_DATA_TYPES.SIGNALS = {
         //
 
         //
-        //#region SSP AREA 1 [ROW 2]
+        //#region SRTO AREA 1 [ROW 2]
         //
 
 
@@ -2129,7 +2129,7 @@ export const SSP_SIGNALS: SSP_DATA_TYPES.SIGNALS = {
         //
 
         //
-        //#region SSP AREA 1 [ROW3]
+        //#region SRTO AREA 1 [ROW3]
         //
 
 
@@ -3370,7 +3370,7 @@ export const SSP_SIGNALS: SSP_DATA_TYPES.SIGNALS = {
         //
 
         //
-        //#region SSP AREA 1 [ROW 4]
+        //#region SRTO AREA 1 [ROW 4]
         //
 
         //#region Gora Wlodowska <-> Psary [ROW 4]

@@ -1,8 +1,8 @@
-import { SSP_DATA_TYPES } from "./ssp-data-types";
+import { SRTO_DataTypes } from "./srto-dataTypes";
 const npt_color = 'rgb(70, 70, 70)'
 
-export const SSP_TRACKS: SSP_DATA_TYPES.TRACKS = {
-    "sspArea1": [
+export const SRTO_Tracks: SRTO_DataTypes.TRACKS = {
+    "area1": [
 
         //#region TRACK SPLITTER
         {
@@ -22,7 +22,7 @@ M1750,770 1980,770 1980,710 2100,710
         //#endregion
 
         //
-        //#region SSP AREA 1 [ROW1]
+        //#region SRTO AREA 1 [ROW1]
         //
 
         //#region KTC - Bry to KO
@@ -411,7 +411,7 @@ M2380,120 2440,120 M2460,120 2520,120 M2530,120 2540,120 2550,130
         //
 
         //
-        //#region SSP AREA 1 [ROW2]
+        //#region SRTO AREA 1 [ROW2]
         //
 
 
@@ -792,11 +792,11 @@ M2400,540 2540,540 2550,550
 
 
         //
-        //#endregion SSPAREA1_ROW2
+        //#endregion SRTOAREA1_ROW2
         //
 
         //
-        //#region SSP AREA 1 [ROW3]
+        //#region SRTO AREA 1 [ROW3]
         //
 
         //#region TRACKS LAZY LB <-> LAZY LA [ROW2]
@@ -1194,7 +1194,7 @@ M2200,820 2260,820 M2280,820 2340,820 M2360,820 2420,820 M2440,820 2500,820 M251
         
         
         //
-        //#region SSP AREA 1 ROW 4
+        //#region SRTO AREA 1 ROW 4
         //
         
         //#region TRACKS GORA WLODOWSKA <-> PSARY [ROW 4]
@@ -1308,7 +1308,7 @@ M2190,1080 2250,1080
         //#endregion
 
     ],
-    "sspArea2": [
+    "SRTOArea2": [
 
         //
         //#region [template]

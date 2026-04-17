@@ -1,20 +1,20 @@
-import './sspStyles.css'
+import './srtoStyles.css'
 import { useEffect, useState } from "react"
 import { SimRailDataTypes } from "../../types/simrail-data-types";
 import { SR_DATA } from '../../functions/getSimRailData/getSimRailData';
-import SimRailSSP_SVG from './ssp-worker/ssp-svg-area';
-import SimRailSSP_Header from './ssp-header/ssp-header';
-import SimRailSSP_Disclaimer from '../../functions/sspDisclamer/ssp-disclaimer';
-import SRTO_Canvas from './ssp-worker/srto-canvas-own';
+import SRTO_SVG from './srto-worker/srto-svg';
+import SRTO_Header from './srto-header/srto-header';
+import SRTO_Disclaimer from '../../functions/srto-disclaimer/srto-disclaimer';
+import SRTO_Canvas from './srto-worker/srto-canvas-own';
 
 export interface AreaProps {
     areaID: string
     areaDisplayTitle: string
 }
 
-const DISCLAIMER_KEY = "ssp_disclaimer_alpha0.0.1"
+const DISCLAIMER_KEY = "srto_disclaimer_alpha0.1.0"
 
-export default function SimRailStreckenspiegel() {
+export default function SimRailTrackOverview() {
 
     const developmentTrain: SimRailDataTypes.FilteredTrainList = {
         TrainNoLocal: 'DEVDEV',
@@ -31,7 +31,7 @@ export default function SimRailStreckenspiegel() {
 
     const areaList = [
         {
-            areaID: 'sspArea1',
+            areaID: 'area1',
             areaDisplayTitle: 'L001/L004 | Katowice - Warszawa'
         },
     ]
@@ -130,7 +130,7 @@ export default function SimRailStreckenspiegel() {
         ? [...trainList, developmentTrain]
         : trainList;
 
-    const sspOptions = {
+    const srtoOptions = {
         serverOptions: {
             serverList,
             getServer: selectedServer,
@@ -159,7 +159,7 @@ export default function SimRailStreckenspiegel() {
         }
     }
 
-    const SSP_SVG_ITEMS = {
+    const SRTO_SVG_ITEMS = {
         trainList: finalTrainList,
         stationList,
         selectedArea,
@@ -179,17 +179,17 @@ export default function SimRailStreckenspiegel() {
 
     return (
         <>
-            <div className='sspContainer'>
+            <div className='srtoContainer'>
                 {showDisclaimer &&
-                    <SimRailSSP_Disclaimer
+                    <SRTO_Disclaimer
                         DISCLAIMER_KEY={DISCLAIMER_KEY}
                         showDisclaimer={showDisclaimer}
                         setShowDisclaimer={setShowDisclaimer}
                     />
                 }
-                <SimRailSSP_Header sspOptions={sspOptions} />
+                <SRTO_Header srtoOptions={srtoOptions} />
                 {/* <SRTO_Canvas SRTOCanvasProps={SRTOCanvasProps} /> */}
-                <SimRailSSP_SVG SSP_SVG_ITEMS={SSP_SVG_ITEMS} />
+                <SRTO_SVG SRTO_SVG_ITEMS={SRTO_SVG_ITEMS} />
             </div>
         </>
     )

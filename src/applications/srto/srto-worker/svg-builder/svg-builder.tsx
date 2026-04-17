@@ -1,16 +1,17 @@
-import { SSP_DATA_TYPES } from "../ssp-data/ssp-data-types";
-import { SSP_TRACKS } from "../ssp-data/ssp-track-data";
-import { SSP_SIGNALS } from "../ssp-data/ssp-signal-data";
-import { SSP_NODES } from "../ssp-data/ssp-node-data";
+import { AreaProps } from "../../srto";
+import { SRTO_DataTypes } from "../srto-data/srto-dataTypes";
+import { SRTO_Tracks } from "../srto-data/srto-trackData";
+import { SRTO_Signals } from "../srto-data/srto-signalData";
+import { SRTO_Nodes } from "../srto-data/srto-nodeData";
 import { SimRailDataTypes } from "../../../../types/simrail-data-types";
 
-export namespace SVG_WORKER {
+export namespace SRTO_SVG_BUILDER {
 
-    export function loadDataFromFile(area: keyof typeof SSP_TRACKS) {
+    export function loadDataFromFile(area: AreaProps) {
 
-        const TRACK_DATA: SSP_DATA_TYPES.TRACK[] = SSP_TRACKS[area];
-        const SIGNAL_DATA: SSP_DATA_TYPES.SIGNAL[] = SSP_SIGNALS[area];
-        const NODE_DATA: SSP_DATA_TYPES.NODE[] = SSP_NODES[area]
+        const TRACK_DATA: SRTO_DataTypes.TRACK[] = SRTO_Tracks[area.areaID];
+        const SIGNAL_DATA: SRTO_DataTypes.SIGNAL[] = SRTO_Signals[area.areaID];
+        const NODE_DATA: SRTO_DataTypes.NODE[] = SRTO_Nodes[area.areaID]
 
         return {
             TRACK_DATA,
@@ -19,7 +20,7 @@ export namespace SVG_WORKER {
         }
     }
 
-    export function drawTracksOntoSVG(track_data: SSP_DATA_TYPES.TRACK[]) {
+    export function drawTracksOntoSVG(track_data: SRTO_DataTypes.TRACK[]) {
 
         const strokeWidth: number = 2.5;
 
@@ -35,7 +36,7 @@ export namespace SVG_WORKER {
         return svg()
     }
 
-    export function drawSignalsOntoSVG(signal_data: SSP_DATA_TYPES.SIGNAL[], trainList: SimRailDataTypes.FilteredTrainList[]) {
+    export function drawSignalsOntoSVG(signal_data: SRTO_DataTypes.SIGNAL[], trainList: SimRailDataTypes.FilteredTrainList[]) {
 
 
         const svg = () => {
@@ -83,7 +84,7 @@ export namespace SVG_WORKER {
         return svg()
     }
 
-    export function drawTrainsOntoSVG(signal_data: SSP_DATA_TYPES.SIGNAL[], trainList: SimRailDataTypes.FilteredTrainList[]) {
+    export function drawTrainsOntoSVG(signal_data: SRTO_DataTypes.SIGNAL[], trainList: SimRailDataTypes.FilteredTrainList[]) {
 
         const svg = () => {
             return trainList.flatMap((train) => {
@@ -154,7 +155,7 @@ export namespace SVG_WORKER {
         return svg();
     }
 
-    export function drawNotationsOntoSVG(note_data: SSP_DATA_TYPES.NODE[], stationList: SimRailDataTypes.StationData[], isShowLongStationNames: boolean) {
+    export function drawNotationsOntoSVG(note_data: SRTO_DataTypes.NODE[], stationList: SimRailDataTypes.StationData[], isShowLongStationNames: boolean) {
 
         const svg = () => {
             return note_data.map((node, index) => {
@@ -331,7 +332,7 @@ export namespace SVG_WORKER {
 
 
 
-    export function drawTestTrainsOntoSVG(signal_data: SSP_DATA_TYPES.SIGNAL[]) {
+    export function drawTestTrainsOntoSVG(signal_data: SRTO_DataTypes.SIGNAL[]) {
 
         const svg = () => signal_data.map((signal) => {
 
