@@ -3,9 +3,9 @@ import { useEffect, useState } from "react"
 import { SimRailDataTypes } from "../../types/simrail-data-types";
 import { SR_DATA } from '../../functions/getSimRailData/getSimRailData';
 import SimRailSSP_SVG from './ssp-worker/ssp-svg-area';
-import SSP_OptionsMenu from './ssp-options/ssp-options';
 import SimRailSSP_Header from './ssp-header/ssp-header';
 import SimRailSSP_Disclaimer from '../../functions/sspDisclamer/ssp-disclaimer';
+import SRTO_Canvas from './ssp-worker/srto-canvas-own';
 
 export interface AreaProps {
     areaID: string
@@ -39,7 +39,7 @@ export default function SimRailStreckenspiegel() {
     const [serverList, setServerList] = useState<SimRailDataTypes.ServerData[]>([]);
     const [stationList, setStationList] = useState<SimRailDataTypes.StationData[]>([]);
     const [trainList, setTrainList] = useState<SimRailDataTypes.FilteredTrainList[]>([]);
-    
+
     const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
     //!!! make an option object, save it to localStorage and read localStorage onLoad in useEffect
     const [selectedServer, setServer] = useState<string>('int1');
@@ -168,6 +168,15 @@ export default function SimRailStreckenspiegel() {
         allowExtendedView, setAllowExtendedView
     }
 
+    const SRTOCanvasProps = {
+        trainList: finalTrainList,
+        stationList,
+        selectedArea,
+        isShowLongStationNames,
+        isShowTestTrains, setShowTestTrains,
+        allowExtendedView, setAllowExtendedView
+    }
+
     return (
         <>
             <div className='sspContainer'>
@@ -179,9 +188,8 @@ export default function SimRailStreckenspiegel() {
                     />
                 }
                 <SimRailSSP_Header sspOptions={sspOptions} />
+                {/* <SRTO_Canvas SRTOCanvasProps={SRTOCanvasProps} /> */}
                 <SimRailSSP_SVG SSP_SVG_ITEMS={SSP_SVG_ITEMS} />
-                {/* <SSP_OptionsMenu SSP_OPTIONS={SSP_OPTIONS} /> */}
-
             </div>
         </>
     )
