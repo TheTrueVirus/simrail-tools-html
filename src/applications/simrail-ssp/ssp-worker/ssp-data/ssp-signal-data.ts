@@ -4110,6 +4110,45 @@ export const SSP_SIGNALS: SSP_DATA_TYPES.SIGNALS = {
             trainPos: { x: '2005', y: '1080' }
         },
         //#endregion
+
+        //#region [Kn] Knapowka
+        {
+            signalName: 'Kn_E',
+            signalPos: { x: '2070', y: '1060' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2055', y: '1060' }
+        },
+        {
+            signalName: 'Kn_F',
+            signalPos: { x: '2070', y: '1080' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2055', y: '1080' }
+        },
+
+        {
+            signalName: 'Kn_C',
+            signalPos: { x: '2180', y: '1060' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2195', y: '1060' }
+        },
+        {
+            signalName: 'Kn_B',
+            signalPos: { x: '2180', y: '1080' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2195', y: '1080' }
+        },
+        {
+            signalName: 'Kn_A',
+            signalPos: { x: '2180', y: '1100' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2195', y: '1100' }
+        },
+        //#endregion
         
         //
         //#endregion

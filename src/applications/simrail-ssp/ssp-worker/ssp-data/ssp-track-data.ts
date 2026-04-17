@@ -1258,6 +1258,39 @@ M1680,1080 1740,1080 M1760,1080 1820,1080 M1840,1080 1900,1080 M1920,1080 1980,1
         },
         //#endregion
 
+        //#region [Kn] Knapowka
+        {
+            trackID: 'STATION_KNAPOWKA',
+/*
+SW6/5 + 4/3
+
+SW2/1 + Track to Czarnca
+*/
+            trackSVG: `
+M2070,1060 2180,1060
+M2070,1080 2180,1080
+
+M2090,1080 2092.5,1075 2092.5,1065 2095,1060 M2115,1060 2117.5,1065 2117.5,1075 2120,1080
+
+M2140,1080 2142.5,1085 2142.5,1095 2145,1100 2180,1100
+`,
+            trackColor: 'white'
+        },
+        //#endregion
+
+        //#region Knapowka <-> Wloszczowa Polnoc
+        {
+            trackID: 'TRACKS_KNAPOWKA_WLOSZCZOWAPOLNOC',
+            trackSVG: `
+M2190,1060 2250,1060 M2270,1060 2330,1060 M2350,1060 2410,1060
+M2190,1080 2250,1080 M2270,1080 2330,1080 M2350,1080 2410,1080
+
+M2190,1080 2250,1080
+`,
+            trackColor: 'gray'
+        },
+        //#endregion
+
         //#endregion
 
 
