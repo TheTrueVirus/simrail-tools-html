@@ -78,7 +78,7 @@ export default function SRTO_SVG({ SRTO_SVG_ITEMS }: ISelfProps) {
 
     useEffect(() => {
 
-        if (!TRACK_DATA) return;
+        if (!TRACK_DATA || !SIGNAL_DATA || !NODE_DATA) return;
         const TRACK_SVG = SRTO_SVG_BUILDER.drawTracksOntoSVG(TRACK_DATA);
         const SIGNAL_SVG = SRTO_SVG_BUILDER.drawSignalsOntoSVG(SIGNAL_DATA, trainList);
         const TRAIN_SVG = SRTO_SVG_BUILDER.drawTrainsOntoSVG(SIGNAL_DATA, trainList);
