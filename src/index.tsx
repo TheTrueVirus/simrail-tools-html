@@ -15,11 +15,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
       <div className='index'>
-        <div className='index_routes'>
+        <div className='routes'>
           <BrowserRouter basename='/simrail-tools-html'>
-            <div className='index_main'>
-              {/* <SideBar /> */}
-            </div>
+            {/* <div className='index_main'>
+              <SideBar />
+            </div> */}
             <Routes>
               <Route path='/' element={<SimRailTrackOverview />} />
             </Routes>
