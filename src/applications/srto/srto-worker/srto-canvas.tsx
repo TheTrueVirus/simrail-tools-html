@@ -83,11 +83,9 @@ M24 20 L30 15M16 20 L30 10 M8 20 L30 5 M0 20 L30 0 M0 15 L22 0 M0 10 L14 0 M0 5 
 
 
 function loadDataFromFile(area: AreaProps) {
-
     const TRACK_DATA = SRTO_Tracks[area.areaID];
     const SIGNAL_DATA = SRTO_Signals[area.areaID];
     const NODE_DATA = SRTO_Nodes[area.areaID];
-
     return {
         TRACK_DATA,
         SIGNAL_DATA,
@@ -102,7 +100,6 @@ export namespace CanvasDrawer {
         ctx: CanvasRenderingContext2D,
         trackPathCache: WeakMap<SRTO_DataTypes.TRACK, Path2D>
     ) {
-
         if (!track_data) return;
         if (!ctx) return;
 
@@ -122,8 +119,6 @@ export namespace CanvasDrawer {
             ctx.strokeStyle = track.trackColor || 'white'
             ctx.stroke(path)
         }
-
-
     }
 
     export function drawSignals(
@@ -131,7 +126,6 @@ export namespace CanvasDrawer {
         train_data: SimRailDataTypes.FilteredTrainList[],
         ctx: CanvasRenderingContext2D,
     ) {
-
         if (!signal_data) return;
         if (!train_data) return;
         if (!ctx) return;
@@ -192,18 +186,16 @@ export namespace CanvasDrawer {
         if (!station_data) return;
         if (!ctx) return;
 
-        node_data.map((node) => {
+        for(const node of node_data) {
 
             const { x, y } = node.nodePos
             switch (node.nodeType) {
                 case 'trackMarker':
-
                     const metrics = ctx.measureText(node.text ?? 'n.t.')
+                    const rectHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent
 
                     ctx.fillStyle = 'black'
-                    const rectHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent
                     ctx.fillRect(x - (metrics.width / 2) - 1, y - 4, metrics.width + 2, rectHeight)
-
 
                     ctx.textAlign = 'center'
                     ctx.font = '10px monospace'
@@ -212,7 +204,6 @@ export namespace CanvasDrawer {
                     ctx.fillText(node.text ?? 'n.t.', x, y)
                     break;
                 case 'platform':
-
                     ctx.font = '8px monospace'
 
                     ctx.fillStyle = 'rgb(255, 180, 80)'
@@ -222,7 +213,6 @@ export namespace CanvasDrawer {
                     ctx.fillText(node.text ?? '', x + (node.width ? node.width / 2 : 0), y + (node.height ? node.height / 2 : 0) + 1)
                     break;
                 case 'stationName':
-
                     ctx.textBaseline = 'middle'
                     ctx.font = 'bold 18px monospace'
 
@@ -236,20 +226,16 @@ export namespace CanvasDrawer {
                         if (!getStation) return 'gray'
                         return getStation.DispatchedBy.length < 1 ? 'lime' : 'red'
                     }
-
                     ctx.fillStyle = underlineColor()
                     ctx.fillText('_'.repeat(displayedStationName.length), x, y + 2)
                     break;
                 case 'simpleText':
-
                     ctx.fillStyle = node.textColor ?? 'white'
                     ctx.font = `${node.textSize ?? 10}px monospace`
                     ctx.textAlign = 'center'
-
                     ctx.fillText(node.text ?? '', x, y)
                     break;
                 case 'differentScreenMarker':
-
                     const icon = DiffAreaIcon;
                     ctx.save();
                     ctx.translate(x, y)
@@ -259,8 +245,6 @@ export namespace CanvasDrawer {
                     ctx.font = 'bold 16px monospace'
                     ctx.fillStyle = 'white'
                     ctx.fillText(node.text ?? '', x + 30, y - 1)
-
-
                     break;
                 case 'trackBreakMarker':
 
@@ -283,8 +267,6 @@ export namespace CanvasDrawer {
                     ctx.fillText(`[${node.text ?? '?'}]`, bm()[1].x, bm()[1].y)
                     ctx.fillText(`[${node.text ?? '?'}]`, bm()[2].x, bm()[2].y)
 
-
-
                     break;
                 case 'dispatchingPost':
 
@@ -295,6 +277,7 @@ export namespace CanvasDrawer {
                     ctx.strokeStyle = 'white';
                     ctx.stroke(post);
                     ctx.restore();
+
                     ctx.fillStyle = 'white';
                     ctx.strokeStyle = 'black';
                     ctx.lineWidth = 5;
@@ -307,7 +290,7 @@ export namespace CanvasDrawer {
                     ctx.stroke();
                     break;
             }
-        })
+        }
     }
 
     export function drawTrains(
@@ -315,8 +298,11 @@ export namespace CanvasDrawer {
         signal_data: SRTO_DataTypes.SIGNAL[],
         ctx: CanvasRenderingContext2D
     ) {
-
-        train_data.map((train) => {
+        if(!ctx) return;
+        if(!train_data) return;
+        if(!signal_data) return;
+ 
+        for(const train of train_data) {
 
             const isTrainOnSignal = signal_data.find((signal) => signal.signalName === train.TrainData.SignalInFront?.split('@')[0])
 
@@ -352,17 +338,14 @@ export namespace CanvasDrawer {
                     ctx.fillText(train.TrainNoLocal, tx - 26, ty + 1);
                     break;
             }
-
-        })
-
-
+        }
     }
 
     export function drawGhostTrains(
         signal_data: SRTO_DataTypes.SIGNAL[],
         ctx: CanvasRenderingContext2D
     ) {
-        signal_data.map((signal) => {
+        for(const signal of signal_data) {
 
             const baseTrain = TRAIN_BASE_PATH[signal.signalDirectionOnMap]
 
@@ -372,7 +355,6 @@ export namespace CanvasDrawer {
                     y: Number(signal.trainPos.y)
                 }
             }
-
             ctx.save();
             ctx.fillStyle = 'rgba(87, 255, 249, 0.3)'
             ctx.strokeStyle = 'rgba(100, 201, 255, 0.6)'
@@ -380,7 +362,7 @@ export namespace CanvasDrawer {
             ctx.stroke(baseTrain);
             ctx.fill(baseTrain)
             ctx.restore();
-        })
+        }
     }
 }
 
@@ -605,7 +587,6 @@ export default function SRTO_Canvas({ SRTOCanvasProps }: ISelfProps) {
             const rect = canvas.getBoundingClientRect()
             clampViewToBounds(rect)
         }
-
         scheduleDraw()
     }
 
