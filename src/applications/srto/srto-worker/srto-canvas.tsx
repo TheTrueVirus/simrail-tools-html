@@ -402,7 +402,14 @@ export default function SRTO_Canvas({ SRTOCanvasProps }: ISelfProps) {
                 rafRef.current = null
             }
         }
-    },[TRACK_DATA, SIGNAL_DATA, NODE_DATA, SRTOCanvasProps.allowExtendedView, SRTOCanvasProps.trainList])
+    }, [
+        TRACK_DATA,
+        SIGNAL_DATA,
+        NODE_DATA,
+        SRTOCanvasProps.allowExtendedView,
+        SRTOCanvasProps.trainList,
+        SRTOCanvasProps.isShowLongStationNames,
+    ])
 
     const clampViewToBounds = (rect: DOMRect) => {
         if (SRTOCanvasProps.allowExtendedView) return
