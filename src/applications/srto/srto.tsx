@@ -12,7 +12,7 @@ export interface AreaProps {
     areaDisplayTitle: string
 }
 
-const DISCLAIMER_KEY = "srto_disclaimer_alpha0.1.0"
+const DISCLAIMER_KEY = "srto_disclaimer_accepted"
 
 export default function SimRailTrackOverview() {
 
