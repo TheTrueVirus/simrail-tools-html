@@ -311,15 +311,24 @@ export namespace CanvasDrawer {
             const tx = Number(isTrainOnSignal.trainPos.x)
             const ty = Number(isTrainOnSignal.trainPos.y)
 
-            ctx.lineJoin = 'miter'
-            ctx.lineWidth = 4
-            ctx.strokeStyle = 'skyblue'
+            const trainColors = () => {
+                const isTrainControlledByPlayer = train.ControlledBy === 'user'
+
+                return {
+                    outlineColor: isTrainControlledByPlayer ? 'rgb(0, 128, 255)' : 'gray',
+                    fillColor: 'black',
+                    textColor: isTrainControlledByPlayer ? 'rgb(0, 255, 255)' : 'white'
+                }
+            }
+
 
             const baseTrain = TRAIN_BASE_PATH[isTrainOnSignal.signalDirectionOnMap]
             ctx.save();
             ctx.translate(tx, ty);
-            ctx.fillStyle = 'black'
-            ctx.strokeStyle = 'skyblue'
+            ctx.fillStyle = trainColors().fillColor
+            ctx.lineJoin = 'miter'
+            ctx.lineWidth = 4
+            ctx.strokeStyle = trainColors().outlineColor
             ctx.stroke(baseTrain);
             ctx.fill(baseTrain);
             ctx.restore();
@@ -327,13 +336,13 @@ export namespace CanvasDrawer {
             switch (isTrainOnSignal.signalDirectionOnMap) {
                 case 'left':
                     ctx.font = 'bold 14px monospace'
-                    ctx.fillStyle = 'white'
+                    ctx.fillStyle = trainColors().textColor
                     ctx.textAlign = 'center'
                     ctx.fillText(train.TrainNoLocal, tx + 26, ty + 1);
                     break;
                 case 'right':
                     ctx.font = 'bold 14px monospace'
-                    ctx.fillStyle = 'white'
+                    ctx.fillStyle = trainColors().textColor
                     ctx.textAlign = 'center'
                     ctx.fillText(train.TrainNoLocal, tx - 26, ty + 1);
                     break;
