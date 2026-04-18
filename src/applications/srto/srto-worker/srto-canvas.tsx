@@ -306,7 +306,7 @@ export namespace CanvasDrawer {
 
             const isTrainOnSignal = signal_data.find((signal) => signal.signalName === train.TrainData.SignalInFront?.split('@')[0])
 
-            if (!isTrainOnSignal) return;
+            if (!isTrainOnSignal) continue;
 
             const tx = Number(isTrainOnSignal.trainPos.x)
             const ty = Number(isTrainOnSignal.trainPos.y)
@@ -402,7 +402,7 @@ export default function SRTO_Canvas({ SRTOCanvasProps }: ISelfProps) {
                 rafRef.current = null
             }
         }
-    }, [TRACK_DATA, SIGNAL_DATA, NODE_DATA, SRTOCanvasProps.allowExtendedView, SRTOCanvasProps.trainList])
+    },[TRACK_DATA, SIGNAL_DATA, NODE_DATA, SRTOCanvasProps.allowExtendedView, SRTOCanvasProps.trainList])
 
     const clampViewToBounds = (rect: DOMRect) => {
         if (SRTOCanvasProps.allowExtendedView) return
