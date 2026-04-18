@@ -35,6 +35,15 @@
     line-height: 1;
     pointer-events: none;
 }
+.versionInfo {
+    display: flex;
+    font-size: 14px;
+    flex-direction: row;
+    height: 75%;
+    margin-left: auto;
+    justify-content: flex-end;
+    align-items: end;
+}
 .devInfo{
     display: flex;
     flex-direction: row;

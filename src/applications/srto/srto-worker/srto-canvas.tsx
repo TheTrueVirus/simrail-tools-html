@@ -7,6 +7,7 @@ import { SRTO_Nodes } from './srto-data/srto-nodeData';
 import { SRTO_Signals } from './srto-data/srto-signalData';
 import { SRTO_DataTypes } from './srto-data/srto-dataTypes';
 const inDev = process.env.NODE_ENV === 'development'
+const appVersion = process.env.REACT_APP_VERSION || 'dev'
 const CANVAS_WORLD_WIDTH = 2560
 const CANVAS_WORLD_HEIGHT = 2000
 const MIN_ZOOM_FIT = 1
@@ -666,6 +667,7 @@ export default function SRTO_Canvas({ SRTOCanvasProps }: ISelfProps) {
                         </div>
                     </>
                 }
+                <div className='versionInfo'>{`SRTO-Version: ${appVersion}`}</div>
             </div>
         </>
     )
