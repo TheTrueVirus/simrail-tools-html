@@ -50,6 +50,24 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 secondMarker: { x: 40, y: 770 }
             }
         },
+        {
+            nodeID: 'trackBreakMarker-CMK',
+            nodePos: { x: 0, y: 0 },
+            nodeType: 'trackBreakMarker',
+            text: 'C',
+            breakMarker: {
+                firstMarker: { x: 2530, y: 780 },
+                secondMarker: { x: 40, y: 1020 }
+            }
+        },
+        {
+            nodeID: 'wip-info',
+            nodePos: { x: 2340, y: 1050 },
+            nodeType: 'simpleText',
+            text: 'W.I.P. ==>',
+            textColor: 'white',
+            textSize: 20
+        },
         //#endregion
 
         //
