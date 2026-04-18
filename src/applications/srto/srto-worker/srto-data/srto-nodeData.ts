@@ -1,5 +1,7 @@
 import { SRTO_DataTypes } from "./srto-dataTypes"
 
+const phFontSize = 12
+
 export const SRTO_Nodes: SRTO_DataTypes.NODES = {
     "area1": [
 
@@ -436,7 +438,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'simpleText',
             nodePos: { x: 1420, y: 80 },
             text: 'K. Szopienice Płd.',
-            textSize: 12,
+            textSize: phFontSize,
             strokeWidth: 0.5,
             textColor: 'white'
         },
@@ -708,7 +710,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'simpleText',
             nodePos: { x: 2405, y: 70 },
             text: 'Będzin Miasto',
-            textSize: 12,
+            textSize: phFontSize,
             strokeWidth: 0.5,
             textColor: 'white'
         },
@@ -761,7 +763,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'simpleText',
             nodePos: { x: 70, y: 360 },
             text: 'Będzin Ksawera',
-            textSize: 12,
+            textSize: phFontSize,
             strokeWidth: 0.5,
             textColor: 'white'
         },
@@ -829,7 +831,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'simpleText',
             nodePos: { x: 500, y: 360 },
             text: 'D. G. Gołonóg',
-            textSize: 12,
+            textSize: phFontSize,
             strokeWidth: 0.5,
             textColor: 'white'
         },
@@ -846,7 +848,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'simpleText',
             nodePos: { x: 580, y: 420 },
             text: 'D. G. Pogoria',
-            textSize: 12,
+            textSize: phFontSize,
             strokeWidth: 0.5,
             textColor: 'white'
         },
@@ -1828,7 +1830,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'simpleText',
             nodePos: { x: 1440, y: 680 },
             text: 'Zawiercie Borowe Pole',
-            textSize: 12,
+            textSize: phFontSize,
             strokeWidth: 0.5,
             textColor: 'white'
         },
@@ -1853,7 +1855,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'simpleText',
             nodePos: { x: 1650, y: 680 },
             text: 'Myszków Mrzygłód',
-            textSize: 12,
+            textSize: phFontSize,
             strokeWidth: 0.5,
             textColor: 'white'
         },
