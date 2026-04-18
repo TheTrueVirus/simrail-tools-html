@@ -84,7 +84,7 @@ export default function SRTO_Header({ srtoOptions }: ISelfProps) {
         const serverTime = new Date(utcMs + (offsetHours * 60 * 60 * 1000));
         const serverHHMM = formatHHMM(serverTime.getHours(), serverTime.getMinutes());
 
-        return `${localHHMM} | ${selectedServer.toUpperCase()}: ${serverHHMM}`;
+        return `Local: ${localHHMM} | ${selectedServer.toUpperCase()}: ${serverHHMM}`;
     }
 
     function setNewServerAndCloseList(serverCode: string) {

@@ -5,7 +5,7 @@
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     width: 100vw;
-    height: 40px;
+    height: 36px;
     background-color: black;
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
     transition: height 500ms ease;
@@ -25,7 +25,7 @@
 .srtoHeaderTitle {
     display: flex;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 900;
     height: 100%;
     align-items: center;
@@ -35,14 +35,12 @@
 .clockContainer {
     display: flex;
     justify-content: center;
-    /* height: 100%; */
     align-items: center;
-    padding: 2px 5px;
+    padding: 0px 5px;
     color: black;
     background-color: white;
-    font-size: 24px;
-    font-weight: 600;
-    /* width: 100px; */
+    font-size: 18px;
+    font-weight: 900;
 }
 
 .srtoHeaderContainer.hideHeader {
