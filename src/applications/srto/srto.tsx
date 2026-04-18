@@ -5,7 +5,7 @@ import { SR_DATA } from '../../functions/getSimRailData/getSimRailData';
 import SRTO_SVG from './srto-worker/srto-svg';
 import SRTO_Header from './srto-header/srto-header';
 import SRTO_Disclaimer from '../../functions/srto-disclaimer/srto-disclaimer';
-import SRTO_Canvas from './srto-worker/srto-canvas-own';
+import SRTO_Canvas from './srto-worker/srto-canvas';
 
 export interface AreaProps {
     areaID: string
@@ -177,6 +177,9 @@ export default function SimRailTrackOverview() {
         allowExtendedView, setAllowExtendedView
     }
 
+    const searchParams = new URLSearchParams(window.location.search);
+    const showSVG = searchParams.get('showSVG') === 'true';
+
     return (
         <>
             <div className='srtoContainer'>
@@ -187,9 +190,13 @@ export default function SimRailTrackOverview() {
                         setShowDisclaimer={setShowDisclaimer}
                     />
                 }
+
                 <SRTO_Header srtoOptions={srtoOptions} />
-                {/* <SRTO_Canvas SRTOCanvasProps={SRTOCanvasProps} /> */}
-                <SRTO_SVG SRTO_SVG_ITEMS={SRTO_SVG_ITEMS} />
+                {showSVG
+                    ? <SRTO_SVG SRTO_SVG_ITEMS={SRTO_SVG_ITEMS} />
+                    : <SRTO_Canvas SRTOCanvasProps={SRTOCanvasProps} />
+                }
+
             </div>
         </>
     )
