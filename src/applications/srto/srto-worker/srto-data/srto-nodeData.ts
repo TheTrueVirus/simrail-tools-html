@@ -21,7 +21,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
         {
             nodeID: 'screenMarker-SDandowka',
             nodeType: 'differentScreenMarker',
-            nodePos: { x: 1790, y: 210 },
+            nodePos: { x: 1790, y: 200 },
             text: 'S. Dańdówka',
         },
         {
@@ -1501,7 +1501,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'stationName',
             stationPrefix: 'ŁA',
             stationName: 'Łazy Ła',
-            nodePos: { x: 420, y: 600 },
+            nodePos: { x: 380, y: 630 },
         },
         //
         // TRACK MARKER UPPER FREIGHT TRACKS
@@ -1664,7 +1664,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'stationName',
             stationPrefix: 'Zw',
             stationName: 'Zawiercie',
-            nodePos: { x: 950, y: 600 },
+            nodePos: { x: 950, y: 630 },
         },
         {
             nodeID: 'peron_Zawiercie_P2',
