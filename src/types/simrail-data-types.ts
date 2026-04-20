@@ -73,6 +73,7 @@ export namespace SimRailDataTypes {
         StartStation: string
         EndStation: string
         TrainData: {
+            Velocity: number
             SignalInFront: string
             SignalInFrontSpeed: number
             DistanceToSignalInFront: number
