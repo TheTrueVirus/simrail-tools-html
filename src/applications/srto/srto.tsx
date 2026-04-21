@@ -12,6 +12,22 @@ export interface AreaProps {
     areaDisplayTitle: string
 }
 
+export interface RenderOptionsProps {
+    renderTracks: boolean
+    renderSignals: boolean
+    renderNodes: boolean
+    renderTrains: boolean
+    renderGhostTrains: boolean
+}
+
+const RenderOptions : RenderOptionsProps = {
+    renderTracks: true,
+    renderSignals: true,
+    renderNodes: true,
+    renderTrains: true,
+    renderGhostTrains: false
+}
+
 const DISCLAIMER_KEY = "srto_disclaimer_accepted"
 
 export default function SimRailTrackOverview() {
@@ -22,6 +38,7 @@ export default function SimRailTrackOverview() {
         StartStation: 'Katowice',
         EndStation: 'Warszawa',
         TrainData: {
+            Velocity: 0,
             SignalInFront: 'KO_E8',
             DistanceToSignalInFront: 100,
             SignalInFrontSpeed: 0,
@@ -49,6 +66,7 @@ export default function SimRailTrackOverview() {
     const [isShowTestTrains, setShowTestTrains] = useState<boolean>(false);
     const [allowExtendedView, setAllowExtendedView] = useState(false);
     const [showHeader, setShowHeader] = useState<boolean>(true);
+    const [devRenderOptions, setDevRenderOptions] = useState<RenderOptionsProps>(RenderOptions)
 
     useEffect(() => {
         const accepted = localStorage.getItem(DISCLAIMER_KEY) === "true";
@@ -94,6 +112,7 @@ export default function SimRailTrackOverview() {
                         StartStation: train.StartStation,
                         EndStation: train.EndStation,
                         TrainData: {
+                            Velocity: train.TrainData.Velocity,
                             SignalInFront: train.TrainData.SignalInFront,
                             SignalInFrontSpeed: train.TrainData.SignalInFrontSpeed,
                             DistanceToSignalInFront: train.TrainData.DistanceToSignalInFront
@@ -142,39 +161,27 @@ export default function SimRailTrackOverview() {
             setArea
         },
         stationNameOptions: {
-            isShowLongStationNames,
-            SET_showLongStationsNames,
-        },
-        testTrainOptions: {
-            isShowTestTrains,
-            setShowTestTrains
+            isShowLongStationNames, SET_showLongStationsNames
         },
         showHeaderOptions: {
-            showHeader,
-            setShowHeader,
+            showHeader, setShowHeader
         },
         extendedViewOption: {
-            allowExtendedView,
-            setAllowExtendedView
+            allowExtendedView, setAllowExtendedView
+        },
+        renderOptions: {
+            devRenderOptions, setDevRenderOptions
         }
     }
 
-    const SRTO_SVG_ITEMS = {
+    const SRTO_OPTIONS = {
         trainList: finalTrainList,
         stationList,
         selectedArea,
         isShowLongStationNames,
         isShowTestTrains, setShowTestTrains,
-        allowExtendedView, setAllowExtendedView
-    }
-
-    const SRTOCanvasProps = {
-        trainList: finalTrainList,
-        stationList,
-        selectedArea,
-        isShowLongStationNames,
-        isShowTestTrains, setShowTestTrains,
-        allowExtendedView, setAllowExtendedView
+        allowExtendedView, setAllowExtendedView,
+        devRenderOptions
     }
 
     const searchParams = new URLSearchParams(window.location.search);
@@ -193,8 +200,8 @@ export default function SimRailTrackOverview() {
 
                 <SRTO_Header srtoOptions={srtoOptions} />
                 {showSVG
-                    ? <SRTO_SVG SRTO_SVG_ITEMS={SRTO_SVG_ITEMS} />
-                    : <SRTO_Canvas SRTOCanvasProps={SRTOCanvasProps} />
+                    ? <SRTO_SVG SRTO_OPTIONS={SRTO_OPTIONS} />
+                    : <SRTO_Canvas SRTO_OPTIONS={SRTO_OPTIONS} />
                 }
 
             </div>

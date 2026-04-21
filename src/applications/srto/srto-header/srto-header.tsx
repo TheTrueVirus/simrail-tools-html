@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import './srto-headerStyles.css'
 import { SimRailDataTypes } from '../../../types/simrail-data-types'
 import { AreaProps } from '../srto'
+import { RenderOptionsProps } from '../srto'
 
-const isDev = process.env.NODE_ENV === 'development'
+const inDev = process.env.NODE_ENV === 'development'
 
 interface ISelfProps {
     srtoOptions: {
@@ -21,10 +22,6 @@ interface ISelfProps {
             isShowLongStationNames: boolean
             SET_showLongStationsNames: React.Dispatch<React.SetStateAction<boolean>>
         },
-        testTrainOptions: {
-            isShowTestTrains: boolean
-            setShowTestTrains: React.Dispatch<React.SetStateAction<boolean>>
-        },
         showHeaderOptions: {
             showHeader: boolean
             setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
@@ -32,6 +29,10 @@ interface ISelfProps {
         extendedViewOption: {
             allowExtendedView: boolean,
             setAllowExtendedView: React.Dispatch<React.SetStateAction<boolean>>
+        }
+        renderOptions: {
+            devRenderOptions: RenderOptionsProps
+            setDevRenderOptions: React.Dispatch<React.SetStateAction<RenderOptionsProps>>
         }
     }
 }
@@ -98,30 +99,66 @@ export default function SRTO_Header({ srtoOptions }: ISelfProps) {
     }
 
 
-    const seperateOptionList = [
-        {
-            optionID: 'option-stationNames',
-            optionName: 'Show Short Station Names',
-            optionValue: srtoOptions.stationNameOptions.isShowLongStationNames,
-            optionSetter: srtoOptions.stationNameOptions.SET_showLongStationsNames,
-            isDevOption: false
-        },
-        {
-            optionID: 'option-showTestTrains_DEV',
-            optionName: 'Show Test Trains [DEV ONLY]',
-            optionValue: srtoOptions.testTrainOptions.isShowTestTrains,
-            optionSetter: srtoOptions.testTrainOptions.setShowTestTrains,
-            isDevOption: true
-        },
-        {
-            optionID: 'option-allowExtendedView',
-            optionName: 'Allow Extended View',
-            optionValue: srtoOptions.extendedViewOption.allowExtendedView,
-            optionSetter: srtoOptions.extendedViewOption.setAllowExtendedView,
-            isDevOption: false
-        },
-
-    ]
+    const seperateOptionList = {
+        "userOptions": [
+            {
+                optionID: 'option-stationNames',
+                optionName: 'Show Short Station Names',
+                optionValue: srtoOptions.stationNameOptions.isShowLongStationNames,
+                optionSetter: srtoOptions.stationNameOptions.SET_showLongStationsNames,
+                isDevOption: false
+            },
+            {
+                optionID: 'option-allowExtendedView',
+                optionName: 'Allow Extended View',
+                optionValue: srtoOptions.extendedViewOption.allowExtendedView,
+                optionSetter: srtoOptions.extendedViewOption.setAllowExtendedView,
+                isDevOption: false
+            },
+        ],
+        "devOptions": [
+            {
+                optionID: 'option-renderTracks_DEV',
+                optionName: 'Render Tracks',
+                renderOptionKey: 'renderTracks' as const,
+                optionValue: srtoOptions.renderOptions.devRenderOptions.renderTracks,
+                optionSetter: srtoOptions.renderOptions.setDevRenderOptions,
+                isDevOption: true
+            },
+            {
+                optionID: 'option-renderSignals_DEV',
+                optionName: 'Render Signals',
+                renderOptionKey: 'renderSignals' as const,
+                optionValue: srtoOptions.renderOptions.devRenderOptions.renderSignals,
+                optionSetter: srtoOptions.renderOptions.setDevRenderOptions,
+                isDevOption: true
+            },
+            {
+                optionID: 'option-renderNodes_DEV',
+                optionName: 'Render Nodes',
+                renderOptionKey: 'renderNodes' as const,
+                optionValue: srtoOptions.renderOptions.devRenderOptions.renderNodes,
+                optionSetter: srtoOptions.renderOptions.setDevRenderOptions,
+                isDevOption: true
+            },
+            {
+                optionID: 'option-renderTrains_DEV',
+                optionName: 'Render Trains',
+                renderOptionKey: 'renderTrains' as const,
+                optionValue: srtoOptions.renderOptions.devRenderOptions.renderTrains,
+                optionSetter: srtoOptions.renderOptions.setDevRenderOptions,
+                isDevOption: true
+            },
+            {
+                optionID: 'option-renderGhostTrains_DEV',
+                optionName: 'Render Ghost Trains',
+                renderOptionKey: 'renderGhostTrains' as const,
+                optionValue: srtoOptions.renderOptions.devRenderOptions.renderGhostTrains,
+                optionSetter: srtoOptions.renderOptions.setDevRenderOptions,
+                isDevOption: true
+            },
+        ]
+    }
 
 
 
@@ -170,8 +207,8 @@ export default function SRTO_Header({ srtoOptions }: ISelfProps) {
                         <div></div>
                         <div className='bottomBorderLine'></div>
                         {
-                            seperateOptionList.map((option) => (
-                                option.isDevOption && !isDev
+                            seperateOptionList.userOptions.map((option) => (
+                                option.isDevOption
                                     ? <></>
                                     :
                                     <>
@@ -191,6 +228,36 @@ export default function SRTO_Header({ srtoOptions }: ISelfProps) {
                                         </div>
                                     </>
                             ))
+                        }
+                        {inDev &&
+                            <>
+                                <div className='devToolsContainer'>
+                                    <div className='devToolsTitle'>Dev Tools</div>
+                                    {
+                                        seperateOptionList.devOptions.map((option) => (
+                                            option.isDevOption && inDev
+                                                ?
+                                                <>
+                                                    <div className='singleOptionContainer'>
+                                                        <div className='optionSwitch'>
+                                                            <label className='optionCheckboxSlider'>
+                                                                <input
+                                                                    type="checkbox"
+                                                                    className='optionCheckbox'
+                                                                    checked={option.optionValue}
+                                                                    onChange={(e) => option.optionSetter(prev => ({ ...prev, [option.renderOptionKey]: e.target.checked }))}
+                                                                />
+                                                                <span className='checkboxSlider'></span>
+                                                            </label>
+                                                        </div>
+                                                        <div className='optionName'>{option.optionName}</div>
+                                                    </div>
+                                                </>
+                                                : <></>
+                                        ))
+                                    }
+                                </div>
+                            </>
                         }
                     </div>
                 </div>

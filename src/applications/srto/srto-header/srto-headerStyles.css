@@ -1,3 +1,4 @@
+/* Main Header Styles */
 .srtoHeaderContainer {
     position: relative;
     display: grid;
@@ -47,6 +48,7 @@
     height: 0px;
 }
 
+/* Options Buttons */
 .openOptionsButtonContainer {
     display: flex;
     justify-content: center;
@@ -73,7 +75,7 @@
 .openOptionsButtons.rotateCogWheel {
     transform: rotate(-900deg);
 }
-
+/* Text of "Close Settings" */
 .optionsText {
     width: 0;
     opacity: 0;
@@ -87,8 +89,7 @@
     opacity: 1;
     width: 180px;
 }
-
-
+/* Main Options Container (with ServerListButton) */
 .optionListContainer {
     position: absolute;
     display: flex;
@@ -97,8 +98,8 @@
     z-index: 100;
     top: 45px;
     right: 12px;
-    /* padding: 5px 5px; */
-    height: 0;
+    padding: 5px 5px;
+    max-height: 0;
     opacity: 0;
     box-sizing: border-box;
     border-radius: 8px;
@@ -106,40 +107,34 @@
     /* backdrop-filter: blur(6px); */
     overflow: hidden;
     border: 0px solid rgba(255, 255, 255, 0.35);
+    text-wrap: nowrap;
 }
 
 .openOptionsList {
     opacity: 1;
     border: 1px solid rgba(255, 255, 255, 0.35);
-    animation: openOptionListKeyframes 1000ms ease forwards;
+    animation: openOptionListKeyframes 350ms ease forwards;
 }
 
 @keyframes openOptionListKeyframes {
     0% {
         opacity: 0;
-        height: 0px;
+        max-height: 0px;
         width: 0px;
     }
-
-    25% {
-        opacity: 1;
-        height: 40px;
-        width: 300px;
+    1% {
+        opacity: 0;
+        max-height: 400px;
+        width: 0px;
     }
-
-    50% {
-        opacity: 1;
-        height: 40px;
-        width: 300px;
-    }
-
     100% {
         opacity: 1;
-        height: 250px;
+        max-height: 400px;
         width: 300px;
     }
 }
 
+/* "Settings" Title */
 .optionListTitle {
     display: flex;
     justify-content: center;
@@ -156,6 +151,7 @@
     box-shadow: inset 0px -4px 14px 0.1px rgba(255, 255, 255, 0.2);
 }
 
+/* Server Button */
 .changeServerButton {
     display: flex;
     flex-direction: column;
@@ -175,6 +171,7 @@
     background-color: rgba(255, 255, 255, 0.35);
 }
 
+/* ACTUAL SERVER LIST */
 .serverSelectionList {
     position: fixed;
     z-index: 90;
@@ -249,12 +246,14 @@
     background-color: red;
 }
 
+/* LINE UNDER SERVER BUTTON */
 .bottomBorderLine {
-    margin: 10px 0;
+    margin: 8px 0;
     width: 90%;
     border-bottom: 1px solid white;
 }
 
+/* CONTAINER PER SINGLE OPTION */
 .singleOptionContainer {
     display: flex;
     flex-direction: row;
@@ -325,4 +324,20 @@ input:checked+.checkboxSlider:before {
     -webkit-transform: translateX(18px);
     -ms-transform: translateX(18px);
     transform: translateX(18px);
+}
+
+/* DEV TOOLS CONTAINER */
+.devToolsContainer {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    margin-top: 5px;
+    padding: 5px 10px;
+}
+
+.devToolsTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
 }
