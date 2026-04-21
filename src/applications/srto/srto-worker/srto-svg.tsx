@@ -2,11 +2,11 @@ import { JSX, useEffect, useRef, useState } from "react";
 import { SimRailDataTypes } from "../../../types/simrail-data-types";
 import { SRTO_SVG_BUILDER } from "./svg-builder/svg-builder";
 import { SRTO_DataTypes } from "./srto-data/srto-dataTypes";
-import { AreaProps } from "../srto";
+import { AreaProps, RenderOptionsProps } from "../srto";
 import './svgStyles.css'
 
 interface ISelfProps {
-    SRTO_SVG_ITEMS: {
+    SRTO_OPTIONS: {
         trainList: SimRailDataTypes.FilteredTrainList[],
         stationList: SimRailDataTypes.StationData[],
         selectedArea: AreaProps,
@@ -17,21 +17,23 @@ interface ISelfProps {
 
         allowExtendedView: boolean
         setAllowExtendedView: React.Dispatch<React.SetStateAction<boolean>>
+
+        devRenderOptions: RenderOptionsProps        
     }
 }
 
 const isDev = process.env.NODE_ENV === 'development'
 
-export default function SRTO_SVG({ SRTO_SVG_ITEMS }: ISelfProps) {
+export default function SRTO_SVG({ SRTO_OPTIONS }: ISelfProps) {
 
-    const trainList = SRTO_SVG_ITEMS.trainList;
-    const stationList = SRTO_SVG_ITEMS.stationList;
-    const selectedArea = SRTO_SVG_ITEMS.selectedArea;
-    const isShowLongStationNames = SRTO_SVG_ITEMS.isShowLongStationNames
-    const isShowTestTrains = SRTO_SVG_ITEMS.isShowTestTrains
-    const setShowTestTrains = SRTO_SVG_ITEMS.setShowTestTrains
-    const allowExtendedView = SRTO_SVG_ITEMS.allowExtendedView
-    const setAllowExtendedView = SRTO_SVG_ITEMS.setAllowExtendedView
+    const trainList = SRTO_OPTIONS.trainList;
+    const stationList = SRTO_OPTIONS.stationList;
+    const selectedArea = SRTO_OPTIONS.selectedArea;
+    const isShowLongStationNames = SRTO_OPTIONS.isShowLongStationNames
+    const isShowTestTrains = SRTO_OPTIONS.isShowTestTrains
+    const setShowTestTrains = SRTO_OPTIONS.setShowTestTrains
+    const allowExtendedView = SRTO_OPTIONS.allowExtendedView
+    const setAllowExtendedView = SRTO_OPTIONS.setAllowExtendedView
 
     const INITIAL_VIEWBOX = { x: 0, y: 0, width: 2560, height: 2000 };
     const MIN_VIEWBOX_WIDTH = 400;
