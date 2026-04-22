@@ -2,10 +2,9 @@ import './srtoStyles.css'
 import { useEffect, useState } from "react"
 import { SimRailDataTypes } from "../../types/simrail-data-types";
 import { SR_DATA } from '../../functions/getSimRailData/getSimRailData';
-import SRTO_SVG from './srto-worker/srto-svg';
 import SRTO_Header from './srto-header/srto-header';
 import SRTO_Disclaimer from '../../functions/srto-disclaimer/srto-disclaimer';
-import SRTO_Canvas from './srto-worker/srto-canvas';
+import SRTO_Canvas from './srto-worker/srto-canvas/srto-canvas';
 
 export interface AreaProps {
     areaID: string
@@ -59,8 +58,6 @@ export default function SimRailTrackOverview() {
         },
         ControlledBy: 'user'
     }
-
-
 
     const [serverList, setServerList] = useState<SimRailDataTypes.ServerData[]>([]);
     const [stationList, setStationList] = useState<SimRailDataTypes.StationData[]>([]);
@@ -197,9 +194,6 @@ export default function SimRailTrackOverview() {
         devRenderOptions
     }
 
-    const searchParams = new URLSearchParams(window.location.search);
-    const showSVG = searchParams.get('showSVG') === 'true';
-
     return (
         <>
             <div className='srtoContainer'>
@@ -212,10 +206,7 @@ export default function SimRailTrackOverview() {
                 }
 
                 <SRTO_Header srtoHeaderOptions={srtoHeaderOptions} />
-                {showSVG
-                    ? <SRTO_SVG SRTO_PROPS={SRTO_PROPS} />
-                    : <SRTO_Canvas SRTO_PROPS={SRTO_PROPS} />
-                }
+                <SRTO_Canvas SRTO_PROPS={SRTO_PROPS} />
 
             </div>
         </>
