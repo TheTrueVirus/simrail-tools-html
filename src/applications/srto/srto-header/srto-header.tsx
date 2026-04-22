@@ -19,7 +19,6 @@ interface ISelfProps {
     }
 }
 
-
 const serverTimeOffset = {
     "cz1": +2,
     "de1": +2,
@@ -81,7 +80,6 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
         // srtoHeaderOptions.setUserOptions(prev => ({...prev, selectedArea: area}));
         // setOpenAreaList(false);
     }
-
 
     const seperateOptionList = {
         "userOptions": [
@@ -145,9 +143,6 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
             },
         ]
     }
-
-
-
 
     return (
         <>
