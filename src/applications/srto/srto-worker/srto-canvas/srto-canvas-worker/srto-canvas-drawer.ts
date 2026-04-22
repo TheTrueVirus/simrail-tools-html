@@ -193,7 +193,7 @@ export namespace CanvasDrawer {
                     ctx.fillText(displayedStationName, x, y)
 
                     const underlineColor = () => {
-                        const getStation = station_data.find((station) => station.Prefix === node.stationPrefix)
+                        const getStation = station_data.find((station) => station.Name === node.stationName)
                         if (!getStation) return 'gray'
                         return getStation.DispatchedBy.length < 1 ? 'lime' : 'red'
                     }
