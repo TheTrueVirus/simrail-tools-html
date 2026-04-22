@@ -170,6 +170,8 @@ export default function SimRailTrackOverview() {
 
             setStationList(STATIONDATA)
         }
+        getSimRailStationData()
+
 
         return () => clearInterval(intervalID)
     }, [userOptions.selectedServer])
