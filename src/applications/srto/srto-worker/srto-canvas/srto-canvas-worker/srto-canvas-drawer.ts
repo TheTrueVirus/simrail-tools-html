@@ -1,5 +1,5 @@
-import { SimRailDataTypes } from "../../../../types/simrail-data-types";
-import { SRTO_DataTypes } from "../srto-data/srto-dataTypes";
+import { SimRailDataTypes } from "../../../../../types/simrail-data-types";
+import { SRTO_DataTypes } from "../../srto-data/srto-dataTypes";
 
 export const TRAIN_BASE_PATH: Record<'left' | 'right', Path2D> = {
     'left': (() => {
@@ -116,12 +116,12 @@ export namespace CanvasDrawer {
         const defaultSignalColor = 'gray'
 
         // Build a per-frame lookup to avoid O(signals * trains) scans.
-        const signalColorByName = new Map<string, 'lime' | 'red'>()
+        const signalColorByName = new Map<string, 'lime' | 'orange' | 'red'>()
         for (const train of train_data) {
             const signalName = train.TrainData.SignalInFront?.split('@')[0]
             if (!signalName) continue
 
-            const nextColor: 'lime' | 'red' = train.TrainData.SignalInFrontSpeed > 0 ? 'lime' : 'red'
+            const nextColor: 'lime' | 'orange' | 'red' = train.TrainData.SignalInFrontSpeed === 0 ? 'red' : train.TrainData.SignalInFrontSpeed < 100 ? 'orange' : 'lime'
             const currentColor = signalColorByName.get(signalName)
 
             // If multiple trains point to the same signal, keep red as highest priority.
