@@ -2,38 +2,27 @@ import { JSX, useEffect, useRef, useState } from "react";
 import { SimRailDataTypes } from "../../../types/simrail-data-types";
 import { SRTO_SVG_BUILDER } from "./svg-builder/svg-builder";
 import { SRTO_DataTypes } from "./srto-data/srto-dataTypes";
-import { AreaProps, RenderOptionsProps } from "../srto";
+import { AreaProps, RenderOptionsProps, USER_OPTIONS } from "../srto";
 import './svgStyles.css'
 
 interface ISelfProps {
-    SRTO_OPTIONS: {
-        trainList: SimRailDataTypes.FilteredTrainList[],
-        stationList: SimRailDataTypes.StationData[],
-        selectedArea: AreaProps,
-        isShowLongStationNames: boolean,
-
-        isShowTestTrains: boolean
-        setShowTestTrains: React.Dispatch<React.SetStateAction<boolean>>
-
-        allowExtendedView: boolean
-        setAllowExtendedView: React.Dispatch<React.SetStateAction<boolean>>
-
+    SRTO_PROPS: {
+        trainList: SimRailDataTypes.FilteredTrainList[]
+        stationList: SimRailDataTypes.StationData[]
+        userOptions: typeof USER_OPTIONS
         devRenderOptions: RenderOptionsProps        
     }
 }
 
 const isDev = process.env.NODE_ENV === 'development'
 
-export default function SRTO_SVG({ SRTO_OPTIONS }: ISelfProps) {
+export default function SRTO_SVG({ SRTO_PROPS }: ISelfProps) {
 
-    const trainList = SRTO_OPTIONS.trainList;
-    const stationList = SRTO_OPTIONS.stationList;
-    const selectedArea = SRTO_OPTIONS.selectedArea;
-    const isShowLongStationNames = SRTO_OPTIONS.isShowLongStationNames
-    const isShowTestTrains = SRTO_OPTIONS.isShowTestTrains
-    const setShowTestTrains = SRTO_OPTIONS.setShowTestTrains
-    const allowExtendedView = SRTO_OPTIONS.allowExtendedView
-    const setAllowExtendedView = SRTO_OPTIONS.setAllowExtendedView
+    const trainList = SRTO_PROPS.trainList;
+    const stationList = SRTO_PROPS.stationList;
+    const selectedArea = SRTO_PROPS.userOptions.selectedArea;
+    const isShowLongStationNames = SRTO_PROPS.userOptions.shortStationNames
+    const allowExtendedView = SRTO_PROPS.userOptions.allowExtendedView
 
     const INITIAL_VIEWBOX = { x: 0, y: 0, width: 2560, height: 2000 };
     const MIN_VIEWBOX_WIDTH = 400;
@@ -105,7 +94,7 @@ export default function SRTO_SVG({ SRTO_OPTIONS }: ISelfProps) {
     }, [allowExtendedView])
 
     useEffect(() => {
-        if (!isShowTestTrains) {
+        if (!SRTO_PROPS.devRenderOptions.renderGhostTrains) {
             SET_testTrainSVG([<></>])
             return;
         };
@@ -113,7 +102,7 @@ export default function SRTO_SVG({ SRTO_OPTIONS }: ISelfProps) {
         const TESTTRAIN_SVG = SRTO_SVG_BUILDER.drawTestTrainsOntoSVG(SIGNAL_DATA);
 
         SET_testTrainSVG(TESTTRAIN_SVG);
-    }, [isShowTestTrains, SIGNAL_DATA])
+    }, [SRTO_PROPS.devRenderOptions.renderGhostTrains, SIGNAL_DATA])
 
     function onWheelZoom(event: React.WheelEvent<SVGSVGElement>) {
         // event.preventDefault();
@@ -222,17 +211,6 @@ export default function SRTO_SVG({ SRTO_OPTIONS }: ISelfProps) {
         return `Stations: ${stationsControlledByPlayers}/${allStationsCount}`
     }
 
-    function onContextMenuSVG(event: React.MouseEvent<SVGSVGElement>) {
-        event.preventDefault();
-
-        if (event.shiftKey) {
-            setAllowExtendedView((prev) => !prev);
-            return;
-        }
-
-        console.log(event)
-    }
-
     return (
         <>
             <div className="srto-container">
@@ -250,7 +228,6 @@ export default function SRTO_SVG({ SRTO_OPTIONS }: ISelfProps) {
                         onMouseMove={onPanMove}
                         onMouseUp={onPanEnd}
                         onMouseLeave={onMouseLeaveSvg}
-                        onContextMenu={onContextMenuSVG}
                     >
                         <g id="srto-tracks">{trackSVG}</g>
 
@@ -258,9 +235,9 @@ export default function SRTO_SVG({ SRTO_OPTIONS }: ISelfProps) {
 
                         <g id="srto-signals">{signalSVG}</g>
 
-                        <g id="srto-trains" className={`${isShowTestTrains ? 'hideTrainsFromPane' : ''}`}>{trainSVG}</g>
+                        <g id="srto-trains" className={`${SRTO_PROPS.devRenderOptions.renderGhostTrains ? 'hideTrainsFromPane' : ''}`}>{trainSVG}</g>
 
-                        <g id="srto-testTrains" className={`${!isShowTestTrains ? 'hideTrainsFromPane' : ''}`}>{testTrainSVG}</g>
+                        <g id="srto-testTrains" className={`${!SRTO_PROPS.devRenderOptions.renderGhostTrains ? 'hideTrainsFromPane' : ''}`}>{testTrainSVG}</g>
 
                         {/* <text x={2560/2} y={40} fontSize={50} fill='orange' stroke='orange' textAnchor="middle">CURRENTLY IN DEVELOPMENT</text> */}
                         {/* <text x={2560/2} y={1430} fontSize={50} fill='orange' stroke='orange' textAnchor="middle">CURRENTLY IN DEVELOPMENT</text> */}

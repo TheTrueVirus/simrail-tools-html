@@ -2,7 +2,7 @@ import { SRTO_DataTypes } from "./srto-dataTypes";
 const npt_color = 'rgb(70, 70, 70)'
 
 export const SRTO_Tracks: SRTO_DataTypes.TRACKS = {
-    "area1": [
+    "srto_area1": [
 
         //#region TRACK SPLITTER
         {

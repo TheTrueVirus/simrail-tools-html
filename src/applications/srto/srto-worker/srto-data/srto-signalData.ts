@@ -6,7 +6,7 @@ const AREA1_ROW3_Y_SHIFT = 0;
 
 
 export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
-    "area1": [
+    "srto_area1": [
 
         //
         //#region SRTO AREA 1 [ROW1]

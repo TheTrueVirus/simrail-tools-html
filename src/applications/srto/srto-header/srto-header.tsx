@@ -1,41 +1,24 @@
-import { useEffect, useRef, useState } from 'react'
+import { SetStateAction, useEffect, useRef, useState } from 'react'
 import './srto-headerStyles.css'
 import { SimRailDataTypes } from '../../../types/simrail-data-types'
-import { AreaProps } from '../srto'
+import { AreaProps, USER_OPTIONS } from '../srto'
 import { RenderOptionsProps } from '../srto'
 
 const inDev = process.env.NODE_ENV === 'development'
 
 interface ISelfProps {
-    srtoOptions: {
-        serverOptions: {
-            serverList: SimRailDataTypes.ServerData[]
-            getServer: string,
-            setServer: React.Dispatch<React.SetStateAction<string>>
-        },
-        areaOptions: {
-            areaList: AreaProps[],
-            getArea: AreaProps,
-            setArea: React.Dispatch<React.SetStateAction<AreaProps>>
-        },
-        stationNameOptions: {
-            isShowLongStationNames: boolean
-            SET_showLongStationsNames: React.Dispatch<React.SetStateAction<boolean>>
-        },
-        showHeaderOptions: {
-            showHeader: boolean
-            setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
-        }
-        extendedViewOption: {
-            allowExtendedView: boolean,
-            setAllowExtendedView: React.Dispatch<React.SetStateAction<boolean>>
-        }
+    srtoHeaderOptions: {
+        userOptions: typeof USER_OPTIONS
+        setUserOptions: React.Dispatch<SetStateAction<typeof USER_OPTIONS>>
+        serverList: SimRailDataTypes.ServerData[]
+        AreaList: AreaProps[]
         renderOptions: {
             devRenderOptions: RenderOptionsProps
             setDevRenderOptions: React.Dispatch<React.SetStateAction<RenderOptionsProps>>
         }
     }
 }
+
 
 const serverTimeOffset = {
     "cz1": +2,
@@ -55,14 +38,13 @@ const serverTimeOffset = {
     "pl5": -4,
 }
 
-export default function SRTO_Header({ srtoOptions }: ISelfProps) {
+export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
 
     const [isOptionsOpen, setOptionsOpen] = useState<boolean>(false);
     const [openServerList, setOpenServerList] = useState<boolean>(false);
     const serverListRef = useRef<HTMLDivElement>(null);
 
-    const selectedServer = srtoOptions.serverOptions.getServer
-    const showHeader = srtoOptions.showHeaderOptions.showHeader
+    const selectedServer = srtoHeaderOptions.userOptions.selectedServer
 
     useEffect(() => {
         if (openServerList && serverListRef.current) {
@@ -89,12 +71,12 @@ export default function SRTO_Header({ srtoOptions }: ISelfProps) {
     }
 
     function setNewServerAndCloseList(serverCode: string) {
-        srtoOptions.serverOptions.setServer(serverCode);
+        srtoHeaderOptions.setUserOptions(prev => ({...prev, selectedServer: serverCode}));
         setOpenServerList(false);
     }
 
     function setNewAreaAndClose(area: AreaProps) {
-        srtoOptions.areaOptions.setArea(area);
+        // srtoHeaderOptions.setUserOptions(prev => ({...prev, selectedArea: area}));
         // setOpenAreaList(false);
     }
 
@@ -104,15 +86,17 @@ export default function SRTO_Header({ srtoOptions }: ISelfProps) {
             {
                 optionID: 'option-stationNames',
                 optionName: 'Show Short Station Names',
-                optionValue: srtoOptions.stationNameOptions.isShowLongStationNames,
-                optionSetter: srtoOptions.stationNameOptions.SET_showLongStationsNames,
+                optionKey: 'shortStationNames' as const,
+                optionValue: srtoHeaderOptions.userOptions.shortStationNames,
+                optionSetter: srtoHeaderOptions.setUserOptions,
                 isDevOption: false
             },
             {
                 optionID: 'option-allowExtendedView',
                 optionName: 'Allow Extended View',
-                optionValue: srtoOptions.extendedViewOption.allowExtendedView,
-                optionSetter: srtoOptions.extendedViewOption.setAllowExtendedView,
+                optionKey: 'allowExtendedView' as const,
+                optionValue: srtoHeaderOptions.userOptions.allowExtendedView,
+                optionSetter: srtoHeaderOptions.setUserOptions,
                 isDevOption: false
             },
         ],
@@ -121,40 +105,40 @@ export default function SRTO_Header({ srtoOptions }: ISelfProps) {
                 optionID: 'option-renderTracks_DEV',
                 optionName: 'Render Tracks',
                 renderOptionKey: 'renderTracks' as const,
-                optionValue: srtoOptions.renderOptions.devRenderOptions.renderTracks,
-                optionSetter: srtoOptions.renderOptions.setDevRenderOptions,
+                optionValue: srtoHeaderOptions.renderOptions.devRenderOptions.renderTracks,
+                optionSetter: srtoHeaderOptions.renderOptions.setDevRenderOptions,
                 isDevOption: true
             },
             {
                 optionID: 'option-renderSignals_DEV',
                 optionName: 'Render Signals',
                 renderOptionKey: 'renderSignals' as const,
-                optionValue: srtoOptions.renderOptions.devRenderOptions.renderSignals,
-                optionSetter: srtoOptions.renderOptions.setDevRenderOptions,
+                optionValue: srtoHeaderOptions.renderOptions.devRenderOptions.renderSignals,
+                optionSetter: srtoHeaderOptions.renderOptions.setDevRenderOptions,
                 isDevOption: true
             },
             {
                 optionID: 'option-renderNodes_DEV',
                 optionName: 'Render Nodes',
                 renderOptionKey: 'renderNodes' as const,
-                optionValue: srtoOptions.renderOptions.devRenderOptions.renderNodes,
-                optionSetter: srtoOptions.renderOptions.setDevRenderOptions,
+                optionValue: srtoHeaderOptions.renderOptions.devRenderOptions.renderNodes,
+                optionSetter: srtoHeaderOptions.renderOptions.setDevRenderOptions,
                 isDevOption: true
             },
             {
                 optionID: 'option-renderTrains_DEV',
                 optionName: 'Render Trains',
                 renderOptionKey: 'renderTrains' as const,
-                optionValue: srtoOptions.renderOptions.devRenderOptions.renderTrains,
-                optionSetter: srtoOptions.renderOptions.setDevRenderOptions,
+                optionValue: srtoHeaderOptions.renderOptions.devRenderOptions.renderTrains,
+                optionSetter: srtoHeaderOptions.renderOptions.setDevRenderOptions,
                 isDevOption: true
             },
             {
                 optionID: 'option-renderGhostTrains_DEV',
                 optionName: 'Render Ghost Trains',
                 renderOptionKey: 'renderGhostTrains' as const,
-                optionValue: srtoOptions.renderOptions.devRenderOptions.renderGhostTrains,
-                optionSetter: srtoOptions.renderOptions.setDevRenderOptions,
+                optionValue: srtoHeaderOptions.renderOptions.devRenderOptions.renderGhostTrains,
+                optionSetter: srtoHeaderOptions.renderOptions.setDevRenderOptions,
                 isDevOption: true
             },
         ]
@@ -165,9 +149,9 @@ export default function SRTO_Header({ srtoOptions }: ISelfProps) {
 
     return (
         <>
-            <div className={`srtoHeaderContainer ${!showHeader ? 'hideHeader' : ''}`}>
+            <div className={`srtoHeaderContainer`}>
                 <div className='headerTitleContainer'>
-                    <div className='srtoHeaderTitle'>SRTO : {srtoOptions.areaOptions.getArea.areaDisplayTitle}</div>
+                    <div className='srtoHeaderTitle'>SRTO : {srtoHeaderOptions.userOptions.selectedArea.areaDisplayTitle}</div>
                 </div>
                 <div className='clockContainer'>
                     <div className='srtoClock'>{getCurrentTime()}</div>
@@ -188,7 +172,7 @@ export default function SRTO_Header({ srtoOptions }: ISelfProps) {
                                 <div className='serverListTitle'>SELECT A SERVER</div>
                                 <div className='serverListContainer'>
                                     {
-                                        srtoOptions.serverOptions.serverList.map((server) => (
+                                        srtoHeaderOptions.serverList.map((server) => (
                                             <>
                                                 <div
                                                     className={`serverOption ${selectedServer === server.ServerCode ? '' : ''}`}
@@ -219,7 +203,7 @@ export default function SRTO_Header({ srtoOptions }: ISelfProps) {
                                                         type="checkbox"
                                                         className='optionCheckbox'
                                                         checked={option.optionValue}
-                                                        onChange={(e) => option.optionSetter(e.target.checked)}
+                                                        onChange={(e) => option.optionSetter(prev => ({...prev, [option.optionKey]: e.target.checked}))}
                                                     />
                                                     <span className='checkboxSlider'></span>
                                                 </label>

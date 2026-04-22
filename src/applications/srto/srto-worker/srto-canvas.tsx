@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import './srto-canvas.css'
-import { AreaProps, RenderOptionsProps } from '../srto';
+import { AreaProps, RenderOptionsProps, USER_OPTIONS } from '../srto';
 import { SimRailDataTypes } from '../../../types/simrail-data-types';
 import { SRTO_Tracks } from './srto-data/srto-trackData';
 import { SRTO_Nodes } from './srto-data/srto-nodeData';
@@ -18,15 +18,10 @@ const TOOLTIP_MARGIN = 10
 const TOOLTIP_OFFSET = 12
 
 interface ISelfProps {
-    SRTO_OPTIONS: {
+    SRTO_PROPS: {
         trainList: SimRailDataTypes.FilteredTrainList[],
         stationList: SimRailDataTypes.StationData[]
-        selectedArea: AreaProps
-        isShowLongStationNames: boolean
-        isShowTestTrains: boolean
-        setShowTestTrains: React.Dispatch<React.SetStateAction<boolean>>
-        allowExtendedView: boolean
-        setAllowExtendedView: React.Dispatch<React.SetStateAction<boolean>>
+        userOptions: typeof USER_OPTIONS
         devRenderOptions: RenderOptionsProps
     }
 }
@@ -42,7 +37,7 @@ function loadDataFromFile(area: AreaProps) {
     }
 }
 
-export default function SRTO_Canvas({ SRTO_OPTIONS }: ISelfProps) {
+export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const trackPathCacheRef = useRef(new WeakMap<SRTO_DataTypes.TRACK, Path2D>());
@@ -58,9 +53,9 @@ export default function SRTO_Canvas({ SRTO_OPTIONS }: ISelfProps) {
         | null
     >(null)
     const [tooltipPosition, setTooltipPosition] = useState<{ left: number, top: number } | null>(null)
-    const minZoom = SRTO_OPTIONS.allowExtendedView ? MIN_ZOOM_EXTENDED : MIN_ZOOM_FIT
+    const minZoom = SRTO_PROPS.userOptions.allowExtendedView ? MIN_ZOOM_EXTENDED : MIN_ZOOM_FIT
 
-    const { TRACK_DATA, SIGNAL_DATA, NODE_DATA } = loadDataFromFile(SRTO_OPTIONS.selectedArea);
+    const { TRACK_DATA, SIGNAL_DATA, NODE_DATA } = loadDataFromFile(SRTO_PROPS.userOptions.selectedArea);
     const signalByName = useMemo(() => {
         const map = new Map<string, SRTO_DataTypes.SIGNAL>()
         for (const signal of SIGNAL_DATA) {
@@ -70,14 +65,14 @@ export default function SRTO_Canvas({ SRTO_OPTIONS }: ISelfProps) {
     }, [SIGNAL_DATA])
 
     const trainHoverEntries = useMemo(() => {
-        return SRTO_OPTIONS.trainList
+        return SRTO_PROPS.trainList
             .map((train) => {
                 const signalName = train.TrainData.SignalInFront?.split('@')[0]
                 const signal = signalByName.get(signalName)
                 return signal ? { train, signal } : null
             })
             .filter((entry): entry is { train: SimRailDataTypes.FilteredTrainList, signal: SRTO_DataTypes.SIGNAL } => entry !== null)
-    }, [SRTO_OPTIONS.trainList, signalByName])
+    }, [SRTO_PROPS.trainList, signalByName])
 
     useLayoutEffect(() => {
         if (!hoveredTarget) {
@@ -129,13 +124,13 @@ export default function SRTO_Canvas({ SRTO_OPTIONS }: ISelfProps) {
         TRACK_DATA,
         SIGNAL_DATA,
         NODE_DATA,
-        SRTO_OPTIONS.allowExtendedView,
-        SRTO_OPTIONS.trainList,
-        SRTO_OPTIONS.isShowLongStationNames,
+        SRTO_PROPS.userOptions.allowExtendedView,
+        SRTO_PROPS.trainList,
+        SRTO_PROPS.userOptions.shortStationNames,
     ])
 
     const clampViewToBounds = (rect: DOMRect) => {
-        if (SRTO_OPTIONS.allowExtendedView) return
+        if (SRTO_PROPS.userOptions.allowExtendedView) return
 
         const fitScale = rect.width / CANVAS_WORLD_WIDTH
         const scale = fitScale * viewRef.current.zoom
@@ -210,25 +205,25 @@ export default function SRTO_Canvas({ SRTO_OPTIONS }: ISelfProps) {
         ctx.scale(fitScale * zoom, fitScale * zoom)
 
         if (!TRACK_DATA) return;
-        if(SRTO_OPTIONS.devRenderOptions.renderTracks)
+        if(SRTO_PROPS.devRenderOptions.renderTracks)
             CanvasDrawer.drawTracks(TRACK_DATA, ctx, trackPathCacheRef.current);
         if (!SIGNAL_DATA) return;
-        if(SRTO_OPTIONS.devRenderOptions.renderSignals)
-            CanvasDrawer.drawSignals(SIGNAL_DATA, SRTO_OPTIONS.trainList, ctx);
-        if (!NODE_DATA || !SRTO_OPTIONS.stationList) return;
-        if(SRTO_OPTIONS.devRenderOptions.renderNodes)
-            CanvasDrawer.drawNotations(NODE_DATA, SRTO_OPTIONS.stationList, ctx, SRTO_OPTIONS.isShowLongStationNames);
-        if (!SRTO_OPTIONS.trainList) return;
+        if(SRTO_PROPS.devRenderOptions.renderSignals)
+            CanvasDrawer.drawSignals(SIGNAL_DATA, SRTO_PROPS.trainList, ctx);
+        if (!NODE_DATA || !SRTO_PROPS.stationList) return;
+        if(SRTO_PROPS.devRenderOptions.renderNodes)
+            CanvasDrawer.drawNotations(NODE_DATA, SRTO_PROPS.stationList, ctx, SRTO_PROPS.userOptions.shortStationNames);
+        if (!SRTO_PROPS.trainList) return;
         if (inDev) {
-            if (SRTO_OPTIONS.devRenderOptions.renderGhostTrains) {
+            if (SRTO_PROPS.devRenderOptions.renderGhostTrains) {
                 CanvasDrawer.drawGhostTrains(SIGNAL_DATA, ctx);
             } else {
-                if(SRTO_OPTIONS.devRenderOptions.renderTrains)
-                    CanvasDrawer.drawTrains(SRTO_OPTIONS.trainList, SIGNAL_DATA, ctx)
+                if(SRTO_PROPS.devRenderOptions.renderTrains)
+                    CanvasDrawer.drawTrains(SRTO_PROPS.trainList, SIGNAL_DATA, ctx)
             }
         } else {
-            if(SRTO_OPTIONS.devRenderOptions.renderTrains)
-            CanvasDrawer.drawTrains(SRTO_OPTIONS.trainList, SIGNAL_DATA, ctx)
+            if(SRTO_PROPS.devRenderOptions.renderTrains)
+            CanvasDrawer.drawTrains(SRTO_PROPS.trainList, SIGNAL_DATA, ctx)
         }
         ctx.restore()
     }
@@ -385,14 +380,14 @@ export default function SRTO_Canvas({ SRTO_OPTIONS }: ISelfProps) {
 
     function trainsCounter() {
 
-        const trainsControlledByPlayers = SRTO_OPTIONS.trainList.filter((train) => train.ControlledBy === 'user').length
-        const allTrainsCount = SRTO_OPTIONS.trainList.length;
+        const trainsControlledByPlayers = SRTO_PROPS.trainList.filter((train) => train.ControlledBy === 'user').length
+        const allTrainsCount = SRTO_PROPS.trainList.length;
         return `Trains: ${trainsControlledByPlayers}/${allTrainsCount}`
     }
 
     function stationsCounter() {
-        const stationsControlledByPlayers = SRTO_OPTIONS.stationList.filter((station) => station.DispatchedBy.length > 0).length
-        const allStationsCount = SRTO_OPTIONS.stationList.length
+        const stationsControlledByPlayers = SRTO_PROPS.stationList.filter((station) => station.DispatchedBy.length > 0).length
+        const allStationsCount = SRTO_PROPS.stationList.length
 
         return `Stations: ${stationsControlledByPlayers}/${allStationsCount}`
     }
@@ -453,7 +448,7 @@ export default function SRTO_Canvas({ SRTO_OPTIONS }: ISelfProps) {
                 </div>
                 {/* <div>{`ViewRef - X:${viewRef.current.panX.toFixed(0)} Y: ${viewRef.current.panY.toFixed(0)} Zoom: ${viewRef.current.zoom.toFixed(2)}`}</div> */}
                 <div className="svgCoordinates">
-                    Extended view: {SRTO_OPTIONS.allowExtendedView ? 'ON' : 'OFF'}
+                    Extended view: {SRTO_PROPS.userOptions.allowExtendedView ? 'ON' : 'OFF'}
                 </div>
                 {inDev &&
                     <>

@@ -20,13 +20,27 @@ export interface RenderOptionsProps {
     renderGhostTrains: boolean
 }
 
-const RenderOptions : RenderOptionsProps = {
+const RenderOptions: RenderOptionsProps = {
     renderTracks: true,
     renderSignals: true,
     renderNodes: true,
     renderTrains: true,
     renderGhostTrains: false
 }
+
+export const USER_OPTIONS = {
+    selectedServer: 'int1',
+    selectedArea: { areaID: 'srto_area1', areaDisplayTitle: 'A1 | Katowice - Warszawa' },
+    shortStationNames: false,
+    allowExtendedView: false,
+}
+
+export const AreaList = [
+    {
+        areaID: 'srto_area1',
+        areaDisplayTitle: 'A1 | Katowice - Warszawa'
+    },
+]
 
 const DISCLAIMER_KEY = "srto_disclaimer_accepted"
 
@@ -46,32 +60,47 @@ export default function SimRailTrackOverview() {
         ControlledBy: 'user'
     }
 
-    const areaList = [
-        {
-            areaID: 'area1',
-            areaDisplayTitle: 'L001/L004 | Katowice - Warszawa'
-        },
-    ]
+
 
     const [serverList, setServerList] = useState<SimRailDataTypes.ServerData[]>([]);
     const [stationList, setStationList] = useState<SimRailDataTypes.StationData[]>([]);
     const [trainList, setTrainList] = useState<SimRailDataTypes.FilteredTrainList[]>([]);
 
     const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
-    //!!! make an option object, save it to localStorage and read localStorage onLoad in useEffect
-    const [selectedServer, setServer] = useState<string>('int1');
-    const [areaListState] = useState<AreaProps[]>(areaList);
-    const [selectedArea, setArea] = useState<AreaProps>(areaList[0])
-    const [isShowLongStationNames, SET_showLongStationsNames] = useState<boolean>(false);
-    const [isShowTestTrains, setShowTestTrains] = useState<boolean>(false);
-    const [allowExtendedView, setAllowExtendedView] = useState(false);
-    const [showHeader, setShowHeader] = useState<boolean>(true);
+    const [userOptions, setUserOptions] = useState<typeof USER_OPTIONS>(() => getUserOptionsOrDefault())
     const [devRenderOptions, setDevRenderOptions] = useState<RenderOptionsProps>(RenderOptions)
 
     useEffect(() => {
         const accepted = localStorage.getItem(DISCLAIMER_KEY) === "true";
         setShowDisclaimer(!accepted);
     }, [])
+
+    function getUserOptionsOrDefault() {
+        const defaultOptions = USER_OPTIONS
+        const optionsFromStorage = localStorage.getItem('USER_OPTIONS')
+        if (!optionsFromStorage) return defaultOptions
+
+        try {
+            const p = JSON.parse(optionsFromStorage)
+
+            const isValid =
+                p &&
+                typeof p.selectedServer === "string" &&
+                typeof p.selectedArea &&
+                typeof p.selectedArea.areaID === "string" &&
+                typeof p.selectedArea.areaDisplayTitle === "string" &&
+                typeof p.shortStationNames === "boolean" &&
+                typeof p.allowExtendedView === "boolean"
+
+            return isValid ? p : defaultOptions
+        } catch {
+            return defaultOptions
+        }
+    }
+
+    useEffect(() => {
+        localStorage.setItem('USER_OPTIONS', JSON.stringify(userOptions))
+    }, [userOptions])
 
     useEffect(() => {
         // fetch SimRail Server
@@ -98,9 +127,9 @@ export default function SimRailTrackOverview() {
         const intervalID = setInterval(getSimRailTrainData, 2000)
 
         async function getSimRailTrainData() {
-            if (!selectedServer) return;
+            if (!userOptions.selectedServer) return;
 
-            const TRAINDATA = await SR_DATA.Trains(selectedServer);
+            const TRAINDATA = await SR_DATA.Trains(userOptions.selectedServer);
 
             if (!TRAINDATA) return;
 
@@ -127,15 +156,15 @@ export default function SimRailTrackOverview() {
         getSimRailTrainData();
 
         return () => clearInterval(intervalID)
-    }, [selectedServer])
+    }, [userOptions.selectedServer])
 
     useEffect(() => {
         const intervalID = setInterval(getSimRailStationData, 2000);
 
         async function getSimRailStationData() {
-            if (!selectedServer) return;
+            if (!userOptions.selectedServer) return;
 
-            const STATIONDATA = await SR_DATA.Stations(selectedServer);
+            const STATIONDATA = await SR_DATA.Stations(userOptions.selectedServer);
 
             if (!STATIONDATA) return;
 
@@ -143,44 +172,26 @@ export default function SimRailTrackOverview() {
         }
 
         return () => clearInterval(intervalID)
-    }, [selectedServer])
+    }, [userOptions.selectedServer])
 
     const finalTrainList = process.env.NODE_ENV === 'development'
         ? [...trainList, developmentTrain]
         : trainList;
 
-    const srtoOptions = {
-        serverOptions: {
-            serverList,
-            getServer: selectedServer,
-            setServer
-        },
-        areaOptions: {
-            areaList: areaListState,
-            getArea: selectedArea,
-            setArea
-        },
-        stationNameOptions: {
-            isShowLongStationNames, SET_showLongStationsNames
-        },
-        showHeaderOptions: {
-            showHeader, setShowHeader
-        },
-        extendedViewOption: {
-            allowExtendedView, setAllowExtendedView
-        },
+    const srtoHeaderOptions = {
+        userOptions,
+        setUserOptions,
+        serverList,
+        AreaList,
         renderOptions: {
             devRenderOptions, setDevRenderOptions
         }
     }
 
-    const SRTO_OPTIONS = {
+    const SRTO_PROPS = {
         trainList: finalTrainList,
         stationList,
-        selectedArea,
-        isShowLongStationNames,
-        isShowTestTrains, setShowTestTrains,
-        allowExtendedView, setAllowExtendedView,
+        userOptions,
         devRenderOptions
     }
 
@@ -198,10 +209,10 @@ export default function SimRailTrackOverview() {
                     />
                 }
 
-                <SRTO_Header srtoOptions={srtoOptions} />
+                <SRTO_Header srtoHeaderOptions={srtoHeaderOptions} />
                 {showSVG
-                    ? <SRTO_SVG SRTO_OPTIONS={SRTO_OPTIONS} />
-                    : <SRTO_Canvas SRTO_OPTIONS={SRTO_OPTIONS} />
+                    ? <SRTO_SVG SRTO_PROPS={SRTO_PROPS} />
+                    : <SRTO_Canvas SRTO_PROPS={SRTO_PROPS} />
                 }
 
             </div>

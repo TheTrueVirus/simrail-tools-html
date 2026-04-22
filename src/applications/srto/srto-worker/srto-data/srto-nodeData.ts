@@ -3,7 +3,7 @@ import { SRTO_DataTypes } from "./srto-dataTypes"
 const phFontSize = 12
 
 export const SRTO_Nodes: SRTO_DataTypes.NODES = {
-    "area1": [
+    "srto_area1": [
 
         //#region Additional Annotations (Track Breaks / Different Screen Areas)
         {
