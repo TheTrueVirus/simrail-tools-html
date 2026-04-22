@@ -48,6 +48,7 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
 
     useEffect(() => {
         if (openServerList && serverListRef.current) {
+            setOptionsOpen(true);
             serverListRef.current.focus();
         }
     }, [openServerList])
@@ -72,6 +73,7 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
 
     function setNewServerAndCloseList(serverCode: string) {
         srtoHeaderOptions.setUserOptions(prev => ({...prev, selectedServer: serverCode}));
+        setOptionsOpen(false);
         setOpenServerList(false);
     }
 
@@ -153,7 +155,7 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                 <div className='headerTitleContainer'>
                     <div className='srtoHeaderTitle'>SRTO : {srtoHeaderOptions.userOptions.selectedArea.areaDisplayTitle}</div>
                 </div>
-                <div className='clockContainer'>
+                <div className='clockContainer' onClick={() => setOpenServerList(prev => !prev)}>
                     <div className='srtoClock'>{getCurrentTime()}</div>
                 </div>
                 <div className='headerOptionsContainer'>
