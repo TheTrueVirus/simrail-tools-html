@@ -89,7 +89,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             text: 'C',
             breakMarker: {
                 firstMarker: { x: 2530, y: 780 },
-                secondMarker: { x: 40, y: 1020 }
+                secondMarker: { x: 40, y: 1030 }
             }
         },
         {
@@ -109,7 +109,27 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             text: 'E',
             breakMarker: {
                 firstMarker: { x: 2480, y: 1210 },
-                secondMarker: { x: 40, y: 1420 }
+                secondMarker: { x: 40, y: 1410 }
+            }
+        },
+        {
+            nodeID: 'trackBreakMarker-CMK_F',
+            nodePos: { x: 0, y: 0 },
+            nodeType: 'trackBreakMarker',
+            text: 'F',
+            breakMarker: {
+                firstMarker: { x: 2535, y: 1425 },
+                secondMarker: { x: 40, y: 1550 }
+            }
+        },
+        {
+            nodeID: 'trackBreakMarker-CMK_G',
+            nodePos: { x: 0, y: 0 },
+            nodeType: 'trackBreakMarker',
+            text: 'G',
+            breakMarker: {
+                firstMarker: { x: 1850, y: 1560 },
+                secondMarker: { x: 40, y: 1690 }
             }
         },
         //#endregion
