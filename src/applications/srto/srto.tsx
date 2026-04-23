@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { SimRailDataTypes } from "../../types/simrail-data-types";
 import { SR_DATA } from '../../functions/getSimRailData/getSimRailData';
 import SRTO_Header from './srto-header/srto-header';
-import SRTO_Disclaimer from '../../functions/srto-disclaimer/srto-disclaimer';
+import SRTO_Disclaimer from './srto-disclaimer/srto-disclaimer';
 import SRTO_Canvas from './srto-worker/srto-canvas/srto-canvas';
 
 export interface AreaProps {
