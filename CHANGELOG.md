@@ -1,6 +1,27 @@
-# CHANGELOG
-#### This changelog contains a brief overview of what has changed in every new version. I might miss sometimes something, but the most things should be in here.
+# SRTO CHANGELOG
+> [!NOTE]
+> This changelog contains a brief overview of what has changed in every new version. I might miss sometimes something, but the most things should be in here.
 
+> [!IMPORTANT]
+> ### This project is still under full development. You may encounter bugs!
+> #### If you encounter any bugs or have any suggestions for improvements, let me now by writing a post into the forum thread or by opening an issue in the github repository. This will help me a lot!
+
+## Version 0.2.1-alpha
+#### Overview: Map extension, performance fix and tooltip hover of trains and signals
+Update released on 23.04.2026
+## Changes
+#### **Extended the map from Knapowka down to Szeligi**
+- fixed laggy pan/zoom
+    - instead of iterating the whole trainList per signal, created a map of signal and it's color on each frame (one time map of trainList per frame)
+- added a hover tooltip for trains and signals
+    - hovering over a train opens a small popup with the most important informations
+    - hovering over a signal gives the signal name and shows if it's an ABS-Signal or a Station-Signal
+- options and selected server will now save on change
+    - revisiting the application will now select the latest server and enable options from last time
+- Signals with a speed lower than 100 km/h will be shown in orange
+- Animation of the options menu is now faster and more instant than "fancy" (by request)
+- clicking on the clock now also opens the server selection menu (by request)
+- removed the ability to use the svg renderer due to the lag-fix
 
 ## Version 0.2.0-alpha:
 Released on 18.04.2026
@@ -34,13 +55,3 @@ Released on 18.04.2026
     - A: Bedzin <-> Dabrowa Gornicza
     - B: Lazy Lb <-> Lazy La
     - C: CMK [ Gora Wlodowska <-> Psary ]
-
-#### Things I have in mind to add:
-- add a changelog banner onto the site, so at every new version u get the banner shown one time only and you can always see it again by going into the options
-- adding some links for the forum post and github repo to have a fast access to it
-- save the latest selected server and by reopening or reloading the page, the server gets automaticly set (maybe also by adding a parameter into the url)
-- save the selected options
-
-### This project is still under full development. You may encounter bugs!
-
-### If you encounter any bugs or have any suggestions for improvements, let me now by writing a post into the forum thread or by opening an issue in the github repository. This will help me a lot!

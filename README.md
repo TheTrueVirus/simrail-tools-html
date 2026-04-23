@@ -29,18 +29,11 @@ Current options include:
 
 A major change from version 0.1.0-alpha to 0.2.0-alpha is the rendering method, which changed from SVG to canvas.
 
-The SVG renderer is still available in version 0.2.0-alpha by adding this query parameter to the URL: `?showSVG=true`
-
-Direct link:  
-https://thetruevirus.github.io/simrail-tools-html?showSVG=true
-
-> [!NOTE]
-> This will probably be changed into the parameter `?enableSVGRenderer=true` or `?useSVGRenderer=true`<br>
-> If so, you will see it here and in the [CHANGELOG](CHANGELOG.md)
+The SVG renderer has been removed as of version `0.2.1-alpha` due to the lag-fix.
 
 ## Planned features (not finalized)
 
 - [ ] Built-in changelog on the website with one-time visibility and a manual reopen option
 - [ ] Train timetable and train tracking
-- [ ] Saving options and latest server selections
 - [ ] User-based color customization options
+- [x] Saving options and latest server selections
