@@ -9,7 +9,7 @@ export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
     "srto_area1": [
 
         //
-        //#region SRTO AREA 1 [ROW1]
+        //#region SRTO A1.R1
         //
 
         //#region KTC / Brynow + ABS to/from Katowice
@@ -1165,7 +1165,7 @@ export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
         //
 
         //
-        //#region SRTO AREA 1 [ROW 2]
+        //#region SRTO A1.R2
         //
 
         //#region Bedzin <-> Dabrowa Gornicza [ROW2]
@@ -2126,7 +2126,7 @@ export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
         //
 
         //
-        //#region SRTO AREA 1 [ROW3]
+        //#region SRTO A1.R3
         //
 
         //#region Lazy LB <-> Lazy LA [ROW2]
@@ -3257,14 +3257,14 @@ export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
             signalPos: { x: '2270', y: '800' },
             isSignalABS: true,
             signalDirectionOnMap: 'right',
-            trainPos: { x: '2205', y: '800' }
+            trainPos: { x: '2255', y: '800' }
         },
         {
             signalName: 'L4_2036',
             signalPos: { x: '2270', y: '820' },
             isSignalABS: true,
             signalDirectionOnMap: 'right',
-            trainPos: { x: '2205', y: '820' }
+            trainPos: { x: '2255', y: '820' }
         },
         {
             signalName: 'L4_2035',
@@ -3363,7 +3363,7 @@ export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
         //
 
         //
-        //#region SRTO AREA 1 [ROW 4]
+        //#region SRTO A1.R4
         //
 
         //#region Gora Wlodowska <-> Psary [ROW 4]
@@ -6936,7 +6936,7 @@ export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
             trainPos: { x: '755', y: '1700' }
         },
         {
-            signalName: 'Se_Z',
+            signalName: 'Se_R',
             signalPos: { x: '740', y: '1720' },
             isSignalABS: false,
             signalDirectionOnMap: 'left',
@@ -7027,8 +7027,1994 @@ export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
         },
         //#endregion
 
-        //#region Szeligi <-> KorTÜÜÜÜÜÜR
+        //#region Szeligi <-> Markow
+        {
+            signalName: 'L575_25',
+            signalPos: { x: '1000', y: '1760' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '985', y: '1760' }
+        },
+        {
+            signalName: 'L575_25N',
+            signalPos: { x: '1000', y: '1760' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1015', y: '1760' }
+        },
+        {
+            signalName: 'Mr_C',
+            signalPos: { x: '1080', y: '1760' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1065', y: '1760' }
+        },
+        {
+            signalName: 'Mr_E',
+            signalPos: { x: '1080', y: '1760' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1095', y: '1760' }
+        },
+        //#endregion
 
+        //#region Szeligi <-> Korytow
+        {
+            signalName: 'L4_197N',
+            signalPos: { x: '1000', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '985', y: '1720' }
+        },
+        {
+            signalName: 'L4_198',
+            signalPos: { x: '1000', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '985', y: '1740' }
+        },
+        {
+            signalName: 'L4_197',
+            signalPos: { x: '1000', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1015', y: '1720' }
+        },
+        {
+            signalName: 'L4_198N',
+            signalPos: { x: '1000', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1015', y: '1740' }
+        },
+
+
+        {
+            signalName: 'L4_185N',
+            signalPos: { x: '1080', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1065', y: '1720' }
+        },
+        {
+            signalName: 'L4_184',
+            signalPos: { x: '1080', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1065', y: '1740' }
+        },
+        {
+            signalName: 'L4_185',
+            signalPos: { x: '1080', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1095', y: '1720' }
+        },
+        {
+            signalName: 'L4_184N',
+            signalPos: { x: '1080', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1095', y: '1740' }
+        },
+
+
+        {
+            signalName: 'L4_167N',
+            signalPos: { x: '1160', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1145', y: '1720' }
+        },
+        {
+            signalName: 'L4_168',
+            signalPos: { x: '1160', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1145', y: '1740' }
+        },
+        {
+            signalName: 'L4_167',
+            signalPos: { x: '1160', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1175', y: '1720' }
+        },
+        {
+            signalName: 'L4_168N',
+            signalPos: { x: '1160', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1175', y: '1740' }
+        },
+        //#endregion
+
+        //#region [Kr] Korytow
+        {
+            signalName: 'Kr_W',
+            signalPos: { x: '1240', y: '1720' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1225', y: '1720' }
+        },
+        {
+            signalName: 'Kr_Z',
+            signalPos: { x: '1240', y: '1740' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1225', y: '1740' }
+        },
+        //
+        // EXIT SIGNALS LEFT SIDE
+        //
+        {
+            signalName: 'Kr_S',
+            signalPos: { x: '1300', y: '1700' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1315', y: '1700' }
+        },
+        {
+            signalName: 'Kr_R',
+            signalPos: { x: '1300', y: '1720' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1315', y: '1720' }
+        },
+        {
+            signalName: 'Kr_P',
+            signalPos: { x: '1300', y: '1740' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1315', y: '1740' }
+        },
+        {
+            signalName: 'Kr_O',
+            signalPos: { x: '1300', y: '1760' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1315', y: '1760' }
+        },
+        //
+        // EXIT SIGNALS RIGHT SIDE
+        //
+        {
+            signalName: 'Kr_F',
+            signalPos: { x: '1380', y: '1700' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1365', y: '1700' }
+        },
+        {
+            signalName: 'Kr_G',
+            signalPos: { x: '1380', y: '1720' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1365', y: '1720' }
+        },
+        {
+            signalName: 'Kr_H',
+            signalPos: { x: '1380', y: '1740' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1365', y: '1740' }
+        },
+        {
+            signalName: 'Kr_J',
+            signalPos: { x: '1380', y: '1760' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1365', y: '1760' }
+        },
+        //
+        // ENTRY SIGNALS RIGHT SIDE
+        //
+        {
+            signalName: 'Kr_C',
+            signalPos: { x: '1450', y: '1720' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1465', y: '1720' }
+        },
+        {
+            signalName: 'Kr_B',
+            signalPos: { x: '1450', y: '1740' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1465', y: '1740' }
+        },
+        //#endregion
+
+        //#region Korytow <-> Grodzisk Mazowiecki [R8]
+        {
+            signalName: 'L4_109N',
+            signalPos: { x: '1530', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1515', y: '1720' }
+        },
+        {
+            signalName: 'L4_108',
+            signalPos: { x: '1530', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1515', y: '1740' }
+        },
+        {
+            signalName: 'L4_109',
+            signalPos: { x: '1530', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1545', y: '1720' }
+        },
+        {
+            signalName: 'L4_108N',
+            signalPos: { x: '1530', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1545', y: '1740' }
+        },
+
+
+        {
+            signalName: 'L4_91N',
+            signalPos: { x: '1610', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1595', y: '1720' }
+        },
+        {
+            signalName: 'L4_90',
+            signalPos: { x: '1610', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1595', y: '1740' }
+        },
+        {
+            signalName: 'L4_91',
+            signalPos: { x: '1610', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1625', y: '1720' }
+        },
+        {
+            signalName: 'L4_90N',
+            signalPos: { x: '1610', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1625', y: '1740' }
+        },
+
+
+        {
+            signalName: 'L4_73N',
+            signalPos: { x: '1690', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1675', y: '1720' }
+        },
+        {
+            signalName: 'L4_74',
+            signalPos: { x: '1690', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1675', y: '1740' }
+        },
+        {
+            signalName: 'L4_73',
+            signalPos: { x: '1690', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1705', y: '1720' }
+        },
+        {
+            signalName: 'L4_74N',
+            signalPos: { x: '1690', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1705', y: '1740' }
+        },
+
+
+        {
+            signalName: 'L4_51N',
+            signalPos: { x: '1770', y: '1720' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1755', y: '1720' }
+        },
+        {
+            signalName: 'L4_50',
+            signalPos: { x: '1770', y: '1740' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1755', y: '1740' }
+        },
+        //#endregion
+
+        //
+        //#endregion
+        //
+        
+        //
+        //#region SRTO SIGNALS A1.R9
+        //
+
+        //#region Korytow <-> Grodzisk Mazowiecki [R9]
+        {
+            signalName: 'L4_51',
+            signalPos: { x: '30', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '45', y: '1920' }
+        },
+        {
+            signalName: 'L4_50N',
+            signalPos: { x: '30', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '45', y: '1940' }
+        },
+
+
+        {
+            signalName: 'L4_31N',
+            signalPos: { x: '110', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '95', y: '1920' }
+        },
+        {
+            signalName: 'L4_32',
+            signalPos: { x: '110', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '95', y: '1940' }
+        },
+        {
+            signalName: 'L4_31',
+            signalPos: { x: '110', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '125', y: '1920' }
+        },
+        {
+            signalName: 'L4_32N',
+            signalPos: { x: '110', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '125', y: '1940' }
+        },
+        //#endregion
+
+        //#region [Gr] Grodzisk Mazowiecki
+        {
+            signalName: 'Gr_W',
+            signalPos: { x: '190', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '175', y: '1920' }
+        },
+        {
+            signalName: 'Gr_X',
+            signalPos: { x: '190', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '175', y: '1940' }
+        },
+        {
+            signalName: 'Gr_Y',
+            signalPos: { x: '190', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '175', y: '1980' }
+        },
+        {
+            signalName: 'Gr_Z',
+            signalPos: { x: '190', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '175', y: '2000' }
+        },
+        //
+        // SIGNALS LEFT SIDE
+        //
+        {
+            signalName: 'Gr_P1',
+            signalPos: { x: '190', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '205', y: '1920' }
+        },
+        {
+            signalName: 'Gr_P2',
+            signalPos: { x: '190', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '205', y: '1940' }
+        },
+        {
+            signalName: 'Gr_P3',
+            signalPos: { x: '190', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '205', y: '1980' }
+        },
+        {
+            signalName: 'Gr_P4',
+            signalPos: { x: '190', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '205', y: '2000' }
+        },
+        //
+        //
+        {
+            signalName: 'Gr_O3',
+            signalPos: { x: '305', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '320', y: '1980' }
+        },
+        {
+            signalName: 'Gr_O4',
+            signalPos: { x: '310', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '320', y: '2000' }
+        },
+        {
+            signalName: 'Gr_N3',
+            signalPos: { x: '335', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '320', y: '1980' }
+        },
+        //
+        //
+        {
+            signalName: 'Gr_M11',
+            signalPos: { x: '350', y: '1900' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '365', y: '1900' }
+        },
+        {
+            signalName: 'Gr_M1',
+            signalPos: { x: '350', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '365', y: '1920' }
+        },
+        {
+            signalName: 'Gr_M2',
+            signalPos: { x: '350', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '365', y: '1940' }
+        },
+        {
+            signalName: 'Gr_M14',
+            signalPos: { x: '350', y: '1960' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '365', y: '1960' }
+        },
+        {
+            signalName: 'Gr_M3',
+            signalPos: { x: '370', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '385', y: '1980' }
+        },
+        {
+            signalName: 'Gr_N4',
+            signalPos: { x: '370', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '355', y: '2000' }
+        },
+        {
+            signalName: 'Gr_M4',
+            signalPos: { x: '370', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '385', y: '2000' }
+        },
+        //
+        // SIGNALS RIGHT SIDE
+        //
+        {
+            signalName: 'Gr_H11',
+            signalPos: { x: '470', y: '1900' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '455', y: '1900' }
+        },
+        {
+            signalName: 'Gr_H1',
+            signalPos: { x: '470', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '455', y: '1920' }
+        },
+        {
+            signalName: 'Gr_H2',
+            signalPos: { x: '470', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '455', y: '1940' }
+        },
+        {
+            signalName: 'Gr_H14',
+            signalPos: { x: '470', y: '1960' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '455', y: '1960' }
+        },
+        {
+            signalName: 'Gr_H3',
+            signalPos: { x: '450', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '435', y: '1980' }
+        },
+        {
+            signalName: 'Gr_H4',
+            signalPos: { x: '450', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '435', y: '2000' }
+        },
+        {
+            signalName: 'Gr_G3',
+            signalPos: { x: '525', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '510', y: '1980' }
+        },
+        {
+            signalName: 'Gr_G4',
+            signalPos: { x: '540', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '525', y: '2000' }
+        },
+        //
+        // ENTRY SIGNALS RIGHT SIDE
+        //
+        {
+            signalName: 'Gr_D',
+            signalPos: { x: '560', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '575', y: '1920' }
+        },
+        {
+            signalName: 'Gr_C',
+            signalPos: { x: '560', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '575', y: '1940' }
+        },
+        {
+            signalName: 'Gr_B',
+            signalPos: { x: '560', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '575', y: '1980' }
+        },
+        {
+            signalName: 'Gr_A',
+            signalPos: { x: '560', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '575', y: '2000' }
+        },
+        //#endregion
+
+        //#region Grodzisk Mazowiecki <-> Pruszkow [R8]
+        {
+            signalName: 'L1_267N',
+            signalPos: { x: '640', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '625', y: '1920' }
+        },
+        {
+            signalName: 'L1_266',
+            signalPos: { x: '640', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '625', y: '1940' }
+        },
+        {
+            signalName: 'L1_267',
+            signalPos: { x: '640', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '655', y: '1920' }
+        },
+        {
+            signalName: 'L1_266N',
+            signalPos: { x: '640', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '655', y: '1940' }
+        },
+        //
+        //
+        {
+            signalName: 'L447_271N',
+            signalPos: { x: '640', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '625', y: '1980' }
+        },
+        {
+            signalName: 'L447_270',
+            signalPos: { x: '640', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '625', y: '2000' }
+        },
+        {
+            signalName: 'L447_271',
+            signalPos: { x: '640', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '655', y: '1980' }
+        },
+        {
+            signalName: 'L447_270N',
+            signalPos: { x: '640', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '655', y: '2000' }
+        },
+
+
+        {
+            signalName: 'L1_253SN',
+            signalPos: { x: '720', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '705', y: '1920' }
+        },
+        {
+            signalName: 'L1_252S',
+            signalPos: { x: '720', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '705', y: '1940' }
+        },
+
+        //
+        //
+        {
+            signalName: 'L447_253N',
+            signalPos: { x: '720', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '705', y: '1980' }
+        },
+        {
+            signalName: 'L447_252',
+            signalPos: { x: '720', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '705', y: '2000' }
+        },
+        //#endregion
+
+        //#region Grodzisk Mazowiecki <-> Pruszkow [R9]
+        {
+            signalName: 'L1_253S',
+            signalPos: { x: '720', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '735', y: '1920' }
+        },
+        {
+            signalName: 'L1_252SN',
+            signalPos: { x: '720', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '735', y: '1940' }
+        },
+        {
+            signalName: 'L447_253',
+            signalPos: { x: '720', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '735', y: '1980' }
+        },
+        {
+            signalName: 'L447_252N',
+            signalPos: { x: '720', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '735', y: '2000' }
+        },
+
+
+        {
+            signalName: 'L1_237SN',
+            signalPos: { x: '800', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '785', y: '1920' }
+        },
+        {
+            signalName: 'L1_238S',
+            signalPos: { x: '800', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '785', y: '1940' }
+        },
+        {
+            signalName: 'L1_237S',
+            signalPos: { x: '800', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '815', y: '1920' }
+        },
+        {
+            signalName: 'L1_238SN',
+            signalPos: { x: '800', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '815', y: '1940' }
+        },
+        //
+        //
+        {
+            signalName: 'L447_237N',
+            signalPos: { x: '800', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '785', y: '1980' }
+        },
+        {
+            signalName: 'L447_238',
+            signalPos: { x: '800', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '785', y: '2000' }
+        },
+        {
+            signalName: 'L447_237',
+            signalPos: { x: '800', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '815', y: '1980' }
+        },
+        {
+            signalName: 'L447_238N',
+            signalPos: { x: '800', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '815', y: '2000' }
+        },
+
+
+        {
+            signalName: 'L1_223SN',
+            signalPos: { x: '880', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '865', y: '1920' }
+        },
+        {
+            signalName: 'L1_222S',
+            signalPos: { x: '880', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '865', y: '1940' }
+        },
+        {
+            signalName: 'L1_223S',
+            signalPos: { x: '880', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '895', y: '1920' }
+        },
+        {
+            signalName: 'L1_222SN',
+            signalPos: { x: '880', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '895', y: '1940' }
+        },
+        //
+        //
+        {
+            signalName: 'L447_223N',
+            signalPos: { x: '880', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '865', y: '1980' }
+        },
+        {
+            signalName: 'L447_228',
+            signalPos: { x: '880', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '865', y: '2000' }
+        },
+        {
+            signalName: 'L447_223',
+            signalPos: { x: '880', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '895', y: '1980' }
+        },
+        {
+            signalName: 'L447_228N',
+            signalPos: { x: '880', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '895', y: '2000' }
+        },
+
+
+        {
+            signalName: 'L1_207SN',
+            signalPos: { x: '960', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '945', y: '1920' }
+        },
+        {
+            signalName: 'L1_208S',
+            signalPos: { x: '960', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '945', y: '1940' }
+        },
+        {
+            signalName: 'L1_207S',
+            signalPos: { x: '960', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '975', y: '1920' }
+        },
+        {
+            signalName: 'L1_208SN',
+            signalPos: { x: '960', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '975', y: '1940' }
+        },
+        //
+        //
+        {
+            signalName: 'L447_207N',
+            signalPos: { x: '960', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '945', y: '1980' }
+        },
+        {
+            signalName: 'L447_208',
+            signalPos: { x: '960', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '945', y: '2000' }
+        },
+        {
+            signalName: 'L447_207',
+            signalPos: { x: '960', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '975', y: '1980' }
+        },
+        {
+            signalName: 'L447_208N',
+            signalPos: { x: '960', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '975', y: '2000' }
+        },
+
+
+        {
+            signalName: 'L1_193SN',
+            signalPos: { x: '1040', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1025', y: '1920' }
+        },
+        {
+            signalName: 'L1_194S',
+            signalPos: { x: '1040', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1025', y: '1940' }
+        },
+        {
+            signalName: 'L1_193S',
+            signalPos: { x: '1040', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1055', y: '1920' }
+        },
+        {
+            signalName: 'L1_194SN',
+            signalPos: { x: '1040', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1055', y: '1940' }
+        },
+        //
+        //
+        {
+            signalName: 'L447_193N',
+            signalPos: { x: '1040', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1025', y: '1980' }
+        },
+        {
+            signalName: 'L447_194',
+            signalPos: { x: '1040', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1025', y: '2000' }
+        },
+        {
+            signalName: 'L447_193',
+            signalPos: { x: '1040', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1055', y: '1980' }
+        },
+        {
+            signalName: 'L447_194N',
+            signalPos: { x: '1040', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1055', y: '2000' }
+        },
+        //#endregion
+
+        //#region [Pr] Pruszkow
+        {
+            signalName: 'Pr_W',
+            signalPos: { x: '1120', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1105', y: '1920' }
+        },
+        {
+            signalName: 'Pr_X',
+            signalPos: { x: '1120', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1105', y: '1940' }
+        },
+        {
+            signalName: 'Pr_Y',
+            signalPos: { x: '1120', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1105', y: '1980' }
+        },
+        {
+            signalName: 'Pr_Z',
+            signalPos: { x: '1120', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1105', y: '2000' }
+        },
+        //
+        // EXIT SIGNALS LEFT SIDE
+        //
+        {
+            signalName: 'Pr_L1',
+            signalPos: { x: '1210', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1225', y: '1920' }
+        },
+        {
+            signalName: 'Pr_L2',
+            signalPos: { x: '1210', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1225', y: '1940' }
+        },
+        {
+            signalName: 'Pr_L5',
+            signalPos: { x: '1210', y: '1960' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1225', y: '1960' }
+        },
+        {
+            signalName: 'Pr_L3',
+            signalPos: { x: '1210', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1225', y: '1980' }
+        },
+        {
+            signalName: 'Pr_L4',
+            signalPos: { x: '1210', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1225', y: '2000' }
+        },
+        //
+        //
+        {
+            signalName: 'Pr_L13',
+            signalPos: { x: '1250', y: '1860' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1265', y: '1860' }
+        },
+        {
+            signalName: 'Pr_L11',
+            signalPos: { x: '1250', y: '1880' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1265', y: '1880' }
+        },
+        {
+            signalName: 'Pr_L7',
+            signalPos: { x: '1250', y: '1900' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1265', y: '1900' }
+        },
+        //
+        // SIGNALS RIGHT SIDE
+        //
+        {
+            signalName: 'Pr_H13',
+            signalPos: { x: '1330', y: '1860' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1315', y: '1860' }
+        },
+        {
+            signalName: 'Pr_H11',
+            signalPos: { x: '1330', y: '1880' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1315', y: '1880' }
+        },
+        {
+            signalName: 'Pr_H7',
+            signalPos: { x: '1330', y: '1900' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1315', y: '1900' }
+        },
+        {
+            signalName: 'Pr_H1',
+            signalPos: { x: '1330', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1315', y: '1920' }
+        },
+        {
+            signalName: 'Pr_K2',
+            signalPos: { x: '1330', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1315', y: '1940' }
+        },
+        {
+            signalName: 'Pr_K5',
+            signalPos: { x: '1330', y: '1960' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1315', y: '1960' }
+        },
+        //
+        //
+        {
+            signalName: 'Pr_J2',
+            signalPos: { x: '1360', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1375', y: '1940' }
+        },
+        //
+        //
+        {
+            signalName: 'Pr_G1',
+            signalPos: { x: '1420', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1405', y: '1920' }
+        },
+        {
+            signalName: 'Pr_G2',
+            signalPos: { x: '1410', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1395', y: '1940' }
+        },
+        {
+            signalName: 'Pr_G3',
+            signalPos: { x: '1400', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1385', y: '1980' }
+        },
+        {
+            signalName: 'Pr_G4',
+            signalPos: { x: '1420', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1405', y: '2000' }
+        },
+        //
+        // ENTRY SIGNALS RIGHT SIDE
+        //
+        {
+            signalName: 'Pr_D',
+            signalPos: { x: '1510', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1525', y: '1920' }
+        },
+        {
+            signalName: 'Pr_C',
+            signalPos: { x: '1510', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1525', y: '1940' }
+        },
+        {
+            signalName: 'Pr_B',
+            signalPos: { x: '1510', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1525', y: '1980' }
+        },
+        {
+            signalName: 'Pr_A',
+            signalPos: { x: '1510', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1525', y: '2000' }
+        },
+        //#endregion
+
+        //#region Pruszkow <-> Jozefinow / Warszawa Wlochy
+        {
+            signalName: 'L1_135SN',
+            signalPos: { x: '1590', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1575', y: '1920' }
+        },
+        {
+            signalName: 'L1_140S',
+            signalPos: { x: '1590', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1575', y: '1940' }
+        },
+        {
+            signalName: 'L1_135S',
+            signalPos: { x: '1590', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1605', y: '1920' }
+        },
+        {
+            signalName: 'L1_140SN',
+            signalPos: { x: '1590', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1605', y: '1940' }
+        },
+        //
+        //
+        {
+            signalName: 'L447_139N',
+            signalPos: { x: '1590', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1575', y: '1980' }
+        },
+        {
+            signalName: 'L447_140',
+            signalPos: { x: '1590', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1575', y: '2000' }
+        },
+        {
+            signalName: 'L447_139',
+            signalPos: { x: '1590', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1605', y: '1980' }
+        },
+        {
+            signalName: 'L447_140N',
+            signalPos: { x: '1590', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1605', y: '2000' }
+        },
+        //*
+        //** JOZEFINOW / WGT SIGNALS
+        //*
+        {
+            signalName: 'Jz_E',
+            signalPos: { x: '1670', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1655', y: '1920' }
+        },
+        {
+            signalName: 'Jz_F',
+            signalPos: { x: '1670', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1655', y: '1940' }
+        },
+        {
+            signalName: 'Jz_C',
+            signalPos: { x: '1710', y: '1880' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1725', y: '1880' }
+        },
+        {
+            signalName: 'Jz_D',
+            signalPos: { x: '1720', y: '1900' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1735', y: '1900' }
+        },
+        {
+            signalName: 'Jz_B',
+            signalPos: { x: '1730', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1745', y: '1920' }
+        },
+        {
+            signalName: 'Jz_A',
+            signalPos: { x: '1750', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1765', y: '1940' }
+        },
+        //*
+        //* WGT SIGNALS
+        //*
+        {
+            signalName: 'WGT_B',
+            signalPos: { x: '1870', y: '1800' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1855', y: '1800' }
+        },
+        {
+            signalName: 'WGT_A',
+            signalPos: { x: '1870', y: '1820' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1855', y: '1820' }
+        },
+        {
+            signalName: 'WGT_D',
+            signalPos: { x: '1870', y: '1800' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1885', y: '1800' }
+        },
+        {
+            signalName: 'WGT_C',
+            signalPos: { x: '1870', y: '1820' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1885', y: '1820' }
+        },
+        //*
+        //* ABS REG-TRACK AT JOZEFINOW 
+        //*
+        {
+            signalName: 'L447_127N',
+            signalPos: { x: '1670', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1655', y: '1980' }
+        },
+        {
+            signalName: 'L447_128',
+            signalPos: { x: '1670', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1655', y: '2000' }
+        },
+        {
+            signalName: 'L447_127',
+            signalPos: { x: '1670', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1685', y: '1980' }
+        },
+        {
+            signalName: 'L447_128N',
+            signalPos: { x: '1670', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1685', y: '2000' }
+        },
+        //*
+        //* ABS REG-TRACK AFTER JOZEFINOW
+        //*
+        {
+            signalName: 'L447_117N',
+            signalPos: { x: '1850', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1835', y: '1980' }
+        },
+        {
+            signalName: 'L447_116',
+            signalPos: { x: '1850', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1835', y: '2000' }
+        },
+        {
+            signalName: 'L447_117',
+            signalPos: { x: '1850', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1865', y: '1980' }
+        },
+        {
+            signalName: 'L447_116N',
+            signalPos: { x: '1850', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1865', y: '2000' }
+        },
+
+
+        {
+            signalName: 'L1_101SN',
+            signalPos: { x: '1930', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1915', y: '1920' }
+        },
+        {
+            signalName: 'L1_102S',
+            signalPos: { x: '1930', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1915', y: '1940' }
+        },
+        {
+            signalName: 'L1_101S',
+            signalPos: { x: '1930', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1945', y: '1920' }
+        },
+        {
+            signalName: 'L1_102SN',
+            signalPos: { x: '1930', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1945', y: '1940' }
+        },
+        //
+        //
+        {
+            signalName: 'L447_101N',
+            signalPos: { x: '1930', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1915', y: '1980' }
+        },
+        {
+            signalName: 'L447_102',
+            signalPos: { x: '1930', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1915', y: '2000' }
+        },
+        {
+            signalName: 'L447_101',
+            signalPos: { x: '1930', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1945', y: '1980' }
+        },
+        {
+            signalName: 'L447_102N',
+            signalPos: { x: '1930', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1945', y: '2000' }
+        },
+
+
+        {
+            signalName: 'L1_87SN',
+            signalPos: { x: '2010', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1995', y: '1920' }
+        },
+        {
+            signalName: 'L1_86S',
+            signalPos: { x: '2010', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1995', y: '1940' }
+        },
+        {
+            signalName: 'L1_87S',
+            signalPos: { x: '2010', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2055', y: '1920' }
+        },
+        {
+            signalName: 'L1_86SN',
+            signalPos: { x: '2010', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2055', y: '1940' }
+        },
+        //
+        //
+        {
+            signalName: 'L447_87N',
+            signalPos: { x: '2010', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1995', y: '1980' }
+        },
+        {
+            signalName: 'L447_86',
+            signalPos: { x: '2010', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1995', y: '2000' }
+        },
+        {
+            signalName: 'L447_87',
+            signalPos: { x: '2010', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2055', y: '1980' }
+        },
+        {
+            signalName: 'L447_86N',
+            signalPos: { x: '2010', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2035', y: '2040' }
+        },
+        //#endregion
+
+        //#region [Wl] Warszawa Wlochy
+        //*
+        //* SIGNALS Warszawa Golabki
+        //*
+        {
+            signalName: 'Gl_A',
+            signalPos: { x: '1930', y: '1860' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1945', y: '1860' }
+        },
+        {
+            signalName: 'Gl_B',
+            signalPos: { x: '1930', y: '1880' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '1945', y: '1880' }
+        },
+        {
+            signalName: 'Gl_D',
+            signalPos: { x: '1930', y: '1860' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1915', y: '1860' }
+        },
+        {
+            signalName: 'Gl_C',
+            signalPos: { x: '1930', y: '1880' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1915', y: '1880' }
+        },
+        //
+        // SIGNALS UPPER LEFT SIDE
+        //
+        {
+            signalName: 'Wl_Z',
+            signalPos: { x: '2010', y: '1860' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1995', y: '1860' }
+        },
+        {
+            signalName: 'Wl_V',
+            signalPos: { x: '2010', y: '1880' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '1995', y: '1880' }
+        },
+        {
+            signalName: 'Wl_Y',
+            signalPos: { x: '2060', y: '1860' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2075', y: '1860' }
+        },
+        {
+            signalName: 'Wl_P',
+            signalPos: { x: '2140', y: '1860' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2125', y: '1860' }
+        },
+        //
+        // ENTRY SIGNALS LEFT SIDE
+        //
+        {
+            signalName: 'Wl_R',
+            signalPos: { x: '2120', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2105', y: '1920' }
+        },
+        {
+            signalName: 'Wl_S',
+            signalPos: { x: '2120', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2105', y: '1940' }
+        },
+        {
+            signalName: 'Wl_T',
+            signalPos: { x: '2120', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2105', y: '1980' }
+        },
+        {
+            signalName: 'Wl_U',
+            signalPos: { x: '2120', y: '2000' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2105', y: '2000' }
+        },
+        {
+            signalName: 'Wl_L',
+            signalPos: { x: '2110', y: '2020' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2125', y: '2020' }
+        },
+        {
+            signalName: 'Wl_W',
+            signalPos: { x: '2120', y: '2040' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2105', y: '2040' }
+        },
+        {
+            signalName: 'Wl_K',
+            signalPos: { x: '2120', y: '2040' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2135', y: '2040' }
+        },
+        //
+        //
+        {
+            signalName: 'Wl_N',
+            signalPos: { x: '2160', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2175', y: '1920' }
+        },
+        {
+            signalName: 'Wl_M',
+            signalPos: { x: '2160', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2175', y: '1980' }
+        },
+        //
+        //
+        {
+            signalName: 'Wl_G',
+            signalPos: { x: '2240', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2225', y: '1980' }
+        },
+        {
+            signalName: 'Wl_H',
+            signalPos: { x: '2240', y: '2020' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2225', y: '2020' }
+        },
+        {
+            signalName: 'Wl_J',
+            signalPos: { x: '2240', y: '2040' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2225', y: '2040' }
+        },
+        //
+        // ENTRY SIGNAL RIGHT SIDE
+        //
+        {
+            signalName: 'Wl_E',
+            signalPos: { x: '2370', y: '1920' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2385', y: '1920' }
+        },
+        {
+            signalName: 'Wl_D',
+            signalPos: { x: '2370', y: '1940' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2385', y: '1940' }
+        },
+        {
+            signalName: 'Wl_C',
+            signalPos: { x: '2370', y: '1980' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2385', y: '1980' }
+        },
+        {
+            signalName: 'Wl_B',
+            signalPos: { x: '2370', y: '2020' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2385', y: '2020' }
+        },
+        {
+            signalName: 'Wl_A',
+            signalPos: { x: '2370', y: '2040' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2385', y: '2040' }
+        },
+        //#endregion
+
+        //#region Warszawa Wlochy <-> Warszawa Zachodnia
+        {
+            signalName: 'L447_63N',
+            signalPos: { x: '2370', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2355', y: '1980' }
+        },
+        {
+            signalName: 'L3_62L',
+            signalPos: { x: '2370', y: '2020' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2355', y: '2020' }
+        },
+        {
+            signalName: 'L447_62',
+            signalPos: { x: '2370', y: '2040' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2355', y: '2040' }
+        },
+        //
+        //
+        {
+            signalName: 'L1_55SN',
+            signalPos: { x: '2450', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2435', y: '1920' }
+        },
+        {
+            signalName: 'L1_60S',
+            signalPos: { x: '2450', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2435', y: '1940' }
+        },
+        {
+            signalName: 'L447_57N',
+            signalPos: { x: '2450', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2435', y: '1980' }
+        },
+        {
+            signalName: 'L3_56L',
+            signalPos: { x: '2450', y: '2020' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2435', y: '2020' }
+        },
+        {
+            signalName: 'L447_56',
+            signalPos: { x: '2450', y: '2040' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2435', y: '2040' }
+        },
+        //
+        {
+            signalName: 'L1_55S',
+            signalPos: { x: '2450', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2465', y: '1920' }
+        },
+        {
+            signalName: 'L1_60SN',
+            signalPos: { x: '2450', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2465', y: '1940' }
+        },
+        {
+            signalName: 'L447_57',
+            signalPos: { x: '2450', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2465', y: '1980' }
+        },
+        {
+            signalName: 'L3_56LN',
+            signalPos: { x: '2450', y: '2020' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2465', y: '2020' }
+        },
+        {
+            signalName: 'L447_56N',
+            signalPos: { x: '2450', y: '2040' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '2465', y: '2040' }
+        },
+        //
+        //
+        {
+            signalName: 'L1_45SN',
+            signalPos: { x: '2530', y: '1920' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2515', y: '1920' }
+        },
+        {
+            signalName: 'L1_46S',
+            signalPos: { x: '2530', y: '1940' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2515', y: '1940' }
+        },
+        {
+            signalName: 'L447_49N',
+            signalPos: { x: '2530', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2515', y: '1980' }
+        },
+        {
+            signalName: 'L3_52',
+            signalPos: { x: '2530', y: '2020' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2515', y: '2020' }
+        },
+        {
+            signalName: 'L447_52',
+            signalPos: { x: '2530', y: '2040' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '2515', y: '2040' }
+        },
+        //#endregion
+        
+        //
+        //#endregion
+        //
+        
+        //
+        //#region SRTO A1.R10
+        //
+
+        //#region Wlochy <-> Zachodnia [R10]
+        {
+            signalName: 'L1_45S',
+            signalPos: { x: '30', y: '2200' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '45', y: '2200' }
+        },
+        {
+            signalName: 'L1_46SN',
+            signalPos: { x: '30', y: '2220' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '45', y: '2220' }
+        },
+        {
+            signalName: 'L447_49',
+            signalPos: { x: '30', y: '2260' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '45', y: '2260' }
+        },
+        {
+            signalName: 'L3_52N',
+            signalPos: { x: '30', y: '2300' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '45', y: '2300' }
+        },
+        {
+            signalName: 'L447_52N',
+            signalPos: { x: '30', y: '2320' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '45', y: '2320' }
+        },
+        //
+        //
+        {
+            signalName: 'L447_43N',
+            signalPos: { x: '110', y: '2260' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '95', y: '2260' }
+        },
+        {
+            signalName: 'L3_46L',
+            signalPos: { x: '110', y: '2300' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '95', y: '2300' }
+        },
+        {
+            signalName: 'L447_42',
+            signalPos: { x: '110', y: '2320' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '95', y: '2320' }
+        },
+        //
+        {
+            signalName: 'L447_43',
+            signalPos: { x: '110', y: '2260' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '125', y: '2260' }
+        },
+        {
+            signalName: 'L3_46LN',
+            signalPos: { x: '110', y: '2300' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '125', y: '2300' }
+        },
+        {
+            signalName: 'L447_42N',
+            signalPos: { x: '110', y: '2320' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '125', y: '2320' }
+        },
+        //
+        {
+            signalName: 'L447_37',
+            signalPos: { x: '190', y: '2260' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '205', y: '2260' }
+        },
+        {
+            signalName: 'L3_38LN',
+            signalPos: { x: '190', y: '2300' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '205', y: '2300' }
+        },
+        {
+            signalName: 'L447_36N',
+            signalPos: { x: '190', y: '2320' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '205', y: '2320' }
+        },
+        //#endregion
+
+        //#region W. ZACHODNIA
+        {
+            signalName: 'WDZ_W',
+            signalPos: { x: '190', y: '2200' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '175', y: '2200' }
+        },
+        {
+            signalName: 'WDZ_Z',
+            signalPos: { x: '190', y: '2220' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '175', y: '2220' }
+        },
+        {
+            signalName: 'WDZ_Q',
+            signalPos: { x: '190', y: '2260' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '175', y: '2260' }
+        },
+        {
+            signalName: 'WDZ_T',
+            signalPos: { x: '190', y: '2300' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '175', y: '2300' }
+        },
+        {
+            signalName: 'WDZ_O',
+            signalPos: { x: '190', y: '2320' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '175', y: '2320' }
+        },
+        {
+            signalName: 'WDZ_U1',
+            signalPos: { x: '190', y: '2200' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '205', y: '2200' }
+        },
+        {
+            signalName: 'WDZ_U2',
+            signalPos: { x: '190', y: '2220' },
+            isSignalABS: false,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '205', y: '2220' }
+        },
         //#endregion
 
         //

@@ -8,9 +8,9 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
         //#region Additional Annotations (Track Breaks / Different Screen Areas)
         {
             nodeID: 'wip-info',
-            nodePos: { x: 950, y: 1800 },
+            nodePos: { x: 1290, y: 2300 },
             nodeType: 'simpleText',
-            text: 'W.I.P. ==>',
+            text: 'W.I.P. | Warszawa Zachodnia / Centralna / Wschodnia',
             textColor: 'white',
             textSize: 20
         },
@@ -61,6 +61,12 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'differentScreenMarker',
             nodePos: { x: 2350, y: 1510 },
             text: 'Radom',
+        },
+        {
+            nodeID: 'screenMarker-Łódź_Voivodeship',
+            nodeType: 'differentScreenMarker',
+            nodePos: { x: 10, y: 2030 },
+            text: 'Łódź Voivodeship',
         },
         {
             nodeID: 'trackBreakMarker-Bedzin_DabrowaGornicza',
@@ -132,6 +138,26 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 secondMarker: { x: 40, y: 1690 }
             }
         },
+        {
+            nodeID: 'trackBreakMarker-CMK_H',
+            nodePos: { x: 0, y: 0 },
+            nodeType: 'trackBreakMarker',
+            text: 'H',
+            breakMarker: {
+                firstMarker: { x: 1790, y: 1700 },
+                secondMarker: { x: 40, y: 1890 }
+            }
+        },
+        {
+            nodeID: 'trackBreakMarker-Wlochy_Zachodnia',
+            nodePos: { x: 0, y: 0 },
+            nodeType: 'trackBreakMarker',
+            text: 'J',
+            breakMarker: {
+                firstMarker: { x: 2540, y: 1900 },
+                secondMarker: { x: 40, y: 2170 }
+            }
+        },
         //#endregion
 
         //
@@ -143,55 +169,55 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeID: 'tm-Bry_BRY_1',
             nodeType: 'trackMarker',
             nodePos: { x: 80, y: 40 },
-            text: 'BRY_1',
+            text: 'BRY1',
         },
         {
-            nodeID: 'tm-20',
+            nodeID: 'tm-Bry_KO_20',
             nodeType: 'trackMarker',
             nodePos: { x: 150, y: 40 },
             text: '20',
         },
         {
-            nodeID: 'tm-15',
+            nodeID: 'tm-Bry_KO_15',
             nodeType: 'trackMarker',
             nodePos: { x: 230, y: 40 },
             text: '15',
         },
         {
-            nodeID: 'tm-21',
+            nodeID: 'tm-KTC_1',
             nodeType: 'trackMarker',
             nodePos: { x: 50, y: 140 },
+            text: 'KTC1',
+        },
+        {
+            nodeID: 'tm-KTC_2',
+            nodeType: 'trackMarker',
+            nodePos: { x: 50, y: 160 },
+            text: 'KTC2',
+        },
+        {
+            nodeID: 'tm-KTC_KO_21',
+            nodeType: 'trackMarker',
+            nodePos: { x: 130, y: 140 },
             text: '21',
         },
         {
-            nodeID: 'tm-28',
+            nodeID: 'tm-KTC_KO_28',
             nodeType: 'trackMarker',
-            nodePos: { x: 50, y: 160 },
+            nodePos: { x: 130, y: 160 },
             text: '28',
         },
         {
-            nodeID: 'tm-17',
+            nodeID: 'tm-KTC_KO_17',
             nodeType: 'trackMarker',
-            nodePos: { x: 130, y: 140 },
+            nodePos: { x: 210, y: 140 },
             text: '17',
         },
         {
-            nodeID: 'tm-22',
-            nodeType: 'trackMarker',
-            nodePos: { x: 130, y: 160 },
-            text: '22',
-        },
-        {
-            nodeID: 'tm-1Ch',
-            nodeType: 'trackMarker',
-            nodePos: { x: 210, y: 140 },
-            text: '1Ch',
-        },
-        {
-            nodeID: 'tm-2Ch',
+            nodeID: 'tm-KTC_KO_22',
             nodeType: 'trackMarker',
             nodePos: { x: 210, y: 160 },
-            text: '2Ch',
+            text: '22',
         },
         {
             nodeID: 'tm-Bry3a',
@@ -218,13 +244,13 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             text: '2b',
         },
         {
-            nodeID: 'tm-3L',
+            nodeID: 'tm-Bry_KO_3L',
             nodeType: 'trackMarker',
             nodePos: { x: 210, y: 180 },
             text: '3L',
         },
         {
-            nodeID: 'tm-2L',
+            nodeID: 'tm-Bry_KO_2L',
             nodeType: 'trackMarker',
             nodePos: { x: 210, y: 200 },
             text: '2L',
@@ -1169,6 +1195,48 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
         //#endregion
 
         //#region Dabrowa Gornicza Zabkowice <-> Lazy LC
+        {
+            nodeID: 'peron_DGSikorka',
+            nodeType: 'platform',
+            nodePos: { x: 1360, y: 425 },
+            width: 40,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'po-DGSikorka',
+            nodeType: 'simpleText',
+            nodePos: { x: 1380, y: 400 },
+            text: 'D. G. Sikorka',
+            textSize: phFontSize,
+            strokeWidth: 0.5,
+            textColor: 'white'
+        },
+        {
+            nodeID: 'peron_Chruszczobród_1',
+            nodeType: 'platform',
+            nodePos: { x: 1515, y: 425 },
+            width: 40,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'peron_Chruszczobród_2',
+            nodeType: 'platform',
+            nodePos: { x: 1515, y: 485 },
+            width: 40,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'po-Chruszczobród',
+            nodeType: 'simpleText',
+            nodePos: { x: 1535, y: 400 },
+            text: 'Chruszczobród',
+            textSize: phFontSize,
+            strokeWidth: 0.5,
+            textColor: 'white'
+        },
         {
             nodeID: 'tm-DZ_LC_2899D',
             nodeType: 'trackMarker',
@@ -3077,7 +3145,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
         //
         //#region SRTO A1.R6
         //
-        
+
         //#region Olszamowice <-> Pilichowice [ROW 6]
         {
             nodeID: 'tm-Ol_Pl_1145',
@@ -3149,14 +3217,14 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
         {
             nodeID: 'station_Pilichowice',
             nodeType: 'stationName',
-            stationPrefix: 'Ol',
+            stationPrefix: 'Pl',
             stationName: 'Pilichowice',
             nodePos: { x: 465, y: 1400 },
         },
         {
             nodeID: 'simpleText_Pilichowice_Olszamowice',
             nodeType: 'simpleText',
-            nodePos: { x: 465, y: 1420},
+            nodePos: { x: 465, y: 1420 },
             textSize: 10,
             text: `Controlled by Olszamowice`
         },
@@ -3268,6 +3336,14 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Op',
             stationName: 'Opoczno Południe',
             nodePos: { x: 1205, y: 1380 },
+        },
+        {
+            nodeID: 'peron_OpocnoPoludnie',
+            nodeType: 'platform',
+            nodePos: { x: 1180, y: 1485 },
+            width: 40,
+            height: 10,
+            text: 'Peron I'
         },
         {
             nodeID: 'tm-OP_3',
@@ -3835,14 +3911,14 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
         {
             nodeID: 'station_BialaRawska',
             nodeType: 'stationName',
-            stationPrefix: 'St',
+            stationPrefix: 'BR',
             stationName: 'Biała Rawska',
             nodePos: { x: 1725, y: 1540 },
         },
         {
             nodeID: 'simpleText_BialaRawska',
             nodeType: 'simpleText',
-            nodePos: { x: 1725, y: 1560},
+            nodePos: { x: 1725, y: 1560 },
             textSize: 10,
             text: `Controlled by Strzałki`
         },
@@ -4018,6 +4094,982 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'trackMarker',
             nodePos: { x: 790, y: 1780 },
             text: '6',
+        },
+        //#endregion
+
+        //#region Szeligi <-> Korytow
+        {
+            nodeID: 'tm-Se_Mr_01',
+            nodeType: 'trackMarker',
+            nodePos: { x: 960, y: 1760 },
+            text: '01',
+        },
+        {
+            nodeID: 'tm-Se_Mr_15',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1040, y: 1760 },
+            text: '15',
+        },
+        {
+            nodeID: 'tm-Se_Kr_197',
+            nodeType: 'trackMarker',
+            nodePos: { x: 960, y: 1720 },
+            text: '197',
+        },
+        {
+            nodeID: 'tm-Se_Kr_214',
+            nodeType: 'trackMarker',
+            nodePos: { x: 960, y: 1740 },
+            text: '214',
+        },
+        {
+            nodeID: 'tm-Se_Kr_185',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1040, y: 1720 },
+            text: '185',
+        },
+        {
+            nodeID: 'tm-Se_Kr_198',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1040, y: 1740 },
+            text: '198',
+        },
+        {
+            nodeID: 'tm-Se_Kr_167',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1120, y: 1720 },
+            text: '167',
+        },
+        {
+            nodeID: 'tm-Se_Kr_184',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1120, y: 1740 },
+            text: '184',
+        },
+        {
+            nodeID: 'tm-Se_Kr_155',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1200, y: 1720 },
+            text: '155',
+        },
+        {
+            nodeID: 'tm-Se_Kr_168',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1200, y: 1740 },
+            text: '168',
+        },
+        //#endregion
+
+        //#region [Kr] Korytow
+        {
+            nodeID: 'post_Korytow',
+            nodeType: 'dispatchingPost',
+            nodePos: { x: 1260, y: 1770 },
+            postType: 'computer'
+        },
+        {
+            nodeID: 'station_Korytow',
+            nodeType: 'stationName',
+            stationPrefix: 'Kr',
+            stationName: 'Korytów',
+            nodePos: { x: 1340, y: 1670 },
+        },
+        {
+            nodeID: 'tm-Kr_3',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1340, y: 1700 },
+            text: '3',
+        },
+        {
+            nodeID: 'tm-Kr_1',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1340, y: 1720 },
+            text: '1',
+        },
+        {
+            nodeID: 'tm-Kr_2',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1340, y: 1740 },
+            text: '2',
+        },
+        {
+            nodeID: 'tm-Kr_4',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1340, y: 1760 },
+            text: '4',
+        },
+        //#endregion
+
+        //#region Korytow <-> Grodzisk Mazowiecki [R8]
+        {
+            nodeID: 'tm-Kr_Gr_109',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1490, y: 1720 },
+            text: '109',
+        },
+        {
+            nodeID: 'tm-Kr_Gr_122',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1490, y: 1740 },
+            text: '122',
+        },
+        {
+            nodeID: 'tm-Kr_Gr_91',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1570, y: 1720 },
+            text: '91',
+        },
+        {
+            nodeID: 'tm-Kr_Gr_108',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1570, y: 1740 },
+            text: '108',
+        },
+        {
+            nodeID: 'tm-Kr_Gr_73',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1650, y: 1720 },
+            text: '73',
+        },
+        {
+            nodeID: 'tm-Kr_Gr_90',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1650, y: 1740 },
+            text: '90',
+        },
+        {
+            nodeID: 'tm-Kr_Gr_51',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1730, y: 1720 },
+            text: '51',
+        },
+        {
+            nodeID: 'tm-Kr_Gr_74',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1730, y: 1740 },
+            text: '74',
+        },
+        //#endregion
+
+        //
+        //#endregion
+        //
+        
+        //
+        //#region SRTO NODES A1.R9
+        //
+
+        //#region Korytow <-> Grodzisk Mazowiecki [R9]
+        {
+            nodeID: 'tm-Kr_Gr_31',
+            nodeType: 'trackMarker',
+            nodePos: { x: 70, y: 1920 },
+            text: '31',
+        },
+        {
+            nodeID: 'tm-Kr_Gr_50',
+            nodeType: 'trackMarker',
+            nodePos: { x: 70, y: 1940 },
+            text: '50',
+        },
+        {
+            nodeID: 'tm-Kr_Gr_17',
+            nodeType: 'trackMarker',
+            nodePos: { x: 150, y: 1920 },
+            text: '17',
+        },
+        {
+            nodeID: 'tm-Kr_Gr_32',
+            nodeType: 'trackMarker',
+            nodePos: { x: 150, y: 1940 },
+            text: '32',
+        },
+        //#endregion
+
+        //#region [Gr] Grodzisk Mazowiecki
+        {
+            nodeID: 'post_GrodziskMazowiecki',
+            nodeType: 'dispatchingPost',
+            nodePos: { x: 360, y: 1870 },
+            postType: 'computer'
+        },
+        {
+            nodeID: 'station_GrodziskMazowiecki',
+            nodeType: 'stationName',
+            stationPrefix: 'Gr',
+            stationName: 'Grodzisk Mazowiecki',
+            nodePos: { x: 410, y: 1850 },
+        },
+        {
+            nodeID: 'peron_GrodziskMazowiecki_2',
+            nodeType: 'platform',
+            nodePos: { x: 380, y: 1965 },
+            width: 50,
+            height: 10,
+            text: 'Peron II'
+        },
+        {
+            nodeID: 'peron_GrodziskMazowiecki_1',
+            nodeType: 'platform',
+            nodePos: { x: 380, y: 2005 },
+            width: 40,
+            height: 10,
+            text: 'Peron I'
+        },
+        {
+            nodeID: 'tm-Gr_11',
+            nodeType: 'trackMarker',
+            nodePos: { x: 410, y: 1900 },
+            text: '11',
+        },
+        {
+            nodeID: 'tm-Gr_1',
+            nodeType: 'trackMarker',
+            nodePos: { x: 410, y: 1920 },
+            text: '1',
+        },
+        {
+            nodeID: 'tm-Gr_2',
+            nodeType: 'trackMarker',
+            nodePos: { x: 410, y: 1940 },
+            text: '2',
+        },
+        {
+            nodeID: 'tm-Gr_14',
+            nodeType: 'trackMarker',
+            nodePos: { x: 410, y: 1960 },
+            text: '14',
+        },
+        {
+            nodeID: 'tm-Gr_3',
+            nodeType: 'trackMarker',
+            nodePos: { x: 410, y: 1980 },
+            text: '3',
+        },
+        {
+            nodeID: 'tm-Gr_3a',
+            nodeType: 'trackMarker',
+            nodePos: { x: 490, y: 1980 },
+            text: '3a',
+        },
+        {
+            nodeID: 'tm-Gr_4b',
+            nodeType: 'trackMarker',
+            nodePos: { x: 340, y: 2000 },
+            text: '4b',
+        },
+        {
+            nodeID: 'tm-Gr_4',
+            nodeType: 'trackMarker',
+            nodePos: { x: 410, y: 2000 },
+            text: '4',
+        },
+        //#endregion
+
+        //#region Grodzisk Mazowiecki <-> Pruszkow
+        {
+            nodeID: 'peron_Milanowek',
+            nodeType: 'platform',
+            nodePos: { x: 660, y: 1985 },
+            width: 40,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'po-Milanowek',
+            nodeType: 'simpleText',
+            nodePos: { x: 680, y: 1965 },
+            text: 'Milanówek',
+            textSize: phFontSize,
+            strokeWidth: 0.5,
+            textColor: 'white'
+        },
+        {
+            nodeID: 'peron_Brwinów',
+            nodeType: 'platform',
+            nodePos: { x: 890, y: 1985 },
+            width: 40,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'po-Brwinów',
+            nodeType: 'simpleText',
+            nodePos: { x: 910, y: 1965 },
+            text: 'Brwinów',
+            textSize: phFontSize,
+            strokeWidth: 0.5,
+            textColor: 'white'
+        },
+        {
+            nodeID: 'peron_Parzniew',
+            nodeType: 'platform',
+            nodePos: { x: 1060, y: 1985 },
+            width: 40,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'po-Parzniew',
+            nodeType: 'simpleText',
+            nodePos: { x: 1080, y: 1965 },
+            text: 'Parzniew',
+            textSize: phFontSize,
+            strokeWidth: 0.5,
+            textColor: 'white'
+        },
+        {
+            nodeID: 'tm-Gr_Pr_267S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 600, y: 1920 },
+            text: '267S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_280S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 600, y: 1940 },
+            text: '280S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_271',
+            nodeType: 'trackMarker',
+            nodePos: { x: 600, y: 1980 },
+            text: '271',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_280',
+            nodeType: 'trackMarker',
+            nodePos: { x: 600, y: 2000 },
+            text: '280',
+        },
+
+        {
+            nodeID: 'tm-Gr_Pr_253S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 680, y: 1920 },
+            text: '253S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_266S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 680, y: 1940 },
+            text: '266S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_253',
+            nodeType: 'trackMarker',
+            nodePos: { x: 680, y: 1980 },
+            text: '253',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_270',
+            nodeType: 'trackMarker',
+            nodePos: { x: 680, y: 2000 },
+            text: '270',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_237S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 760, y: 1920 },
+            text: '237S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_252S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 760, y: 1940 },
+            text: '252S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_237',
+            nodeType: 'trackMarker',
+            nodePos: { x: 760, y: 1980 },
+            text: '237',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_252',
+            nodeType: 'trackMarker',
+            nodePos: { x: 760, y: 2000 },
+            text: '252',
+        },
+        //
+        {
+            nodeID: 'tm-Gr_Pr_221S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 840, y: 1920 },
+            text: '221S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_238S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 840, y: 1940 },
+            text: '238S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_221',
+            nodeType: 'trackMarker',
+            nodePos: { x: 840, y: 1980 },
+            text: '221',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_238',
+            nodeType: 'trackMarker',
+            nodePos: { x: 840, y: 2000 },
+            text: '238',
+        },
+        //
+        {
+            nodeID: 'tm-Gr_Pr_207S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 920, y: 1920 },
+            text: '207S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_222S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 920, y: 1940 },
+            text: '222S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_207',
+            nodeType: 'trackMarker',
+            nodePos: { x: 920, y: 1980 },
+            text: '207',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_228',
+            nodeType: 'trackMarker',
+            nodePos: { x: 920, y: 2000 },
+            text: '228',
+        },
+        //
+        {
+            nodeID: 'tm-Gr_Pr_193S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1000, y: 1920 },
+            text: '193S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_208S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1000, y: 1940 },
+            text: '208S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_193',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1000, y: 1980 },
+            text: '193',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_208',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1000, y: 2000 },
+            text: '208',
+        },
+        //
+        {
+            nodeID: 'tm-Gr_Pr_181S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1080, y: 1920 },
+            text: '181S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_194S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1080, y: 1940 },
+            text: '194S',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_181',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1080, y: 1980 },
+            text: '181',
+        },
+        {
+            nodeID: 'tm-Gr_Pr_194',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1080, y: 2000 },
+            text: '194',
+        },
+        //#endregion
+
+        //#region [Pr] Pruszkow
+        {
+            nodeID: 'post_Pruszkow',
+            nodeType: 'dispatchingPost',
+            nodePos: { x: 1310, y: 2020 },
+            postType: 'computer'
+        },
+        {
+            nodeID: 'station_Pruszkow',
+            nodeType: 'stationName',
+            stationPrefix: 'Pr',
+            stationName: 'Pruszków',
+            nodePos: { x: 1310, y: 1830 },
+        },
+        {
+            nodeID: 'peron_Pruszkow',
+            nodeType: 'platform',
+            nodePos: { x: 1350, y: 1985 },
+            width: 40,
+            height: 10,
+            text: 'Peron I'
+        },
+        {
+            nodeID: 'tm-Pr_13',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1290, y: 1860 },
+            text: '13',
+        },
+        {
+            nodeID: 'tm-Pr_11',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1290, y: 1880 },
+            text: '11',
+        },
+        {
+            nodeID: 'tm-Pr_7',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1290, y: 1900 },
+            text: '7',
+        },
+        {
+            nodeID: 'tm-Pr_1',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1270, y: 1920 },
+            text: '1',
+        },
+        {
+            nodeID: 'tm-Pr_2',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1270, y: 1940 },
+            text: '2',
+        },
+        {
+            nodeID: 'tm-Pr_5',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1270, y: 1960 },
+            text: '5',
+        },
+        {
+            nodeID: 'tm-Pr_3',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1270, y: 1980 },
+            text: '3',
+        },
+        {
+            nodeID: 'tm-Pr_4',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1270, y: 2000 },
+            text: '4',
+        },
+        {
+            nodeID: 'tm-Pr_3c',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1370, y: 1980 },
+            text: '3c',
+        },
+        {
+            nodeID: 'tm-Pr_4b',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1370, y: 2000 },
+            text: '4b',
+        },
+        //#endregion
+
+        //#region Pruszkow <-> Joefinow / Warszawa Wlochy
+        {
+            nodeID: 'peron_Piastów',
+            nodeType: 'platform',
+            nodePos: { x: 1690, y: 1985 },
+            width: 40,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'po-Piastów',
+            nodeType: 'simpleText',
+            nodePos: { x: 1710, y: 1965 },
+            text: 'Piastów',
+            textSize: phFontSize,
+            strokeWidth: 0.5,
+            textColor: 'white'
+        },
+        {
+            nodeID: 'peron_WarszUrsusNiedzwiedek',
+            nodeType: 'platform',
+            nodePos: { x: 1880, y: 1985 },
+            width: 40,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'po-WarszUrsusNiedzwiedek',
+            nodeType: 'simpleText',
+            nodePos: { x: 1870, y: 2020 },
+            text: 'W. Ursus Niedźwiadek',
+            textSize: phFontSize,
+            strokeWidth: 0.5,
+            textColor: 'white'
+        },
+        {
+            nodeID: 'peron_WarszUrsus_1',
+            nodeType: 'platform',
+            nodePos: { x: 1960, y: 1985 },
+            width: 40,
+            height: 10,
+            text: ''
+        },
+        {
+            nodeID: 'peron_WarszUrsus_2',
+            nodeType: 'platform',
+            nodePos: { x: 1960, y: 2005 },
+            width: 40,
+            height: 7.5,
+            text: ''
+        },
+        {
+            nodeID: 'po-WarszUrsus',
+            nodeType: 'simpleText',
+            nodePos: { x: 1980, y: 1965 },
+            text: 'Warszawa Ursus',
+            textSize: phFontSize,
+            strokeWidth: 0.5,
+            textColor: 'white'
+        },
+        {
+            nodeID: 'tm-Pr_Wl_135S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1550, y: 1920 },
+            text: '135S',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_148S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1550, y: 1940 },
+            text: '148S',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_139',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1550, y: 1980 },
+            text: '139',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_148',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1550, y: 2000 },
+            text: '148',
+        },
+        //
+        {
+            nodeID: 'tm-Pr_Wl_127S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1630, y: 1920 },
+            text: '127S',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_140S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1630, y: 1940 },
+            text: '140S',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_127',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1630, y: 1980 },
+            text: '127',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_140',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1630, y: 2000 },
+            text: '140',
+        },
+        //
+        {
+            nodeID: 'tm-Pr_Wl_117',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1760, y: 1980 },
+            text: '117',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_128',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1760, y: 2000 },
+            text: '128',
+        },
+        //
+        {
+            nodeID: 'tm-Pr_Wl_101S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1870, y: 1920 },
+            text: '101S',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_116S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1840, y: 1940 },
+            text: '116S',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_101',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1890, y: 1980 },
+            text: '101',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_116',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1890, y: 2000 },
+            text: '116',
+        },
+        //
+        {
+            nodeID: 'tm-Pr_Wl_87S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1970, y: 1920 },
+            text: '87S',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_102S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1970, y: 1940 },
+            text: '102S',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_87',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1970, y: 1980 },
+            text: '87',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_102',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1970, y: 2000 },
+            text: '102',
+        },
+        //
+        {
+            nodeID: 'tm-Pr_Wl_73S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2080, y: 1920 },
+            text: '73S',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_86S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2080, y: 1940 },
+            text: '86S',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_73',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2080, y: 1980 },
+            text: '73',
+        },
+        {
+            nodeID: 'tm-Pr_Wl_86',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2070, y: 2040 },
+            text: '86',
+        },
+        //#endregion
+
+        //#region [Wl] Warszawa Wlochy
+        {
+            nodeID: 'post_WarszawaWlochy',
+            nodeType: 'dispatchingPost',
+            nodePos: { x: 2250, y: 2050 },
+            postType: 'computer'
+        },
+        {
+            nodeID: 'station_WarszawaWlochy',
+            nodeType: 'stationName',
+            stationPrefix: 'Wl',
+            stationName: 'Warszawa Włochy',
+            nodePos: { x: 2260, y: 1880 },
+        },
+        {
+            nodeID: 'peron_WarszawaWlochy_2',
+            nodeType: 'platform',
+            nodePos: { x: 2170, y: 1985 },
+            width: 60,
+            height: 30,
+            text: 'Peron II'
+        },
+        {
+            nodeID: 'peron_WarszawaWlochy_1',
+            nodeType: 'platform',
+            nodePos: { x: 2190, y: 2045 },
+            width: 40,
+            height: 10,
+            text: 'Peron I'
+        },
+        {
+            nodeID: 'tm-Wl_1G',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1970, y: 1860 },
+            text: '1G',
+        },
+        {
+            nodeID: 'tm-Wl_2G',
+            nodeType: 'trackMarker',
+            nodePos: { x: 1970, y: 1880 },
+            text: '2G',
+        },
+        {
+            nodeID: 'tm-Wl_1a',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2100, y: 1860 },
+            text: '1a',
+        },
+        {
+            nodeID: 'tm-Wl_3a',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2080, y: 2000 },
+            text: '3a',
+        },
+        {
+            nodeID: 'tm-Wl_1',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2200, y: 1920 },
+            text: '1',
+        },
+        {
+            nodeID: 'tm-Wl_3',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2200, y: 1980 },
+            text: '3',
+        },
+        {
+            nodeID: 'tm-Wl_2',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2165, y: 2020 },
+            text: '2',
+        },
+        {
+            nodeID: 'tm-Wl_4',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2165, y: 2040 },
+            text: '4',
+        },
+        //#endregion
+
+        //#region Warszawa Wlochy <-> Warszawa Zachodnia
+        {
+            nodeID: 'tm-Wl_WZD_55S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2410, y: 1920 },
+            text: '55S',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_62S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2410, y: 1940 },
+            text: '62S',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_57',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2410, y: 1980 },
+            text: '57',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_62L',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2410, y: 2020 },
+            text: '62L',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_62',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2410, y: 2040 },
+            text: '62',
+        },
+        //
+        //
+        {
+            nodeID: 'tm-Wl_WZD_45S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2490, y: 1920 },
+            text: '45S',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_60S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2490, y: 1940 },
+            text: '60S',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_49',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2490, y: 1980 },
+            text: '49',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_56L',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2490, y: 2020 },
+            text: '56L',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_56',
+            nodeType: 'trackMarker',
+            nodePos: { x: 2490, y: 2040 },
+            text: '56',
+        },
+        
+        
+        {
+            nodeID: 'tm-Wl_WZD_39S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 110, y: 2200 },
+            text: '39S',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_46S',
+            nodeType: 'trackMarker',
+            nodePos: { x: 110, y: 2220 },
+            text: '46S',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_43',
+            nodeType: 'trackMarker',
+            nodePos: { x: 70, y: 2260 },
+            text: '43',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_52L',
+            nodeType: 'trackMarker',
+            nodePos: { x: 70, y: 2300 },
+            text: '52L',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_50',
+            nodeType: 'trackMarker',
+            nodePos: { x: 70, y: 2320 },
+            text: '50',
+        },
+        //
+        //
+        {
+            nodeID: 'tm-Wl_WZD_37',
+            nodeType: 'trackMarker',
+            nodePos: { x: 150, y: 2260 },
+            text: '37',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_46L',
+            nodeType: 'trackMarker',
+            nodePos: { x: 150, y: 2300 },
+            text: '46L',
+        },
+        {
+            nodeID: 'tm-Wl_WZD_42',
+            nodeType: 'trackMarker',
+            nodePos: { x: 150, y: 2320 },
+            text: '42',
         },
         //#endregion
 
