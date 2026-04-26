@@ -24,8 +24,9 @@ const canvasSettings = {
 
 interface ISelfProps {
     SRTO_PROPS: {
-        trainList: SimRailDataTypes.FilteredTrainList[],
+        trainList: SimRailDataTypes.FilteredTrainList[]
         stationList: SimRailDataTypes.StationData[]
+        // userList: SimRailDataTypes.SteamUser[] | null
         userOptions: typeof USER_OPTIONS
         devRenderOptions: RenderOptionsProps
     }
@@ -246,6 +247,18 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
 
         return `Stations: ${stationsControlledByPlayers}/${allStationsCount}`
     }
+
+    // function getUsername(steamid: string | null) {
+    //     if(!SRTO_PROPS.userList) return 'Loading...'
+    //     if (!steamid) return 'Loading...';
+
+    //     const user = SRTO_PROPS.userList.find((user) => user.steamid === steamid);
+
+    //     if (!user) {
+    //         return 'Loading...';
+    //     }
+    //     return `User: ${user.personaname}`;
+    // }
 
     const CanvasEventHandler = createCanvasEventHandler({
         canvasRef,

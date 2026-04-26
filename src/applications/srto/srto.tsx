@@ -45,6 +45,26 @@ const DISCLAIMER_KEY = "srto_disclaimer_accepted"
 
 export default function SimRailTrackOverview() {
 
+    // async function getSimRailUser() {
+    //     const trainData = trainListRef.current
+    //     if (!userOptions.selectedServer || !trainData) return;
+
+    //     const SR_USER = [];
+
+    //     for (const train of trainData) {
+    //         const steamID = train.TrainData.ControlledBySteamID
+    //         if (!steamID) continue;
+
+    //         const STEAMUSER_RAW = await SR_DATA.SteamUser(steamID);
+
+    //         if (!STEAMUSER_RAW) continue;
+
+    //         SR_USER.push(STEAMUSER_RAW);
+    //     }
+
+    //     setUserList(SR_USER);
+    // }
+
     const developmentTrain: SimRailDataTypes.FilteredTrainList = {
         TrainNoLocal: 'KORTÜR',
         Type: 'O-II-A-I',
@@ -65,6 +85,16 @@ export default function SimRailTrackOverview() {
     const [serverList, setServerList] = useState<SimRailDataTypes.ServerData[]>([]);
     const [stationList, setStationList] = useState<SimRailDataTypes.StationData[]>([]);
     const [trainList, setTrainList] = useState<SimRailDataTypes.FilteredTrainList[]>([]);
+    // const isDataLoaded = useRef<boolean>(false);
+    // const trainListRef = useRef<SimRailDataTypes.FilteredTrainList[] | null>(null);
+    // useEffect(() => {
+    //     trainListRef.current = trainList;
+    // }, [trainList])
+    // const [userList, setUserList] = useState<SimRailDataTypes.SteamUser[]>([])
+    // const userListRef = useRef<SimRailDataTypes.SteamUser[] | null>(null);
+    // useEffect(() => {
+    //     userListRef.current = userList
+    // }, [userList])
 
     const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
     const [userOptions, setUserOptions] = useState<typeof USER_OPTIONS>(() => getUserOptionsOrDefault())
@@ -101,6 +131,18 @@ export default function SimRailTrackOverview() {
     useEffect(() => {
         localStorage.setItem('USER_OPTIONS', JSON.stringify(userOptions))
     }, [userOptions])
+
+    // useEffect(() => {
+    //     if(
+    //         !isDataLoaded.current &&
+    //         userOptions.selectedServer &&
+    //         trainList.length > 0 &&
+    //         stationList.length > 0
+    //     ) {
+    //         isDataLoaded.current = true;
+    //         getSimRailUser();
+    //     }
+    // }, [trainListRef.current, stationList])
 
     useEffect(() => {
         // fetch SimRail Server
@@ -179,6 +221,18 @@ export default function SimRailTrackOverview() {
         return () => clearInterval(intervalID)
     }, [userOptions.selectedServer])
 
+    // useEffect(() => {
+    //     console.debug('useEffect for "getSimRailUser" mounting')
+    //     const intervalID = setInterval(getSimRailUser, 10000);
+
+    //     console.debug('Running "getSimRailUser()"')
+    //     getSimRailUser();
+    //     return () => {
+    //         console.debug('useEffect for "getSimRailUser" unmounting')
+    //         clearInterval(intervalID)
+    //     }
+    // }, [userOptions.selectedServer, isDataLoaded])
+
     const finalTrainList = process.env.NODE_ENV === 'development'
         ? [...trainList, developmentTrain]
         : trainList;
@@ -196,6 +250,7 @@ export default function SimRailTrackOverview() {
     const SRTO_PROPS = {
         trainList: finalTrainList,
         stationList,
+        // userList: userListRef.current,
         userOptions,
         devRenderOptions
     }

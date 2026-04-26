@@ -83,4 +83,27 @@ export namespace SimRailDataTypes {
         }
         ControlledBy: 'bot' | 'user'
     }
+
+    export interface SteamUser {
+        steamid: string,
+        communityvisibilitystate: number
+        profilestate: number
+        personaname: string
+        profileurl: string
+        avatar: string
+        avatarmedium: string
+        avatarfull: string
+        avatarhash: string
+        personastate: number
+        realname: string
+        primaryclanid: string
+        timecreated: number
+        personastateflags: number
+        gameserverip: string
+        gameserversteamid: string
+        gameextrainfo: string
+        gameid: string
+        loccountrycode: string
+        locstatecode: string
+    }
 }

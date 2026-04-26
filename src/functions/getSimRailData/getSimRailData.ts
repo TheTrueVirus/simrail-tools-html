@@ -77,9 +77,28 @@ async function SR_TRAINS(server : string) {
 
 }
 
+async function SteamUser(steamid : string) {
+    if(!steamid) return;
+
+    const URL = `https://simrail-edr.emeraldnetwork.xyz/steam/${steamid}`
+
+        try {
+        const RAW_DATA : SimRailDataTypes.SteamUser = await fetchData(URL);
+
+        if(!RAW_DATA) return null;
+
+        const STEAM_USER : SimRailDataTypes.SteamUser = RAW_DATA
+
+        return STEAM_USER
+    } catch (e) {
+
+    }
+}
+
 
 export const SR_DATA = {
     Server: SR_SERVER,
     Stations: SR_STATIONS,
     Trains: SR_TRAINS,
+    SteamUser
 }
