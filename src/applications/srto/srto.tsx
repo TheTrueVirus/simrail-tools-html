@@ -46,15 +46,18 @@ const DISCLAIMER_KEY = "srto_disclaimer_accepted"
 export default function SimRailTrackOverview() {
 
     const developmentTrain: SimRailDataTypes.FilteredTrainList = {
-        TrainNoLocal: 'DEVDEV',
-        Type: 'DEV',
+        TrainNoLocal: 'KORTÜR',
+        Type: 'O-II-A-I',
         StartStation: 'Katowice',
         EndStation: 'Warszawa',
+        Vehicles: ["Impuls/36wed-007"],
         TrainData: {
-            Velocity: 0,
-            SignalInFront: 'KO_E8',
+            ControlledBySteamID: null,
+            ControlledByXboxID: null,
+            Velocity: 50,
+            SignalInFront: 'SG_N3',
             DistanceToSignalInFront: 100,
-            SignalInFrontSpeed: 0,
+            SignalInFrontSpeed: 120,
         },
         ControlledBy: 'user'
     }
@@ -137,7 +140,10 @@ export default function SimRailTrackOverview() {
                         Type: train.TrainName,
                         StartStation: train.StartStation,
                         EndStation: train.EndStation,
+                        Vehicles: train.Vehicles,
                         TrainData: {
+                            ControlledBySteamID: train.TrainData.ControlledBySteamID,
+                            ControlledByXboxID: train.TrainData.ControlledByXboxID,
                             Velocity: train.TrainData.Velocity,
                             SignalInFront: train.TrainData.SignalInFront,
                             SignalInFrontSpeed: train.TrainData.SignalInFrontSpeed,

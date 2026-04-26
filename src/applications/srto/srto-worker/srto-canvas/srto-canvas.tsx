@@ -8,6 +8,7 @@ import { SRTO_Signals } from '../srto-data/srto-signalData';
 import { SRTO_DataTypes } from '../srto-data/srto-dataTypes';
 import { CanvasDrawer } from './srto-canvas-worker/srto-canvas-drawer';
 import { createCanvasEventHandler } from './srto-canvas-worker/srto-canvas-eventHandler';
+import HoverToolTipSignal from './tooltip-signal';
 const inDev = process.env.NODE_ENV === 'development'
 const appVersion = process.env.REACT_APP_VERSION || 'dev'
 
@@ -31,7 +32,7 @@ interface ISelfProps {
 }
 
 export type HoveredTargetType = 
-    { type: 'train', train: SimRailDataTypes.FilteredTrainList, screenX: number, screenY: number } |
+    { type: 'train', train: SimRailDataTypes.FilteredTrainList, signal: SRTO_DataTypes.SIGNAL, screenX: number, screenY: number } |
     { type: 'signal', signal: SRTO_DataTypes.SIGNAL, screenX: number, screenY: number } |
     null
 
@@ -277,18 +278,31 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
                     >
                         {hoveredTarget.type === 'train' && (
                             <>
-                                <div className='trainTooltip-title'>{`${hoveredTarget.train.TrainNoLocal} | ${hoveredTarget.train.Type}`}</div>
-                                <div className='trainTooltip-route'>{hoveredTarget.train.StartStation} → {hoveredTarget.train.EndStation}</div>
-                                <div className='trainTooltip-traindata-speed'>Current Speed: {hoveredTarget.train.TrainData.Velocity.toFixed(0)} km/h</div>
-                                <div className='trainTooltip-traindata-nextSignal'>Next Signal: {hoveredTarget.train.TrainData.SignalInFront.split('@')[0]} [{hoveredTarget.train.TrainData.DistanceToSignalInFront > 1000 ? `${(hoveredTarget.train.TrainData.DistanceToSignalInFront / 1000).toFixed(1)} km` : `${hoveredTarget.train.TrainData.DistanceToSignalInFront.toFixed(1)} m`}]</div>
-                                <div className='trainTooltip-traindata-nextSignalSpeed-speed'>Speed on Next Signal: {hoveredTarget.train.TrainData.SignalInFrontSpeed > 160 ? 'vMax' : `${hoveredTarget.train.TrainData.SignalInFrontSpeed} km/h`}</div>
-                                <div className='trainTooltip-control'>{hoveredTarget.train.ControlledBy === 'user' ? 'Player' : 'Bot'}</div>
+                                <div className='tooltip-info'>
+                                    <div className='tooltip-title'>{`${hoveredTarget.train.TrainNoLocal} | ${hoveredTarget.train.Type}`}</div>
+                                    <div className='tooltip-vehicle'>Vehicle: {hoveredTarget.train.Vehicles[0].split('/')[1].split(':')[0]}</div>
+                                    <div className='tooltip-route'>
+                                        <div className='tooltip-route-title'>Route</div>
+                                        <div className='tooltip-route-text'>{hoveredTarget.train.StartStation} → {hoveredTarget.train.EndStation}</div>
+                                    </div>
+                                    <div className='tooltip-traindata-speed'>Current Speed: {hoveredTarget.train.TrainData.Velocity.toFixed(0)} km/h</div>
+                                    <div className='tooltip-traindata-nextSignal'>Next Signal: {hoveredTarget.train.TrainData.SignalInFront.split('@')[0]} [{hoveredTarget.train.TrainData.DistanceToSignalInFront > 1000 ? `${(hoveredTarget.train.TrainData.DistanceToSignalInFront / 1000).toFixed(1)} km` : `${hoveredTarget.train.TrainData.DistanceToSignalInFront.toFixed(1)} m`}]</div>
+                                    <div className='tooltip-traindata-nextSignalSpeed'>Speed on Next Signal: {hoveredTarget.train.TrainData.SignalInFrontSpeed > 160 ? 'vMax' : `${hoveredTarget.train.TrainData.SignalInFrontSpeed} km/h`}</div>
+                                    {/* <div className='tooltip-control'>{hoveredTarget.train.ControlledBy === 'user' ? getUsername(hoveredTarget.train.TrainData.ControlledBySteamID) : 'Bot'}</div> */}
+                                    <div className='tooltip-control'>{hoveredTarget.train.ControlledBy === 'user' ? 'Player' : 'Bot'}</div>
+                                </div>
+                                <div className='trainTooltip-signalImage'>
+                                    <HoverToolTipSignal hoveredTarget={hoveredTarget} />
+                                </div>
                             </>
                         )}
                         {hoveredTarget.type === 'signal' && (
                             <>
+                                <div>
                                 <div className='trainTooltip-title'>{hoveredTarget.signal.signalName}</div>
                                 <div className='trainTooltip-subtitle'>{hoveredTarget.signal.isSignalABS ? 'ABS-Signal' : 'Station-Signal'}</div>
+                                </div>
+                                <div></div>
                             </>
                         )}
                     </div>

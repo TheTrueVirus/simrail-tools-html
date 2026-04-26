@@ -72,7 +72,10 @@ export namespace SimRailDataTypes {
         Type: string
         StartStation: string
         EndStation: string
+        Vehicles: string[]
         TrainData: {
+            ControlledBySteamID: string | null,
+            ControlledByXboxID: string | null,
             Velocity: number
             SignalInFront: string
             SignalInFrontSpeed: number

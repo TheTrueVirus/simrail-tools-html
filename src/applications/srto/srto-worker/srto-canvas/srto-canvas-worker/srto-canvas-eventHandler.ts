@@ -170,8 +170,9 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
                             hit = {
                                 type: 'train',
                                 train,
+                                signal,
                                 screenX: (tx + (signal.signalDirectionOnMap === 'right' ? -25 : 25)) * scale + viewRef.current.panX,
-                                screenY: (ty - 10) * scale + viewRef.current.panY
+                                screenY: (ty) * scale + viewRef.current.panY
                             }
                             break
                         }
