@@ -32,7 +32,7 @@ interface ISelfProps {
     }
 }
 
-export type HoveredTargetType = 
+export type HoveredTargetType =
     { type: 'train', train: SimRailDataTypes.FilteredTrainList, signal: SRTO_DataTypes.SIGNAL, screenX: number, screenY: number } |
     { type: 'signal', signal: SRTO_DataTypes.SIGNAL, screenX: number, screenY: number } |
     null
@@ -61,6 +61,8 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
     const rafRef = useRef<number | null>(null)
     const canvasSizeRef = useRef({ width: 0, height: 0, dpr: 0 })
     const tooltipRef = useRef<HTMLDivElement | null>(null);
+
+    const [showDevMenu, toggleDevMenu] = useState<boolean>(false);
 
     const allowExtendedViewRef = useRef(SRTO_PROPS.userOptions.allowExtendedView);
     const minZoomRef = useRef(canvasSettings.MIN_ZOOM_FIT)
@@ -190,7 +192,7 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
 
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
-        ctx.fillStyle = 'black'
+        ctx.fillStyle = 'rgb(0, 0, 0)'
         ctx.fillRect(0, 0, rect.width, rect.height)
 
         // Base scale always fits world width (2560) into current viewport width.
@@ -312,8 +314,8 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
                         {hoveredTarget.type === 'signal' && (
                             <>
                                 <div>
-                                <div className='trainTooltip-title'>{hoveredTarget.signal.signalName}</div>
-                                <div className='trainTooltip-subtitle'>{hoveredTarget.signal.isSignalABS ? 'ABS-Signal' : 'Station-Signal'}</div>
+                                        <div className='trainTooltip-title'>{hoveredTarget.signal.signalName}</div>
+                                        <div className='trainTooltip-subtitle'>{hoveredTarget.signal.isSignalABS ? 'ABS-Signal' : 'Station-Signal'}</div>
                                 </div>
                                 <div></div>
                             </>
@@ -347,17 +349,28 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
                 <div className="svgCoordinates">
                     Extended view: {SRTO_PROPS.userOptions.allowExtendedView ? 'ON' : 'OFF'}
                 </div>
-                {inDev &&
-                    <>
-                        <div className="devInfo">
-                            <div className="tracksCount">{`Track Count: ${TRACK_DATA.length}`}</div>
-                            <div className="signalCount">{`SignalCount: ${SIGNAL_DATA.length}`}</div>
-                            <div className="nodesCount">{`Nodes Count: ${NODE_DATA.length}`}</div>
-                        </div>
-                    </>
-                }
-                <div className='versionInfo'>{`SRTO-Version: ${appVersion}`}</div>
+                <div className='versionInfo'>
+                    <div>Copyright (c) 2026 TheTrueVirus<br /><br />{`SRTO-Version: ${appVersion}`}</div>
+                </div>
             </div>
+            {inDev &&
+                <div className={`devInfoContainer ${showDevMenu ? 'devInfoVisible' : 'devInfoHidden'}`} onClick={() => toggleDevMenu(!showDevMenu)}>
+                    <div className='devInfo-title'>DEV INFO</div>
+                    <div className="devInfoBox">
+                        <div className='devInfo-title'>SRTO-DATA Info:</div>
+                        <div className="tracksCount">{`Track Count: ${TRACK_DATA.length}`}</div>
+                        <div className="signalCount">{`Signal Count: ${SIGNAL_DATA.length}`}</div>
+                        <div className="nodesCount">{`Nodes Count: ${NODE_DATA.length}`}</div>
+                    </div>
+                    <div className='devInfo-statesContainer'>
+                        <div className='devInfo-title'>States Info:</div>
+                        <div className='devInfo-stateRef'>{`Is Canvas: ${canvasRef ? 'Yes' : 'No'}`}</div>
+                        <div className='devInfo-stateRef'>{`viewRef: ${Object.entries(viewRef.current).map(([key, value]) => {return `${key}: ${value.toFixed(1)} `})}`}</div>
+                        <div className='devInfo-stateRef'>{`dragRef: ${Object.entries(dragRef.current).map(([key, value]) => {return `${key}: ${value} `})}`}</div>
+                        <div className='devInfo-stateRef'>{`dragRef: ${Object.entries(canvasSizeRef.current).map(([key, value]) => {return `${key}: ${value} `})}`}</div>
+                    </div>
+                </div>
+            }
         </>
     )
 }
