@@ -63,6 +63,12 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             text: 'Radom',
         },
         {
+            nodeID: 'screenMarker-Szeligi_Markow',
+            nodeType: 'differentScreenMarker',
+            nodePos: { x: 1090, y: 1790 },
+            text: 'Mszczonów',
+        },
+        {
             nodeID: 'screenMarker-Łódź_Voivodeship',
             nodeType: 'differentScreenMarker',
             nodePos: { x: 10, y: 2030 },
@@ -4283,6 +4289,31 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'trackMarker',
             nodePos: { x: 150, y: 1940 },
             text: '32',
+        },
+        //
+        {
+            nodeID: 'tm-Zy_Gr_327',
+            nodeType: 'trackMarker',
+            nodePos: { x: 70, y: 1980 },
+            text: '327',
+        },
+        {
+            nodeID: 'tm-Zy_Gr_340',
+            nodeType: 'trackMarker',
+            nodePos: { x: 70, y: 2000 },
+            text: '340',
+        },
+        {
+            nodeID: 'tm-Zy_Gr_315',
+            nodeType: 'trackMarker',
+            nodePos: { x: 150, y: 1980 },
+            text: '315',
+        },
+        {
+            nodeID: 'tm-Zy_Gr_328',
+            nodeType: 'trackMarker',
+            nodePos: { x: 150, y: 2000 },
+            text: '328',
         },
         //#endregion
 

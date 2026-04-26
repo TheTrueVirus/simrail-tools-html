@@ -7357,10 +7357,10 @@ export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
         //
         
         //
-        //#region SRTO SIGNALS A1.R9
+        //#region SRTO A1.R9
         //
 
-        //#region Korytow <-> Grodzisk Mazowiecki [R9]
+        //#region Korytow / Zyrardow <-> Grodzisk Mazowiecki [R9]
         {
             signalName: 'L4_51',
             signalPos: { x: '30', y: '1920' },
@@ -7375,6 +7375,21 @@ export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
             signalDirectionOnMap: 'left',
             trainPos: { x: '45', y: '1940' }
         },
+        {
+            signalName: 'L1_341',
+            signalPos: { x: '30', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '45', y: '1980' }
+        },
+        {
+            signalName: 'L1_340N',
+            signalPos: { x: '30', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '45', y: '2000' }
+        },
+
 
 
         {
@@ -7404,6 +7419,35 @@ export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
             isSignalABS: true,
             signalDirectionOnMap: 'left',
             trainPos: { x: '125', y: '1940' }
+        },
+        //
+        {
+            signalName: 'L1_327N',
+            signalPos: { x: '110', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '95', y: '1980' }
+        },
+        {
+            signalName: 'L1_328',
+            signalPos: { x: '110', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'right',
+            trainPos: { x: '95', y: '2000' }
+        },
+        {
+            signalName: 'L1_327',
+            signalPos: { x: '110', y: '1980' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '125', y: '1980' }
+        },
+        {
+            signalName: 'L1_328N',
+            signalPos: { x: '110', y: '2000' },
+            isSignalABS: true,
+            signalDirectionOnMap: 'left',
+            trainPos: { x: '125', y: '2000' }
         },
         //#endregion
 

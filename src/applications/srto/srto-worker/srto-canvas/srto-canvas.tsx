@@ -37,8 +37,6 @@ export type HoveredTargetType =
     { type: 'signal', signal: SRTO_DataTypes.SIGNAL, screenX: number, screenY: number } |
     null
 
-
-
 function loadDataFromFile(area: AreaProps) {
     const TRACK_DATA = SRTO_Tracks[area.areaID];
     const SIGNAL_DATA = SRTO_Signals[area.areaID];
