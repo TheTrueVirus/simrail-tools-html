@@ -115,7 +115,7 @@
 }
 
 .signalLamp {
-    r: 11;
+    r: 11px;
     stroke-width: 2;
     stroke: black;
 }

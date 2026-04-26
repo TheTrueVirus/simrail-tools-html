@@ -1,6 +1,6 @@
 {
   "name": "simrail-tools-html",
-  "version": "0.2.1-alpha",
+  "version": "0.2.2-alpha",
   "private": true,
   "homepage": "https://thetruevirus.github.io/simrail-tools-html",
   "dependencies": {

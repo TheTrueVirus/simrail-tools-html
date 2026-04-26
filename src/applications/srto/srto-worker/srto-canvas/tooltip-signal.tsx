@@ -28,14 +28,14 @@ export default function HoverToolTipSignal({ hoveredTarget }: { hoveredTarget: T
                 <svg className="signalImage-svg" viewBox="0 0 100 300">
                     <defs>
                         <filter id="lampglow" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+                            <feGaussianBlur stdDeviation={4} result="coloredBlur" />
                             <feMerge>
                                 <feMergeNode in="coloredBlur" />
                                 <feMergeNode in="SourceGraphic" />
                             </feMerge>
                         </filter>
                         <filter id="numberGlow" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                            <feGaussianBlur stdDeviation={4} result="coloredBlur" />
                             <feMerge>
                                 <feMergeNode in="coloredBlur" />
                                 <feMergeNode in="SourceGraphic" />
