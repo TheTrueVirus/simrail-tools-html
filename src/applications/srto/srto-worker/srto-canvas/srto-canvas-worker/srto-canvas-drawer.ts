@@ -169,7 +169,7 @@ export namespace CanvasDrawer {
                     const rectHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent
                     
                     ctx.fillStyle = 'black'
-                    ctx.fillRect(x - (metrics.width / 2) - 1, y - 3, metrics.width + 2, rectHeight)
+                    ctx.fillRect(x - (metrics.width / 2) - 1, y - 6, metrics.width + 2, rectHeight+3)
                     
                     ctx.fillStyle = 'white'
                     ctx.fillText(node.text ?? 'n.t.', x, y+0.5)
@@ -292,7 +292,6 @@ export namespace CanvasDrawer {
                     textColor: isTrainControlledByPlayer ? 'rgb(0, 255, 255)' : 'white'
                 }
             }
-
 
             const baseTrain = TRAIN_BASE_PATH[isTrainOnSignal.signalDirectionOnMap]
             ctx.save();

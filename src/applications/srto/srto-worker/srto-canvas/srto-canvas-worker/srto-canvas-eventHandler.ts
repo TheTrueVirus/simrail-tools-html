@@ -82,9 +82,9 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
     }
 
     function resetView(rect: DOMRect) {
-        viewRef.current.zoom = 1
+        viewRef.current.panY = viewRef.current.panY / viewRef.current.zoom
         viewRef.current.panX = 0
-        viewRef.current.panY = 0
+        viewRef.current.zoom = 1
         clampViewToBounds(rect)
     }
 
