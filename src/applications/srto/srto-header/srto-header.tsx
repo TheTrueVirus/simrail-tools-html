@@ -40,46 +40,62 @@ const serverTimeOffset = {
 export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
 
     const [isOptionsOpen, setOptionsOpen] = useState<boolean>(false);
+    const optionListRef = useRef<HTMLDivElement>(null);
     const [openServerList, setOpenServerList] = useState<boolean>(false);
     const serverListRef = useRef<HTMLDivElement>(null);
+    const [timeString, setTimeString] = useState<string>('00:00 | 00:00');
 
     const selectedServer = srtoHeaderOptions.userOptions.selectedServer
 
     useEffect(() => {
         if (openServerList && serverListRef.current) {
-            setOptionsOpen(true);
             serverListRef.current.focus();
         }
     }, [openServerList])
 
-    function getCurrentTime() {
-        const formatHHMM = (hours: number, minutes: number): string => {
-            const paddedHours = String(hours).padStart(2, '0');
-            const paddedMinutes = String(minutes).padStart(2, '0');
-            return `${paddedHours}:${paddedMinutes}`;
-        };
+    useEffect(() => {
+        if(isOptionsOpen && optionListRef.current) {
+            optionListRef.current.focus();
+        }
+    }, [isOptionsOpen])
 
-        const localTime = new Date();
-        const localHHMM = formatHHMM(localTime.getHours(), localTime.getMinutes());
+    useEffect(() => {
+        const intervalID = setInterval(getCurrentTime, 5000);
 
-        const utcMs = localTime.getTime() + localTime.getTimezoneOffset() * 60 * 1000;
-        const offsetHours = serverTimeOffset[selectedServer as keyof typeof serverTimeOffset] ?? 0;
-        const serverTime = new Date(utcMs + (offsetHours * 60 * 60 * 1000));
-        const serverHHMM = formatHHMM(serverTime.getHours(), serverTime.getMinutes());
+        function getCurrentTime() {
+            const formatHHMM = (hours: number, minutes: number): string => {
+                const paddedHours = String(hours).padStart(2, '0');
+                const paddedMinutes = String(minutes).padStart(2, '0');
+                return `${paddedHours}:${paddedMinutes}`;
+            };
 
-        return `Local: ${localHHMM} | ${selectedServer.toUpperCase()}: ${serverHHMM}`;
-    }
+            const localTime = new Date();
+            const localHHMM = formatHHMM(localTime.getHours(), localTime.getMinutes());
+
+            const utcMs = localTime.getTime() + localTime.getTimezoneOffset() * 60 * 1000;
+            const offsetHours = serverTimeOffset[selectedServer as keyof typeof serverTimeOffset] ?? 0;
+            const serverTime = new Date(utcMs + (offsetHours * 60 * 60 * 1000));
+            const serverHHMM = formatHHMM(serverTime.getHours(), serverTime.getMinutes());
+
+            setTimeString(`Local: ${localHHMM} | ${selectedServer.toUpperCase()}: ${serverHHMM}`);
+        }
+        getCurrentTime();
+
+        return () => clearInterval(intervalID)
+    }, [srtoHeaderOptions.userOptions.selectedServer])
+
+
 
     function setNewServerAndCloseList(serverCode: string) {
-        srtoHeaderOptions.setUserOptions(prev => ({...prev, selectedServer: serverCode}));
+        srtoHeaderOptions.setUserOptions(prev => ({ ...prev, selectedServer: serverCode }));
         setOptionsOpen(false);
         setOpenServerList(false);
     }
 
-    function setNewAreaAndClose(area: AreaProps) {
-        // srtoHeaderOptions.setUserOptions(prev => ({...prev, selectedArea: area}));
-        // setOpenAreaList(false);
-    }
+    // function setNewAreaAndClose(area: AreaProps) {
+    //      srtoHeaderOptions.setUserOptions(prev => ({...prev, selectedArea: area}));
+    //      setOpenAreaList(false);
+    // }
 
     const seperateOptionList = {
         "userOptions": [
@@ -99,6 +115,14 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                 optionSetter: srtoHeaderOptions.setUserOptions,
                 isDevOption: false
             },
+            // {
+            //     optionID: 'option-showCoordinates',
+            //     optionName: 'Show Coordinates',
+            //     optionKey: 'showCoordinates' as const,
+            //     optionValue: srtoHeaderOptions.userOptions.showCoordinates,
+            //     optionSetter: srtoHeaderOptions.setUserOptions,
+            //     isDevOption: false
+            // },
         ],
         "devOptions": [
             {
@@ -151,38 +175,19 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                     <div className='srtoHeaderTitle'>SRTO : {srtoHeaderOptions.userOptions.selectedArea.areaDisplayTitle}</div>
                 </div>
                 <div className='clockContainer' onClick={() => setOpenServerList(prev => !prev)}>
-                    <div className='srtoClock'>{getCurrentTime()}</div>
+                    <div className='srtoClock'>{timeString}</div>
                 </div>
                 <div className='headerOptionsContainer'>
                     <div className='openOptionsButtonContainer' onClick={() => { setOptionsOpen(prev => !prev) }}>
                         <div className={`openOptionsButtons ${isOptionsOpen ? 'rotateCogWheel' : ''}`}>⛯</div>
                         <div className={`optionsText ${isOptionsOpen ? 'showOptionsText' : ''}`}>Close Settings</div>
                     </div>
-                    <div className={`optionListContainer ${isOptionsOpen ? 'openOptionsList' : ''}`}>
+                    <div ref={optionListRef} className={`optionListContainer ${isOptionsOpen ? 'openOptionsList' : ''}`} tabIndex={0} onBlur={(e) => setOptionsOpen(false)}>
                         <div className='optionListTitle'>SETTINGS</div>
                         <div className='serverSelection'>
                             <div className='changeServerButton' onClick={() => setOpenServerList(prev => !prev)}>
                                 <div>Change Server</div>
                                 <div style={{ fontSize: '14px' }}>Currently Selected: {selectedServer.toUpperCase()}</div>
-                            </div>
-                            <div ref={serverListRef} className={`serverSelectionList ${openServerList ? 'openServerList' : ''}`} tabIndex={0} onBlur={() => setOpenServerList(false)}>
-                                <div className='serverListTitle'>SELECT A SERVER</div>
-                                <div className='serverListContainer'>
-                                    {
-                                        srtoHeaderOptions.serverList.map((server) => (
-                                            <>
-                                                <div
-                                                    className={`serverOption ${selectedServer === server.ServerCode ? '' : ''}`}
-                                                    onClick={() => setNewServerAndCloseList(server.ServerCode)}
-                                                >
-                                                    <div className={`serverOnlineIndicator ${server.IsActive ? 'serverOnline' : 'serverOffline'}`}></div>
-                                                    <div>{server.ServerName}</div>
-                                                </div>
-                                            </>
-                                        ))
-                                    }
-
-                                </div>
                             </div>
                         </div>
                         <div></div>
@@ -200,7 +205,7 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                                                         type="checkbox"
                                                         className='optionCheckbox'
                                                         checked={option.optionValue}
-                                                        onChange={(e) => option.optionSetter(prev => ({...prev, [option.optionKey]: e.target.checked}))}
+                                                        onChange={(e) => option.optionSetter(prev => ({ ...prev, [option.optionKey]: e.target.checked }))}
                                                     />
                                                     <span className='checkboxSlider'></span>
                                                 </label>
@@ -240,6 +245,25 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                                 </div>
                             </>
                         }
+                    </div>
+                </div>
+                <div ref={serverListRef} className={`serverSelectionList ${openServerList ? 'openServerList' : ''}`} tabIndex={0} onBlur={() => setOpenServerList(false)}>
+                    <div className='serverListTitle'>SELECT A SERVER</div>
+                    <div className='serverListContainer'>
+                        {
+                            srtoHeaderOptions.serverList.map((server) => (
+                                <>
+                                    <div
+                                        className={`serverOption ${selectedServer === server.ServerCode ? '' : ''}`}
+                                        onClick={() => setNewServerAndCloseList(server.ServerCode)}
+                                    >
+                                        <div className={`serverOnlineIndicator ${server.IsActive ? 'serverOnline' : 'serverOffline'}`}></div>
+                                        <div>{server.ServerName}</div>
+                                    </div>
+                                </>
+                            ))
+                        }
+
                     </div>
                 </div>
             </div>

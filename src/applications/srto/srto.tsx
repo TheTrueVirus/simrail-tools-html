@@ -1,5 +1,5 @@
 import './srtoStyles.css'
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { SimRailDataTypes } from "../../types/simrail-data-types";
 import { SR_DATA } from '../../functions/getSimRailData/getSimRailData';
 import SRTO_Header from './srto-header/srto-header';
@@ -32,6 +32,7 @@ export const USER_OPTIONS = {
     selectedArea: { areaID: 'srto_area1', areaDisplayTitle: 'A1 | Katowice - Warszawa' },
     shortStationNames: false,
     allowExtendedView: false,
+    //showCoordinates: true
 }
 
 export const AreaList = [
