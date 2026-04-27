@@ -6,6 +6,25 @@
 > ### This project is still under full development. You may encounter bugs!
 > #### If you encounter any bugs or have any suggestions for improvements, let me now by writing a post into the forum thread or by opening an issue in the github repository. This will help me a lot!
 
+## Version 0.2.3-alpha
+### Hotfix: fixed signal lamps not showing in Firefox browsers
+Update released on 26.04.2026
+- value `r` in css-class `.signalLamp` had missing unit px
+#### Additional Changes:
+- fixed track bridging at Warszawa Wlochy
+
+## Version 0.2.2-alpha
+#### Overview: Map extension and signal image in hover tooltip
+Update released on 26.04.2026
+## Changes
+#### **Extended the map from Szeligi down to Warszawa Wlochy**
+fix: added missing platforms between Dabrowa Gornicza Zabkowice and Lazy Lc
+fix: added missing platform at Opoczo Poludnie
+fix: changed station prefix of Pilichowice and Biala Rawska to its originals
+- added the main vehicle into train hover tooltip
+- added a signal image into the train hover tooltip (without distant signal)
+- options menu will now close on focus loss (and does not open on server change via clock click)
+
 ## Version 0.2.1-alpha
 #### Overview: Map extension, performance fix and tooltip hover of trains and signals
 Update released on 23.04.2026

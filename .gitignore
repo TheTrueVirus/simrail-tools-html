@@ -25,10 +25,11 @@ reportWebVitals.ts
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-notizen
+notizen.md
 changelog.md
 src/functions/customErrorHandler/errorHandler.tsx
 src/functions/customErrorHandler/errorHandlerStyles.css
 src/functions/appcontext/appcontext.tsx
 __stw-bilder
 old_folder
+src/applications/srto/srto-worker/srto-data/simrail-vehicles-list.ts
