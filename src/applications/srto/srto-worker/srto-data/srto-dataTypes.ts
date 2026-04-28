@@ -30,10 +30,14 @@ export namespace SRTO_DataTypes {
     export interface NODE {
         nodeID: string,
         nodeType: 'trackMarker' | 'platform' | 'dispatchingPost' | 'stationName' | 'simpleText' | 'simpleRect' | 'trackBreakMarker' | 'differentScreenMarker',
-        nodePos: {
+        nodePos?: {
             x: number,
             y: number
         },
+        nodePosFlipped?: {
+            x: number,
+            y: number,
+        }
         breakMarker?: {
             firstMarker: {
                 x: number

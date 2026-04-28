@@ -5,6 +5,7 @@ import { SR_DATA } from '../../functions/getSimRailData/getSimRailData';
 import SRTO_Header from './srto-header/srto-header';
 import SRTO_Disclaimer from './srto-disclaimer/srto-disclaimer';
 import SRTO_Canvas from './srto-worker/srto-canvas/srto-canvas';
+import SRTO_Footer from './srto-footer/srto-footer';
 
 export interface AreaProps {
     areaID: string
@@ -32,6 +33,7 @@ export const USER_OPTIONS = {
     selectedArea: { areaID: 'srto_area1', areaDisplayTitle: 'A1 | Katowice - Warszawa' },
     shortStationNames: false,
     allowExtendedView: false,
+    flipScreen: false,
     //showCoordinates: true
 }
 
@@ -269,6 +271,7 @@ export default function SimRailTrackOverview() {
 
                 <SRTO_Header srtoHeaderOptions={srtoHeaderOptions} />
                 <SRTO_Canvas SRTO_PROPS={SRTO_PROPS} />
+                <SRTO_Footer SRTO_PROPS={SRTO_PROPS}/>
 
             </div>
         </>
