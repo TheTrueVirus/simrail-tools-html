@@ -1,29 +1,9 @@
 .srtoContainer{
-    color: white;
-    font-family: monospace;
-}
-
-.srto-container{
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(0, 0, 0);
-}
-
-.showTestTrains {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.showTrainsCheckbox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 15px;
-    height: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    margin: 0 15px;
-    pointer-events: all;
+    color: rgb(255, 255, 255);
+    font-family: monospace;
 }

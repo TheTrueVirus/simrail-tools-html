@@ -29,7 +29,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
         {
             nodeID: 'screenMarker-SDandowka',
             nodeType: 'differentScreenMarker',
-            nodePos: { x: 1790, y: 200 },
+            nodePos: { x: 1880, y: 225 },
             text: 'S. Dańdówka',
         },
         {
@@ -276,6 +276,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'KO',
             stationName: 'Katowice',
             nodePos: { x: 650, y: 50 },
+            nodePosFlipped: { x: 600, y: 290 }
         },
         {
             nodeID: 'peron_KO_p1',
@@ -477,6 +478,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'KZ',
             stationName: 'Katowice Zawodzie',
             nodePos: { x: 1130, y: 50 },
+            nodePosFlipped: { x: 1130, y: 290 }
         },
         {
             nodeID: 'peron_KZ_p1',
@@ -607,6 +609,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'SG',
             stationName: 'Sosnowiec Główny',
             nodePos: { x: 1630, y: 50 },
+            nodePosFlipped: { x: 1800, y: 175 }
         },
         {
             nodeID: 'peron_SG_p1',
@@ -699,6 +702,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Spł1',
             stationName: 'Sosnowiec Południowy',
             nodePos: { x: 1660, y: 180 },
+            nodePosFlipped: { x: 1680, y: 290 }
         },
         {
             nodeID: 'tm-Spl_1',
@@ -767,6 +771,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'B',
             stationName: 'Będzin',
             nodePos: { x: 2260, y: 50 },
+            nodePosFlipped: { x: 2250, y: 200 }
         },
         {
             nodeID: 'peron_KSP',
@@ -908,6 +913,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'DG',
             stationName: 'Dąbrowa Górnicza',
             nodePos: { x: 260, y: 350 },
+            nodePosFlipped: { x: 260, y: 460 }
         },
         {
             nodeID: 'peron_DabrowaGornicza',
@@ -1029,6 +1035,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'DZ',
             stationName: 'Dąbrowa Górnicza Ząbkowice',
             nodePos: { x: 950, y: 350 },
+            nodePosFlipped: { x: 950, y: 570 },
         },
         {
             nodeID: 'peron_DabrowaGorniczaZabkowice_p1',
@@ -1443,6 +1450,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'ŁC',
             stationName: 'Łazy Łc',
             nodePos: { x: 1900, y: 300 },
+            nodePosFlipped: { x: 1900, y: 510 }
         },
         {
             nodeID: 'tm-LC_3',
@@ -1529,11 +1537,12 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             postType: 'computer'
         },
         {
-            nodeID: 'station_LazyLC',
+            nodeID: 'station_Lazy',
             nodeType: 'stationName',
             stationPrefix: 'LB',
             stationName: 'Łazy',
             nodePos: { x: 2260, y: 300 },
+            nodePosFlipped: { x: 2220, y: 510 }
         },
         {
             nodeID: 'peron_LazyLB_p2',
@@ -1658,6 +1667,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'ŁA',
             stationName: 'Łazy Ła',
             nodePos: { x: 380, y: 630 },
+            nodePosFlipped: { x: 265, y: 950 }
         },
         //
         // TRACK MARKER UPPER FREIGHT TRACKS
@@ -1821,6 +1831,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Zw',
             stationName: 'Zawiercie',
             nodePos: { x: 950, y: 630 },
+            nodePosFlipped: { x: 950, y: 860 }
         },
         {
             nodeID: 'peron_Zawiercie_P2',
@@ -2258,6 +2269,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'GW',
             stationName: 'Góra Włodowska',
             nodePos: { x: 2080, y: 740 },
+            nodePosFlipped: { x: 2080, y: 880 }
         },
         {
             nodeID: 'tm-GW_3',
@@ -2582,7 +2594,8 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             nodeType: 'stationName',
             stationPrefix: 'Ps',
             stationName: 'Psary',
-            nodePos: { x: 1520, y: 1000 },
+            nodePos: { x: 1540, y: 1000 },
+            nodePosFlipped: { x: 1540, y: 1150 }
         },
         {
             nodeID: 'tm-PS_3',
@@ -2696,6 +2709,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Kn',
             stationName: 'Knapówka',
             nodePos: { x: 2120, y: 1000 },
+            nodePosFlipped: { x: 2120, y: 1140 }
         },
         //#endregion
 
@@ -2804,6 +2818,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'WP',
             stationName: 'Włoszczowa Północ',
             nodePos: { x: 560, y: 1170 },
+            nodePosFlipped: { x: 600, y: 1320 }
         },
         {
             nodeID: 'peron_WloszczowaPolnoc_P2',
@@ -3063,6 +3078,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Ol',
             stationName: 'Olszamowice',
             nodePos: { x: 2020, y: 1170 },
+            nodePosFlipped: { x: 2020, y: 1305 }
         },
         {
             nodeID: 'tm-Ol_3',
@@ -3226,11 +3242,13 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Pl',
             stationName: 'Pilichowice',
             nodePos: { x: 465, y: 1400 },
+            nodePosFlipped: { x: 465, y: 1500 }
         },
         {
             nodeID: 'simpleText_Pilichowice_Olszamowice',
             nodeType: 'simpleText',
             nodePos: { x: 465, y: 1420 },
+            nodePosFlipped: { x: 465, y: 1480 },
             textSize: 10,
             text: `Controlled by Olszamowice`
         },
@@ -3342,6 +3360,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Op',
             stationName: 'Opoczno Południe',
             nodePos: { x: 1205, y: 1380 },
+            nodePosFlipped: { x: 1235, y: 1515 }
         },
         {
             nodeID: 'peron_OpocnoPoludnie',
@@ -3470,6 +3489,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Id',
             stationName: 'Idzikowice',
             nodePos: { x: 2200, y: 1360 },
+            nodePosFlipped: { x: 2030, y: 1630 }
         },
         {
             nodeID: 'tm-Id_9',
@@ -3767,6 +3787,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'St',
             stationName: 'Strzałki',
             nodePos: { x: 860, y: 1530 },
+            nodePosFlipped: { x: 860, y: 1650 }
         },
         {
             nodeID: 'tm-St_3',
@@ -3920,11 +3941,13 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'BR',
             stationName: 'Biała Rawska',
             nodePos: { x: 1725, y: 1540 },
+            nodePosFlipped: { x: 1725, y: 1640 }
         },
         {
             nodeID: 'simpleText_BialaRawska',
             nodeType: 'simpleText',
             nodePos: { x: 1725, y: 1560 },
+            nodePosFlipped: { x: 1725, y: 1620 },
             textSize: 10,
             text: `Controlled by Strzałki`
         },
@@ -4070,6 +4093,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Se',
             stationName: 'Szeligi',
             nodePos: { x: 790, y: 1670 },
+            nodePosFlipped: { x: 790, y: 1810 }
         },
         {
             nodeID: 'tm-Se_3',
@@ -4179,6 +4203,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Kr',
             stationName: 'Korytów',
             nodePos: { x: 1340, y: 1670 },
+            nodePosFlipped: { x: 1340, y: 1790 }
         },
         {
             nodeID: 'tm-Kr_3',
@@ -4330,6 +4355,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Gr',
             stationName: 'Grodzisk Mazowiecki',
             nodePos: { x: 410, y: 1850 },
+            nodePosFlipped: { x: 410, y: 2040 }
         },
         {
             nodeID: 'peron_GrodziskMazowiecki_2',
@@ -4637,6 +4663,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Pr',
             stationName: 'Pruszków',
             nodePos: { x: 1310, y: 1830 },
+            nodePosFlipped: { x: 1250, y: 2035 }
         },
         {
             nodeID: 'peron_Pruszkow',
@@ -4920,6 +4947,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             stationPrefix: 'Wl',
             stationName: 'Warszawa Włochy',
             nodePos: { x: 2260, y: 1880 },
+            nodePosFlipped: { x: 2150, y: 2080 }
         },
         {
             nodeID: 'peron_WarszawaWlochy_2',

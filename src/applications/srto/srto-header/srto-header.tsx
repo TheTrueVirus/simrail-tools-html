@@ -115,6 +115,14 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                 optionSetter: srtoHeaderOptions.setUserOptions,
                 isDevOption: false
             },
+            {
+                optionID: 'option-flipScreen',
+                optionName: 'Flip Screen',
+                optionKey: 'flipScreen' as const,
+                optionValue: srtoHeaderOptions.userOptions.flipScreen,
+                optionSetter: srtoHeaderOptions.setUserOptions,
+                isDevOption: false
+            },
             // {
             //     optionID: 'option-showCoordinates',
             //     optionName: 'Show Coordinates',
@@ -182,7 +190,7 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                         <div className={`openOptionsButtons ${isOptionsOpen ? 'rotateCogWheel' : ''}`}>⛯</div>
                         <div className={`optionsText ${isOptionsOpen ? 'showOptionsText' : ''}`}>Close Settings</div>
                     </div>
-                    <div ref={optionListRef} className={`optionListContainer ${isOptionsOpen ? 'openOptionsList' : ''}`} tabIndex={0} onBlur={(e) => setOptionsOpen(false)}>
+                    <div ref={optionListRef} className={`optionListContainer ${isOptionsOpen ? 'openOptionsList' : ''}`} tabIndex={0}>
                         <div className='optionListTitle'>SETTINGS</div>
                         <div className='serverSelection'>
                             <div className='changeServerButton' onClick={() => setOpenServerList(prev => !prev)}>

@@ -124,12 +124,12 @@
     }
     1% {
         opacity: 0;
-        max-height: 400px;
+        max-height: 500px;
         width: 0px;
     }
     100% {
         opacity: 1;
-        max-height: 400px;
+        max-height: 500px;
         width: 300px;
     }
 }

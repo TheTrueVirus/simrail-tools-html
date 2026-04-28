@@ -57,7 +57,6 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
     function clampViewToBounds(rect: DOMRect) {
 
         if (SRTO_PROPS.userOptions.allowExtendedView) return
-
         const fitScale = rect.width / CanvasSettings.CANVAS_WORLD_WIDTH
         const scale = fitScale * viewRef.current.zoom
 
@@ -162,17 +161,31 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
                 if (ctx && deps.signalDataRef) {
                     let hit: typeof deps.hoveredTargetRef.current = null
 
+                    function flipCoords(x: string | number, y: string | number) {
+                        if(deps.SRTO_PROPS.userOptions.flipScreen) {
+                            return {
+                                x: deps.canvasSettings.CANVAS_WORLD_WIDTH - Number(x),
+                                y: deps.canvasSettings.CANVAS_WORLD_HEIGHT - Number(y)
+                            }
+                        } else {
+                            return {
+                                x: Number(x),
+                                y: Number(y)
+                            }
+                        }
+                    }
+
                     for (const { train, signal } of deps.trainHoverEntries) {
-                        const tx = Number(signal.trainPos.x)
-                        const ty = Number(signal.trainPos.y)
-                        const path = TRAIN_BASE_PATH[signal.signalDirectionOnMap]
-                        if (ctx.isPointInPath(path, worldX - tx, worldY - ty)) {
+                        const {x, y} = flipCoords(signal.trainPos.x, signal.trainPos.y);
+                        const signalDirection = deps.SRTO_PROPS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
+                        const path = TRAIN_BASE_PATH[signalDirection]
+                        if (ctx.isPointInPath(path, worldX - x, worldY - y)) {
                             hit = {
                                 type: 'train',
                                 train,
                                 signal,
-                                screenX: (tx + (signal.signalDirectionOnMap === 'right' ? -25 : 25)) * scale + viewRef.current.panX,
-                                screenY: (ty) * scale + viewRef.current.panY
+                                screenX: (x + (signalDirection === 'right' ? -25 : 25)) * scale + viewRef.current.panX,
+                                screenY: (y) * scale + viewRef.current.panY
                             }
                             break
                         }
@@ -180,15 +193,15 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
 
                     if (!hit) {
                         for (const signal of deps.signalDataRef.current) {
-                            const sx = Number(signal.signalPos.x)
-                            const sy = Number(signal.signalPos.y)
-                            const signalPath = SIGNAL_BASE_PATH[signal.signalDirectionOnMap]
-                            if (ctx.isPointInPath(signalPath, worldX - sx, worldY - sy)) {
+                            const {x, y} = flipCoords(signal.signalPos.x, signal.signalPos.y);
+                            const signalDirection = deps.SRTO_PROPS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
+                            const signalPath = SIGNAL_BASE_PATH[signalDirection]
+                            if (ctx.isPointInPath(signalPath, worldX - x, worldY - y)) {
                                 hit = {
                                     type: 'signal',
                                     signal,
-                                    screenX: sx * scale + viewRef.current.panX,
-                                    screenY: sy * scale + viewRef.current.panY,
+                                    screenX: x * scale + viewRef.current.panX,
+                                    screenY: y * scale + viewRef.current.panY,
                                 }
                                 break
                             }
