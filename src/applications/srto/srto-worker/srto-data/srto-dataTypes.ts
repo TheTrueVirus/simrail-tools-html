@@ -1,15 +1,21 @@
 export namespace SRTO_DataTypes {
 
     export interface TRACKS {
-        [area: string]: TRACK[]
+        [screenid: string]: TRACK_SECTIONS
     }
-    export interface TRACK {
+    export interface TRACK_SECTIONS {
+        [sectionid: string]: TRACK_NODE[]
+    }
+    export interface TRACK_NODE {
         trackID: string,
         trackSVG: string,
         trackColor: string,
     }
     export interface SIGNALS {
-        [area: string]: SIGNAL[]
+        [screenid: string]: SIGNAL_SECTIONS
+    }
+    export interface SIGNAL_SECTIONS {
+        [sectionid: string]: SIGNAL[]
     }
     export interface SIGNAL {
         signalName: string,
@@ -25,7 +31,10 @@ export namespace SRTO_DataTypes {
         }
     }
     export interface NODES {
-        [area: string]: NODE[]
+        [screenid: string]: NODE_SECTIONS
+    }
+    export interface NODE_SECTIONS {
+        [sectionid: string]: NODE[]
     }
     export interface NODE {
         nodeID: string,

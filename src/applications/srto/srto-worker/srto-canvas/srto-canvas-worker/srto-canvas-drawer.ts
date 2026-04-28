@@ -3,10 +3,10 @@ import { RenderOptionsProps, USER_OPTIONS } from "../../../srto";
 import { SRTO_DataTypes } from "../../srto-data/srto-dataTypes";
 
 interface SRTO_PROPS {
-        trainList: SimRailDataTypes.FilteredTrainList[]
-        stationList: SimRailDataTypes.StationData[]
-        userOptions: typeof USER_OPTIONS
-        devRenderOptions: RenderOptionsProps
+    trainList: SimRailDataTypes.FilteredTrainList[]
+    stationList: SimRailDataTypes.StationData[]
+    userOptions: typeof USER_OPTIONS
+    devRenderOptions: RenderOptionsProps
 }
 interface CanvasSettingsProps {
     CANVAS_WORLD_WIDTH: number,
@@ -95,9 +95,9 @@ M24 20 L30 15M16 20 L30 10 M8 20 L30 5 M0 20 L30 0 M0 15 L22 0 M0 10 L14 0 M0 5 
 export namespace CanvasDrawer {
 
     export function drawTracks(
-        track_data: SRTO_DataTypes.TRACK[],
+        track_data: SRTO_DataTypes.TRACK_SECTIONS,
         ctx: CanvasRenderingContext2D,
-        trackPathCache: WeakMap<SRTO_DataTypes.TRACK, Path2D>
+        trackPathCache: WeakMap<SRTO_DataTypes.TRACK_NODE, Path2D>
     ) {
         if (!track_data) return;
         if (!ctx) return;
@@ -106,22 +106,24 @@ export namespace CanvasDrawer {
         ctx.lineCap = 'butt'
         ctx.lineJoin = 'bevel'
 
-        for (const track of track_data) {
-            if (track.trackColor === 'none') continue;
+        for (const trackid in track_data) {
+            for (const tracknode of track_data[trackid]) {
+                if (tracknode.trackColor === 'none') continue;
 
-            let path = trackPathCache.get(track)
-            if (!path) {
-                path = new Path2D(track.trackSVG)
-                trackPathCache.set(track, path)
+                let path = trackPathCache.get(tracknode)
+                if (!path) {
+                    path = new Path2D(tracknode.trackSVG)
+                    trackPathCache.set(tracknode, path)
+                }
+
+                ctx.strokeStyle = tracknode.trackColor || 'white'
+                ctx.stroke(path)
             }
-
-            ctx.strokeStyle = track.trackColor || 'white'
-            ctx.stroke(path)
         }
     }
 
     export function drawSignals(
-        signal_data: SRTO_DataTypes.SIGNAL[],
+        signal_data: SRTO_DataTypes.SIGNAL_SECTIONS,
         train_data: SimRailDataTypes.FilteredTrainList[],
         ctx: CanvasRenderingContext2D,
         SRTO_PROPS: SRTO_PROPS,
@@ -148,28 +150,30 @@ export namespace CanvasDrawer {
             }
         }
 
-        for (const signal of signal_data) {
-            const { sx, sy } = { sx: Number(signal.signalPos.x), sy: Number(signal.signalPos.y) }
-            const signalColor = signalColorByName.get(signal.signalName) ?? defaultSignalColor
+        for (const signalid in signal_data) {
+            for (const signal of signal_data[signalid]) {
+                const { sx, sy } = { sx: Number(signal.signalPos.x), sy: Number(signal.signalPos.y) }
+                const signalColor = signalColorByName.get(signal.signalName) ?? defaultSignalColor
 
-            ctx.save();
-            ctx.translate(sx, sy);
-            if (SRTO_PROPS.userOptions.flipScreen) {
-                ctx.scale(-1, -1);
+                ctx.save();
+                ctx.translate(sx, sy);
+                if (SRTO_PROPS.userOptions.flipScreen) {
+                    ctx.scale(-1, -1);
+                }
+                const signalDirection = SRTO_PROPS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
+                const signalPath = SIGNAL_BASE_PATH[signalDirection]
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = signalColor;
+                ctx.fillStyle = signalColor;
+                ctx.fill(signalPath);
+                ctx.stroke(signalPath);
+                ctx.restore();
             }
-            const signalDirection = SRTO_PROPS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
-            const signalPath = SIGNAL_BASE_PATH[signalDirection]
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = signalColor;
-            ctx.fillStyle = signalColor;
-            ctx.fill(signalPath);
-            ctx.stroke(signalPath);
-            ctx.restore();
         }
     }
 
     export function drawNotations(
-        node_data: SRTO_DataTypes.NODE[],
+        node_data: SRTO_DataTypes.NODE_SECTIONS,
         ctx: CanvasRenderingContext2D,
         SRTO_PROPS: SRTO_PROPS,
         canvasSettings: CanvasSettingsProps
@@ -180,167 +184,169 @@ export namespace CanvasDrawer {
 
         const userOptions = SRTO_PROPS.userOptions
         const stationData = SRTO_PROPS.stationList
-        for (const node of node_data) {
-            const { x, y } = ((SRTO_PROPS.userOptions.flipScreen && node.nodePosFlipped) ? node.nodePosFlipped : node.nodePos) ?? { x: 0, y: 0 }
-            ctx.save();
-            ctx.translate(x, y);
-            if (userOptions.flipScreen) {
-                ctx.scale(-1, -1);
-            }
-            ctx.textAlign = 'center'
-            ctx.textBaseline = 'middle'
-            switch (node.nodeType) {
-                case 'trackMarker':
-                    ctx.font = '12px monospace'
-                    const tm_metrics = ctx.measureText(node.text ?? '');
-                    const tm_height = tm_metrics.actualBoundingBoxAscent + tm_metrics.actualBoundingBoxDescent
-                    const tm_width = tm_metrics.width
-
-                    ctx.fillStyle = 'black'
-                    ctx.fillRect(-(tm_width / 2) - 2, -5, tm_width + 4, tm_height + 2)
-
-                    ctx.fillStyle = 'white'
-                    ctx.fillText(node.text ?? 'n.t.', 0, 1)
-                    break;
-                case 'platform':
-                    ctx.font = '8px monospace'
-
-                    if (!userOptions.flipScreen) {
-                        // non-flipped
-                        ctx.fillStyle = 'rgb(255, 180, 80)'
-                        ctx.fillRect(0, 0, node.width ?? 0, node.height ?? 0)
-
+        for (const nodeid in node_data) {
+            for(const node of node_data[nodeid]){
+                const { x, y } = ((SRTO_PROPS.userOptions.flipScreen && node.nodePosFlipped) ? node.nodePosFlipped : node.nodePos) ?? { x: 0, y: 0 }
+                ctx.save();
+                ctx.translate(x, y);
+                if (userOptions.flipScreen) {
+                    ctx.scale(-1, -1);
+                }
+                ctx.textAlign = 'center'
+                ctx.textBaseline = 'middle'
+                switch (node.nodeType) {
+                    case 'trackMarker':
+                        ctx.font = '12px monospace'
+                        const tm_metrics = ctx.measureText(node.text ?? '');
+                        const tm_height = tm_metrics.actualBoundingBoxAscent + tm_metrics.actualBoundingBoxDescent
+                        const tm_width = tm_metrics.width
+    
                         ctx.fillStyle = 'black'
-                        ctx.fillText(node.text ?? '', (node.width ? node.width / 2 : 0), (node.height ? node.height / 2 : 0) + 1)
-
-                    } else {
-                        // flipped
-                        ctx.fillStyle = 'rgb(255, 180, 80)'
-                        ctx.fillRect(-(node.width ?? 1), -(node.height ?? 1), node.width ?? 0, node.height ?? 0)
-
-                        ctx.fillStyle = 'black'
-                        ctx.fillText(node.text ?? '', -(node.width ? node.width / 2 : 0), -(node.height ? node.height / 2 : 0) + 1)
-
-                    }
-                    break;
-                case 'stationName':
-                    ctx.font = 'bold 18px monospace'
-
-                    const displayedStationName = (!userOptions.shortStationNames ? node.stationName : node.stationPrefix) ?? 'No Name'
-
-                    ctx.fillStyle = 'rgb(255, 200, 0)'
-                    ctx.fillText(displayedStationName, 0, 0)
-
-                    const underlineColor = () => {
-                        const getStation = stationData.find((station) => station.Name === node.stationName)
-                        if (!getStation) return 'gray'
-                        return getStation.DispatchedBy.length < 1 ? 'lime' : 'red'
-                    }
-                    ctx.fillStyle = underlineColor()
-                    ctx.fillText('_'.repeat(displayedStationName.length), 0, 2)
-                    break;
-                case 'simpleText':
-                    ctx.fillStyle = node.textColor ?? 'white'
-                    ctx.font = `${node.textSize ?? 10}px monospace`
-                    ctx.fillText(node.text ?? '', 0, 0)
-                    break;
-                case 'differentScreenMarker':
-                    ctx.font = 'bold 16px monospace'
-                    ctx.fillStyle = 'white'
-                    const dsm_metrics = ctx.measureText(node.text ?? '');
-                    const dsm_height = dsm_metrics.actualBoundingBoxAscent + dsm_metrics.actualBoundingBoxDescent
-                    const dsm_width = dsm_metrics.width
-
-                    const icon = DiffAreaIcon;
-                    ctx.textAlign = 'left'
-                    ctx.textBaseline = 'alphabetic'
-                    if (userOptions.flipScreen) {
-                        // flipped
-                        ctx.fillText(node.text ?? '', -dsm_width, dsm_height)
-                    } else {
-                        // not flipped (original)
-                        ctx.fillText(node.text ?? '', +26, 0)
-                    }
-                    ctx.save();
-                    if (userOptions.flipScreen) {
-                        // flipped
-                        ctx.translate(-dsm_width - 26, dsm_height)
-                    } else {
-                        // not flipped (original)
-                        ctx.translate(0, 0)
-                    }
-                    ctx.lineWidth = 2;
-                    ctx.strokeStyle = 'rgb(0, 150, 200)'
-                    ctx.stroke(icon)
-                    ctx.restore();
-                    break;
-                case 'trackBreakMarker':
-                    ctx.save();
-                    if(userOptions.flipScreen){
-                        ctx.translate(-canvasSettings.CANVAS_WORLD_WIDTH, -canvasSettings.CANVAS_WORLD_HEIGHT);
-                    }
-                    const bm = () => {
-                        if(!userOptions.flipScreen) {
+                        ctx.fillRect(-(tm_width / 2) - 2, -5, tm_width + 4, tm_height + 2)
+    
+                        ctx.fillStyle = 'white'
+                        ctx.fillText(node.text ?? 'n.t.', 0, 1)
+                        break;
+                    case 'platform':
+                        ctx.font = '8px monospace'
+    
+                        if (!userOptions.flipScreen) {
                             // non-flipped
-                            return {
-                                1: {
-                                    x: node.breakMarker?.firstMarker.x ?? 0,
-                                    y: node.breakMarker?.firstMarker.y ?? 0
-                                },
-                                2: {
-                                    x: node.breakMarker?.secondMarker.x ?? 0,
-                                    y: node.breakMarker?.secondMarker.y ?? 0
-                                },
-                            }
+                            ctx.fillStyle = 'rgb(255, 180, 80)'
+                            ctx.fillRect(0, 0, node.width ?? 0, node.height ?? 0)
+    
+                            ctx.fillStyle = 'black'
+                            ctx.fillText(node.text ?? '', (node.width ? node.width / 2 : 0), (node.height ? node.height / 2 : 0) + 1)
+    
                         } else {
                             // flipped
-                            return {
-                                1: {
-                                    x: node.breakMarker?.firstMarker.x ? canvasSettings.CANVAS_WORLD_WIDTH - node.breakMarker?.firstMarker.x : 0,
-                                    y: node.breakMarker?.firstMarker.y ? canvasSettings.CANVAS_WORLD_HEIGHT - node.breakMarker?.firstMarker.y : 0
-                                },
-                                2: {
-                                    x: node.breakMarker?.secondMarker.x ? canvasSettings.CANVAS_WORLD_WIDTH - node.breakMarker?.secondMarker.x : 0,
-                                    y: node.breakMarker?.secondMarker.y ? canvasSettings.CANVAS_WORLD_HEIGHT - node.breakMarker?.secondMarker.y : 0
-                                },
-                            }
+                            ctx.fillStyle = 'rgb(255, 180, 80)'
+                            ctx.fillRect(-(node.width ?? 1), -(node.height ?? 1), node.width ?? 0, node.height ?? 0)
+    
+                            ctx.fillStyle = 'black'
+                            ctx.fillText(node.text ?? '', -(node.width ? node.width / 2 : 0), -(node.height ? node.height / 2 : 0) + 1)
+    
                         }
-                        
-                    }
-                    ctx.fillStyle = 'rgb(160, 0, 120)'
-                    ctx.font = 'bold 18px monospace'
-
-                    ctx.fillText(`[${node.text ?? '?'}]`, bm()[1].x, bm()[1].y)
-                    ctx.fillText(`[${node.text ?? '?'}]`, bm()[2].x, bm()[2].y)
-                    ctx.restore();
-                    break;
-                case 'dispatchingPost':
-                    ctx.save();
-                    if (userOptions.flipScreen) ctx.translate(-30, -20);
-                    const post = DispatchingPost[node.postType ?? 'computer'];
-                    ctx.lineWidth = 1
-                    ctx.strokeStyle = 'white';
-                    ctx.stroke(post);
-
-                    ctx.fillStyle = 'white';
-                    ctx.strokeStyle = 'black';
-                    ctx.lineWidth = 5;
-                    ctx.strokeRect(7, 4, 16, 3);
-                    ctx.fillRect(7, 4, 16, 3);
-                    ctx.beginPath();
-                    ctx.lineWidth = 1.5;
-                    ctx.arc(15, 14, 3, 0, 2 * Math.PI)
-                    ctx.fill()
-                    ctx.stroke();
-                    ctx.restore();
-                    break;
+                        break;
+                    case 'stationName':
+                        ctx.font = 'bold 18px monospace'
+    
+                        const displayedStationName = (!userOptions.shortStationNames ? node.stationName : node.stationPrefix) ?? 'No Name'
+    
+                        ctx.fillStyle = 'rgb(255, 200, 0)'
+                        ctx.fillText(displayedStationName, 0, 0)
+    
+                        const underlineColor = () => {
+                            const getStation = stationData.find((station) => station.Name === node.stationName)
+                            if (!getStation) return 'gray'
+                            return getStation.DispatchedBy.length < 1 ? 'lime' : 'red'
+                        }
+                        ctx.fillStyle = underlineColor()
+                        ctx.fillText('_'.repeat(displayedStationName.length), 0, 2)
+                        break;
+                    case 'simpleText':
+                        ctx.fillStyle = node.textColor ?? 'white'
+                        ctx.font = `${node.textSize ?? 10}px monospace`
+                        ctx.fillText(node.text ?? '', 0, 0)
+                        break;
+                    case 'differentScreenMarker':
+                        ctx.font = 'bold 16px monospace'
+                        ctx.fillStyle = 'white'
+                        const dsm_metrics = ctx.measureText(node.text ?? '');
+                        const dsm_height = dsm_metrics.actualBoundingBoxAscent + dsm_metrics.actualBoundingBoxDescent
+                        const dsm_width = dsm_metrics.width
+    
+                        const icon = DiffAreaIcon;
+                        ctx.textAlign = 'left'
+                        ctx.textBaseline = 'alphabetic'
+                        if (userOptions.flipScreen) {
+                            // flipped
+                            ctx.fillText(node.text ?? '', -dsm_width, dsm_height)
+                        } else {
+                            // not flipped (original)
+                            ctx.fillText(node.text ?? '', +26, 0)
+                        }
+                        ctx.save();
+                        if (userOptions.flipScreen) {
+                            // flipped
+                            ctx.translate(-dsm_width - 26, dsm_height)
+                        } else {
+                            // not flipped (original)
+                            ctx.translate(0, 0)
+                        }
+                        ctx.lineWidth = 2;
+                        ctx.strokeStyle = 'rgb(0, 150, 200)'
+                        ctx.stroke(icon)
+                        ctx.restore();
+                        break;
+                    case 'trackBreakMarker':
+                        ctx.save();
+                        if (userOptions.flipScreen) {
+                            ctx.translate(-canvasSettings.CANVAS_WORLD_WIDTH, -canvasSettings.CANVAS_WORLD_HEIGHT);
+                        }
+                        const bm = () => {
+                            if (!userOptions.flipScreen) {
+                                // non-flipped
+                                return {
+                                    1: {
+                                        x: node.breakMarker?.firstMarker.x ?? 0,
+                                        y: node.breakMarker?.firstMarker.y ?? 0
+                                    },
+                                    2: {
+                                        x: node.breakMarker?.secondMarker.x ?? 0,
+                                        y: node.breakMarker?.secondMarker.y ?? 0
+                                    },
+                                }
+                            } else {
+                                // flipped
+                                return {
+                                    1: {
+                                        x: node.breakMarker?.firstMarker.x ? canvasSettings.CANVAS_WORLD_WIDTH - node.breakMarker?.firstMarker.x : 0,
+                                        y: node.breakMarker?.firstMarker.y ? canvasSettings.CANVAS_WORLD_HEIGHT - node.breakMarker?.firstMarker.y : 0
+                                    },
+                                    2: {
+                                        x: node.breakMarker?.secondMarker.x ? canvasSettings.CANVAS_WORLD_WIDTH - node.breakMarker?.secondMarker.x : 0,
+                                        y: node.breakMarker?.secondMarker.y ? canvasSettings.CANVAS_WORLD_HEIGHT - node.breakMarker?.secondMarker.y : 0
+                                    },
+                                }
+                            }
+    
+                        }
+                        ctx.fillStyle = 'rgb(160, 0, 120)'
+                        ctx.font = 'bold 18px monospace'
+    
+                        ctx.fillText(`[${node.text ?? '?'}]`, bm()[1].x, bm()[1].y)
+                        ctx.fillText(`[${node.text ?? '?'}]`, bm()[2].x, bm()[2].y)
+                        ctx.restore();
+                        break;
+                    case 'dispatchingPost':
+                        ctx.save();
+                        if (userOptions.flipScreen) ctx.translate(-30, -20);
+                        const post = DispatchingPost[node.postType ?? 'computer'];
+                        ctx.lineWidth = 1
+                        ctx.strokeStyle = 'white';
+                        ctx.stroke(post);
+    
+                        ctx.fillStyle = 'white';
+                        ctx.strokeStyle = 'black';
+                        ctx.lineWidth = 5;
+                        ctx.strokeRect(7, 4, 16, 3);
+                        ctx.fillRect(7, 4, 16, 3);
+                        ctx.beginPath();
+                        ctx.lineWidth = 1.5;
+                        ctx.arc(15, 14, 3, 0, 2 * Math.PI)
+                        ctx.fill()
+                        ctx.stroke();
+                        ctx.restore();
+                        break;
+                }
+                ctx.restore();
             }
-            ctx.restore();
         }
     }
 
     export function drawTrains(
-        signal_data: SRTO_DataTypes.SIGNAL[],
+        signal_data: SRTO_DataTypes.SIGNAL_SECTIONS,
         ctx: CanvasRenderingContext2D,
         SRTO_PROPS: SRTO_PROPS
     ) {
@@ -353,7 +359,14 @@ export namespace CanvasDrawer {
 
         for (const train of trainData) {
 
-            const isTrainOnSignal = signal_data.find((signal) => signal.signalName === train.TrainData.SignalInFront?.split('@')[0])
+            function searchSignal(signalName: string) {
+                for (const signalid in signal_data) {
+                    const foundSignal = signal_data[signalid].find((signal) => signalName === signal.signalName);
+                    if (foundSignal) return foundSignal;
+                }
+            }
+
+            const isTrainOnSignal = searchSignal(train.TrainData.SignalInFront?.split('@')[0])
 
             if (!isTrainOnSignal) continue;
 
@@ -403,27 +416,28 @@ export namespace CanvasDrawer {
     }
 
     export function drawGhostTrains(
-        signal_data: SRTO_DataTypes.SIGNAL[],
+        signal_data: SRTO_DataTypes.SIGNAL_SECTIONS,
         ctx: CanvasRenderingContext2D
     ) {
-        for (const signal of signal_data) {
-
-            const baseTrain = TRAIN_BASE_PATH[signal.signalDirectionOnMap]
-
-            const tc = () => {
-                return {
-                    x: Number(signal.trainPos.x),
-                    y: Number(signal.trainPos.y)
+        for (const signalid in signal_data) {
+            for (const signal of signal_data[signalid]) {
+                const tc = () => {
+                    return {
+                        x: Number(signal.trainPos.x),
+                        y: Number(signal.trainPos.y)
+                    }
                 }
+                const baseTrain = TRAIN_BASE_PATH[signal.signalDirectionOnMap]
+                ctx.save();
+                ctx.fillStyle = 'rgba(54, 154, 151, 0.3)'
+                ctx.strokeStyle = 'rgba(78, 193, 255, 0.4)'
+                // ctx.lineWidth = 1.5
+                ctx.translate(tc().x, tc().y)
+                ctx.stroke(baseTrain);
+                ctx.fill(baseTrain)
+                ctx.restore();
             }
-            ctx.save();
-            ctx.fillStyle = 'rgba(54, 154, 151, 0.3)'
-            ctx.strokeStyle = 'rgba(78, 193, 255, 0.4)'
-            // ctx.lineWidth = 1.5
-            ctx.translate(tc().x, tc().y)
-            ctx.stroke(baseTrain);
-            ctx.fill(baseTrain)
-            ctx.restore();
         }
     }
 }
+

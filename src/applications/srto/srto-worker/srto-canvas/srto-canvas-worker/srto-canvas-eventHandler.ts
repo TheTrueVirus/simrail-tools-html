@@ -35,7 +35,7 @@ interface CanvasEventHandlerProps {
     dragRef: React.RefObject<{ isDragging: boolean; lastX: number; lastY: number }>
     scheduleDraw: () => void
     SRTO_PROPS: HandlerProps
-    signalDataRef?: React.RefObject<SRTO_DataTypes.SIGNAL[]>
+    signalDataRef?: React.RefObject<SRTO_DataTypes.SIGNAL_SECTIONS>
     canvasSettings: CanvasSettingsProps,
     minZoomRef: React.RefObject<number>
     mouseWorldPosRef?: React.RefObject<{ x: number, y: number } | null>
@@ -192,18 +192,19 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
                     }
 
                     if (!hit) {
-                        for (const signal of deps.signalDataRef.current) {
-                            const {x, y} = flipCoords(signal.signalPos.x, signal.signalPos.y);
-                            const signalDirection = deps.SRTO_PROPS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
-                            const signalPath = SIGNAL_BASE_PATH[signalDirection]
-                            if (ctx.isPointInPath(signalPath, worldX - x, worldY - y)) {
-                                hit = {
-                                    type: 'signal',
-                                    signal,
-                                    screenX: x * scale + viewRef.current.panX,
-                                    screenY: y * scale + viewRef.current.panY,
+                        for (const signalid in deps.signalDataRef.current) {
+                            for(const signal of deps.signalDataRef.current[signalid]){
+                                const {x, y} = flipCoords(signal.signalPos.x, signal.signalPos.y);
+                                const signalDirection = deps.SRTO_PROPS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
+                                const signalPath = SIGNAL_BASE_PATH[signalDirection]
+                                if (ctx.isPointInPath(signalPath, worldX - x, worldY - y)) {
+                                    hit = {
+                                        type: 'signal',
+                                        signal,
+                                        screenX: x * scale + viewRef.current.panX,
+                                        screenY: y * scale + viewRef.current.panY,
+                                    }
                                 }
-                                break
                             }
                         }
                     }

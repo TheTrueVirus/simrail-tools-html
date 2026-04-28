@@ -52,7 +52,7 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
     const { TRACK_DATA, SIGNAL_DATA, NODE_DATA } = loadDataFromFile(SRTO_PROPS.userOptions.selectedArea);
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const trackPathCacheRef = useRef(new WeakMap<SRTO_DataTypes.TRACK, Path2D>());
+    const trackPathCacheRef = useRef(new WeakMap<SRTO_DataTypes.TRACK_NODE, Path2D>());
     const viewRef = useRef({ zoom: 1, panX: 0, panY: 0 })
     const dragRef = useRef({ isDragging: false, lastX: 0, lastY: 0 })
     const rafRef = useRef<number | null>(null)
@@ -87,8 +87,10 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
 
     const signalByName = useMemo(() => {
         const map = new Map<string, SRTO_DataTypes.SIGNAL>()
-        for (const signal of SIGNAL_DATA) {
-            map.set(signal.signalName, signal)
+        for (const sectionid in SIGNAL_DATA) {
+            for(const signal of SIGNAL_DATA[sectionid]) {
+                map.set(signal.signalName, signal)
+            }
         }
         return map
     }, [SIGNAL_DATA])
