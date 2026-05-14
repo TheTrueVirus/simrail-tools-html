@@ -3,6 +3,7 @@ import './srto-headerStyles.css'
 import { SimRailDataTypes } from '../../../types/simrail-data-types'
 import { AreaProps, USER_OPTIONS } from '../srto'
 import { RenderOptionsProps } from '../srto'
+import { AreaList, ServerList } from './serverScreenList'
 
 const inDev = process.env.NODE_ENV === 'development'
 
@@ -43,6 +44,8 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
     const optionListRef = useRef<HTMLDivElement>(null);
     const [openServerList, setOpenServerList] = useState<boolean>(false);
     const serverListRef = useRef<HTMLDivElement>(null);
+    const [openAreaList, setOpenAreaList] = useState<boolean>(false);
+    const areaListRef = useRef<HTMLDivElement>(null);
     const [timeString, setTimeString] = useState<string>('00:00 | 00:00');
 
     const selectedServer = srtoHeaderOptions.userOptions.selectedServer
@@ -54,7 +57,13 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
     }, [openServerList])
 
     useEffect(() => {
-        if(isOptionsOpen && optionListRef.current) {
+        if (openAreaList && areaListRef.current) {
+            areaListRef.current.focus();
+        }
+    }, [openAreaList])
+
+    useEffect(() => {
+        if (isOptionsOpen && optionListRef.current) {
             optionListRef.current.focus();
         }
     }, [isOptionsOpen])
@@ -84,12 +93,16 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
         return () => clearInterval(intervalID)
     }, [srtoHeaderOptions.userOptions.selectedServer])
 
-
-
     function setNewServerAndCloseList(serverCode: string) {
         srtoHeaderOptions.setUserOptions(prev => ({ ...prev, selectedServer: serverCode }));
         setOptionsOpen(false);
         setOpenServerList(false);
+    }
+
+    function setNewAreaAndCloseList(area: AreaProps) {
+        srtoHeaderOptions.setUserOptions(prev => ({ ...prev, selectedArea: area }));
+        setOptionsOpen(false);
+        setOpenAreaList(false);
     }
 
     // function setNewAreaAndClose(area: AreaProps) {
@@ -176,30 +189,44 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
         ]
     }
 
+    const ServerListProps = {
+        serverListRef,
+        openServerList,
+        setOpenServerList,
+        serverList: srtoHeaderOptions.serverList,
+        selectedServer,
+        setNewServerAndCloseList
+    }
+    const AreaListProps = {
+        areaListRef,
+        openAreaList,
+        setOpenAreaList,
+        areaList: srtoHeaderOptions.AreaList,
+        setNewAreaAndCloseList
+    }
+
     return (
         <>
             <div className={`srtoHeaderContainer`}>
                 <div className='headerTitleContainer'>
-                    <div className='srtoHeaderTitle'>SRTO : {srtoHeaderOptions.userOptions.selectedArea.areaDisplayTitle}</div>
+                    <div className='srtoHeaderTitle' onClick={() => setOpenAreaList(true)}>SRTO : {srtoHeaderOptions.userOptions.selectedArea.areaDisplayTitle}</div>
                 </div>
                 <div className='clockContainer' onClick={() => setOpenServerList(prev => !prev)}>
                     <div className='srtoClock'>{timeString}</div>
                 </div>
                 <div className='headerOptionsContainer'>
-                    <div className='openOptionsButtonContainer' onClick={() => { setOptionsOpen(prev => !prev) }}>
-                        <div className={`openOptionsButtons ${isOptionsOpen ? 'rotateCogWheel' : ''}`}>⛯</div>
-                        <div className={`optionsText ${isOptionsOpen ? 'showOptionsText' : ''}`}>Close Settings</div>
+                    <div className='switchScreenButton'>
+                        <div className='switchScreenText' onClick={() => setOpenAreaList(true)}>Switch Screen</div>
+                    </div>
+                    <div className='switchServerButton' onClick={() => setOpenServerList(prev => !prev)}>
+                        <div>Change Server</div>
+                    </div>
+                    <div className='openOptionsButton' onClick={() => { setOptionsOpen(prev => !prev) }}>
+                        <div className={`optionsButtonCogWheel ${isOptionsOpen ? 'rotateCogWheel' : ''}`}>⛯</div>
+                        <div className={`optionsText ${isOptionsOpen ? 'optionsOpenText' : ''}`}>Settings<br /><br />Close</div>
                     </div>
                     <div ref={optionListRef} className={`optionListContainer ${isOptionsOpen ? 'openOptionsList' : ''}`} tabIndex={0}>
                         <div className='optionListTitle'>SETTINGS</div>
-                        <div className='serverSelection'>
-                            <div className='changeServerButton' onClick={() => setOpenServerList(prev => !prev)}>
-                                <div>Change Server</div>
-                                <div style={{ fontSize: '14px' }}>Currently Selected: {selectedServer.toUpperCase()}</div>
-                            </div>
-                        </div>
-                        <div></div>
-                        <div className='bottomBorderLine'></div>
                         {
                             seperateOptionList.userOptions.map((option) => (
                                 option.isDevOption
@@ -255,25 +282,8 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                         }
                     </div>
                 </div>
-                <div ref={serverListRef} className={`serverSelectionList ${openServerList ? 'openServerList' : ''}`} tabIndex={0} onBlur={() => setOpenServerList(false)}>
-                    <div className='serverListTitle'>SELECT A SERVER</div>
-                    <div className='serverListContainer'>
-                        {
-                            srtoHeaderOptions.serverList.map((server) => (
-                                <>
-                                    <div
-                                        className={`serverOption ${selectedServer === server.ServerCode ? '' : ''}`}
-                                        onClick={() => setNewServerAndCloseList(server.ServerCode)}
-                                    >
-                                        <div className={`serverOnlineIndicator ${server.IsActive ? 'serverOnline' : 'serverOffline'}`}></div>
-                                        <div>{server.ServerName}</div>
-                                    </div>
-                                </>
-                            ))
-                        }
-
-                    </div>
-                </div>
+                <ServerList {...ServerListProps} />
+                <AreaList {...AreaListProps} />
             </div>
         </>
     )
