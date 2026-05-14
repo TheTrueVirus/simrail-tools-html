@@ -1,7 +1,9 @@
+import { SCREENID } from "../../srto"
+
 export namespace SRTO_DataTypes {
 
-    export interface TRACKS {
-        [screenid: string]: TRACK_SECTIONS
+    export type TRACKS = {
+        [K in SCREENID]: TRACK_SECTIONS
     }
     export interface TRACK_SECTIONS {
         [sectionid: string]: TRACK_NODE[]
@@ -11,8 +13,8 @@ export namespace SRTO_DataTypes {
         trackSVG: string,
         trackColor: string,
     }
-    export interface SIGNALS {
-        [screenid: string]: SIGNAL_SECTIONS
+    export type SIGNALS = {
+        [K in SCREENID]: SIGNAL_SECTIONS
     }
     export interface SIGNAL_SECTIONS {
         [sectionid: string]: SIGNAL[]
@@ -23,15 +25,27 @@ export namespace SRTO_DataTypes {
             x: string,
             y: string
         }
-        isSignalABS: boolean,
+        isSignalABS?: boolean,
         signalDirectionOnMap: 'left' | 'right'
         trainPos: {
             x: string,
             y: string
         }
+        trainPosDistance?: { distanceToSignal: number, x: number, y: number, switchDirection?: boolean }[]
+        signalType?: string
+        invisibleSignal?: boolean
+        /*
+         * Signal-Typen:
+         *      - "abs_standard"
+         *      - "abs_last"
+         *      - "apo-red-green"
+         *      - "apo-red-green-white" (Sz??)
+         *      - "station_standard" // 5 lamps and bars of needed
+         *      - "station_sz" // only 2 lamps (red-white)
+         */
     }
-    export interface NODES {
-        [screenid: string]: NODE_SECTIONS
+    export type NODES = {
+        [K in SCREENID]: NODE_SECTIONS
     }
     export interface NODE_SECTIONS {
         [sectionid: string]: NODE[]
@@ -60,6 +74,8 @@ export namespace SRTO_DataTypes {
         postType?: 'relay' | 'computer'
         stationPrefix?: string
         stationName?: string
+        seperateDisplayName?: string
+        botStation?: boolean
         height?: number,
         width?: number,
         textColor?: string,
