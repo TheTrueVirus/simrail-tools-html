@@ -8,23 +8,14 @@
     width: 100vw;
     height: 36px;
     background-color: black;
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
-    transition: height 500ms ease;
-    box-shadow: inset 0 0 20px 1px black;
     user-select: none;
-    /* transition: 0.4s ease; */
 }
 
 .headerTitleContainer {
+    width: auto;
     justify-self: start;
-}
-
-.headerOptionsContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 50px;
-    justify-self: end;
+    overflow: hidden;
+    text-wrap: nowrap;
 }
 
 .srtoHeaderTitle {
@@ -32,9 +23,12 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
     font-weight: 900;
+    width: auto;
     height: 100%;
     align-items: center;
     padding-left: 12px;
+    overflow: hidden;
+    text-wrap: nowrap;
 }
 
 .clockContainer {
@@ -46,13 +40,26 @@
     background-color: white;
     font-size: 18px;
     font-weight: 900;
+    margin: 0 10px;
 }
 
-.srtoHeaderContainer.hideHeader {
-    height: 0px;
+.srtoClock {
+    overflow: hidden;
+    text-wrap: nowrap;
 }
 
-.switchScreenButton, .switchServerButton, .openOptionsButton {
+.headerOptionsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 30px;
+    justify-self: end;
+}
+
+.switchScreenButton,
+.switchServerButton,
+.openOptionsButton {
     display: flex;
     justify-self: center;
     justify-content: center;
@@ -65,23 +72,8 @@
     font-size: 18px;
     transition: 350ms ease;
     overflow: hidden;
+    text-wrap: nowrap;
 }
-
-/* Options Buttons */
-/* .openOptionsButton {
-    display: flex;
-    justify-content: center;
-    justify-self: end;
-    align-items: center;
-    max-height: 24px;
-    font-size: 18px;
-    padding: 2px 6px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 6px;
-    margin-right: 12px;
-    transition: 350ms ease;
-    overflow: hidden;
-} */
 
 .openOptionsButton:hover,
 .switchServerButton:hover,
@@ -97,8 +89,7 @@
     transform: rotate(-900deg);
 }
 
-/* Text of "Close Settings" */
-.optionsText {
+.optionsButtonText {
     width: 100px;
     transform: translateY(21px);
     opacity: 1;
@@ -108,36 +99,44 @@
     transition: 200ms ease;
 }
 
-.optionsText.optionsOpenText {
+.optionsButtonText.optionsOpenText {
     transform: translateY(-22px);
 }
 
-/* Main Options Container (with ServerListButton) */
+/* Main Options Container */
 .optionListContainer {
     position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     z-index: 100;
     top: 45px;
     right: 12px;
     padding: 5px 5px;
     width: 0;
-    height: calc(100vh - 110px);
+    height: 1fr;
     opacity: 0;
     box-sizing: content-box;
     border-radius: 6px;
     background-color: rgb(0, 0, 0);
     color: white;
-    overflow: hidden;
+    /* overflow: hidden; */
     border: 0px solid rgba(255, 255, 255, 0.2);
     text-wrap: nowrap;
     transition: opacity 150ms ease 150ms, width 300ms ease, border 200ms ease 100ms;
 }
 
+.optionListContainer::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
 .openOptionsList {
     opacity: 1;
-    width: 350px;
+    width: 375px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: opacity 100ms ease, width 300ms ease;
 }
@@ -148,16 +147,55 @@
     justify-content: left;
     align-items: center;
     justify-self: center;
-    width: 85%;
+    width: 1fr;
     height: 45px;
     font-size: 22px;
-    margin: 6px;
-    margin-bottom: 15px;
-    padding: 0 5px;
+    margin: 0 10px;
+    margin-top: 6px;
     padding-left: 20px;
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.7); */
     border-radius: 6px;
-    background-color: rgb(15, 15, 15);
+    background-color: rgb(20, 20, 20);
+}
+.optionList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    gap: 4px;
+    width: 1fr;
+    padding: 15px 5px;
+    /* background: rgba(255, 0, 0, 0.1); */
+}
+
+.siteButtonContainer {
+    width: 1fr;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 4px 10px;
+}
+a.siteButtonLink {
+    text-decoration: none;
+    color: inherit;
+}
+.siteButton {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 200ms ease;
+}
+.siteButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.siteButtonImage {
+    width: 24px;
+    height: 24px;
 }
 
 /* Server Button */
@@ -180,7 +218,6 @@
     background-color: rgba(255, 255, 255, 0.35);
 }
 
-/* ACTUAL SERVER LIST */
 .selectionList {
     position: fixed;
     z-index: 90;
@@ -192,14 +229,14 @@
     background-color: black;
     margin: 0 auto;
     max-height: 50px;
-    width: 750px;
+    width: calc((1fr) + 400px);
     height: auto;
-    transition: transform 500ms ease-in-out 150ms, max-height 350ms ease-in-out;
+    transition: transform 500ms ease-in-out 100ms, max-height 350ms ease-in-out;
     overflow: hidden;
 }
 
 .selectionList.openList {
-    transition: transform 500ms ease-in-out, max-height 350ms ease-in-out 550ms;
+    transition: transform 500ms ease-in-out, max-height 350ms ease-in-out 200ms;
     max-height: 800px;
     transform: translate(-50%, 0px);
 }
@@ -209,7 +246,7 @@
     font-weight: 900;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 1fr;
     margin: 10px 0;
 }
 
@@ -218,7 +255,7 @@
     justify-content: center;
     font-size: 16px;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
     padding: 8px 8px;
 }
 
@@ -228,18 +265,22 @@
     font-size: 18px;
     flex-direction: row;
     align-items: center;
-    width: 97%;
-    height: 34px;
+    width: 1fr;
+    height: 30px;
     border-radius: 4px;
-    padding: 0 6px;
+    padding: 0 10px;
 }
 
 .serverOption:hover,
 .areaOption:hover {
-    border-right: 1px solid white;
-    border-left: 1px solid white;
+    /* border-right: 1px solid white;
+    border-left: 1px solid white; */
     box-shadow: inset 50px 0px 10px 0.1px rgb(255, 255, 255, 0.1);
     cursor: pointer;
+}
+.serverOption.isSelected {
+    color: rgb(255, 255, 100);
+    font-weight: 600;
 }
 
 .serverOnlineIndicator {
@@ -258,20 +299,14 @@
     background-color: red;
 }
 
-/* LINE UNDER SERVER BUTTON */
-.bottomBorderLine {
-    margin: 8px 0;
-    width: 90%;
-    border-bottom: 1px solid white;
-}
-
 /* CONTAINER PER SINGLE OPTION */
 .singleOptionContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     width: 90%;
+    font-size: 17px;
     padding: 5px 10px;
 }
 
@@ -337,6 +372,7 @@ input:checked+.checkboxSlider:before {
     -ms-transform: translateX(18px);
     transform: translateX(18px);
 }
+
 
 /* DEV TOOLS CONTAINER */
 .devToolsContainer {

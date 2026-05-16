@@ -7,6 +7,9 @@ import { AreaList, ServerList } from './serverScreenList'
 
 const inDev = process.env.NODE_ENV === 'development'
 
+const SR_FORUM_THREAD_LINK = 'https://forum.simrail.eu/topic/12629-srto-simrail-track-overview-the-first-look/'
+const GITHUB_REPOSITORY_LINK = 'https://github.com/TheTrueVirus/simrail-tools-html'
+
 interface ISelfProps {
     srtoHeaderOptions: {
         userOptions: typeof USER_OPTIONS
@@ -211,6 +214,7 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                 <div className='headerTitleContainer'>
                     <div className='srtoHeaderTitle' onClick={() => setOpenAreaList(true)}>SRTO : {srtoHeaderOptions.userOptions.selectedArea.areaDisplayTitle}</div>
                 </div>
+                {/* <div></div> */}
                 <div className='clockContainer' onClick={() => setOpenServerList(prev => !prev)}>
                     <div className='srtoClock'>{timeString}</div>
                 </div>
@@ -223,33 +227,49 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                     </div>
                     <div className='openOptionsButton' onClick={() => { setOptionsOpen(prev => !prev) }}>
                         <div className={`optionsButtonCogWheel ${isOptionsOpen ? 'rotateCogWheel' : ''}`}>⛯</div>
-                        <div className={`optionsText ${isOptionsOpen ? 'optionsOpenText' : ''}`}>Settings<br /><br />Close</div>
+                        <div className={`optionsButtonText ${isOptionsOpen ? 'optionsOpenText' : ''}`}>Settings<br /><br />Close</div>
                     </div>
                     <div ref={optionListRef} className={`optionListContainer ${isOptionsOpen ? 'openOptionsList' : ''}`} tabIndex={0}>
                         <div className='optionListTitle'>SETTINGS</div>
-                        {
-                            seperateOptionList.userOptions.map((option) => (
-                                option.isDevOption
-                                    ? <></>
-                                    :
-                                    <>
-                                        <div className='singleOptionContainer'>
-                                            <div className='optionSwitch'>
-                                                <label className='optionCheckboxSlider'>
-                                                    <input
-                                                        type="checkbox"
-                                                        className='optionCheckbox'
-                                                        checked={option.optionValue}
-                                                        onChange={(e) => option.optionSetter(prev => ({ ...prev, [option.optionKey]: e.target.checked }))}
-                                                    />
-                                                    <span className='checkboxSlider'></span>
-                                                </label>
+                        <div className='optionList'>
+                            {
+                                seperateOptionList.userOptions.map((option) => (
+                                    option.isDevOption
+                                        ? <></>
+                                        :
+                                        <>
+                                            <div className='singleOptionContainer'>
+                                                <div className='optionSwitch'>
+                                                    <label className='optionCheckboxSlider'>
+                                                        <input
+                                                            type="checkbox"
+                                                            className='optionCheckbox'
+                                                            checked={option.optionValue}
+                                                            onChange={(e) => option.optionSetter(prev => ({ ...prev, [option.optionKey]: e.target.checked }))}
+                                                        />
+                                                        <span className='checkboxSlider'></span>
+                                                    </label>
+                                                </div>
+                                                <div className='optionName'>{option.optionName}</div>
                                             </div>
-                                            <div className='optionName'>{option.optionName}</div>
-                                        </div>
-                                    </>
-                            ))
-                        }
+                                        </>
+                                ))
+                            }
+                        </div>
+                        <div className='siteButtonContainer'>
+                            <a className='siteButtonLink' target='_blank' rel="noopener noreferrer" href={SR_FORUM_THREAD_LINK}>
+                                <div className='siteButton siteForumThread'>
+                                    <img className='siteButtonImage' src={process.env.PUBLIC_URL + '/assets/images/social-buttons/simrail-forum-logo.png'} />
+                                    <div className='siteButtonText'>Forum Thread</div>
+                                </div>
+                            </a>
+                            <a className='siteButtonLink' target='_blank' rel="noopener noreferrer" href={GITHUB_REPOSITORY_LINK}>
+                                <div className='siteButton siteGithubRepo'>
+                                    <img className='siteButtonImage' src={process.env.PUBLIC_URL + '/assets/images/social-buttons/github-white-icon.png'} />
+                                    <div className='siteButtonText'>GitHub Repo</div>
+                                </div>
+                            </a>
+                        </div>
                         {inDev &&
                             <>
                                 <div className='devToolsContainer'>
