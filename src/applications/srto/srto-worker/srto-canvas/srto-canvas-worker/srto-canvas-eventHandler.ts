@@ -17,10 +17,10 @@ interface CanvasSettingsProps {
 }
 
 interface HandlerProps {
-        trainList: SimRailDataTypes.FilteredTrainList[],
-        stationList: SimRailDataTypes.StationData[]
-        userOptions: typeof USER_OPTIONS
-        devRenderOptions: RenderOptionsProps
+    trainList: SimRailDataTypes.FilteredTrainList[],
+    stationList: SimRailDataTypes.StationData[]
+    userOptions: typeof USER_OPTIONS
+    devRenderOptions: RenderOptionsProps
 }
 
 interface viewRefProp {
@@ -35,14 +35,14 @@ interface CanvasEventHandlerProps {
     dragRef: React.RefObject<{ isDragging: boolean; lastX: number; lastY: number }>
     scheduleDraw: () => void
     SRTO_PROPS: HandlerProps
-    signalDataRef?: React.RefObject<SRTO_DataTypes.SIGNAL[]>
+    signalDataRef?: React.RefObject<SRTO_DataTypes.SIGNAL_SECTIONS>
     canvasSettings: CanvasSettingsProps,
     minZoomRef: React.RefObject<number>
     mouseWorldPosRef?: React.RefObject<{ x: number, y: number } | null>
     setMouseWorldPos?: React.Dispatch<SetStateAction<{ x: number, y: number } | null>>
     hoveredTargetRef?: React.RefObject<HoveredTargetType>
     setHoveredTarget?: React.Dispatch<SetStateAction<HoveredTargetType>>,
-    trainHoverEntries?: {train: SimRailDataTypes.FilteredTrainList, signal: SRTO_DataTypes.SIGNAL}[]
+    trainHoverEntries?: { train: SimRailDataTypes.FilteredTrainList, signal: SRTO_DataTypes.SIGNAL }[]
 }
 
 export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
@@ -57,7 +57,6 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
     function clampViewToBounds(rect: DOMRect) {
 
         if (SRTO_PROPS.userOptions.allowExtendedView) return
-
         const fitScale = rect.width / CanvasSettings.CANVAS_WORLD_WIDTH
         const scale = fitScale * viewRef.current.zoom
 
@@ -138,7 +137,7 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
         dragRef.current.isDragging = true
         dragRef.current.lastX = event.clientX
         dragRef.current.lastY = event.clientY
-        if(!deps.setHoveredTarget) return;
+        if (!deps.setHoveredTarget) return;
         deps.setHoveredTarget(null)
     }
 
@@ -152,53 +151,86 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
             const scale = fitScale * viewRef.current.zoom
             const worldX = (mouseX - viewRef.current.panX) / scale
             const worldY = (mouseY - viewRef.current.panY) / scale
-            if(deps.setMouseWorldPos){
+            if (deps.setMouseWorldPos) {
                 deps.setMouseWorldPos({ x: Math.round(worldX), y: Math.round(worldY) })
             }
 
-            if(deps.hoveredTargetRef && deps.trainHoverEntries && deps.setHoveredTarget)
-            if (!dragRef.current.isDragging) {
-                const ctx = canvas.getContext('2d')
-                if (ctx && deps.signalDataRef) {
-                    let hit: typeof deps.hoveredTargetRef.current = null
+            if (deps.hoveredTargetRef && deps.trainHoverEntries && deps.setHoveredTarget)
+                if (!dragRef.current.isDragging) {
+                    const ctx = canvas.getContext('2d')
+                    if (ctx && deps.signalDataRef) {
+                        let hit: typeof deps.hoveredTargetRef.current = null
 
-                    for (const { train, signal } of deps.trainHoverEntries) {
-                        const tx = Number(signal.trainPos.x)
-                        const ty = Number(signal.trainPos.y)
-                        const path = TRAIN_BASE_PATH[signal.signalDirectionOnMap]
-                        if (ctx.isPointInPath(path, worldX - tx, worldY - ty)) {
-                            hit = {
-                                type: 'train',
-                                train,
-                                signal,
-                                screenX: (tx + (signal.signalDirectionOnMap === 'right' ? -25 : 25)) * scale + viewRef.current.panX,
-                                screenY: (ty) * scale + viewRef.current.panY
+                        function flipCoords({ x, y }: { x: string | number, y: string | number }) {
+                            if (deps.SRTO_PROPS.userOptions.flipScreen) {
+                                return {
+                                    x: deps.canvasSettings.CANVAS_WORLD_WIDTH - Number(x),
+                                    y: deps.canvasSettings.CANVAS_WORLD_HEIGHT - Number(y)
+                                }
+                            } else {
+                                return {
+                                    x: Number(x),
+                                    y: Number(y)
+                                }
                             }
-                            break
                         }
-                    }
 
-                    if (!hit) {
-                        for (const signal of deps.signalDataRef.current) {
-                            const sx = Number(signal.signalPos.x)
-                            const sy = Number(signal.signalPos.y)
-                            const signalPath = SIGNAL_BASE_PATH[signal.signalDirectionOnMap]
-                            if (ctx.isPointInPath(signalPath, worldX - sx, worldY - sy)) {
+                        for (const { train, signal } of deps.trainHoverEntries) {
+
+                            const trainCoordsAndDirection = () => {
+                                const positions = signal.trainPosDistance
+                                // return fallback position if no distance positioning given
+                                if (!positions) return { x: signal.trainPos.x, y: signal.trainPos.y, dir: false }
+
+                                for (const pos of positions) {
+                                    if (train.TrainData.DistanceToSignalInFront > pos.distanceToSignal) {
+                                        return { x: pos.x, y: pos.y, dir: pos.switchDirection }
+                                    }
+                                    continue;
+                                }
+                                return { x: signal.trainPos.x, y: signal.trainPos.y, dir: false }
+                            }
+
+                            const { x, y } = flipCoords(trainCoordsAndDirection());
+                            const dir = trainCoordsAndDirection().dir
+                            const signalDirectionOnFlip = deps.SRTO_PROPS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
+                            const signalDirectionOnDistance = dir ? signalDirectionOnFlip === 'left' ? 'right' : 'left' : signalDirectionOnFlip
+                            const path = TRAIN_BASE_PATH[signalDirectionOnDistance]
+                            if (ctx.isPointInPath(path, worldX - x, worldY - y)) {
                                 hit = {
-                                    type: 'signal',
+                                    type: 'train',
+                                    train,
                                     signal,
-                                    screenX: sx * scale + viewRef.current.panX,
-                                    screenY: sy * scale + viewRef.current.panY,
+                                    screenX: (x + (signalDirectionOnDistance === 'right' ? -25 : 25)) * scale + viewRef.current.panX,
+                                    screenY: (y) * scale + viewRef.current.panY
                                 }
                                 break
                             }
                         }
-                    }
 
-                    canvas.style.cursor = hit ? 'pointer' : 'default'
-                    deps.setHoveredTarget(hit)
+                        if (!hit) {
+                            for (const signalid in deps.signalDataRef.current) {
+                                for (const signal of deps.signalDataRef.current[signalid]) {
+                                    if(signal.invisibleSignal) continue;
+                                    const { x, y } = flipCoords(signal.signalPos);
+                                    const signalDirection = deps.SRTO_PROPS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
+                                    const signalPath = SIGNAL_BASE_PATH[signalDirection]
+                                    if (ctx.isPointInPath(signalPath, worldX - x, worldY - y)) {
+                                        hit = {
+                                            type: 'signal',
+                                            signal,
+                                            screenX: x * scale + viewRef.current.panX,
+                                            screenY: y * scale + viewRef.current.panY,
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        canvas.style.cursor = hit ? 'pointer' : 'default'
+                        deps.setHoveredTarget(hit)
+                    }
                 }
-            }
         }
 
         if (!dragRef.current.isDragging) return
@@ -225,7 +257,7 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
 
     function handleMouseLeave(event: React.MouseEvent<HTMLCanvasElement>) {
         dragRef.current.isDragging = false
-        if(!deps.setMouseWorldPos || !deps.setHoveredTarget) return;
+        if (!deps.setMouseWorldPos || !deps.setHoveredTarget) return;
         deps.setMouseWorldPos(null)
         deps.setHoveredTarget(null)
 

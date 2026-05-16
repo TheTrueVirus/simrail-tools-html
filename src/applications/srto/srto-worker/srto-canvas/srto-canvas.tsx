@@ -9,22 +9,23 @@ import { SRTO_DataTypes } from '../srto-data/srto-dataTypes';
 import { CanvasDrawer } from './srto-canvas-worker/srto-canvas-drawer';
 import { createCanvasEventHandler } from './srto-canvas-worker/srto-canvas-eventHandler';
 import HoverToolTipSignal from './tooltip-signal';
+import { getNextSignalFromLastSignal } from '../srto-data/srto-nextSignalList';
 const inDev = process.env.NODE_ENV === 'development'
-const appVersion = process.env.REACT_APP_VERSION || 'dev'
 
 const canvasSettings = {
     CANVAS_WORLD_WIDTH: 2560,
-    CANVAS_WORLD_HEIGHT: 3000,
+    CANVAS_WORLD_HEIGHT: 2450,
     MIN_ZOOM_FIT: 1,
     MIN_ZOOM_EXTENDED: 0.25,
     MAX_ZOOM: 4,
-    TOOLTIP_MARGIN: 10,
-    TOOLTIP_OFFSET: 12,
+    TOOLTIP_MARGIN: 30,
+    TOOLTIP_OFFSET: 16,
 }
 
 interface ISelfProps {
     SRTO_PROPS: {
         trainList: SimRailDataTypes.FilteredTrainList[]
+        lastSignalMapRef: React.RefObject<Map<string, string>>
         stationList: SimRailDataTypes.StationData[]
         // userList: SimRailDataTypes.SteamUser[] | null
         userOptions: typeof USER_OPTIONS
@@ -53,7 +54,7 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
     const { TRACK_DATA, SIGNAL_DATA, NODE_DATA } = loadDataFromFile(SRTO_PROPS.userOptions.selectedArea);
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const trackPathCacheRef = useRef(new WeakMap<SRTO_DataTypes.TRACK, Path2D>());
+    const trackPathCacheRef = useRef(new WeakMap<SRTO_DataTypes.TRACK_NODE, Path2D>());
     const viewRef = useRef({ zoom: 1, panX: 0, panY: 0 })
     const dragRef = useRef({ isDragging: false, lastX: 0, lastY: 0 })
     const rafRef = useRef<number | null>(null)
@@ -85,24 +86,39 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
     }, [hoveredTarget])
     const [tooltipPosition, setTooltipPosition] = useState<{ left: number, top: number } | null>(null)
 
+    useEffect(() => {
+        viewRef.current.zoom = 1
+        viewRef.current.panX = 0
+        viewRef.current.panY = 0
+    }, [SRTO_PROPS.userOptions.selectedArea])
 
-    const signalByName = useMemo(() => {
-        const map = new Map<string, SRTO_DataTypes.SIGNAL>()
-        for (const signal of SIGNAL_DATA) {
-            map.set(signal.signalName, signal)
+    const signalsByName = useMemo(() => {
+        const map = new Map<string | null, SRTO_DataTypes.SIGNAL[]>()
+        for (const sectionid in SIGNAL_DATA) {
+            for(const signal of SIGNAL_DATA[sectionid]) {
+                const mapKey = signal.signalName;
+                const list = map.get(mapKey);
+                if(list) {
+                    list.push(signal)
+                } else {
+                    map.set(mapKey, [signal])
+                }
+            }
         }
         return map
     }, [SIGNAL_DATA])
 
     const trainHoverEntries = useMemo(() => {
         return SRTO_PROPS.trainList
-            .map((train) => {
-                const signalName = train.TrainData.SignalInFront?.split('@')[0]
-                const signal = signalByName.get(signalName)
-                return signal ? { train, signal } : null
+            .flatMap((train) => {
+                const signalName = train.TrainData.SignalInFront?.split('@')[0] ?? getNextSignalFromLastSignal(SRTO_PROPS.lastSignalMapRef.current.get(train.TrainNoLocal))
+                if(!signalName) return []
+
+                const signals = signalsByName.get(signalName) ?? []
+                return signals.map((signal) => ({train, signal}))
             })
             .filter((entry): entry is { train: SimRailDataTypes.FilteredTrainList, signal: SRTO_DataTypes.SIGNAL } => entry !== null)
-    }, [SRTO_PROPS.trainList, signalByName])
+    }, [SRTO_PROPS.trainList, signalsByName])
 
     useLayoutEffect(() => {
         if (!hoveredTarget) {
@@ -120,8 +136,8 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
         const maxLeft = Math.max(canvasSettings.TOOLTIP_MARGIN, window.innerWidth - canvasSettings.TOOLTIP_MARGIN - tooltipWidth)
         const left = Math.min(maxLeft, Math.max(canvasSettings.TOOLTIP_MARGIN, desiredLeft))
 
-        const aboveTop = hoveredTarget.screenY - tooltipHeight - canvasSettings.TOOLTIP_OFFSET
-        const belowTop = hoveredTarget.screenY + canvasSettings.TOOLTIP_OFFSET + 14
+        const aboveTop = hoveredTarget.screenY - tooltipHeight + (25 / viewRef.current.zoom)
+        const belowTop = hoveredTarget.screenY + canvasSettings.TOOLTIP_OFFSET + 45
         const top = aboveTop < canvasSettings.TOOLTIP_MARGIN ? belowTop : aboveTop
 
         setTooltipPosition({ left, top })
@@ -154,12 +170,11 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
         TRACK_DATA,
         SIGNAL_DATA,
         NODE_DATA,
-        SRTO_PROPS.userOptions.allowExtendedView,
+        SRTO_PROPS.userOptions,
         SRTO_PROPS.trainList,
-        SRTO_PROPS.userOptions.shortStationNames,
     ])
 
-    const drawCanvas = () => {
+    function drawCanvas() {
         const canvas = canvasRef.current
         if (!canvas) return
 
@@ -192,40 +207,46 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
 
         ctx.fillStyle = 'rgb(0, 0, 0)'
         ctx.fillRect(0, 0, rect.width, rect.height)
-
+        
         // Base scale always fits world width (2560) into current viewport width.
         const fitScale = rect.width / canvasSettings.CANVAS_WORLD_WIDTH
         const { zoom, panX, panY } = viewRef.current
-
+        
         ctx.save()
         ctx.translate(panX, panY)
         ctx.scale(fitScale * zoom, fitScale * zoom)
 
+        if(SRTO_PROPS.userOptions.flipScreen) {
+            ctx.scale(-1, -1);
+            ctx.translate(-canvasSettings.CANVAS_WORLD_WIDTH, -canvasSettings.CANVAS_WORLD_HEIGHT)
+        }
+                
         if (!TRACK_DATA) return;
         if (SRTO_PROPS.devRenderOptions.renderTracks)
             CanvasDrawer.drawTracks(TRACK_DATA, ctx, trackPathCacheRef.current);
         if (!SIGNAL_DATA) return;
         if (SRTO_PROPS.devRenderOptions.renderSignals)
-            CanvasDrawer.drawSignals(SIGNAL_DATA, SRTO_PROPS.trainList, ctx);
+            CanvasDrawer.drawSignals(SIGNAL_DATA, SRTO_PROPS.trainList, ctx, SRTO_PROPS);
         if (!NODE_DATA || !SRTO_PROPS.stationList) return;
         if (SRTO_PROPS.devRenderOptions.renderNodes)
-            CanvasDrawer.drawNotations(NODE_DATA, SRTO_PROPS.stationList, ctx, SRTO_PROPS.userOptions.shortStationNames);
+            CanvasDrawer.drawNotations(NODE_DATA, ctx, SRTO_PROPS, canvasSettings);
         if (!SRTO_PROPS.trainList) return;
         if (inDev) {
             if (SRTO_PROPS.devRenderOptions.renderGhostTrains) {
+                CanvasDrawer.drawTrains(SIGNAL_DATA, ctx, SRTO_PROPS)
                 CanvasDrawer.drawGhostTrains(SIGNAL_DATA, ctx);
             } else {
                 if (SRTO_PROPS.devRenderOptions.renderTrains)
-                    CanvasDrawer.drawTrains(SRTO_PROPS.trainList, SIGNAL_DATA, ctx)
+                    CanvasDrawer.drawTrains(SIGNAL_DATA, ctx, SRTO_PROPS)
             }
         } else {
             if (SRTO_PROPS.devRenderOptions.renderTrains)
-                CanvasDrawer.drawTrains(SRTO_PROPS.trainList, SIGNAL_DATA, ctx)
+                CanvasDrawer.drawTrains(SIGNAL_DATA, ctx, SRTO_PROPS)
         }
         ctx.restore()
     }
 
-    const scheduleDraw = () => {
+    function scheduleDraw() {
         if (rafRef.current !== null) return
 
         rafRef.current = window.requestAnimationFrame(() => {
@@ -233,32 +254,6 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
             drawCanvas()
         })
     }
-
-    function trainsCounter() {
-
-        const trainsControlledByPlayers = SRTO_PROPS.trainList.filter((train) => train.ControlledBy === 'user').length
-        const allTrainsCount = SRTO_PROPS.trainList.length;
-        return `Trains: ${trainsControlledByPlayers}/${allTrainsCount}`
-    }
-
-    function stationsCounter() {
-        const stationsControlledByPlayers = SRTO_PROPS.stationList.filter((station) => station.DispatchedBy.length > 0).length
-        const allStationsCount = SRTO_PROPS.stationList.length
-
-        return `Stations: ${stationsControlledByPlayers}/${allStationsCount}`
-    }
-
-    // function getUsername(steamid: string | null) {
-    //     if(!SRTO_PROPS.userList) return 'Loading...'
-    //     if (!steamid) return 'Loading...';
-
-    //     const user = SRTO_PROPS.userList.find((user) => user.steamid === steamid);
-
-    //     if (!user) {
-    //         return 'Loading...';
-    //     }
-    //     return `User: ${user.personaname}`;
-    // }
 
     const CanvasEventHandler = createCanvasEventHandler({
         canvasRef,
@@ -299,7 +294,7 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
                                         <div className='tooltip-route-text'>{hoveredTarget.train.StartStation} → {hoveredTarget.train.EndStation}</div>
                                     </div>
                                     <div className='tooltip-traindata-speed'>Current Speed: {hoveredTarget.train.TrainData.Velocity.toFixed(0)} km/h</div>
-                                    <div className='tooltip-traindata-nextSignal'>Next Signal: {hoveredTarget.train.TrainData.SignalInFront.split('@')[0]} [{hoveredTarget.train.TrainData.DistanceToSignalInFront > 1000 ? `${(hoveredTarget.train.TrainData.DistanceToSignalInFront / 1000).toFixed(1)} km` : `${hoveredTarget.train.TrainData.DistanceToSignalInFront.toFixed(1)} m`}]</div>
+                                    <div className='tooltip-traindata-nextSignal'>{`${hoveredTarget.train.TrainData.DistanceToSignalInFront !== 0 ? `Next Signal: ${hoveredTarget.signal.signalName.split('@')[0]} [${hoveredTarget.train.TrainData.DistanceToSignalInFront > 1000 ? `${(hoveredTarget.train.TrainData.DistanceToSignalInFront / 1000).toFixed(1)} km` : `${(hoveredTarget.train.TrainData.DistanceToSignalInFront).toFixed(1)} m`}]` : 'Next Signal: > 5 km'}`}</div>
                                     <div className='tooltip-traindata-nextSignalSpeed'>Speed on Next Signal: {hoveredTarget.train.TrainData.SignalInFrontSpeed > 160 ? 'vMax' : `${hoveredTarget.train.TrainData.SignalInFrontSpeed} km/h`}</div>
                                     {/* <div className='tooltip-control'>{hoveredTarget.train.ControlledBy === 'user' ? getUsername(hoveredTarget.train.TrainData.ControlledBySteamID) : 'Bot'}</div> */}
                                     <div className='tooltip-control'>{hoveredTarget.train.ControlledBy === 'user' ? 'Player' : 'Bot'}</div>
@@ -313,9 +308,8 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
                             <>
                                 <div>
                                         <div className='trainTooltip-title'>{hoveredTarget.signal.signalName}</div>
-                                        <div className='trainTooltip-subtitle'>{hoveredTarget.signal.isSignalABS ? 'ABS-Signal' : 'Station-Signal'}</div>
+                                        <div className='trainTooltip-subtitle'>{hoveredTarget.signal.isSignalABS ?? hoveredTarget.signal.signalType?.split('-')[0].split('_')[0] === 'abs' ? 'ABS-Signal' : 'Station-Signal'}</div>
                                 </div>
-                                <div></div>
                             </>
                         )}
                     </div>
@@ -334,35 +328,22 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
                     onMouseLeave={CanvasEventHandler.handleMouseLeave}
                 />
             </div>
-            <div className="infoContainer">
-                <div className="trainsCounter">{trainsCounter()}</div>
-                <div className="stationsCounter">{stationsCounter()}</div>
-                <div className="canvasWorldCoordinates">
-                    MousePos:
-                    {mouseWorldPos
-                        ? ` [x: ${mouseWorldPos.x} | y: ${mouseWorldPos.y}]`
-                        : ' [x: - | y: -]'}
-                </div>
-                {/* <div>{`ViewRef - X:${viewRef.current.panX.toFixed(0)} Y: ${viewRef.current.panY.toFixed(0)} Zoom: ${viewRef.current.zoom.toFixed(2)}`}</div> */}
-                <div className="svgCoordinates">
-                    Extended view: {SRTO_PROPS.userOptions.allowExtendedView ? 'ON' : 'OFF'}
-                </div>
-                <div className='versionInfo'>
-                    <div>Copyright (c) 2026 TheTrueVirus<br /><br />{`SRTO-Version: ${appVersion}`}</div>
-                </div>
-            </div>
             {inDev &&
                 <div className={`devInfoContainer ${showDevMenu ? 'devInfoVisible' : 'devInfoHidden'}`} onClick={() => toggleDevMenu(!showDevMenu)}>
                     <div className='devInfo-title'>DEV INFO</div>
-                    <div className="devInfoBox">
+                    {/* <div className="devInfoBox">
                         <div className='devInfo-title'>SRTO-DATA Info:</div>
-                        <div className="tracksCount">{`Track Count: ${TRACK_DATA.length}`}</div>
-                        <div className="signalCount">{`Signal Count: ${SIGNAL_DATA.length}`}</div>
-                        <div className="nodesCount">{`Nodes Count: ${NODE_DATA.length}`}</div>
-                    </div>
+                        <div className="tracksCount">{`Track Count:`}</div>
+                        <div className="signalCount">{`Signal Count:`}</div>
+                        <div className="nodesCount">{`Nodes Count:`}</div>
+                    </div> */}
                     <div className='devInfo-statesContainer'>
                         <div className='devInfo-title'>States Info:</div>
                         <div className='devInfo-stateRef'>{`Is Canvas: ${canvasRef ? 'Yes' : 'No'}`}</div>
+                        {mouseWorldPos
+                            ? <div className='devInfo-stateRef'>{`Mouse: [ ${Object.entries(mouseWorldPos).map(([key, value]) => {return ` ${key}: ${value.toFixed(1)}`})} ]`}</div>
+                            : <div className='devInfo-stateRef'>{`Mouse: [ x: - , y: - ]`}</div>
+                        }
                         <div className='devInfo-stateRef'>{`viewRef: ${Object.entries(viewRef.current).map(([key, value]) => {return `${key}: ${value.toFixed(1)} `})}`}</div>
                         <div className='devInfo-stateRef'>{`dragRef: ${Object.entries(dragRef.current).map(([key, value]) => {return `${key}: ${value} `})}`}</div>
                         <div className='devInfo-stateRef'>{`dragRef: ${Object.entries(canvasSizeRef.current).map(([key, value]) => {return `${key}: ${value} `})}`}</div>

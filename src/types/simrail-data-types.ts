@@ -56,7 +56,7 @@ export namespace SimRailDataTypes {
             Latititute: number,
             Longitute: number,
             Velocity: number,
-            SignalInFront: string,
+            SignalInFront: string | null,
             DistanceToSignalInFront: number,
             SignalInFrontSpeed: number,
             VDDelayedTimetableIndex: number,
@@ -77,7 +77,7 @@ export namespace SimRailDataTypes {
             ControlledBySteamID: string | null,
             ControlledByXboxID: string | null,
             Velocity: number
-            SignalInFront: string
+            SignalInFront: string | null
             SignalInFrontSpeed: number
             DistanceToSignalInFront: number
         }
