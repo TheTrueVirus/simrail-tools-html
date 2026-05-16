@@ -1,7 +1,7 @@
 .srtoCanvasContainer {
     display: flex;
     flex: 1 1 auto;
-    width: 100%; 
+    width: 100%;
     height: auto;
     min-height: 0;
 }
@@ -24,7 +24,7 @@
     padding: 6px 10px;
     color: #fff;
     font-size: 13px;
-    line-height: 1.5; 
+    line-height: 1.5;
     pointer-events: none;
     white-space: nowrap;
     z-index: 50;
@@ -58,6 +58,7 @@
     font-weight: bold;
     font-size: 15px;
 }
+
 .tooltip-control {
     margin-top: 2px;
     font-size: 12px;
@@ -75,66 +76,60 @@
     /* border: 1px solid rgba(255, 255, 255, 0.35); */
     border-radius: 5px;
 }
+
 .signalImage-svg {
     width: 100%;
     height: 100%;
 }
 
 .signalLamp {
-    r: 11px;
-    stroke-width: 2;
-    stroke: black;
+    r: 10px;
+    stroke-width: 1;
+    stroke: transparent;
 }
+
 .lampOff {
     fill: black;
 }
+
 .redLamp {
     fill: red;
 }
+
 .orangeLamp {
-    fill: orange;
+    fill: rgb(255, 180, 0);
 }
+
 .greenLamp {
     fill: lime;
 }
-.speedBar{
+
+.speedBar {
     stroke: black;
     stroke-width: 1;
 }
+
 .offBar {
     fill: black;
 }
+
 .greenBar {
     fill: lime;
 }
+
 .orangeBar {
     fill: orange;
 }
-.redLamp_Blinking {
-    animation: blinkingSignalLampAnimation_RedLamp 2s ease infinite;
-}
+
 .orangeLamp_Blinking {
     animation: blinkingSignalLampAnimation_OrangeLamp 2s ease infinite;
 }
+
 .greenLamp_Blinking {
     animation: blinkingSignalLampAnimation_GreenLamp 2s ease infinite;
 }
-@keyframes blinkingSignalLampAnimation_RedLamp {
-    0% {
-        fill: black;
-    }
-
-    25% {
-        fill: red;
-    }
-
-    75% {
-        fill: red;
-    }
-
-    100% {
-        fill: black;
-    }
+.whiteLamp_Blinking {
+    animation: blinkingSignalLampAnimation_WhiteLamp 2s ease infinite;
 }
 @keyframes blinkingSignalLampAnimation_OrangeLamp {
     0% {
@@ -153,6 +148,7 @@
         fill: black;
     }
 }
+
 @keyframes blinkingSignalLampAnimation_GreenLamp {
     0% {
         fill: black;
@@ -164,6 +160,24 @@
 
     75% {
         fill: lime;
+    }
+
+    100% {
+        fill: black;
+    }
+}
+
+@keyframes blinkingSignalLampAnimation_WhiteLamp {
+    0% {
+        fill: black;
+    }
+
+    25% {
+        fill: white;
+    }
+
+    75% {
+        fill: white;
     }
 
     100% {
@@ -188,14 +202,17 @@
     text-wrap: nowrap;
     transition: 0.5s ease;
 }
+
 .devInfoVisible {
     max-width: 500px;
     max-height: 300px;
 }
+
 .devInfoHidden {
     max-width: 35px;
     max-height: 30px;
 }
+
 .devInfo-title {
     font-size: 22px;
     font-weight: 600;

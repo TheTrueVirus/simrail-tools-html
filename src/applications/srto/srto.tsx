@@ -7,10 +7,23 @@ import SRTO_Disclaimer from './srto-disclaimer/srto-disclaimer';
 import SRTO_Canvas from './srto-worker/srto-canvas/srto-canvas';
 import SRTO_Footer from './srto-footer/srto-footer';
 
+export type SCREENID = "srto_screen1" | "srto_screen2"
+
 export interface AreaProps {
-    areaID: string
+    areaID: SCREENID
     areaDisplayTitle: string
 }
+
+export const AreaList: AreaProps[] = [
+    {
+        areaID: 'srto_screen1',
+        areaDisplayTitle: 'S1 | Katowice - Warszawa'
+    },
+    {
+        areaID: 'srto_screen2',
+        areaDisplayTitle: 'S2 | Lodz Voivodeship - [Warszawa]'
+    },
+]
 
 export interface RenderOptionsProps {
     renderTracks: boolean
@@ -30,19 +43,12 @@ const RenderOptions: RenderOptionsProps = {
 
 export const USER_OPTIONS = {
     selectedServer: 'int1',
-    selectedArea: { areaID: 'srto_area1', areaDisplayTitle: 'A1 | Katowice - Warszawa' },
+    selectedArea: AreaList[0],
     shortStationNames: false,
     allowExtendedView: false,
     flipScreen: false,
     //showCoordinates: true
 }
-
-export const AreaList = [
-    {
-        areaID: 'srto_area1',
-        areaDisplayTitle: 'A1 | Katowice - Warszawa'
-    },
-]
 
 const DISCLAIMER_KEY = "srto_disclaimer_accepted"
 
@@ -58,8 +64,8 @@ export default function SimRailTrackOverview() {
             ControlledBySteamID: null,
             ControlledByXboxID: null,
             Velocity: 50,
-            SignalInFront: 'SG_N3',
-            DistanceToSignalInFront: 100,
+            SignalInFront: '2439_LC_W42',
+            DistanceToSignalInFront: 1280,
             SignalInFrontSpeed: 120,
         },
         ControlledBy: 'user'
@@ -86,15 +92,20 @@ export default function SimRailTrackOverview() {
 
         try {
             const p = JSON.parse(optionsFromStorage)
+            const validArea = AreaList.find(area => area.areaID === p?.selectedArea?.areaID);
+
+            if (!validArea) {
+                p.selectedArea = AreaList[0]
+            }
 
             const isValid =
                 p &&
                 typeof p.selectedServer === "string" &&
-                typeof p.selectedArea &&
-                typeof p.selectedArea.areaID === "string" &&
+                typeof validArea === typeof AreaList &&
                 typeof p.selectedArea.areaDisplayTitle === "string" &&
                 typeof p.shortStationNames === "boolean" &&
-                typeof p.allowExtendedView === "boolean"
+                typeof p.allowExtendedView === "boolean" &&
+                typeof p.flipScreen === "boolean";
 
             return isValid ? p : defaultOptions
         } catch {

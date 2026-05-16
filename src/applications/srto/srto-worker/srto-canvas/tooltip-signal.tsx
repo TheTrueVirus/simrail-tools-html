@@ -7,6 +7,7 @@ export default function HoverToolTipSignal({ hoveredTarget }: { hoveredTarget: T
     if (!hoveredTarget) return <></>;
 
     const signalMetalColor = 'rgb(30, 30, 30)'
+    const isABS = hoveredTarget.signal.isSignalABS ?? hoveredTarget.signal.signalType?.split('_')[0] === 'abs'
 
     const speed = hoveredTarget.train.TrainData.SignalInFrontSpeed
     const greenOrOffBar = speed >= 100 && speed < 160 ? 'greenBar' : 'offBar'
@@ -19,12 +20,11 @@ export default function HoverToolTipSignal({ hoveredTarget }: { hoveredTarget: T
     const whiteLamp = 'lampOff'
     const speednumber = speed === 50 || speed === 80 || speed === 130 || speed === 120 ? (speed/10).toString() : ''
 
-    // ** redo because later signals have 2 underscores **
-    const signalName = hoveredTarget.signal.signalName.split('_')[1]
+    const signalName = hoveredTarget.signal.signalName.split('_')[hoveredTarget.signal.signalName.split('_').length - 1]
 
     return (
         <>
-            {!hoveredTarget.signal.isSignalABS ?
+            {!isABS ?
                 <svg className="signalImage-svg" viewBox="0 0 100 300">
                     <defs>
                         <filter id="lampglow" x="-50%" y="-50%" width="200%" height="200%">
@@ -84,7 +84,7 @@ export default function HoverToolTipSignal({ hoveredTarget }: { hoveredTarget: T
                         </>
                     }
                     { (speed === 50 || speed === 80 || speed === 120 || speed === 130) &&
-                        <g id="signal-signalSpeedIndicator">
+                        <g className="signalSpeedNumber" id="signal-signalSpeedIndicator">
                             <rect x={35} y={230} width={30} height={35} fill={signalMetalColor}/>
                             <text x={50} y={255} fontSize={26} textAnchor="middle" fill="white" filter="url(#numberGlow)">{speednumber}</text>
                         </g>
@@ -118,6 +118,13 @@ export default function HoverToolTipSignal({ hoveredTarget }: { hoveredTarget: T
                         <rect x={30} y={115} width={40} height={20} fill='white' />
                         <text x={50} y={129} textAnchor='middle' fill='black' stroke='black' strokeWidth={0.5} fontSize={14}>{signalName}</text>
                     </g>
+                    { hoveredTarget.signal.signalType?.split('_')[1] === 'last' &&
+                        <g id='lastABSSign'>
+                            <rect x={35} y={140} width={30} height={30} fill="white" />
+                            <circle cx={50} cy={155} r={4} fill="black" />
+                            <circle cx={50} cy={155} r={10} strokeWidth={3} stroke="black" fill="transparent" />
+                        </g>
+                    }
                 </svg>
             }
         </>

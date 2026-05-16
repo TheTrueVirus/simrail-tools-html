@@ -18,8 +18,8 @@ const canvasSettings = {
     MIN_ZOOM_FIT: 1,
     MIN_ZOOM_EXTENDED: 0.25,
     MAX_ZOOM: 4,
-    TOOLTIP_MARGIN: 10,
-    TOOLTIP_OFFSET: 12,
+    TOOLTIP_MARGIN: 30,
+    TOOLTIP_OFFSET: 16,
 }
 
 interface ISelfProps {
@@ -86,6 +86,11 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
     }, [hoveredTarget])
     const [tooltipPosition, setTooltipPosition] = useState<{ left: number, top: number } | null>(null)
 
+    useEffect(() => {
+        viewRef.current.zoom = 1
+        viewRef.current.panX = 0
+        viewRef.current.panY = 0
+    }, [SRTO_PROPS.userOptions.selectedArea])
 
     const signalsByName = useMemo(() => {
         const map = new Map<string | null, SRTO_DataTypes.SIGNAL[]>()
@@ -131,8 +136,8 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
         const maxLeft = Math.max(canvasSettings.TOOLTIP_MARGIN, window.innerWidth - canvasSettings.TOOLTIP_MARGIN - tooltipWidth)
         const left = Math.min(maxLeft, Math.max(canvasSettings.TOOLTIP_MARGIN, desiredLeft))
 
-        const aboveTop = hoveredTarget.screenY - tooltipHeight + (15 / viewRef.current.zoom)
-        const belowTop = hoveredTarget.screenY + canvasSettings.TOOLTIP_OFFSET + 50
+        const aboveTop = hoveredTarget.screenY - tooltipHeight + (25 / viewRef.current.zoom)
+        const belowTop = hoveredTarget.screenY + canvasSettings.TOOLTIP_OFFSET + 45
         const top = aboveTop < canvasSettings.TOOLTIP_MARGIN ? belowTop : aboveTop
 
         setTooltipPosition({ left, top })
@@ -165,9 +170,8 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
         TRACK_DATA,
         SIGNAL_DATA,
         NODE_DATA,
-        SRTO_PROPS.userOptions.allowExtendedView,
+        SRTO_PROPS.userOptions,
         SRTO_PROPS.trainList,
-        SRTO_PROPS.userOptions.shortStationNames,
     ])
 
     function drawCanvas() {
@@ -304,7 +308,7 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
                             <>
                                 <div>
                                         <div className='trainTooltip-title'>{hoveredTarget.signal.signalName}</div>
-                                        <div className='trainTooltip-subtitle'>{hoveredTarget.signal.isSignalABS ? 'ABS-Signal' : 'Station-Signal'}</div>
+                                        <div className='trainTooltip-subtitle'>{hoveredTarget.signal.isSignalABS ?? hoveredTarget.signal.signalType?.split('-')[0].split('_')[0] === 'abs' ? 'ABS-Signal' : 'Station-Signal'}</div>
                                 </div>
                             </>
                         )}
