@@ -47,3 +47,25 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
+//!
+
+//! #region S1 - [KATOWICE - WARSZAWA]
+
+//! #region S2 - [LODZ VOIVODESHIP - WARSZAWA]
+
+//! DISTANCE POSITIONING
+
+//! distance: 6084m
+
+//! distance: 6243m
+
+//!!!
+
+//!!! AGAIN FOR KOLUSZKI
+
+//!!! AGAIN FOR KOLUSZKI AREA
+
+//!!! BORDER SIGNAL
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
