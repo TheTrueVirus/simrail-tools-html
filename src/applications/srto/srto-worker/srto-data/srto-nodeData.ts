@@ -1167,7 +1167,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             {
                 nodeID: 'po-DGSikorka',
                 nodeType: 'simpleText',
-                nodePos: { x: 1380, y: 400 },
+                nodePos: { x: 1380, y: 395 },
                 text: 'D. G. Sikorka',
                 textSize: phFontSize,
                 strokeWidth: 0.5,
@@ -1192,7 +1192,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             {
                 nodeID: 'po-Chruszczobrod',
                 nodeType: 'simpleText',
-                nodePos: { x: 1535, y: 355 },
+                nodePos: { x: 1540, y: 355 },
                 text: 'Chruszczobrod',
                 textSize: phFontSize,
                 strokeWidth: 0.5,
@@ -1405,7 +1405,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 stationPrefix: 'ŁC',
                 stationName: 'Łazy Łc',
                 nodePos: { x: 1780, y: 300 },
-                nodePosFlipped: { x: 1900, y: 510 }
+                nodePosFlipped: { x: 1780, y: 510 }
             },
             {
                 nodeID: 'tm-LC_3',
@@ -1495,7 +1495,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 stationPrefix: 'LB',
                 stationName: 'Łazy',
                 nodePos: { x: 2140, y: 300 },
-                nodePosFlipped: { x: 2220, y: 510 }
+                nodePosFlipped: { x: 2100, y: 510 }
             },
             {
                 nodeID: 'peron_LazyLB_p2',
@@ -5092,7 +5092,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 stationPrefix: 'Se',
                 stationName: 'Sędzice',
                 nodePos: { x: 95, y: 80 },
-                nodePosFlipped: { x: 230, y: 230 }
+                nodePosFlipped: { x: 95, y: 230 }
             },
             {
                 nodeID: 'peron_Sedzice_3',
@@ -5170,7 +5170,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 stationPrefix: 'Si',
                 stationName: 'Sieradz',
                 nodePos: { x: 435, y: 70 },
-                nodePosFlipped: { x: 565, y: 230 }
+                nodePosFlipped: { x: 435, y: 230 }
             },
             {
                 nodeID: 'peron_Sieradz_2',
@@ -5224,7 +5224,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeID: "text_APOMeka",
                 nodeType: "simpleText",
                 nodePos: { x: 660, y: 120 },
-                nodePosFlipped: { x: 790, y: 180 },
+                nodePosFlipped: { x: 660, y: 180 },
                 text: "APO Męka",
                 textSize: 12
             },
@@ -5266,7 +5266,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 stationPrefix: 'ZW',
                 stationName: 'Zduńska Wola',
                 nodePos: { x: 900, y: 50 },
-                nodePosFlipped: { x: 1030, y: 220 }
+                nodePosFlipped: { x: 900, y: 220 }
             },
             {
                 nodeID: 'peron_ZdunskaWola_2',
@@ -5387,7 +5387,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 stationPrefix: 'Ga',
                 stationName: 'Gajewniki',
                 nodePos: { x: 1250, y: 70 },
-                nodePosFlipped: { x: 1380, y: 200 }
+                nodePosFlipped: { x: 1250, y: 200 }
             },
         ],
         "TRACKS_GAJEWNIKI_LASK": [
@@ -5395,7 +5395,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeID: "text_APOBorszewice",
                 nodeType: "simpleText",
                 nodePos: { x: 1380, y: 120 },
-                nodePosFlipped: { x: 1510, y: 180 },
+                nodePosFlipped: { x: 1380, y: 180 },
                 text: "APO Borszewice",
                 textSize: 12
             },
@@ -5437,7 +5437,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 stationPrefix: 'La',
                 stationName: 'Łask',
                 nodePos: { x: 1590, y: 70 },
-                nodePosFlipped: { x: 1720, y: 235 }
+                nodePosFlipped: { x: 1590, y: 235 }
             },
             {
                 nodeID: 'peron_Lask_2',
@@ -5491,7 +5491,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeID: "text_APOKolumna",
                 nodeType: "simpleText",
                 nodePos: { x: 1790, y: 120 },
-                nodePosFlipped: { x: 1920, y: 180 },
+                nodePosFlipped: { x: 1790, y: 180 },
                 text: "APO Kolumna",
                 textSize: 12
             },
@@ -5499,7 +5499,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeID: "text_APODobroń",
                 nodeType: "simpleText",
                 nodePos: { x: 1870, y: 180 },
-                nodePosFlipped: { x: 2000, y: 120 },
+                nodePosFlipped: { x: 1870, y: 120 },
                 text: "APO Dobroń",
                 textSize: 12
             },
@@ -5555,7 +5555,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 stationPrefix: 'Pa',
                 stationName: 'Pabianice',
                 nodePos: { x: 2070, y: 70 },
-                nodePosFlipped: { x: 2200, y: 220 }
+                nodePosFlipped: { x: 2070, y: 220 }
             },
             {
                 nodeID: 'peron_Pabianice_2',
@@ -6053,8 +6053,16 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeType: 'stationName',
                 stationPrefix: 'Zg',
                 stationName: 'Łódź Marysin',
-                nodePos: { x: 1460, y: 565 },
-                nodePosFlipped: { x: 1460, y: 655 }
+                nodePos: { x: 1460, y: 545 },
+                nodePosFlipped: { x: 1460, y: 670 }
+            },
+            {
+                nodeID: "text-lcs-LodzMarysin",
+                nodeType: "simpleText",
+                nodePos: { x: 1460, y: 560 },
+                nodePosFlipped: { x: 1460, y: 655 },
+                text: "Controlled by Łódź Widzew",
+                textSize: 10
             },
             {
                 nodeID: 'platform-LodzMarysin-1',
@@ -6844,7 +6852,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeID: "text_po_LodzOlechowZachod",
                 nodeType: "simpleText",
                 nodePos: { x: 1015, y: 955 },
-                nodePosFlipped: { x: 1015, y: 1045 },
+                nodePosFlipped: { x: 1015, y: 1065 },
                 text: "Łódź Olechów Zachód",
                 textSize: phFontSize
             },

@@ -6,6 +6,13 @@
 > ### **This project is still under full development. You may encounter bugs!**
 > #### _If you encounter any bugs or have any suggestions for improvements, let me now by writing a post into the forum thread or by opening an issue in the github repository. This will help me a lot!_
 
+## **Version 0.3.1-alpha | HOTFIX**
+Released on 16.05.2026
+### <u>Changes</u>
+- fixed wrong positions of nodes in the Łódź Area aswell as station names of `Łazy` and `Łazy Łc` if the screen is flipped
+- added a `Controlled by Łódź Widzew` node to Łódź Marysin and adjusted the positions of those
+
+
 ## **Version 0.3.0-alpha**
 #### Overview: New Screen "Łódź Voivodeship", Feature "Flip Screen" and some fixes
 Update released on 16.05.2026
