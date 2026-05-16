@@ -1,9 +1,11 @@
 import { SimRailDataTypes } from "../../../../../types/simrail-data-types";
 import { RenderOptionsProps, USER_OPTIONS } from "../../../srto";
 import { SRTO_DataTypes } from "../../srto-data/srto-dataTypes";
+import { getNextSignalFromLastSignal } from "../../srto-data/srto-nextSignalList";
 
 interface SRTO_PROPS {
     trainList: SimRailDataTypes.FilteredTrainList[]
+    lastSignalMapRef: React.RefObject<Map<string, string>>
     stationList: SimRailDataTypes.StationData[]
     userOptions: typeof USER_OPTIONS
     devRenderOptions: RenderOptionsProps
@@ -152,6 +154,7 @@ export namespace CanvasDrawer {
 
         for (const signalid in signal_data) {
             for (const signal of signal_data[signalid]) {
+                if (signal.invisibleSignal) continue;
                 const { sx, sy } = { sx: Number(signal.signalPos.x), sy: Number(signal.signalPos.y) }
                 const signalColor = signalColorByName.get(signal.signalName) ?? defaultSignalColor
 
@@ -185,7 +188,7 @@ export namespace CanvasDrawer {
         const userOptions = SRTO_PROPS.userOptions
         const stationData = SRTO_PROPS.stationList
         for (const nodeid in node_data) {
-            for(const node of node_data[nodeid]){
+            for (const node of node_data[nodeid]) {
                 const { x, y } = ((SRTO_PROPS.userOptions.flipScreen && node.nodePosFlipped) ? node.nodePosFlipped : node.nodePos) ?? { x: 0, y: 0 }
                 ctx.save();
                 ctx.translate(x, y);
@@ -200,45 +203,45 @@ export namespace CanvasDrawer {
                         const tm_metrics = ctx.measureText(node.text ?? '');
                         const tm_height = tm_metrics.actualBoundingBoxAscent + tm_metrics.actualBoundingBoxDescent
                         const tm_width = tm_metrics.width
-    
+
                         ctx.fillStyle = 'black'
                         ctx.fillRect(-(tm_width / 2) - 2, -5, tm_width + 4, tm_height + 2)
-    
+
                         ctx.fillStyle = 'white'
                         ctx.fillText(node.text ?? 'n.t.', 0, 1)
                         break;
                     case 'platform':
                         ctx.font = '8px monospace'
-    
+
                         if (!userOptions.flipScreen) {
                             // non-flipped
                             ctx.fillStyle = 'rgb(255, 180, 80)'
                             ctx.fillRect(0, 0, node.width ?? 0, node.height ?? 0)
-    
+
                             ctx.fillStyle = 'black'
                             ctx.fillText(node.text ?? '', (node.width ? node.width / 2 : 0), (node.height ? node.height / 2 : 0) + 1)
-    
+
                         } else {
                             // flipped
                             ctx.fillStyle = 'rgb(255, 180, 80)'
                             ctx.fillRect(-(node.width ?? 1), -(node.height ?? 1), node.width ?? 0, node.height ?? 0)
-    
+
                             ctx.fillStyle = 'black'
                             ctx.fillText(node.text ?? '', -(node.width ? node.width / 2 : 0), -(node.height ? node.height / 2 : 0) + 1)
-    
+
                         }
                         break;
                     case 'stationName':
                         ctx.font = 'bold 18px monospace'
-    
-                        const displayedStationName = (!userOptions.shortStationNames ? node.stationName : node.stationPrefix) ?? 'No Name'
-    
+
+                        const displayedStationName = (!userOptions.shortStationNames ? (node.seperateDisplayName ?? node.stationName) : node.stationPrefix) ?? '?????'
+
                         ctx.fillStyle = 'rgb(255, 200, 0)'
                         ctx.fillText(displayedStationName, 0, 0)
-    
+
                         const underlineColor = () => {
                             const getStation = stationData.find((station) => station.Name === node.stationName)
-                            if (!getStation) return 'gray'
+                            if (!getStation) return 'transparent'
                             return getStation.DispatchedBy.length < 1 ? 'lime' : 'red'
                         }
                         ctx.fillStyle = underlineColor()
@@ -247,6 +250,8 @@ export namespace CanvasDrawer {
                     case 'simpleText':
                         ctx.fillStyle = node.textColor ?? 'white'
                         ctx.font = `${node.textSize ?? 10}px monospace`
+                        ctx.textAlign = 'center'
+                        ctx.textBaseline = 'middle'
                         ctx.fillText(node.text ?? '', 0, 0)
                         break;
                     case 'differentScreenMarker':
@@ -255,7 +260,7 @@ export namespace CanvasDrawer {
                         const dsm_metrics = ctx.measureText(node.text ?? '');
                         const dsm_height = dsm_metrics.actualBoundingBoxAscent + dsm_metrics.actualBoundingBoxDescent
                         const dsm_width = dsm_metrics.width
-    
+
                         const icon = DiffAreaIcon;
                         ctx.textAlign = 'left'
                         ctx.textBaseline = 'alphabetic'
@@ -310,11 +315,12 @@ export namespace CanvasDrawer {
                                     },
                                 }
                             }
-    
+
                         }
                         ctx.fillStyle = 'rgb(160, 0, 120)'
                         ctx.font = 'bold 18px monospace'
-    
+                        ctx.textBaseline = 'middle'
+
                         ctx.fillText(`[${node.text ?? '?'}]`, bm()[1].x, bm()[1].y)
                         ctx.fillText(`[${node.text ?? '?'}]`, bm()[2].x, bm()[2].y)
                         ctx.restore();
@@ -326,7 +332,7 @@ export namespace CanvasDrawer {
                         ctx.lineWidth = 1
                         ctx.strokeStyle = 'white';
                         ctx.stroke(post);
-    
+
                         ctx.fillStyle = 'white';
                         ctx.strokeStyle = 'black';
                         ctx.lineWidth = 5;
@@ -357,61 +363,86 @@ export namespace CanvasDrawer {
         const userOptions = SRTO_PROPS.userOptions
         const trainData = SRTO_PROPS.trainList
 
+        function getTrainSignal(train: SimRailDataTypes.FilteredTrainList) {
+            const signalName = train.TrainData.SignalInFront?.split('@')[0] ?? null
+
+            if (!signalName) {
+                const lastSignal = SRTO_PROPS.lastSignalMapRef.current.get(train.TrainNoLocal)
+                if (!lastSignal) return null;
+                return getNextSignalFromLastSignal(SRTO_PROPS.lastSignalMapRef.current.get(train.TrainNoLocal)) ?? null
+            }
+            return signalName
+        }
+
+        function searchSignal(signalName: string | null) {
+            let signals : SRTO_DataTypes.SIGNAL[] = []
+            for (const signalid in signal_data) {
+                const foundSignal = signal_data[signalid].filter((signal) => signalName === signal.signalName);
+                if (foundSignal) signals.push(...foundSignal);
+            }
+            return signals
+        }
         for (const train of trainData) {
 
-            function searchSignal(signalName: string) {
-                for (const signalid in signal_data) {
-                    const foundSignal = signal_data[signalid].find((signal) => signalName === signal.signalName);
-                    if (foundSignal) return foundSignal;
+            const signalOfTrain = getTrainSignal(train)
+            if (!signalOfTrain) continue;
+
+            const trainOnSignals = searchSignal(signalOfTrain)
+            if (!trainOnSignals) continue;
+
+
+            const trainCoordsAndDirection = (signal: SRTO_DataTypes.SIGNAL) => {
+                const positions = signal.trainPosDistance
+                // return fallback position if no distance positioning given
+                if (!positions) return { x: signal.trainPos.x, y: signal.trainPos.y, dir: false }
+
+                for (const pos of positions) {
+                    if (train.TrainData.DistanceToSignalInFront > pos.distanceToSignal) {
+                        return { x: pos.x, y: pos.y, dir: pos.switchDirection }
+                    }
+                    continue;
                 }
+                return { x: signal.trainPos.x, y: signal.trainPos.y, dir: false }
             }
 
-            const isTrainOnSignal = searchSignal(train.TrainData.SignalInFront?.split('@')[0])
+            for (const trainOnSignal of trainOnSignals) {
+                const tx = Number(trainCoordsAndDirection(trainOnSignal).x)
+                const ty = Number(trainCoordsAndDirection(trainOnSignal).y)
+                const dir = trainCoordsAndDirection(trainOnSignal).dir
 
-            if (!isTrainOnSignal) continue;
+                const trainColors = () => {
+                    const isTrainControlledByPlayer = train.ControlledBy === 'user'
 
-
-            const tx = Number(isTrainOnSignal.trainPos.x)
-            const ty = Number(isTrainOnSignal.trainPos.y)
-
-            const trainColors = () => {
-                const isTrainControlledByPlayer = train.ControlledBy === 'user'
-
-                return {
-                    outlineColor: isTrainControlledByPlayer ? 'rgb(0, 128, 255)' : 'gray',
-                    fillColor: 'black',
-                    textColor: isTrainControlledByPlayer ? 'rgb(0, 255, 255)' : 'white'
+                    return {
+                        outlineColor: isTrainControlledByPlayer ? 'rgb(0, 128, 255)' : 'darkgray',
+                        fillColor: 'black',
+                        textColor: isTrainControlledByPlayer ? 'rgb(0, 255, 255)' : 'white'
+                    }
                 }
-            }
-            ctx.save();
-            ctx.translate(tx, ty);
-            if (userOptions.flipScreen) {
-                ctx.scale(-1, -1);
-            }
-            const signalDirection = userOptions.flipScreen ? isTrainOnSignal.signalDirectionOnMap === 'right' ? 'left' : 'right' : isTrainOnSignal.signalDirectionOnMap
+                ctx.save();
+                ctx.translate(tx, ty);
+                if (userOptions.flipScreen) {
+                    ctx.scale(-1, -1);
+                }
+                const signalDirectionOnFlip = userOptions.flipScreen ? trainOnSignal.signalDirectionOnMap === 'right' ? 'left' : 'right' : trainOnSignal.signalDirectionOnMap
+                const signalDirectionOnDistance = dir ? signalDirectionOnFlip === 'left' ? 'right' : 'left' : signalDirectionOnFlip
 
-            const baseTrain = TRAIN_BASE_PATH[signalDirection]
-            ctx.fillStyle = trainColors().fillColor
-            ctx.lineJoin = 'miter'
-            ctx.lineWidth = 4
-            ctx.strokeStyle = trainColors().outlineColor
-            ctx.stroke(baseTrain);
-            ctx.fill(baseTrain);
+                const baseTrain = TRAIN_BASE_PATH[signalDirectionOnDistance]
+                ctx.fillStyle = trainColors().fillColor
+                ctx.lineJoin = 'miter'
+                ctx.lineWidth = 4
+                ctx.strokeStyle = trainColors().outlineColor
+                ctx.stroke(baseTrain);
+                ctx.fill(baseTrain);
 
-            ctx.font = 'bold 14px monospace'
-            ctx.textAlign = 'center'
-            ctx.textBaseline = 'middle'
-            switch (signalDirection) {
-                case 'left':
-                    ctx.fillStyle = trainColors().textColor
-                    ctx.fillText(train.TrainNoLocal, 26, 1);
-                    break;
-                case 'right':
-                    ctx.fillStyle = trainColors().textColor
-                    ctx.fillText(train.TrainNoLocal, -26, 1);
-                    break;
+                ctx.font = 'bold 14px monospace'
+                ctx.textAlign = 'center'
+                ctx.textBaseline = 'middle'
+                ctx.fillStyle = trainColors().textColor
+                ctx.fillText(train.TrainNoLocal, signalDirectionOnDistance === 'right' ? -26 : 26, 1);
+                ctx.restore();
             }
-            ctx.restore();
+
         }
     }
 
@@ -421,6 +452,29 @@ export namespace CanvasDrawer {
     ) {
         for (const signalid in signal_data) {
             for (const signal of signal_data[signalid]) {
+
+                const distancePos = signal.trainPosDistance
+                ctx.lineWidth = 4
+
+                if (distancePos) {
+                    for (const pos of distancePos) {
+                        const trainDirection = pos.switchDirection ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
+                        const baseTrain = TRAIN_BASE_PATH[trainDirection]
+                        ctx.save();
+                        ctx.fillStyle = 'rgba(255, 160, 80, 0.25)'
+                        ctx.strokeStyle = 'rgba(255, 100, 80, 0.4)'
+                        // ctx.lineWidth = 1.5
+                        ctx.translate(pos.x, pos.y)
+                        ctx.stroke(baseTrain);
+                        ctx.fill(baseTrain);
+                        ctx.fillStyle = 'rgb(255, 255, 255)'
+                        ctx.font = 'bold 14px monospace'
+                        ctx.textAlign = 'center'
+                        ctx.textBaseline = 'middle'
+                        ctx.fillText(pos.distanceToSignal.toString(), trainDirection === 'right' ? -26 : 26, 1)
+                        ctx.restore();
+                    }
+                }
                 const tc = () => {
                     return {
                         x: Number(signal.trainPos.x),
@@ -436,8 +490,8 @@ export namespace CanvasDrawer {
                 ctx.stroke(baseTrain);
                 ctx.fill(baseTrain)
                 ctx.restore();
+
             }
         }
     }
 }
-

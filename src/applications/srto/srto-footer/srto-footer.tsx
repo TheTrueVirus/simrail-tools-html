@@ -7,6 +7,7 @@ const appVersion = process.env.REACT_APP_VERSION || 'dev'
 interface ISelfProps {
     SRTO_PROPS: {
         trainList: SimRailDataTypes.FilteredTrainList[]
+        lastSignalMapRef: React.RefObject<Map<string, string>>
         stationList: SimRailDataTypes.StationData[]
         // userList: SimRailDataTypes.SteamUser[] | null
         userOptions: typeof USER_OPTIONS
@@ -17,7 +18,6 @@ interface ISelfProps {
 export default function SRTO_Footer({SRTO_PROPS}: ISelfProps) {
 
     function trainsCounter() {
-
         const trainsControlledByPlayers = SRTO_PROPS.trainList.filter((train) => train.ControlledBy === 'user').length
         const allTrainsCount = SRTO_PROPS.trainList.length;
         return `Trains: ${trainsControlledByPlayers}/${allTrainsCount}`
@@ -26,7 +26,6 @@ export default function SRTO_Footer({SRTO_PROPS}: ISelfProps) {
     function stationsCounter() {
         const stationsControlledByPlayers = SRTO_PROPS.stationList.filter((station) => station.DispatchedBy.length > 0).length
         const allStationsCount = SRTO_PROPS.stationList.length
-
         return `Stations: ${stationsControlledByPlayers}/${allStationsCount}`
     }
 

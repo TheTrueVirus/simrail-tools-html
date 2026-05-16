@@ -48,26 +48,6 @@ const DISCLAIMER_KEY = "srto_disclaimer_accepted"
 
 export default function SimRailTrackOverview() {
 
-    // async function getSimRailUser() {
-    //     const trainData = trainListRef.current
-    //     if (!userOptions.selectedServer || !trainData) return;
-
-    //     const SR_USER = [];
-
-    //     for (const train of trainData) {
-    //         const steamID = train.TrainData.ControlledBySteamID
-    //         if (!steamID) continue;
-
-    //         const STEAMUSER_RAW = await SR_DATA.SteamUser(steamID);
-
-    //         if (!STEAMUSER_RAW) continue;
-
-    //         SR_USER.push(STEAMUSER_RAW);
-    //     }
-
-    //     setUserList(SR_USER);
-    // }
-
     const developmentTrain: SimRailDataTypes.FilteredTrainList = {
         TrainNoLocal: 'KORTÜR',
         Type: 'O-II-A-I',
@@ -88,16 +68,7 @@ export default function SimRailTrackOverview() {
     const [serverList, setServerList] = useState<SimRailDataTypes.ServerData[]>([]);
     const [stationList, setStationList] = useState<SimRailDataTypes.StationData[]>([]);
     const [trainList, setTrainList] = useState<SimRailDataTypes.FilteredTrainList[]>([]);
-    // const isDataLoaded = useRef<boolean>(false);
-    // const trainListRef = useRef<SimRailDataTypes.FilteredTrainList[] | null>(null);
-    // useEffect(() => {
-    //     trainListRef.current = trainList;
-    // }, [trainList])
-    // const [userList, setUserList] = useState<SimRailDataTypes.SteamUser[]>([])
-    // const userListRef = useRef<SimRailDataTypes.SteamUser[] | null>(null);
-    // useEffect(() => {
-    //     userListRef.current = userList
-    // }, [userList])
+    const lastSignalMapRef = useRef<Map<string, string>>(new Map())
 
     const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
     const [userOptions, setUserOptions] = useState<typeof USER_OPTIONS>(() => getUserOptionsOrDefault())
@@ -135,18 +106,6 @@ export default function SimRailTrackOverview() {
         localStorage.setItem('USER_OPTIONS', JSON.stringify(userOptions))
     }, [userOptions])
 
-    // useEffect(() => {
-    //     if(
-    //         !isDataLoaded.current &&
-    //         userOptions.selectedServer &&
-    //         trainList.length > 0 &&
-    //         stationList.length > 0
-    //     ) {
-    //         isDataLoaded.current = true;
-    //         getSimRailUser();
-    //     }
-    // }, [trainListRef.current, stationList])
-
     useEffect(() => {
         // fetch SimRail Server
         const intervalID = setInterval(getSimRailServerList, 5000);
@@ -166,6 +125,24 @@ export default function SimRailTrackOverview() {
 
         return () => clearInterval(intervalID)
     }, [])
+
+    useEffect(() => {
+        const intervalID = setInterval(getSimRailStationData, 2000);
+
+        async function getSimRailStationData() {
+            if (!userOptions.selectedServer) return;
+
+            const STATIONDATA = await SR_DATA.Stations(userOptions.selectedServer);
+
+            if (!STATIONDATA) return;
+
+            setStationList(STATIONDATA)
+        }
+        getSimRailStationData()
+
+
+        return () => clearInterval(intervalID)
+    }, [userOptions.selectedServer])
 
     useEffect(() => {
         // fetch SimRail TrainData on selectedServer
@@ -198,43 +175,27 @@ export default function SimRailTrackOverview() {
                     }
                 })
             }
-
-            setTrainList(filteredTrainList())
+            const trainData = filteredTrainList()
+            updateLatestSignal(trainData)
+            setTrainList(trainData)
         }
         getSimRailTrainData();
+        lastSignalMapRef.current.clear();
 
         return () => clearInterval(intervalID)
     }, [userOptions.selectedServer])
 
-    useEffect(() => {
-        const intervalID = setInterval(getSimRailStationData, 2000);
+    function updateLatestSignal(trainData: SimRailDataTypes.FilteredTrainList[]) {
+        for(const train of trainData) {
+            const key = train.TrainNoLocal
+            const signal = train.TrainData.SignalInFront?.split('@')[0] ?? null
 
-        async function getSimRailStationData() {
-            if (!userOptions.selectedServer) return;
-
-            const STATIONDATA = await SR_DATA.Stations(userOptions.selectedServer);
-
-            if (!STATIONDATA) return;
-
-            setStationList(STATIONDATA)
+            if(signal){
+                lastSignalMapRef.current.set(key, signal)
+            }
         }
-        getSimRailStationData()
-
-
-        return () => clearInterval(intervalID)
-    }, [userOptions.selectedServer])
-
-    // useEffect(() => {
-    //     console.debug('useEffect for "getSimRailUser" mounting')
-    //     const intervalID = setInterval(getSimRailUser, 10000);
-
-    //     console.debug('Running "getSimRailUser()"')
-    //     getSimRailUser();
-    //     return () => {
-    //         console.debug('useEffect for "getSimRailUser" unmounting')
-    //         clearInterval(intervalID)
-    //     }
-    // }, [userOptions.selectedServer, isDataLoaded])
+        // console.debug(lastSignalMapRef.current)
+    }
 
     const finalTrainList = process.env.NODE_ENV === 'development'
         ? [...trainList, developmentTrain]
@@ -252,6 +213,7 @@ export default function SimRailTrackOverview() {
 
     const SRTO_PROPS = {
         trainList: finalTrainList,
+        lastSignalMapRef,
         stationList,
         // userList: userListRef.current,
         userOptions,
@@ -271,7 +233,7 @@ export default function SimRailTrackOverview() {
 
                 <SRTO_Header srtoHeaderOptions={srtoHeaderOptions} />
                 <SRTO_Canvas SRTO_PROPS={SRTO_PROPS} />
-                <SRTO_Footer SRTO_PROPS={SRTO_PROPS}/>
+                <SRTO_Footer SRTO_PROPS={SRTO_PROPS} />
 
             </div>
         </>
