@@ -5042,7 +5042,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeID: '',
                 nodeType: 'simpleText',
                 nodePos: { x: 1135, y: 1450 },
-                text: 'to Galkoweg',
+                text: 'to Gałkówek',
                 textSize: 16,
                 textColor: 'rgb(120, 120, 120)'
             },
@@ -5059,7 +5059,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeType: 'trackBreakMarker',
                 nodePos: { x: 0, y: 0 },
                 breakMarker: {
-                    firstMarker: { x: 2445, y: 110 },
+                    firstMarker: { x: 2530, y: 90 },
                     secondMarker: { x: 40, y: 320 },
                 },
                 text: 'A'
@@ -5149,7 +5149,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 text: '4b',
             },
         ],
-        "TRACKS_SEDZICE_SIERADZ": [
+        "SEDZICE_SIERADZ": [
             {
                 nodeID: 'tm-Se_Si_1S',
                 nodeType: 'trackMarker',
@@ -5219,37 +5219,138 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 text: '4',
             },
         ],
-        "TRACKS_SIERADZ_ZDUNSKAWOLA": [
+        "SIERADZ_ZDUNSKAWOLA": [
             {
-                nodeID: "text_APOMeka",
+                nodeID: "text-SieradzWarta",
                 nodeType: "simpleText",
-                nodePos: { x: 660, y: 120 },
-                nodePosFlipped: { x: 660, y: 180 },
-                text: "APO Męka",
+                nodePos: { x: 612.5, y: 115 },
+                nodePosFlipped: { x: 612.5, y: 185 },
+                text: "Sieradz Warta",
                 textSize: 12
             },
             {
+                nodeID: 'platform-SieradzWarta-2',
+                nodeType: 'platform',
+                nodePos: { x: 590, y: 127.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-SieradzWarta-2',
+                nodeType: 'platform',
+                nodePos: { x: 590, y: 165 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+
+            {
+                nodeID: "text-SieradzMeka",
+                nodeType: "simpleText",
+                nodePos: { x: 692.5, y: 185 },
+                nodePosFlipped: { x: 692.5, y: 115 },
+                text: "Sieradz Męka",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-SieradzMeka-2',
+                nodeType: 'platform',
+                nodePos: { x: 670, y: 127.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-SieradzMeka-2',
+                nodeType: 'platform',
+                nodePos: { x: 670, y: 165 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+
+            {
+                nodeID: "text_APOMeka",
+                nodeType: "simpleText",
+                nodePos: { x: 720, y: 95 },
+                nodePosFlipped: { x: 720, y: 210 },
+                text: "APO Męka",
+                textSize: 14
+            },
+
+            {
+                nodeID: "text-MekaWola",
+                nodeType: "simpleText",
+                nodePos: { x: 752.5, y: 115 },
+                nodePosFlipped: { x: 752.5, y: 185 },
+                text: "Męka Wola",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-SieradzWarta-2',
+                nodeType: 'platform',
+                nodePos: { x: 730, y: 127.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-SieradzWarta-2',
+                nodeType: 'platform',
+                nodePos: { x: 730, y: 165 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+
+            {
+                nodeID: "text-Izabelow",
+                nodeType: "simpleText",
+                nodePos: { x: 832.5, y: 185 },
+                nodePosFlipped: { x: 832.5, y: 115 },
+                text: "Izabelów",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-Izabelow-2',
+                nodeType: 'platform',
+                nodePos: { x: 810, y: 127.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-Izabelow-2',
+                nodeType: 'platform',
+                nodePos: { x: 810, y: 165 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+
+            {
                 nodeID: 'tm-Si_ZW_1M',
                 nodeType: 'trackMarker',
-                nodePos: { x: 620, y: 140 },
+                nodePos: { x: 650, y: 140 },
                 text: 'it1M',
             },
             {
                 nodeID: 'tm-Si_ZW_2M',
                 nodeType: 'trackMarker',
-                nodePos: { x: 620, y: 160 },
+                nodePos: { x: 650, y: 160 },
                 text: 'it2M',
             },
             {
                 nodeID: 'tm-Si_ZW_1S',
                 nodeType: 'trackMarker',
-                nodePos: { x: 700, y: 140 },
+                nodePos: { x: 790, y: 140 },
                 text: 'it1S',
             },
             {
                 nodeID: 'tm-Si_ZW_2S',
                 nodeType: 'trackMarker',
-                nodePos: { x: 700, y: 160 },
+                nodePos: { x: 790, y: 160 },
                 text: 'it2S',
             },
         ],
@@ -5257,7 +5358,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             {
                 nodeID: 'post_ZdunskaWola',
                 nodeType: 'dispatchingPost',
-                nodePos: { x: 990, y: 85 },
+                nodePos: { x: 1110, y: 85 },
                 postType: 'computer'
             },
             {
@@ -5265,13 +5366,13 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeType: 'stationName',
                 stationPrefix: 'ZW',
                 stationName: 'Zduńska Wola',
-                nodePos: { x: 900, y: 50 },
-                nodePosFlipped: { x: 900, y: 220 }
+                nodePos: { x: 1020, y: 50 },
+                nodePosFlipped: { x: 1020, y: 220 }
             },
             {
                 nodeID: 'peron_ZdunskaWola_2',
                 nodeType: 'platform',
-                nodePos: { x: 870, y: 145 },
+                nodePos: { x: 990, y: 145 },
                 width: 50,
                 height: 10,
                 text: 'Peron II'
@@ -5279,7 +5380,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             {
                 nodeID: 'peron_ZdunskaWola_1',
                 nodeType: 'platform',
-                nodePos: { x: 870, y: 185 },
+                nodePos: { x: 990, y: 185 },
                 width: 35,
                 height: 10,
                 text: 'Peron I'
@@ -5287,90 +5388,90 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             {
                 nodeID: 'tm-ZW_7',
                 nodeType: 'trackMarker',
-                nodePos: { x: 900, y: 80 },
+                nodePos: { x: 1020, y: 80 },
                 text: '7',
             },
             {
                 nodeID: 'tm-ZW_5',
                 nodeType: 'trackMarker',
-                nodePos: { x: 900, y: 100 },
+                nodePos: { x: 1020, y: 100 },
                 text: '5',
             },
             {
                 nodeID: 'tm-ZW_3',
                 nodeType: 'trackMarker',
-                nodePos: { x: 900, y: 120 },
+                nodePos: { x: 1020, y: 120 },
                 text: '3',
             },
             {
                 nodeID: 'tm-ZW_1',
                 nodeType: 'trackMarker',
-                nodePos: { x: 900, y: 140 },
+                nodePos: { x: 1020, y: 140 },
                 text: '1',
             },
             {
                 nodeID: 'tm-ZW_2',
                 nodeType: 'trackMarker',
-                nodePos: { x: 900, y: 160 },
+                nodePos: { x: 1020, y: 160 },
                 text: '2',
             },
             {
                 nodeID: 'tm-ZW_4',
                 nodeType: 'trackMarker',
-                nodePos: { x: 900, y: 180 },
+                nodePos: { x: 1020, y: 180 },
                 text: '4',
             },
         ],
-        "TRACKS_ZDUNSKAWOLA_GAJEWNIKI__ZWK_Dionizów": [
+        "ZDUNSKAWOLA_GAJEWNIKI__ZWK_Dionizów": [
             {
                 nodeID: 'text-Dionizow',
                 nodeType: 'differentScreenMarker',
-                nodePos: { x: 990, y: 65 },
+                nodePos: { x: 1110, y: 65 },
                 text: 'Inowrocław',
                 textSize: 12
             },
             {
                 nodeID: 'text-ZdunskaWolaK',
                 nodeType: 'differentScreenMarker',
-                nodePos: { x: 1170, y: 270 },
+                nodePos: { x: 1290, y: 270 },
                 text: 'Tarnowskie Góry',
                 textSize: 12
             },
             {
                 nodeID: 'tm-ZW_Di_1D',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1090, y: 120 },
+                nodePos: { x: 1210, y: 120 },
                 text: 'it1D',
             },
             {
                 nodeID: 'tm-ZW_Ga_1G',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1130, y: 140 },
+                nodePos: { x: 1250, y: 140 },
                 text: 'it1G',
             },
             {
                 nodeID: 'tm-ZW_Ga_2G',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1130, y: 160 },
+                nodePos: { x: 1250, y: 160 },
                 text: 'it2G',
             },
             {
                 nodeID: 'tm-ZW_ZWK_1K',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1090, y: 180 },
+                nodePos: { x: 1210, y: 180 },
                 text: 'it1K',
             },
 
             {
                 nodeID: 'tm-Di_Ga_1D',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1170, y: 120 },
+                nodePos: { x: 1290, y: 120 },
                 text: 'it1D',
             },
             {
                 nodeID: 'tm-ZWK_Ga_1K',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1170, y: 180 },
+                nodePos: { x: 1290, y: 180 },
                 text: 'it1K',
             },
         ],
@@ -5378,7 +5479,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             {
                 nodeID: 'post_Gajewniki',
                 nodeType: 'dispatchingPost',
-                nodePos: { x: 1250, y: 105 },
+                nodePos: { x: 1370, y: 105 },
                 postType: 'computer'
             },
             {
@@ -5386,41 +5487,57 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeType: 'stationName',
                 stationPrefix: 'Ga',
                 stationName: 'Gajewniki',
-                nodePos: { x: 1250, y: 70 },
-                nodePosFlipped: { x: 1250, y: 200 }
+                nodePos: { x: 1370, y: 70 },
+                nodePosFlipped: { x: 1370, y: 200 }
             },
         ],
-        "TRACKS_GAJEWNIKI_LASK": [
+        "GAJEWNIKI_LASK": [
             {
                 nodeID: "text_APOBorszewice",
                 nodeType: "simpleText",
-                nodePos: { x: 1380, y: 120 },
-                nodePosFlipped: { x: 1380, y: 180 },
+                nodePos: { x: 1500, y: 110 },
+                nodePosFlipped: { x: 1500, y: 190 },
                 text: "APO Borszewice",
-                textSize: 12
+                textSize: 14
+            },
+            {
+                nodeID: 'platform-Borszewice-1',
+                nodeType: 'platform',
+                nodePos: { x: 1460, y: 127.5 },
+                width: 30,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-Borszewice-2',
+                nodeType: 'platform',
+                nodePos: { x: 1460, y: 165 },
+                width: 30,
+                height: 7.5,
+                text: ''
             },
             {
                 nodeID: 'tm-Ga_La_1B',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1340, y: 140 },
+                nodePos: { x: 1460, y: 140 },
                 text: 'it1B',
             },
             {
                 nodeID: 'tm-Ga_La_2B',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1340, y: 160 },
+                nodePos: { x: 1460, y: 160 },
                 text: 'it2B',
             },
             {
                 nodeID: 'tm-Ga_La_1L',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1420, y: 140 },
+                nodePos: { x: 1540, y: 140 },
                 text: 'it1L',
             },
             {
                 nodeID: 'tm-Ga_La_2L',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1420, y: 160 },
+                nodePos: { x: 1540, y: 160 },
                 text: 'it2L',
             },
         ],
@@ -5428,7 +5545,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             {
                 nodeID: 'post_Lask',
                 nodeType: 'dispatchingPost',
-                nodePos: { x: 1530, y: 85 },
+                nodePos: { x: 1650, y: 85 },
                 postType: 'computer'
             },
             {
@@ -5436,13 +5553,13 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeType: 'stationName',
                 stationPrefix: 'La',
                 stationName: 'Łask',
-                nodePos: { x: 1590, y: 70 },
-                nodePosFlipped: { x: 1590, y: 235 }
+                nodePos: { x: 1710, y: 70 },
+                nodePosFlipped: { x: 1710, y: 235 }
             },
             {
                 nodeID: 'peron_Lask_2',
                 nodeType: 'platform',
-                nodePos: { x: 1560, y: 145 },
+                nodePos: { x: 1680, y: 145 },
                 width: 50,
                 height: 10,
                 text: 'Peron II'
@@ -5450,7 +5567,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             {
                 nodeID: 'peron_Lask_2',
                 nodeType: 'platform',
-                nodePos: { x: 1560, y: 205 },
+                nodePos: { x: 1680, y: 205 },
                 width: 35,
                 height: 10,
                 text: 'Peron I'
@@ -5458,95 +5575,154 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             {
                 nodeID: 'tm-La_3',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1590, y: 120 },
+                nodePos: { x: 1710, y: 120 },
                 text: '3',
             },
             {
                 nodeID: 'tm-La_1',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1590, y: 140 },
+                nodePos: { x: 1710, y: 140 },
                 text: '1',
             },
             {
                 nodeID: 'tm-La_2',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1590, y: 160 },
+                nodePos: { x: 1710, y: 160 },
                 text: '2',
             },
             {
                 nodeID: 'tm-La_4',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1590, y: 180 },
+                nodePos: { x: 1710, y: 180 },
                 text: '4',
             },
             {
                 nodeID: 'tm-La_6',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1590, y: 200 },
+                nodePos: { x: 1710, y: 200 },
                 text: '6',
             },
         ],
-        "TRACKS_LASK_PABIANICE": [
-            {
-                nodeID: "text_APOKolumna",
-                nodeType: "simpleText",
-                nodePos: { x: 1790, y: 120 },
-                nodePosFlipped: { x: 1790, y: 180 },
-                text: "APO Kolumna",
-                textSize: 12
-            },
-            {
-                nodeID: "text_APODobroń",
-                nodeType: "simpleText",
-                nodePos: { x: 1870, y: 180 },
-                nodePosFlipped: { x: 1870, y: 120 },
-                text: "APO Dobroń",
-                textSize: 12
-            },
+        "LASK_PABIANICE": [
             {
                 nodeID: 'tm-La_Pa_1K',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1750, y: 140 },
+                nodePos: { x: 1870, y: 140 },
                 text: 'it1K',
             },
             {
                 nodeID: 'tm-La_Pa_2K',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1750, y: 160 },
+                nodePos: { x: 1870, y: 160 },
                 text: 'it2K',
+            },
+
+            {
+                nodeID: "text_APOKolumna",
+                nodeType: "simpleText",
+                nodePos: { x: 1930, y: 110 },
+                nodePosFlipped: { x: 1930, y: 190 },
+                text: "APO Kolumna",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-Kolumna-1',
+                nodeType: 'platform',
+                nodePos: { x: 1910, y: 127.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-Kolumna-2',
+                nodeType: 'platform',
+                nodePos: { x: 1910, y: 165 },
+                width: 40,
+                height: 7.5,
+                text: ''
             },
 
             {
                 nodeID: 'tm-La_Pa_1D',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1830, y: 140 },
+                nodePos: { x: 1990, y: 140 },
                 text: 'it1D',
             },
             {
                 nodeID: 'tm-La_Pa_2D',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1830, y: 160 },
+                nodePos: { x: 1990, y: 160 },
                 text: 'it2D',
+            },
+
+            {
+                nodeID: "text_APODobroń",
+                nodeType: "simpleText",
+                nodePos: { x: 2050, y: 110 },
+                nodePosFlipped: { x: 2050, y: 190 },
+                text: "APO Dobroń",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-Kolumna-1',
+                nodeType: 'platform',
+                nodePos: { x: 2030, y: 127.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-Kolumna-2',
+                nodeType: 'platform',
+                nodePos: { x: 2030, y: 165 },
+                width: 40,
+                height: 7.5,
+                text: ''
             },
 
             {
                 nodeID: 'tm-La_Pa_1P',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1910, y: 140 },
+                nodePos: { x: 2145, y: 140 },
                 text: 'it1P',
             },
             {
                 nodeID: 'tm-La_Pa_2P',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1910, y: 160 },
+                nodePos: { x: 2145, y: 160 },
                 text: 'it2P',
+            },
+
+            {
+                nodeID: "text_Chechło",
+                nodeType: "simpleText",
+                nodePos: { x: 2145, y: 110 },
+                nodePosFlipped: { x: 2145, y: 190 },
+                text: "Chechło",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-Chechło-1',
+                nodeType: 'platform',
+                nodePos: { x: 2125, y: 127.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-Chechło-2',
+                nodeType: 'platform',
+                nodePos: { x: 2125, y: 165 },
+                width: 40,
+                height: 7.5,
+                text: ''
             },
         ],
         "PABIANICE": [
             {
                 nodeID: 'post_Pabianice',
                 nodeType: 'dispatchingPost',
-                nodePos: { x: 1970, y: 105 },
+                nodePos: { x: 2240, y: 105 },
                 postType: 'computer'
             },
             {
@@ -5554,13 +5730,13 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeType: 'stationName',
                 stationPrefix: 'Pa',
                 stationName: 'Pabianice',
-                nodePos: { x: 2070, y: 70 },
-                nodePosFlipped: { x: 2070, y: 220 }
+                nodePos: { x: 2340, y: 70 },
+                nodePosFlipped: { x: 2340, y: 220 }
             },
             {
                 nodeID: 'peron_Pabianice_2',
                 nodeType: 'platform',
-                nodePos: { x: 2040, y: 145 },
+                nodePos: { x: 2310, y: 145 },
                 width: 50,
                 height: 10,
                 text: 'Peron II'
@@ -5568,7 +5744,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             {
                 nodeID: 'peron_Pabianice_1',
                 nodeType: 'platform',
-                nodePos: { x: 2040, y: 185 },
+                nodePos: { x: 2310, y: 185 },
                 width: 35,
                 height: 10,
                 text: 'Peron I'
@@ -5576,39 +5752,63 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             {
                 nodeID: 'tm-Pa_3',
                 nodeType: 'trackMarker',
-                nodePos: { x: 2070, y: 120 },
+                nodePos: { x: 2340, y: 120 },
                 text: '3',
             },
             {
                 nodeID: 'tm-Pa_1',
                 nodeType: 'trackMarker',
-                nodePos: { x: 2070, y: 140 },
+                nodePos: { x: 2340, y: 140 },
                 text: '1',
             },
             {
                 nodeID: 'tm-Pa_2',
                 nodeType: 'trackMarker',
-                nodePos: { x: 2070, y: 160 },
+                nodePos: { x: 2340, y: 160 },
                 text: '2',
             },
             {
                 nodeID: 'tm-Pa_4',
                 nodeType: 'trackMarker',
-                nodePos: { x: 2070, y: 180 },
+                nodePos: { x: 2340, y: 180 },
                 text: '4',
             },
         ],
-        "TRACKS_PABIANICE_LODZLUBLINEK": [
+        "PABIANICE_LODZLUBLINEK": [
+            {
+                nodeID: "text-po-PabianicePolnocne",
+                nodeType: "simpleText",
+                nodePos: { x: 2495, y: 110 },
+                nodePosFlipped: { x: 2495, y: 190 },
+                text: "Pabianice Północne",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-PabianicePolnocne-1',
+                nodeType: 'platform',
+                nodePos: { x: 2480, y: 127.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-PabianicePolnocne-2',
+                nodeType: 'platform',
+                nodePos: { x: 2480, y: 165 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
             {
                 nodeID: 'tm-Pa_Lb_1L',
                 nodeType: 'trackMarker',
-                nodePos: { x: 2325, y: 140 },
+                nodePos: { x: 2510, y: 140 },
                 text: 'it1L',
             },
             {
                 nodeID: 'tm-Pa_Lb_2L',
                 nodeType: 'trackMarker',
-                nodePos: { x: 2325, y: 160 },
+                nodePos: { x: 2510, y: 160 },
                 text: 'it2L',
             },
             {
@@ -5686,7 +5886,31 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 text: '4',
             },
         ],
-        "TRACKS_LODZLUBLINEK_RETKINIA": [
+        "LODZLUBLINEK_RETKINIA": [
+            {
+                nodeID: "text-po-LodzRetkinia",
+                nodeType: "simpleText",
+                nodePos: { x: 400, y: 340 },
+                nodePosFlipped: { x: 390, y: 405 },
+                text: "Łódź Retkinia",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-LodzRetkinia-1',
+                nodeType: 'platform',
+                nodePos: { x: 390, y: 347.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-LodzRetkinia-2',
+                nodeType: 'platform',
+                nodePos: { x: 390, y: 385 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
             {
                 nodeID: 'tm-Lb_Rt_it1',
                 nodeType: 'trackMarker',
@@ -5712,11 +5936,11 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodeType: 'stationName',
                 stationPrefix: 'Rt',
                 stationName: 'Retkinia',
-                nodePos: { x: 475, y: 320 },
-                nodePosFlipped: { x: 480, y: 470 }
+                nodePos: { x: 490, y: 320 },
+                nodePosFlipped: { x: 490, y: 470 }
             },
         ],
-        "TRACKS_RETKINIA_LODZKALISKA": [
+        "RETKINIA_LODZKALISKA": [
             {
                 nodeID: 'tm-Rt_LK_1K',
                 nodeType: 'trackMarker',
@@ -6318,7 +6542,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 text: 'Peron II'
             },
         ],
-        "TRACKS_LODZKALISKA_LODZCHOJNY": [
+        "LODZKALISKA_LODZCHOJNY": [
             {
                 nodeID: 'tm-LK_LCH_21',
                 nodeType: 'trackMarker',
@@ -6331,6 +6555,32 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 nodePos: { x: 520, y: 540 },
                 text: '32',
             },
+
+            {
+                nodeID: "text-po-LodzPabianicka",
+                nodeType: "simpleText",
+                nodePos: { x: 400, y: 490 },
+                nodePosFlipped: { x: 400, y: 565 },
+                text: "Łódź Pabianicka",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-LodzPabianicka-1',
+                nodeType: 'platform',
+                nodePos: { x: 380, y: 507.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-LodzPabianicka-2',
+                nodeType: 'platform',
+                nodePos: { x: 380, y: 545 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+
             {
                 nodeID: 'tm-LK_LCH_33',
                 nodeType: 'trackMarker',
@@ -6427,12 +6677,79 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
                 text: '3',
             },
         ],
-        "TRACKS_LODZCHOJNY_LODZWIDZEW": [
+        "LODZCHOJNY_LODZWIDZEW": [
             {
                 nodeID: 'tm-LCH_LW_1',
                 nodeType: 'trackMarker',
-                nodePos: { x: 510, y: 840 },
+                nodePos: { x: 730, y: 800 },
+                text: 'it2W',
+            },
+            {
+                nodeID: 'tm-LCH_LW_1',
+                nodeType: 'trackMarker',
+                nodePos: { x: 730, y: 820 },
                 text: 'it1W',
+            },
+            {
+                nodeID: "text-po-LodzDabrowa",
+                nodeType: "simpleText",
+                nodePos: { x: 730, y: 855 },
+                nodePosFlipped: { x: 730, y: 855 },
+                text: "Łódź Dąbrowa",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-LodzDabrowa-1',
+                nodeType: 'platform',
+                nodePos: { x: 710, y: 787.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-LodzDabrowa-2',
+                nodeType: 'platform',
+                nodePos: { x: 710, y: 825 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+
+            {
+                nodeID: 'tm-LCH_LW_1',
+                nodeType: 'trackMarker',
+                nodePos: { x: 840, y: 800 },
+                text: 'it2C',
+            },
+            {
+                nodeID: 'tm-LCH_LW_1',
+                nodeType: 'trackMarker',
+                nodePos: { x: 840, y: 820 },
+                text: 'it1C',
+            },
+            {
+                nodeID: "text-po-LodzZarzew",
+                nodeType: "simpleText",
+                nodePos: { x: 840, y: 855 },
+                nodePosFlipped: { x: 840, y: 855 },
+                text: "Łódź Zarzew",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-LodzZarzew-1',
+                nodeType: 'platform',
+                nodePos: { x: 820, y: 787.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-LodzZarzew-2',
+                nodeType: 'platform',
+                nodePos: { x: 820, y: 825 },
+                width: 40,
+                height: 7.5,
+                text: ''
             },
         ],
         "LODZ_WIDZEW": [
@@ -6959,10 +7276,10 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
         ],
         "ROZPRZA": [
             {
-                nodeID: 'station_Rozpra',
+                nodeID: 'stationName-Rozprza',
                 nodeType: 'stationName',
                 stationPrefix: 'Ro',
-                stationName: 'Rozpra',
+                stationName: 'Rozprza',
                 nodePos: { x: 105, y: 1165 },
                 nodePosFlipped: { x: 105, y: 1300 }
             },

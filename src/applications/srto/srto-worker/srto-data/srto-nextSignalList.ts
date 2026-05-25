@@ -94,11 +94,16 @@ export const SRTO_NextSignalGroups: NextSignalGroup[] = [
 	{ lastSignals: ['924_G_J', '924_G_H', '924_G_G', '924_G_F', '924_G_E'], nextSignal: '2439_LOC_Z2' },
 
 	//
-	// Lodz Widzew <-> Zgierz
+	// Lodz Widzew <-> Lodz Marysin <-> Zgierz
 	{ lastSignals: ['2457_LW_N104', '2457_LW_N102', '2457_LW_M8', '2457_LW_M6', '2457_LW_M4', '2457_LW_M2'], nextSignal: '2437_LM_A' },
 	{ lastSignals: ['2437_LM_D', '2437_LM_C'], nextSignal: '2457_LW_A' },
 	{ lastSignals: ['2437_LM_E', '2437_LM_F'], nextSignal: '5311_Zg_R' },
 	{ lastSignals: ['5311_Zg_K', '5311_Zg_L', '5311_Zg_M', '5311_Zg_N', '5311_Zg_O', '5311_Zg_P'], nextSignal: '2437_LM_H' },
+
+	//
+	// Zgierz <-> Glinnik
+	{ lastSignals: ['5311_Zg_H', '5311_Zg_G', '5311_Zg_F', '5311_Zg_E', '5311_Zg_D', '5311_Zg_C'], nextSignal: '1057_Gl_F' },
+	{ lastSignals: ['1057_Gl_E', '1057_Gl_D'], nextSignal: '5311_Zg_B' },
 
 	// -- TEMPLATE ---- DONT USE --
 	{ lastSignals: [''], nextSignal: '' },
