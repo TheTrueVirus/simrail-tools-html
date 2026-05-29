@@ -8043,5 +8043,7 @@ export const SRTO_Nodes: SRTO_DataTypes.NODES = {
             },
         ],
         "__TEMPLATE__": [],
-    }
+    },
+    "srto_screen3": {},
+    "srto_screen4": {}
 }

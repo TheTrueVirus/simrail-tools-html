@@ -75,6 +75,7 @@ export namespace SRTO_DataTypes {
         stationPrefix?: string
         stationName?: string
         seperateDisplayName?: string
+        lcsControlledBy?: string
         botStation?: boolean
         height?: number,
         width?: number,

@@ -1,11 +1,10 @@
-import { useState } from "react";
 import { SimRailDataTypes } from "../../types/simrail-data-types";
 
-async function fetchData(url : string) {
+async function fetchData(url : string, signal?: AbortSignal) {
 
     try {
 
-        const RESULT = await fetch(url);
+        const RESULT = await fetch(url, { signal });
         if(!RESULT.ok) {
             return null;
         }
@@ -17,16 +16,21 @@ async function fetchData(url : string) {
 
         return DATA;
     } catch (e) {
+        // Abort on unmount or timeout is expected and should not be logged as an error.
+        if ((e instanceof DOMException && e.name === "AbortError") || signal?.aborted) {
+            return null;
+        }
         console.error(e);
+        return null;
     }
 }
 
-async function SR_SERVER() {
+async function SR_SERVER(signal?: AbortSignal) {
 
     const SERVER_URL = 'https://panel.simrail.eu:8084/servers-open'
 
     try {
-        const RAW_DATA : SimRailDataTypes.RAW_SERVER = await fetchData(SERVER_URL)
+        const RAW_DATA : SimRailDataTypes.RAW_SERVER = await fetchData(SERVER_URL, signal)
         
         if(!RAW_DATA) return null;
 
@@ -39,14 +43,14 @@ async function SR_SERVER() {
     }
 }
 
-async function SR_STATIONS(server : string) {
+async function SR_STATIONS(server : string, signal?: AbortSignal) {
     
     if(!server) return null;
 
     const STATIONS_URL = `https://panel.simrail.eu:8084/stations-open?serverCode=${server}`
 
     try {
-        const RAW_DATA : SimRailDataTypes.RAW_STATIONS = await fetchData(STATIONS_URL)
+        const RAW_DATA : SimRailDataTypes.RAW_STATIONS = await fetchData(STATIONS_URL, signal)
 
         if(!RAW_DATA) return null;
 
@@ -58,13 +62,13 @@ async function SR_STATIONS(server : string) {
     }
 }
 
-async function SR_TRAINS(server : string) {
+async function SR_TRAINS(server : string, signal?: AbortSignal) {
     if(!server) return null
 
     const TRAINS_URL = `https://panel.simrail.eu:8084/trains-open?serverCode=${server}`
 
     try {
-        const RAW_DATA : SimRailDataTypes.RAW_TRAINS = await fetchData(TRAINS_URL);
+        const RAW_DATA : SimRailDataTypes.RAW_TRAINS = await fetchData(TRAINS_URL, signal);
 
         if(!RAW_DATA) return null;
 
@@ -77,13 +81,13 @@ async function SR_TRAINS(server : string) {
 
 }
 
-async function SteamUser(steamid : string) {
+async function SteamUser(steamid : string, signal?: AbortSignal) {
     if(!steamid) return;
 
     const URL = `https://simrail-edr.emeraldnetwork.xyz/steam/${steamid}`
 
         try {
-        const RAW_DATA : SimRailDataTypes.SteamUser = await fetchData(URL);
+        const RAW_DATA : SimRailDataTypes.SteamUser = await fetchData(URL, signal);
 
         if(!RAW_DATA) return null;
 

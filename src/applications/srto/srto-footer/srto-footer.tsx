@@ -2,8 +2,6 @@ import './srto-footer-styles.css'
 import { SimRailDataTypes } from "../../../types/simrail-data-types"
 import { RenderOptionsProps, USER_OPTIONS } from "../srto"
 
-const appVersion = process.env.REACT_APP_VERSION || 'dev'
-
 interface ISelfProps {
     SRTO_PROPS: {
         trainList: SimRailDataTypes.FilteredTrainList[]
@@ -12,10 +10,11 @@ interface ISelfProps {
         // userList: SimRailDataTypes.SteamUser[] | null
         userOptions: typeof USER_OPTIONS
         devRenderOptions: RenderOptionsProps
+        CURRENT_VERSION: string | undefined
     }
 }
 
-export default function SRTO_Footer({SRTO_PROPS}: ISelfProps) {
+export default function SRTO_Footer({ SRTO_PROPS }: ISelfProps) {
 
     function trainsCounter() {
         const trainsControlledByPlayers = SRTO_PROPS.trainList.filter((train) => train.ControlledBy === 'user').length
@@ -36,7 +35,7 @@ export default function SRTO_Footer({SRTO_PROPS}: ISelfProps) {
                 <div className="stationsCounter">{stationsCounter()}</div>
                 <div className='copyrightVersionInfo'>
                     <div className='copyrightInfo'>Copyright (c) 2026 TheTrueVirus</div>
-                    <div className='versionInfo'>{`SRTO-Version: ${appVersion}`}</div>
+                    <div className='versionInfo'>{`SRTO-Version: ${SRTO_PROPS.CURRENT_VERSION ?? '?.?.?'}`}</div>
                 </div>
             </div>
         </>

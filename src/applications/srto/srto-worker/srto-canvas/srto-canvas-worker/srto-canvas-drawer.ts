@@ -140,7 +140,7 @@ export namespace CanvasDrawer {
         // Build a per-frame lookup to avoid O(signals * trains) scans.
         const signalColorByName = new Map<string, 'lime' | 'orange' | 'red'>()
         for (const train of train_data) {
-            const signalName = train.TrainData.SignalInFront?.split('@')[0]
+            const signalName = train.TrainData.SignalInFront ?? train.TrainData.SignalInFrontPredictive ?? null
             if (!signalName) continue
 
             const nextColor: 'lime' | 'orange' | 'red' = train.TrainData.SignalInFrontSpeed === 0 ? 'red' : train.TrainData.SignalInFrontSpeed < 100 ? 'orange' : 'lime'
@@ -363,17 +363,6 @@ export namespace CanvasDrawer {
         const userOptions = SRTO_PROPS.userOptions
         const trainData = SRTO_PROPS.trainList
 
-        function getTrainSignal(train: SimRailDataTypes.FilteredTrainList) {
-            const signalName = train.TrainData.SignalInFront?.split('@')[0] ?? null
-
-            if (!signalName) {
-                const lastSignal = SRTO_PROPS.lastSignalMapRef.current.get(train.TrainNoLocal)
-                if (!lastSignal) return null;
-                return getNextSignalFromLastSignal(SRTO_PROPS.lastSignalMapRef.current.get(train.TrainNoLocal)) ?? null
-            }
-            return signalName
-        }
-
         function searchSignal(signalName: string | null) {
             let signals : SRTO_DataTypes.SIGNAL[] = []
             for (const signalid in signal_data) {
@@ -384,7 +373,7 @@ export namespace CanvasDrawer {
         }
         for (const train of trainData) {
 
-            const signalOfTrain = getTrainSignal(train)
+            const signalOfTrain = train.TrainData.SignalInFront ?? train.TrainData.SignalInFrontPredictive ?? null
             if (!signalOfTrain) continue;
 
             const trainOnSignals = searchSignal(signalOfTrain)

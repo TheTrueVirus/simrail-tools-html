@@ -13261,5 +13261,7 @@ export const SRTO_Signals: SRTO_DataTypes.SIGNALS = {
                 signalType: 'station_standard',
             },
         ]
-    }
+    },
+    "srto_screen3": {},
+    "srto_screen4": {}
 }

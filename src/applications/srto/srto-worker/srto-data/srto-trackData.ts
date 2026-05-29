@@ -2837,5 +2837,7 @@ export const SRTO_Tracks: SRTO_DataTypes.TRACKS = {
                 trackColor: 'white'
             },
         ]
-    }
+    },
+    "srto_screen3": {},
+    "srto_screen4": {}
 }

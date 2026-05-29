@@ -18,8 +18,6 @@ interface AreaListProps {
 }
 
 function ServerList(listProps: ServerListProps) {
-
-
     return (
         <>
             <div ref={listProps.serverListRef} className={`selectionList serverList ${listProps.openServerList ? 'openList' : ''}`} tabIndex={0} onBlur={() => listProps.setOpenServerList(false)}>
@@ -45,16 +43,11 @@ function ServerList(listProps: ServerListProps) {
     )
 }
 
-
-
 function AreaList(listProps: AreaListProps) {
-
-
-
     return (
         <>
             <div ref={listProps.areaListRef} className={`selectionList areaList ${listProps.openAreaList ? 'openList' : ''}`} tabIndex={0} onBlur={() => listProps.setOpenAreaList(false)}>
-                <div className='listTitle'>Select an Area to observe</div>
+                <div className='listTitle'>SELECT AN AREA</div>
                 <div className='listContainer'>
                     {
                         listProps.areaList.map((area) => (
@@ -73,7 +66,6 @@ function AreaList(listProps: AreaListProps) {
         </>
     )
 }
-
 
 export {
     ServerList,

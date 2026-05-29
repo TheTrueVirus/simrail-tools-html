@@ -27,7 +27,7 @@ interface ISelfProps {
         trainList: SimRailDataTypes.FilteredTrainList[]
         lastSignalMapRef: React.RefObject<Map<string, string>>
         stationList: SimRailDataTypes.StationData[]
-        // userList: SimRailDataTypes.SteamUser[] | null
+        steamUserList: Map<string, SimRailDataTypes.SteamUser>
         userOptions: typeof USER_OPTIONS
         devRenderOptions: RenderOptionsProps
     }
@@ -297,7 +297,7 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
                                     <div className='tooltip-traindata-nextSignal'>{`${hoveredTarget.train.TrainData.DistanceToSignalInFront !== 0 ? `Next Signal: ${hoveredTarget.signal.signalName.split('@')[0]} [${hoveredTarget.train.TrainData.DistanceToSignalInFront > 1000 ? `${(hoveredTarget.train.TrainData.DistanceToSignalInFront / 1000).toFixed(1)} km` : `${(hoveredTarget.train.TrainData.DistanceToSignalInFront).toFixed(1)} m`}]` : 'Next Signal: > 5 km'}`}</div>
                                     <div className='tooltip-traindata-nextSignalSpeed'>Speed on Next Signal: {hoveredTarget.train.TrainData.SignalInFrontSpeed > 160 ? 'vMax' : `${hoveredTarget.train.TrainData.SignalInFrontSpeed} km/h`}</div>
                                     {/* <div className='tooltip-control'>{hoveredTarget.train.ControlledBy === 'user' ? getUsername(hoveredTarget.train.TrainData.ControlledBySteamID) : 'Bot'}</div> */}
-                                    <div className='tooltip-control'>{hoveredTarget.train.ControlledBy === 'user' ? 'Player' : 'Bot'}</div>
+                                    <div className='tooltip-control'>{hoveredTarget.train.TrainData.ControlledBySteamID !== null ? `User: ${(SRTO_PROPS.steamUserList.get(hoveredTarget.train.TrainData.ControlledBySteamID)?.personaname ?? 'Unknown Player')}` : 'Bot'}</div>
                                 </div>
                                 <div className='trainTooltip-signalImage'>
                                     <HoverToolTipSignal hoveredTarget={hoveredTarget} />
@@ -331,12 +331,12 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
             {inDev &&
                 <div className={`devInfoContainer ${showDevMenu ? 'devInfoVisible' : 'devInfoHidden'}`} onClick={() => toggleDevMenu(!showDevMenu)}>
                     <div className='devInfo-title'>DEV INFO</div>
-                    {/* <div className="devInfoBox">
+                    <div className="devInfoBox">
                         <div className='devInfo-title'>SRTO-DATA Info:</div>
-                        <div className="tracksCount">{`Track Count:`}</div>
-                        <div className="signalCount">{`Signal Count:`}</div>
-                        <div className="nodesCount">{`Nodes Count:`}</div>
-                    </div> */}
+                        <div className="tracksCount">{`Track Count: ${(() => {let v = 0; for(const sec in TRACK_DATA) { v = v + TRACK_DATA[sec].length}; return v.toString()})()}`}</div>
+                        <div className="signalCount">{`Signal Count: ${(() => {let v = 0; for(const sec in SIGNAL_DATA) { v = v + SIGNAL_DATA[sec].length}; return v.toString()})()}`}</div>
+                        <div className="nodesCount">{`Nodes Count: ${(() => {let v = 0; for(const sec in NODE_DATA) { v = v + NODE_DATA[sec].length}; return v.toString()})()}`}</div>
+                    </div>
                     <div className='devInfo-statesContainer'>
                         <div className='devInfo-title'>States Info:</div>
                         <div className='devInfo-stateRef'>{`Is Canvas: ${canvasRef ? 'Yes' : 'No'}`}</div>
