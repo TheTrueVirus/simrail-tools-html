@@ -14,6 +14,8 @@ interface ISelfProps {
     srtoHeaderOptions: {
         userOptions: typeof USER_OPTIONS
         setUserOptions: React.Dispatch<SetStateAction<typeof USER_OPTIONS>>
+        showChangelog: boolean
+        setShowChangelog: React.Dispatch<SetStateAction<boolean>>
         serverList: SimRailDataTypes.ServerData[]
         AreaList: AreaProps[]
         renderOptions: {
