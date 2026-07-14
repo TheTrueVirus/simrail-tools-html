@@ -12,18 +12,8 @@ import HoverToolTipSignal from './tooltip-signal';
 import { getNextSignalFromLastSignal } from '../srto-data/srto-nextSignalList';
 const inDev = process.env.NODE_ENV === 'development'
 
-const canvasSettings = {
-    CANVAS_WORLD_WIDTH: 2560,
-    CANVAS_WORLD_HEIGHT: 2450,
-    MIN_ZOOM_FIT: 1,
-    MIN_ZOOM_EXTENDED: 0.25,
-    MAX_ZOOM: 4,
-    TOOLTIP_MARGIN: 30,
-    TOOLTIP_OFFSET: 16,
-}
-
 interface ISelfProps {
-    SRTO_PROPS: {
+    DATA: {
         trainList: SimRailDataTypes.FilteredTrainList[]
         lastSignalMapRef: React.RefObject<Map<string, string>>
         stationList: SimRailDataTypes.StationData[]
@@ -69,15 +59,26 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
     const canvasSizeRef = useRef({ width: 0, height: 0, dpr: 0 })
     const tooltipRef = useRef<HTMLDivElement | null>(null);
 
+    const { width: WORLD_W, height: WORLD_H } = SCREEN_DIMENSIONS[OPTIONS.userOptions.selectedArea.areaID];
+    const canvasSettings = {
+        CANVAS_WORLD_WIDTH: WORLD_W,
+        CANVAS_WORLD_HEIGHT: WORLD_H,
+        MIN_ZOOM_FIT: 1,
+        MIN_ZOOM_EXTENDED: 0.25,
+        MAX_ZOOM: 5,
+        TOOLTIP_MARGIN: 30,
+        TOOLTIP_OFFSET: 16,
+    }
+
     const [showDevMenu, toggleDevMenu] = useState<boolean>(false);
 
-    const allowExtendedViewRef = useRef(SRTO_PROPS.userOptions.allowExtendedView);
+    const allowExtendedViewRef = useRef(OPTIONS.userOptions.allowExtendedView);
     const minZoomRef = useRef(canvasSettings.MIN_ZOOM_FIT)
     useEffect(() => {
-        allowExtendedViewRef.current = SRTO_PROPS.userOptions.allowExtendedView
-        minZoomRef.current = SRTO_PROPS.userOptions.allowExtendedView ? canvasSettings.MIN_ZOOM_EXTENDED : canvasSettings.MIN_ZOOM_FIT
-    }, [SRTO_PROPS.userOptions.allowExtendedView])
-    const signalDataRef = useRef(SIGNAL_DATA);
+        allowExtendedViewRef.current = OPTIONS.userOptions.allowExtendedView
+        minZoomRef.current = OPTIONS.userOptions.allowExtendedView ? canvasSettings.MIN_ZOOM_EXTENDED : canvasSettings.MIN_ZOOM_FIT
+    }, [OPTIONS.userOptions.allowExtendedView])
+    const signalDataRef = useRef<SRTO_DataTypes.SIGNAL[]>(null);
     useEffect(() => {
         signalDataRef.current = SIGNAL_DATA;
     }, [SIGNAL_DATA])
