@@ -21,9 +21,9 @@ export function SRTO_CHANGELOG({CURRENT_VERSION, showChangelog, setShowChangelog
         setShowNewVersionInfo(false);
     }
 
-
     useEffect(() => {
-        if (STORED_VERSION !== CURRENT_VERSION) setShowNewVersionInfo(true);
+        if (STORED_VERSION !== CURRENT_VERSION && STORED_VERSION !== null) setShowNewVersionInfo(true);
+        if (STORED_VERSION === null) storeCurrentVersionAndCloseInformation();
     }, [])
 
     return (
