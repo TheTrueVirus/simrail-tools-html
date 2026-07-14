@@ -1,12 +1,12 @@
-<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+<svg width="256" height="256" xmlns="http://www.w3.org/2000/svg">
  <title>SSP</title>
 
  <g>
   <title>Layer 1</title>
-  <path id="svg_5" d="m50,90c-22.09945,0 -40,-17.90055 -40,-40c0,-22.09945 17.90055,-40 40,-40c22.09945,0 40,17.90055 40,40c0,22.09945 -17.90055,40 -40,40z" opacity="undefined" stroke-width="5" stroke="#000" fill="#84D3DB"/>
-  <line stroke="#000" stroke-width="5" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="60" x2="80" y1="60" x1="20" fill="none"/>
-  <line stroke="#000" stroke-width="5" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="50" x2="80" y1="50" x1="20" fill="none"/>
-  <line transform="rotate(-45 43.5847 41.106)" stroke="#000" stroke-width="5" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="41.10605" x2="57" y1="41.10605" x1="30.16932" fill="none"/>
-  <line stroke="#000" stroke-width="5" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="32.31771" x2="80" y1="32.31771" x1="51.31433" fill="none"/>
+  <path id="svg_5" d="m129,244c-63.53591,0 -115,-51.46409 -115,-115c0,-63.53591 51.46409,-115 115,-115c63.53591,0 115,51.46409 115,115c0,63.53591 -51.46409,115 -115,115z" opacity="undefined" stroke-width="12" stroke="#000" fill="#A4FFFF"/>
+  <line stroke="#000" fill="none" x1="40" y1="168" x2="216" y2="168" id="svg_1" stroke-linejoin="undefined" stroke-linecap="undefined" stroke-width="16"/>
+  <line stroke="#000" fill="none" x1="40.26667" y1="128" x2="216" y2="128" id="svg_3" stroke-linejoin="undefined" stroke-linecap="undefined" stroke-width="16"/>
+  <line stroke="#000" fill="none" x1="149.53333" y1="87.73333" x2="216" y2="87.73333" id="svg_4" stroke-linejoin="undefined" stroke-linecap="undefined" stroke-width="16"/>
+  <path transform="rotate(-45 134.022 106.602)" stroke="#000" id="svg_6" d="m104.18048,106.60164l59.6839,0" opacity="undefined" stroke-linecap="undefined" stroke-linejoin="undefined" stroke-width="16" fill="none"/>
  </g>
 </svg>
