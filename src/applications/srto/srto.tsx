@@ -7,23 +7,11 @@ import SRTO_Disclaimer from './srto-disclaimer/srto-disclaimer';
 import SRTO_Canvas from './srto-worker/srto-canvas/srto-canvas';
 import SRTO_Footer from './srto-footer/srto-footer';
 
-export type SCREENID = "srto_screen1" | "srto_screen2"
-
+export type SCREENID = "srto_screen1" | "srto_screen2" | "srto_screen3" | "srto_screen4"
 export interface AreaProps {
     areaID: SCREENID
     areaDisplayTitle: string
 }
-
-export const AreaList: AreaProps[] = [
-    {
-        areaID: 'srto_screen1',
-        areaDisplayTitle: 'S1 | Katowice - Warszawa'
-    },
-    {
-        areaID: 'srto_screen2',
-        areaDisplayTitle: 'S2 | Lodz Voivodeship - [Warszawa]'
-    },
-]
 
 export interface RenderOptionsProps {
     renderTracks: boolean
@@ -53,23 +41,6 @@ export const USER_OPTIONS = {
 const DISCLAIMER_KEY = "srto_disclaimer_accepted"
 
 export default function SimRailTrackOverview() {
-
-    const developmentTrain: SimRailDataTypes.FilteredTrainList = {
-        TrainNoLocal: 'KORTÜR',
-        Type: 'O-II-A-I',
-        StartStation: 'Katowice',
-        EndStation: 'Warszawa',
-        Vehicles: ["Impuls/36wed-007"],
-        TrainData: {
-            ControlledBySteamID: null,
-            ControlledByXboxID: null,
-            Velocity: 50,
-            SignalInFront: '2439_LC_W42',
-            DistanceToSignalInFront: 1280,
-            SignalInFrontSpeed: 120,
-        },
-        ControlledBy: 'user'
-    }
 
     const [serverList, setServerList] = useState<SimRailDataTypes.ServerData[]>([]);
     const [stationList, setStationList] = useState<SimRailDataTypes.StationData[]>([]);
