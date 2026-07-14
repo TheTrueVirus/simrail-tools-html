@@ -78,18 +78,15 @@ export const DiffAreaIcon: Path2D = (() => {
 
 export const DispatchingPost: Record<'relay' | 'computer', Path2D> = {
     'relay': (() => {
-        let p = new Path2D(`
-M24 0 L30 5 M16 0 L30 10 M8 0 L30 15 M0 0 L30 20 M0 5 L22 20 M0 10 L14 20 M0 15 L6 20
-M24 20 L30 15M16 20 L30 10 M8 20 L30 5 M0 20 L30 0 M0 15 L22 0 M0 10 L14 0 M0 5 L6 0
-`);
-        p.rect(-2, -2, 34, 24);
-        p.rect(0, 0, 30, 20);
+        let p = new Path2D(`M0 0 L21 18 M7 0 L28 18 M14 0 L28 12 M21 0 L28 6 M0 6 L14 18 M0 12 L7 18 M0 18 L21 0 M7 18 L28 0 M14 18 L28 6 M21 18 L28 12 M0 12 L14 0 M0 6 L7 0`);
+        p.rect(-2, -2, 32, 22);
+        p.rect(0, 0, 28, 18);
         return p;
     })(),
     'computer': (() => {
         const p = new Path2D();
-        p.rect(-2, -2, 34, 24);
-        p.rect(0, 0, 30, 20);
+        p.rect(-2, -2, 32, 22);
+        p.rect(0, 0, 28, 18);
         return p;
     })()
 }
@@ -329,18 +326,18 @@ export namespace CanvasDrawer {
                         ctx.save();
                         if (userOptions.flipScreen) ctx.translate(-30, -20);
                         const post = DispatchingPost[node.postType ?? 'computer'];
-                        ctx.lineWidth = 1
+                        ctx.lineWidth = 0.5
                         ctx.strokeStyle = 'white';
                         ctx.stroke(post);
 
                         ctx.fillStyle = 'white';
                         ctx.strokeStyle = 'black';
-                        ctx.lineWidth = 5;
-                        ctx.strokeRect(7, 4, 16, 3);
-                        ctx.fillRect(7, 4, 16, 3);
+                        ctx.lineWidth = 3;
+                        ctx.strokeRect(6, 4, 16, 3);
+                        ctx.fillRect(6, 4, 16, 3);
                         ctx.beginPath();
                         ctx.lineWidth = 1.5;
-                        ctx.arc(15, 14, 3, 0, 2 * Math.PI)
+                        ctx.arc(14, 12.5, 3, 0, 2 * Math.PI)
                         ctx.fill()
                         ctx.stroke();
                         ctx.restore();
