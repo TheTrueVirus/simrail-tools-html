@@ -48,6 +48,7 @@ export default function SimRailTrackOverview() {
     const lastSignalMapRef = useRef<Map<string, string>>(new Map())
 
     const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
+    const [showChangelog, setShowChangelog] = useState<boolean>(false);
     const [userOptions, setUserOptions] = useState<typeof USER_OPTIONS>(() => getUserOptionsOrDefault())
     const [devRenderOptions, setDevRenderOptions] = useState<RenderOptionsProps>(RenderOptions)
 
@@ -212,6 +213,8 @@ export default function SimRailTrackOverview() {
                         setShowDisclaimer={setShowDisclaimer}
                     />
                 }
+
+                <SRTO_CHANGELOG {...{ CURRENT_VERSION, showChangelog, setShowChangelog }} />
 
                 <SRTO_Header srtoHeaderOptions={srtoHeaderOptions} />
                 <SRTO_Canvas SRTO_PROPS={SRTO_PROPS} />
