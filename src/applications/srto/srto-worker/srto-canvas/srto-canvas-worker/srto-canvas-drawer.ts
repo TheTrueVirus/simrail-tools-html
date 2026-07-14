@@ -325,6 +325,10 @@ export namespace CanvasDrawer {
                     case 'dispatchingPost':
                         ctx.save();
                         if (userOptions.flipScreen) ctx.translate(-30, -20);
+                        ctx.translate(14, 9);
+                        const angle = (node.postRotationAngle ?? 0) * Math.PI / 180;
+                        ctx.rotate(userOptions.flipScreen ? angle - Math.PI : angle);
+                        ctx.translate(-14, -9);
                         const post = DispatchingPost[node.postType ?? 'computer'];
                         ctx.lineWidth = 0.5
                         ctx.strokeStyle = 'white';
