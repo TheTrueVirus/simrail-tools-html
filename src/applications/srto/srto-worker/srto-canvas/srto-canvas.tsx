@@ -1,10 +1,11 @@
 import { useRef, useEffect, useLayoutEffect, useMemo, useState, SetStateAction } from 'react'
 import './srto-canvas.css'
-import { AreaProps, RenderOptionsProps, USER_OPTIONS } from '../../srto';
+import { SRTO_SCREEN1_DATA } from '../srto-data/screen-data/srto_screen1_data';
+import { SRTO_SCREEN2_DATA } from '../srto-data/screen-data/srto_screen2_data';
+import { SRTO_SCREEN3_DATA } from '../srto-data/screen-data/srto_screen3_data';
+import { SRTO_SCREEN4_DATA } from '../srto-data/screen-data/srto_screen4_data';
+import { RenderOptionsProps, SCREENID, USER_OPTIONS } from '../../srto';
 import { SimRailDataTypes } from '../../../../types/simrail-data-types';
-import { SRTO_Tracks } from '../srto-data/srto-trackData';
-import { SRTO_Nodes } from '../srto-data/srto-nodeData';
-import { SRTO_Signals } from '../srto-data/srto-signalData';
 import { SRTO_DataTypes } from '../srto-data/srto-dataTypes';
 import { CanvasDrawer } from './srto-canvas-worker/srto-canvas-drawer';
 import { createCanvasEventHandler } from './srto-canvas-worker/srto-canvas-eventHandler';
@@ -36,20 +37,28 @@ export type HoveredTargetType =
     { type: 'signal', signal: SRTO_DataTypes.SIGNAL, screenX: number, screenY: number } |
     null
 
-function loadDataFromFile(area: AreaProps) {
-    const TRACK_DATA = SRTO_Tracks[area.areaID];
-    const SIGNAL_DATA = SRTO_Signals[area.areaID];
-    const NODE_DATA = SRTO_Nodes[area.areaID];
-    return {
-        TRACK_DATA,
-        SIGNAL_DATA,
-        NODE_DATA
-    }
+const SCREEN_DATA: Record<SCREENID, SRTO_DataTypes.ScreenProps> = {
+    'srto_screen1': SRTO_SCREEN1_DATA,
+    'srto_screen2': SRTO_SCREEN2_DATA,
+    'srto_screen3': SRTO_SCREEN3_DATA,
+    'srto_screen4': SRTO_SCREEN4_DATA,
+}
+const SCREEN_DIMENSIONS: Record<SCREENID, { width: number, height: number }> = {
+    'srto_screen1': { width: 2560, height: 2400 },
+    'srto_screen2': { width: 2560, height: 3000 },
+    'srto_screen3': { width: 2560, height: 1800 },
+    'srto_screen4': { width: 2560, height: 1800 },
+    // ...
+}
+function loadScreenDataFromFiles(screenid: SCREENID) {
+    const DATA = SCREEN_DATA[screenid];
+
+    return DATA;
 }
 
-export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
+export default function SRTO_Canvas({ DATA, CONSTANTS, OPTIONS }: ISelfProps) {
 
-    const { TRACK_DATA, SIGNAL_DATA, NODE_DATA } = loadDataFromFile(SRTO_PROPS.userOptions.selectedArea);
+    const screenData = loadScreenDataFromFiles(OPTIONS.userOptions.selectedArea.areaID);
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const trackPathCacheRef = useRef(new WeakMap<SRTO_DataTypes.TRACK_NODE, Path2D>());
@@ -80,8 +89,16 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
     }, [OPTIONS.userOptions.allowExtendedView])
     const signalDataRef = useRef<SRTO_DataTypes.SIGNAL[]>(null);
     useEffect(() => {
-        signalDataRef.current = SIGNAL_DATA;
-    }, [SIGNAL_DATA])
+
+        const signalDataOfScreen = []
+
+        for (const node in screenData) {
+            const signalNode = screenData[node].SIGNALS;
+            signalDataOfScreen.push(...signalNode)
+        }
+
+        signalDataRef.current = signalDataOfScreen;
+    }, [screenData])
 
     const [mouseWorldPos, setMouseWorldPos] = useState<{ x: number, y: number } | null>(null)
     const mouseWorldPosRef = useRef(mouseWorldPos);
@@ -103,8 +120,8 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
 
     const signalsByName = useMemo(() => {
         const map = new Map<string | null, SRTO_DataTypes.SIGNAL[]>()
-        for (const sectionid in SIGNAL_DATA) {
-            for(const signal of SIGNAL_DATA[sectionid]) {
+        for (const node in screenData) {
+            for (const signal of screenData[node].SIGNALS) {
                 const mapKey = signal.signalName;
                 const list = map.get(mapKey);
                 if (list) {
@@ -115,7 +132,7 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
             }
         }
         return map
-    }, [SIGNAL_DATA])
+    }, [screenData])
 
     const trainHoverEntries = useMemo(() => {
         return DATA.trainList
