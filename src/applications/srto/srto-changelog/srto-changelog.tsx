@@ -10,7 +10,8 @@ interface ISelfProps {
 
 export function SRTO_CHANGELOG({CURRENT_VERSION, showChangelog, setShowChangelog}: ISelfProps) {
 
-    const STORED_VERSION = localStorage.getItem('VERSION')
+    const STORED_VERSION = localStorage.getItem('VERSION');
+    const HAS_VISITED_SITE = localStorage.getItem('srto_disclaimer_accepted') !== null
     const isFirstIndexNewVersion = CHANGELOG_DATA[0].version !== STORED_VERSION
     const GITHUB_CHANGELOG_LINK = 'https://github.com/TheTrueVirus/simrail-tools-html/blob/master/CHANGELOG.md'
 
@@ -23,7 +24,11 @@ export function SRTO_CHANGELOG({CURRENT_VERSION, showChangelog, setShowChangelog
 
     useEffect(() => {
         if (STORED_VERSION !== CURRENT_VERSION && STORED_VERSION !== null) setShowNewVersionInfo(true);
-        if (STORED_VERSION === null) storeCurrentVersionAndCloseInformation();
+        if (STORED_VERSION === null && HAS_VISITED_SITE === true) {
+            setShowNewVersionInfo(true);
+        } else {
+            storeCurrentVersionAndCloseInformation();
+        }
     }, [])
 
     return (
