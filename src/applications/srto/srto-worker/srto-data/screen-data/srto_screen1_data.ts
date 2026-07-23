@@ -1263,7 +1263,8 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-KatowiceZawodzie',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 1030, y: 140 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-KatowiceZawodzie',
@@ -1907,7 +1908,8 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-SosnowiecPoludniowy',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 1530, y: 230 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 90,
             },
             {
                 nodeID: 'stationName-SosnowiecPoludniowy',
@@ -3149,8 +3151,9 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'dispatchingPost-DabrowaGorniczaZabkowice',
                 nodeType: 'dispatchingPost',
-                nodePos: { x: 760, y: 415 },
-                postType: 'relay'
+                nodePos: { x: 765, y: 420 },
+                postType: 'relay',
+                postRotationAngle: 90,
             },
             {
                 nodeID: 'stationName-DabrowaGorniczaZabkowice',
@@ -4023,7 +4026,8 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost_LazyLC',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 1810, y: 350 },
-                postType: 'relay'
+                postType: 'relay',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-LazyLC',
@@ -4348,7 +4352,8 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost_LazyLB',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 2140, y: 500 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 0,
             },
             {
                 nodeID: 'stationName-Lazy',
@@ -5728,7 +5733,7 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 signalType: 'abs_standard',
             },
             {
-                signalName: 'L1_2693',
+                signalName: 'L1_2963',
                 signalPos: { x: '1490', y: '720' },
                 trainPos: { x: '1505', y: '720' },
                 signalDirectionOnMap: 'left',
@@ -6388,7 +6393,7 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'trackMarker-L4_2119',
                 nodeType: 'trackMarker',
                 nodePos: { x: 1690, y: 700 },
-                text: '2141',
+                text: '2119',
             },
             {
                 nodeID: 'trackMarker-L4_2128',
@@ -7623,18 +7628,19 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
             },
 
             // ? Starzyny
-            // {
-            //     nodeID: 'dispatchingPost-Starzyny',
-            //     nodeType: 'dispatchingPost',
-            //     nodePos: { x: 1435, y: 1150 },
-            //     postType: 'computer'
-            // },
+            {
+                nodeID: 'dispatchingPost-Starzyny',
+                nodeType: 'dispatchingPost',
+                nodePos: { x: 1437.5, y: 1155 },
+                postType: 'computer',
+                postRotationAngle: 180,
+            },
             {
                 nodeID: 'stationName-Starzyny',
                 nodeType: 'stationName',
                 stationPrefix: 'Str',
                 stationName: 'Starzyny',
-                nodePos: { x: 1430, y: 1145 },
+                nodePos: { x: 1430, y: 1140 },
                 nodePosFlipped: { x: 1430, y: 1215 }
             },
             //? Sprowa
@@ -9317,7 +9323,8 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-Olszamowice',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 1920, y: 1210 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-WloszczowaPolnoc',
@@ -10178,7 +10185,7 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'dispatchingPost-OpocznoPoludnie',
                 nodeType: 'dispatchingPost',
-                nodePos: { x: 1115, y: 1490 },
+                nodePos: { x: 1270, y: 1490 },
                 postType: 'relay'
             },
             {
@@ -12823,10 +12830,10 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
             },
         ]
     },
-    "0000_Kr_KORYTOW": { //^ Korytow
+    "1852_Kr_KORYTOW": { //^ Korytow
         "TRACKS": [
             {
-                trackID: '0000_KORYTOW',
+                trackID: '1852_KORYTOW',
                 /*
                 T1
                 T2
@@ -13569,7 +13576,8 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-GrodziskMazowiecki',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 360, y: 1870 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-GrodziskMazowiecki',
@@ -15839,7 +15847,7 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
             },
         ]
     },
-    "4837_WZ_WARSZAWAZACHODNIA": { //^ Warszawa Zachodnia
+    "4837_WZD_WARSZAWAZACHODNIA": { //^ Warszawa Zachodnia
         "TRACKS": [
             {
                 trackID: '4837_WARSZAWAZACHODNIA',
@@ -15855,49 +15863,49 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
         ],
         "SIGNALS": [
             {
-                signalName: 'WDZ_W',
+                signalName: 'WZD_W',
                 signalPos: { x: '190', y: '2200' },
                 trainPos: { x: '175', y: '2200' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
-                signalName: 'WDZ_Z',
+                signalName: 'WZD_Z',
                 signalPos: { x: '190', y: '2220' },
                 trainPos: { x: '175', y: '2220' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
-                signalName: 'WDZ_Q',
+                signalName: 'WZD_Q',
                 signalPos: { x: '190', y: '2260' },
                 trainPos: { x: '175', y: '2260' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
-                signalName: 'WDZ_T',
+                signalName: 'WZD_T',
                 signalPos: { x: '190', y: '2300' },
                 trainPos: { x: '175', y: '2300' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
-                signalName: 'WDZ_O',
+                signalName: 'WZD_O',
                 signalPos: { x: '190', y: '2320' },
                 trainPos: { x: '175', y: '2320' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
-                signalName: 'WDZ_U1',
+                signalName: 'WZD_U1',
                 signalPos: { x: '190', y: '2200' },
                 trainPos: { x: '205', y: '2200' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
-                signalName: 'WDZ_U2',
+                signalName: 'WZD_U2',
                 signalPos: { x: '190', y: '2220' },
                 trainPos: { x: '205', y: '2220' },
                 signalDirectionOnMap: 'left',
