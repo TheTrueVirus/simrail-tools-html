@@ -8,28 +8,26 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
         "TRACKS": [],
         "SIGNALS": [],
         "NODES": [
-            // {
-            //     nodeID: 'txt-WIP_S2',
-            //     nodeType: 'simpleText',
-            //     nodePos: { x: 1800, y: 1550 },
-            //     text: '--- KOLUSZKI & MORE IS WORK IN PROGRESS ---',
-            //     textSize: 20
-            // },
             {
-                nodeID: 'txt-toGalkowek',
-                nodeType: 'simpleText',
-                nodePos: { x: 650, y: 1310 },
-                text: 'to Gałkówek',
-                textSize: 16,
-                textColor: 'rgb(120, 120, 120)'
+                nodeID: 'dsm-ZdunskaWolaK',
+                nodeType: 'differentScreenMarker',
+                nodePos: { x: 1290, y: 270 },
+                text: 'Tarnowskie Góry',
+                textSize: 12
             },
             {
-                nodeID: 'txt-toKoluszki',
-                nodeType: 'simpleText',
-                nodePos: { x: 2330, y: 731 },
-                text: 'to Koluszki',
-                textSize: 16,
-                textColor: 'rgb(120, 120, 120)'
+                nodeID: 'dsm-Dionizow',
+                nodeType: 'differentScreenMarker',
+                nodePos: { x: 1110, y: 65 },
+                text: 'Inowrocław',
+                textSize: 12
+            },
+            {
+                nodeID: 'dsm-Dionizow',
+                nodeType: 'differentScreenMarker',
+                nodePos: { x: 2370, y: 2450 },
+                text: 'Warszawa',
+                textSize: 12
             },
             {
                 nodeID: 'tbm-Pabianice_LodzLublinek',
@@ -46,18 +44,18 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeType: 'trackBreakMarker',
                 nodePos: { x: 0, y: 0 },
                 breakMarker: {
-                    firstMarker: { x: 2395, y: 730 },
-                    secondMarker: { x: 580, y: 1310 },
+                    firstMarker: { x: 2400, y: 745 },
+                    secondMarker: { x: 790, y: 1310 },
                 },
                 text: 'B'
             },
             {
-                nodeID: 'tbm-Baby_Rokiciny',
+                nodeID: 'tbm-Galkoweg_Zakowice',
                 nodeType: 'trackBreakMarker',
                 nodePos: { x: 0, y: 0 },
                 breakMarker: {
-                    firstMarker: { x: 510, y: 950 },
-                    secondMarker: { x: 30, y: 1160 },
+                    firstMarker: { x: 2400, y: 805 },
+                    secondMarker: { x: 360, y: 1730 },
                 },
                 text: 'C'
             },
@@ -66,10 +64,50 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeType: 'trackBreakMarker',
                 nodePos: { x: 0, y: 0 },
                 breakMarker: {
-                    firstMarker: { x: 2520, y: 1170 },
-                    secondMarker: { x: 30, y: 1430 },
+                    firstMarker: { x: 510, y: 960 },
+                    secondMarker: { x: 30, y: 1170 },
                 },
                 text: 'D'
+            },
+            {
+                nodeID: 'tbm-Baby_Rokiciny',
+                nodeType: 'trackBreakMarker',
+                nodePos: { x: 0, y: 0 },
+                breakMarker: {
+                    firstMarker: { x: 2520, y: 1180 },
+                    secondMarker: { x: 30, y: 1430 },
+                },
+                text: 'E'
+            },
+            {
+                nodeID: 'tbm-Koluszki_Rogow',
+                nodeType: 'trackBreakMarker',
+                nodePos: { x: 0, y: 0 },
+                breakMarker: {
+                    firstMarker: { x: 2510, y: 1420 },
+                    secondMarker: { x: 30, y: 1870 },
+                },
+                text: 'F'
+            },
+            {
+                nodeID: 'tbm-Plycwia_Skierniewice',
+                nodeType: 'trackBreakMarker',
+                nodePos: { x: 0, y: 0 },
+                breakMarker: {
+                    firstMarker: { x: 2530, y: 1870 },
+                    secondMarker: { x: 470, y: 2170 },
+                },
+                text: 'G'
+            },
+            {
+                nodeID: 'tbm-Skierniewice_Zyrardow',
+                nodeType: 'trackBreakMarker',
+                nodePos: { x: 0, y: 0 },
+                breakMarker: {
+                    firstMarker: { x: 2230, y: 2150 },
+                    secondMarker: { x: 30, y: 2370 },
+                },
+                text: 'H'
             },
         ]
     },
@@ -784,7 +822,8 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-ZdunskaWola',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 1110, y: 85 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-ZdunskaWola',
@@ -893,13 +932,6 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
         ],
         "NODES": [
             {
-                nodeID: 'text-ZdunskaWolaK',
-                nodeType: 'differentScreenMarker',
-                nodePos: { x: 1290, y: 270 },
-                text: 'Tarnowskie Góry',
-                textSize: 12
-            },
-            {
                 nodeID: 'trackMarker-ZdunskaWola_ZWK_1K',
                 nodeType: 'trackMarker',
                 nodePos: { x: 1210, y: 180 },
@@ -957,13 +989,6 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             },
         ],
         "NODES": [
-            {
-                nodeID: 'text-Dionizow',
-                nodeType: 'differentScreenMarker',
-                nodePos: { x: 1110, y: 65 },
-                text: 'Inowrocław',
-                textSize: 12
-            },
             {
                 nodeID: 'trackMarker-ZdunskaWola_Di_1D',
                 nodeType: 'trackMarker',
@@ -1070,7 +1095,8 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-Gajewniki',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 1370, y: 105 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-ZdunskaWola',
@@ -1316,7 +1342,8 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-Lask',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 1650, y: 85 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-Lask',
@@ -1685,7 +1712,8 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-Pabianice',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 2240, y: 105 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-Pabianice',
@@ -1819,7 +1847,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 M110,380 190,380 M200,380 260,380 M270,380 360,380
 
                 M130,380 132.5,375 132.5,365 135,360 M145,360 147.5,355 147.5,345 150,340 160,340 162.5,335 162.5,325 165,320 170,320
-                M175,380 177.5,385 177.5,395 180,400 190,400
+                M160,360 162.5,365 162.5,375 165,380 M175,380 177.5,385 177.5,395 180,400 190,400
 
                 M170,320 190,320 M200,320 260,320 M270,320
                 M160,340 190,340 M200,340 260,340 M270,340
@@ -2666,7 +2694,8 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-LodzKaliska',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 1130, y: 350 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-LodzKaliska',
@@ -5728,28 +5757,28 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 signalName: '924_G_T',
                 signalPos: { x: '2150', y: '760' },
-                trainPos: { x: '2165', y: '760' },
+                trainPos: { x: '2180', y: '760' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard'
             },
             {
                 signalName: '924_G_S',
                 signalPos: { x: '2150', y: '780' },
-                trainPos: { x: '2165', y: '780' },
+                trainPos: { x: '2180', y: '780' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard'
             },
             {
                 signalName: '924_G_R',
                 signalPos: { x: '2150', y: '820' },
-                trainPos: { x: '2165', y: '820' },
+                trainPos: { x: '2180', y: '820' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard'
             },
             {
                 signalName: '924_G_P',
                 signalPos: { x: '2150', y: '840' },
-                trainPos: { x: '2165', y: '840' },
+                trainPos: { x: '2180', y: '840' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard'
             },
@@ -5758,15 +5787,15 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             //!!!
             {
                 signalName: '924_G_T',
-                signalPos: { x: '590', y: '1340' },
-                trainPos: { x: '605', y: '1340' },
+                signalPos: { x: '790', y: '1340' },
+                trainPos: { x: '820', y: '1340' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard'
             },
             {
                 signalName: '924_G_S',
-                signalPos: { x: '590', y: '1360' },
-                trainPos: { x: '605', y: '1360' },
+                signalPos: { x: '790', y: '1360' },
+                trainPos: { x: '820', y: '1360' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard'
             },
@@ -5776,7 +5805,8 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-Galkoweg',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 2110, y: 720 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-Galkoweg',
@@ -5842,16 +5872,16 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 M2160,760 2260,760 M2280,760 2380,760 M2390,760 2400,760 2410,770
                 M2160,780 2260,780 M2280,780 2380,780 M2390,780 2400,780 2410,790
 
-                M2160,820 2280,820 2290,830
-                M2160,840 2280,840 2290,850
+                M2160,820 2400,820 2410,830
+                M2160,840 2400,840 2410,850
                 `,
                 trackColor: 'gray'
             },
             {
                 trackID: 'TRACKS_GALKOWEK_KOLUSZKI_2',
                 trackSVG: `
-                M570,1330 580,1340 590,1340 M600,1340 700,1340 M720,1340 820,1340
-                M570,1350 580,1360 590,1360 M600,1360 700,1360 M720,1360 820,1360
+                M770,1330 780,1340 790,1340 M800,1340 900,1340 M920,1340 1020,1340
+                M770,1350 780,1360 790,1360 M800,1360 900,1360 M920,1360 1020,1360
                 `,
                 trackColor: 'gray'
             },
@@ -5860,28 +5890,28 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 signalName: 'L17_222N',
                 signalPos: { x: '2270', y: '760' },
-                trainPos: { x: '2255', y: '760' },
+                trainPos: { x: '2240', y: '760' },
                 signalDirectionOnMap: 'right',
                 signalType: 'abs_last'
             },
             {
                 signalName: 'L17_219',
                 signalPos: { x: '2270', y: '780' },
-                trainPos: { x: '2255', y: '780' },
+                trainPos: { x: '2240', y: '780' },
                 signalDirectionOnMap: 'right',
                 signalType: 'abs_last'
             },
             {
                 signalName: 'L17_222',
                 signalPos: { x: '2270', y: '760' },
-                trainPos: { x: '2285', y: '760' },
+                trainPos: { x: '2300', y: '760' },
                 signalDirectionOnMap: 'left',
                 signalType: 'abs_last'
             },
             {
                 signalName: 'L17_219N',
                 signalPos: { x: '2270', y: '780' },
-                trainPos: { x: '2285', y: '780' },
+                trainPos: { x: '2300', y: '780' },
                 signalDirectionOnMap: 'left',
                 signalType: 'abs_last'
             },
@@ -5890,29 +5920,29 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             //!!!
             {
                 signalName: 'L17_222N',
-                signalPos: { x: '710', y: '1340' },
-                trainPos: { x: '695', y: '1340' },
+                signalPos: { x: '910', y: '1340' },
+                trainPos: { x: '880', y: '1340' },
                 signalDirectionOnMap: 'right',
                 signalType: 'abs_last'
             },
             {
                 signalName: 'L17_219',
-                signalPos: { x: '710', y: '1360' },
-                trainPos: { x: '695', y: '1360' },
+                signalPos: { x: '910', y: '1360' },
+                trainPos: { x: '880', y: '1360' },
                 signalDirectionOnMap: 'right',
                 signalType: 'abs_last'
             },
             {
                 signalName: 'L17_222',
-                signalPos: { x: '710', y: '1340' },
-                trainPos: { x: '725', y: '1340' },
+                signalPos: { x: '910', y: '1340' },
+                trainPos: { x: '940', y: '1340' },
                 signalDirectionOnMap: 'left',
                 signalType: 'abs_last'
             },
             {
                 signalName: 'L17_219N',
-                signalPos: { x: '710', y: '1360' },
-                trainPos: { x: '725', y: '1360' },
+                signalPos: { x: '910', y: '1360' },
+                trainPos: { x: '940', y: '1360' },
                 signalDirectionOnMap: 'left',
                 signalType: 'abs_last'
             },
@@ -5921,14 +5951,14 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 signalName: '1803_KO_R2',
                 signalPos: { x: '2390', y: '760' },
-                trainPos: { x: '2375', y: '760' },
+                trainPos: { x: '2360', y: '760' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_R1',
                 signalPos: { x: '2390', y: '780' },
-                trainPos: { x: '2375', y: '780' },
+                trainPos: { x: '2360', y: '780' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
@@ -5945,6 +5975,30 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeType: 'trackMarker',
                 nodePos: { x: 2210, y: 780 },
                 text: '203',
+            },
+            {
+                nodeID: "simpleText-po-Zakowice-1",
+                nodeType: "simpleText",
+                nodePos: { x: 2350, y: 730 },
+                nodePosFlipped: { x: 2350, y: 730 },
+                text: "Żakowice",
+                textSize: phFontSize
+            },
+            {
+                nodeID: 'platform-Zakowice-1-1',
+                nodeType: 'platform',
+                nodePos: { x: 2325, y: 745 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            {
+                nodeID: 'platform-Zakowice-2-1',
+                nodeType: 'platform',
+                nodePos: { x: 2325, y: 785 },
+                width: 50,
+                height: 10,
+                text: ''
             },
             {
                 nodeID: 'trackMarker-Galkowek_Koluszki-242',
@@ -5964,25 +6018,49 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'trackMarker-Galkowek_Koluszki-222',
                 nodeType: 'trackMarker',
-                nodePos: { x: 650, y: 1340 },
+                nodePos: { x: 850, y: 1340 },
                 text: '222',
             },
             {
                 nodeID: 'trackMarker-Galkowek_Koluszki-203',
                 nodeType: 'trackMarker',
-                nodePos: { x: 650, y: 1360 },
+                nodePos: { x: 850, y: 1360 },
                 text: '203',
+            },
+            {
+                nodeID: "simpleText-po-Zakowice-2",
+                nodeType: "simpleText",
+                nodePos: { x: 990, y: 1310 },
+                nodePosFlipped: { x: 990, y: 1310 },
+                text: "Żakowice",
+                textSize: phFontSize
+            },
+            {
+                nodeID: 'platform-Zakowice-1-2',
+                nodeType: 'platform',
+                nodePos: { x: 965, y: 1325 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            {
+                nodeID: 'platform-Zakowice-2-2',
+                nodeType: 'platform',
+                nodePos: { x: 965, y: 1365 },
+                width: 50,
+                height: 10,
+                text: ''
             },
             {
                 nodeID: 'trackMarker-Galkowek_Koluszki-242',
                 nodeType: 'trackMarker',
-                nodePos: { x: 770, y: 1340 },
+                nodePos: { x: 970, y: 1340 },
                 text: '242',
             },
             {
                 nodeID: 'trackMarker-Galkowek_Koluszki-219',
                 nodeType: 'trackMarker',
-                nodePos: { x: 770, y: 1360 },
+                nodePos: { x: 970, y: 1360 },
                 text: '219',
             },
         ]
@@ -7297,7 +7375,8 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-Baby',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 1700, y: 1150 },
-                postType: 'relay'
+                postType: 'relay',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-Baby',
@@ -7688,7 +7767,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: "simpleText-po-Wolborka",
                 nodeType: "simpleText",
                 nodePos: { x: 2220, y: 1170 },
-                nodePosFlipped: { x: 2220, y: 1245 },
+                nodePosFlipped: { x: 2220, y: 1250 },
                 text: "Wolbórka",
                 textSize: phFontSize
             },
@@ -7744,7 +7823,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: "simpleText-po-Laznow",
                 nodeType: "simpleText",
                 nodePos: { x: 2471.75, y: 1170 },
-                nodePosFlipped: { x: 2471.75, y: 1245 },
+                nodePosFlipped: { x: 2471.75, y: 1250 },
                 text: "Łaznów",
                 textSize: phFontSize
             },
@@ -7810,15 +7889,15 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 trackID: '3594_ROKICINY',
                 trackSVG: `
-                M270,1460 380,1460 M390,1460 450,1460 M460,1460 510,1460
-                M270,1480 380,1480 M390,1480 450,1480 M460,1480 510,1480
+                M270,1460 380,1460 M390,1460 490,1460 M500,1460 550,1460
+                M270,1480 380,1480 M390,1480 490,1480 M500,1480 550,1480
 
                 M350,1480 352.5,1475 352.5,1465 355,1460
 
-                M365,1460 367.5,1455 367.5,1445 370,1440 380,1440 M390,1440 450,1440 M460,1440 475,1440 477.5,1445 477.5,1455 480,1460
-                M365,1480 367.5,1485 367.5,1495 370,1500 380,1500 M390,1500 450,1500 M460,1500 470,1500 472.5,1495 472.5,1485 475,1480
+                M365,1460 367.5,1455 367.5,1445 370,1440 380,1440 M390,1440 490,1440 M500,1440 515,1440 517.5,1445 517.5,1455 520,1460
+                M365,1480 367.5,1485 367.5,1495 370,1500 380,1500 M390,1500 490,1500 M500,1500 510,1500 512.5,1495 512.5,1485 515,1480
 
-                M490,1460 492.5,1465 492.5,1475 495,1480
+                M530,1460 532.5,1465 532.5,1475 535,1480
                 `,
                 trackColor: 'white'
             },
@@ -7842,72 +7921,72 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 signalName: '3594_Ro_L',
                 signalPos: { x: '380', y: '1440' },
-                trainPos: { x: '395', y: '1440' },
+                trainPos: { x: '410', y: '1440' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '3594_Ro_K',
                 signalPos: { x: '380', y: '1460' },
-                trainPos: { x: '395', y: '1460' },
+                trainPos: { x: '410', y: '1460' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '3594_Ro_J',
                 signalPos: { x: '380', y: '1480' },
-                trainPos: { x: '395', y: '1480' },
+                trainPos: { x: '410', y: '1480' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '3594_Ro_H',
                 signalPos: { x: '380', y: '1500' },
-                trainPos: { x: '395', y: '1500' },
+                trainPos: { x: '410', y: '1500' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
 
             {
                 signalName: '3594_Ro_D',
-                signalPos: { x: '460', y: '1440' },
-                trainPos: { x: '445', y: '1440' },
+                signalPos: { x: '500', y: '1440' },
+                trainPos: { x: '470', y: '1440' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '3594_Ro_E',
-                signalPos: { x: '460', y: '1460' },
-                trainPos: { x: '445', y: '1460' },
+                signalPos: { x: '500', y: '1460' },
+                trainPos: { x: '470', y: '1460' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '3594_Ro_F',
-                signalPos: { x: '460', y: '1480' },
-                trainPos: { x: '445', y: '1480' },
+                signalPos: { x: '500', y: '1480' },
+                trainPos: { x: '470', y: '1480' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '3594_Ro_G',
-                signalPos: { x: '460', y: '1500' },
-                trainPos: { x: '445', y: '1500' },
+                signalPos: { x: '500', y: '1500' },
+                trainPos: { x: '470', y: '1500' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
 
             {
                 signalName: '3594_Ro_B',
-                signalPos: { x: '510', y: '1460' },
-                trainPos: { x: '525', y: '1460' },
+                signalPos: { x: '550', y: '1460' },
+                trainPos: { x: '580', y: '1460' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '3594_Ro_A',
-                signalPos: { x: '510', y: '1480' },
-                trainPos: { x: '525', y: '1480' },
+                signalPos: { x: '550', y: '1480' },
+                trainPos: { x: '580', y: '1480' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
@@ -7916,15 +7995,16 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'dispatchingPost-Rokiciny',
                 nodeType: 'dispatchingPost',
-                nodePos: { x: 320, y: 1410 },
-                postType: 'relay'
+                nodePos: { x: 333, y: 1410 },
+                postType: 'relay',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-Rokiciny',
                 nodeType: 'stationName',
                 stationPrefix: 'Ro',
                 stationName: 'Rokiciny',
-                nodePos: { x: 420, y: 1400 },
+                nodePos: { x: 420, y: 1410 },
                 nodePosFlipped: { x: 420, y: 1540 }
             },
             {
@@ -7946,25 +8026,25 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'trackMarker-Rokiciny-3',
                 nodeType: 'trackMarker',
-                nodePos: { x: 420, y: 1440 },
+                nodePos: { x: 440, y: 1440 },
                 text: '3',
             },
             {
                 nodeID: 'trackMarker-Rokiciny-1',
                 nodeType: 'trackMarker',
-                nodePos: { x: 420, y: 1460 },
+                nodePos: { x: 440, y: 1460 },
                 text: '1',
             },
             {
                 nodeID: 'trackMarker-Rokiciny-2',
                 nodeType: 'trackMarker',
-                nodePos: { x: 420, y: 1480 },
+                nodePos: { x: 440, y: 1480 },
                 text: '2',
             },
             {
                 nodeID: 'trackMarker-Rokiciny-4',
                 nodeType: 'trackMarker',
-                nodePos: { x: 420, y: 1500 },
+                nodePos: { x: 440, y: 1500 },
                 text: '4',
             },
         ]
@@ -7974,8 +8054,8 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 trackID: 'TRACKS_ROKICINY_KOLUSZKI',
                 trackSVG: `
-                M520,1460 580,1460 M600,1460 660,1460 M680,1460 740,1460 M760,1460 820,1460
-                M520,1480 580,1480 M600,1480 660,1480 M680,1480 740,1480 M760,1480 820,1480
+                M560,1460 660,1460 M680,1460 780,1460 M800,1460 900,1460 M920,1460 1020,1460
+                M560,1480 660,1480 M680,1480 780,1480 M800,1480 900,1480 M920,1480 1020,1480
                 `,
                 trackColor: 'gray'
             },
@@ -7983,87 +8063,87 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
         "SIGNALS": [
             {
                 signalName: 'L1_1115N',
-                signalPos: { x: '590', y: '1460' },
-                trainPos: { x: '575', y: '1460' },
+                signalPos: { x: '670', y: '1460' },
+                trainPos: { x: '640', y: '1460' },
                 signalDirectionOnMap: 'right',
                 signalType: 'abs_standard',
             },
             {
                 signalName: 'L1_1116',
-                signalPos: { x: '590', y: '1480' },
-                trainPos: { x: '575', y: '1480' },
+                signalPos: { x: '670', y: '1480' },
+                trainPos: { x: '640', y: '1480' },
                 signalDirectionOnMap: 'right',
                 signalType: 'abs_standard',
             },
             {
                 signalName: 'L1_1115',
-                signalPos: { x: '590', y: '1460' },
-                trainPos: { x: '605', y: '1460' },
+                signalPos: { x: '670', y: '1460' },
+                trainPos: { x: '700', y: '1460' },
                 signalDirectionOnMap: 'left',
                 signalType: 'abs_last',
             },
             {
                 signalName: 'L1_1116N',
-                signalPos: { x: '590', y: '1480' },
-                trainPos: { x: '605', y: '1480' },
+                signalPos: { x: '670', y: '1480' },
+                trainPos: { x: '700', y: '1480' },
                 signalDirectionOnMap: 'left',
                 signalType: 'abs_last',
             },
             //
             {
                 signalName: 'L1_1103N',
-                signalPos: { x: '670', y: '1460' },
-                trainPos: { x: '655', y: '1460' },
+                signalPos: { x: '790', y: '1460' },
+                trainPos: { x: '760', y: '1460' },
                 signalDirectionOnMap: 'right',
                 signalType: 'abs_standard',
             },
             {
                 signalName: 'L1_1102',
-                signalPos: { x: '670', y: '1480' },
-                trainPos: { x: '655', y: '1480' },
+                signalPos: { x: '790', y: '1480' },
+                trainPos: { x: '760', y: '1480' },
                 signalDirectionOnMap: 'right',
                 signalType: 'abs_standard',
             },
             {
                 signalName: 'L1_1103',
-                signalPos: { x: '670', y: '1460' },
-                trainPos: { x: '685', y: '1460' },
+                signalPos: { x: '790', y: '1460' },
+                trainPos: { x: '820', y: '1460' },
                 signalDirectionOnMap: 'left',
                 signalType: 'abs_standard',
             },
             {
                 signalName: 'L1_1102N',
-                signalPos: { x: '670', y: '1480' },
-                trainPos: { x: '685', y: '1480' },
+                signalPos: { x: '790', y: '1480' },
+                trainPos: { x: '820', y: '1480' },
                 signalDirectionOnMap: 'left',
                 signalType: 'abs_standard',
             },
             //
             {
                 signalName: 'L1_1089N',
-                signalPos: { x: '750', y: '1460' },
-                trainPos: { x: '735', y: '1460' },
+                signalPos: { x: '910', y: '1460' },
+                trainPos: { x: '880', y: '1460' },
                 signalDirectionOnMap: 'right',
                 signalType: 'abs_last',
             },
             {
                 signalName: 'L1_1090',
-                signalPos: { x: '750', y: '1480' },
-                trainPos: { x: '735', y: '1480' },
+                signalPos: { x: '910', y: '1480' },
+                trainPos: { x: '880', y: '1480' },
                 signalDirectionOnMap: 'right',
                 signalType: 'abs_last',
             },
             {
                 signalName: 'L1_1089',
-                signalPos: { x: '750', y: '1460' },
-                trainPos: { x: '765', y: '1460' },
+                signalPos: { x: '910', y: '1460' },
+                trainPos: { x: '940', y: '1460' },
                 signalDirectionOnMap: 'left',
                 signalType: 'abs_standard',
             },
             {
                 signalName: 'L1_1090N',
-                signalPos: { x: '750', y: '1480' },
-                trainPos: { x: '765', y: '1480' },
+                signalPos: { x: '910', y: '1480' },
+                trainPos: { x: '940', y: '1480' },
                 signalDirectionOnMap: 'left',
                 signalType: 'abs_standard',
             },
@@ -8072,41 +8152,28 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'trackMarker-Rokiciny_Koluszki_1115',
                 nodeType: 'trackMarker',
-                nodePos: { x: 550, y: 1460 },
+                nodePos: { x: 610, y: 1460 },
                 text: '1115',
             },
             {
                 nodeID: 'trackMarker-Rokiciny_Koluszki_1126',
                 nodeType: 'trackMarker',
-                nodePos: { x: 550, y: 1480 },
+                nodePos: { x: 610, y: 1480 },
                 text: '1126',
-            },
-            //
-            {
-                nodeID: 'trackMarker-Rokiciny_Koluszki_1103',
-                nodeType: 'trackMarker',
-                nodePos: { x: 630, y: 1460 },
-                text: '1103',
-            },
-            {
-                nodeID: 'trackMarker-Rokiciny_Koluszki_1116',
-                nodeType: 'trackMarker',
-                nodePos: { x: 630, y: 1480 },
-                text: '1116',
             },
             //? Chrusty Nowe
             {
                 nodeID: "simpleText-po-ChrustyNowe",
                 nodeType: "simpleText",
-                nodePos: { x: 630, y: 1430 },
-                nodePosFlipped: { x: 630, y: 1505 },
+                nodePos: { x: 730, y: 1430 },
+                nodePosFlipped: { x: 730, y: 1505 },
                 text: "Chrusty Nowe",
                 textSize: phFontSize
             },
             {
                 nodeID: 'platform-ChrustyNowe-1',
                 nodeType: 'platform',
-                nodePos: { x: 610, y: 1445 },
+                nodePos: { x: 710, y: 1445 },
                 width: 40,
                 height: 10,
                 text: ''
@@ -8114,41 +8181,62 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'platform-ChrustyNowe-2',
                 nodeType: 'platform',
-                nodePos: { x: 610, y: 1485 },
+                nodePos: { x: 710, y: 1485 },
                 width: 40,
                 height: 10,
                 text: ''
             },
             //
             {
+                nodeID: 'trackMarker-Rokiciny_Koluszki_1103',
+                nodeType: 'trackMarker',
+                nodePos: { x: 730, y: 1460 },
+                text: '1103',
+            },
+            {
+                nodeID: 'trackMarker-Rokiciny_Koluszki_1116',
+                nodeType: 'trackMarker',
+                nodePos: { x: 730, y: 1480 },
+                text: '1116',
+            },
+            //
+            {
                 nodeID: 'trackMarker-Rokiciny_Koluszki_1089',
                 nodeType: 'trackMarker',
-                nodePos: { x: 710, y: 1460 },
+                nodePos: { x: 850, y: 1460 },
                 text: '1089',
             },
             {
                 nodeID: 'trackMarker-Rokiciny_Koluszki_1102',
                 nodeType: 'trackMarker',
-                nodePos: { x: 710, y: 1480 },
+                nodePos: { x: 850, y: 1480 },
                 text: '1102',
             },
             //
             {
                 nodeID: 'trackMarker-Rokiciny_Koluszki_1077',
                 nodeType: 'trackMarker',
-                nodePos: { x: 790, y: 1460 },
+                nodePos: { x: 970, y: 1460 },
                 text: '1077',
             },
             {
                 nodeID: 'trackMarker-Rokiciny_Koluszki_1090',
                 nodeType: 'trackMarker',
-                nodePos: { x: 790, y: 1480 },
+                nodePos: { x: 970, y: 1480 },
                 text: '1090',
             },
         ]
     },
     "ZAKOWICE--KOLUSZKI--SLOTWINY--MIKOLAJOW": {
         "TRACKS": [
+            {
+                trackID: 'GALKOWEK_ZAKOWICE_1',
+                trackSVG: `
+                M340,1750 350,1760 590,1760
+                M340,1770 350,1780 590,1780
+                `,
+                trackColor: 'gray'
+            },
             {
                 trackID: 'ZAKOWICE__KOLUSZKI--SLOTWINY',
                 /*
@@ -8157,9 +8245,9 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 LK537 Zakowice <-> Slotwiny
                 */
                 trackSVG: `
-                M660,1680 712.5,1680 715,1675 715,1555 717.5,1550 820,1550
+                M860,1680 912.5,1680 915,1675 915,1555 917.5,1550 1020,1550
 
-                M660,1700 820,1700
+                M860,1700 1020,1700
                 `,
                 trackColor: 'gray'
             },
@@ -8171,20 +8259,20 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 LOWER CONNECTION LK534
                 */
                 trackSVG: `
-                M820,1530 737.5,1530 735,1535 735,1545 M735,1555 735,1695 M735,1705 735,1715 737.5,1720 820,1720
+                M1020,1530 937.5,1530 935,1535 935,1545 M935,1555 935,1695 M935,1705 935,1715 937.5,1720 1020,1720
 
-                M820,1570 757.5,1570 755,1575 755,1675 757.5,1680 820,1680
+                M1020,1570 957.5,1570 955,1575 955,1675 957.5,1680 1020,1680
                 `,
                 trackColor: 'gray'
             },
             {
                 trackID: 'ZAKOWICE--MIKOLAJOW--SLOTWINY',
                 trackSVG: `
-                M660,1760 1230,1760
-                M660,1780 1230,1780
+                M860,1760 1430,1760
+                M860,1780 1430,1780
 
-                M1130,1660 1230,1660
-                M1130,1680 1230,1680
+                M1330,1660 1430,1660
+                M1330,1680 1430,1680
                 `,
                 trackColor: 'gray'
             },
@@ -8205,13 +8293,13 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 SW5/6 + T11
                 */
                 trackSVG: `
-                M400,1760 650,1760
-                M400,1780 650,1780
+                M600,1760 850,1760
+                M600,1780 850,1780
 
-                M480,1760 482.5,1765 482.5,1775 485,1780 M505,1780 507.5,1775 507.5,1765 510,1760
+                M680,1760 682.5,1765 682.5,1775 685,1780 M705,1780 707.5,1775 707.5,1765 710,1760
 
-                M520,1760 522.5,1755 522.5,1705 525,1700 540,1700 M550,1700 610,1700 M620,1700 650,1700
-                M630,1700 632.5,1695 632.5,1685 635,1680 650,1680
+                M720,1760 722.5,1755 722.5,1705 725,1700 740,1700 M750,1700 810,1700 M820,1700 850,1700
+                M830,1700 832.5,1695 832.5,1685 835,1680 850,1680
                 `,
                 trackColor: 'white'
             },
@@ -8219,59 +8307,59 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
         "SIGNALS": [
             {
                 signalName: '5377_ZP_A',
-                signalPos: { x: '400', y: '1760' },
-                trainPos: { x: '385', y: '1760' },
+                signalPos: { x: '600', y: '1760' },
+                trainPos: { x: '585', y: '1760' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '5377_ZP_B',
-                signalPos: { x: '400', y: '1780' },
-                trainPos: { x: '385', y: '1780' },
+                signalPos: { x: '600', y: '1780' },
+                trainPos: { x: '585', y: '1780' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
 
             {
                 signalName: '5377_ZP_E',
-                signalPos: { x: '540', y: '1700' },
-                trainPos: { x: '555', y: '1700' },
+                signalPos: { x: '740', y: '1700' },
+                trainPos: { x: '755', y: '1700' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '5377_ZP_T',
-                signalPos: { x: '620', y: '1700' },
-                trainPos: { x: '605', y: '1700' },
+                signalPos: { x: '820', y: '1700' },
+                trainPos: { x: '805', y: '1700' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
 
             {
                 signalName: '5377_ZP_W',
-                signalPos: { x: '650', y: '1680' },
-                trainPos: { x: '665', y: '1680' },
+                signalPos: { x: '850', y: '1680' },
+                trainPos: { x: '865', y: '1680' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '5377_ZP_U',
-                signalPos: { x: '650', y: '1700' },
-                trainPos: { x: '665', y: '1700' },
+                signalPos: { x: '850', y: '1700' },
+                trainPos: { x: '865', y: '1700' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '5377_ZP_D',
-                signalPos: { x: '650', y: '1760' },
-                trainPos: { x: '665', y: '1760' },
+                signalPos: { x: '850', y: '1760' },
+                trainPos: { x: '865', y: '1760' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '5377_ZP_C',
-                signalPos: { x: '650', y: '1780' },
-                trainPos: { x: '665', y: '1780' },
+                signalPos: { x: '850', y: '1780' },
+                trainPos: { x: '865', y: '1780' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
@@ -8282,13 +8370,13 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeType: 'stationName',
                 stationPrefix: 'ZP',
                 stationName: 'Żakowice Południowe',
-                nodePos: { x: 520, y: 1660 },
-                nodePosFlipped: { x: 520, y: 1820 }
+                nodePos: { x: 720, y: 1660 },
+                nodePosFlipped: { x: 720, y: 1820 }
             },
             {
                 nodeID: 'platform-ZakowicePoludiowe-2',
                 nodeType: 'platform',
-                nodePos: { x: 405, y: 1745 },
+                nodePos: { x: 605, y: 1745 },
                 width: 50,
                 height: 10,
                 text: 'Peron II'
@@ -8296,7 +8384,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'platform-ZakowicePoludiowe-1',
                 nodeType: 'platform',
-                nodePos: { x: 405, y: 1785 },
+                nodePos: { x: 605, y: 1785 },
                 width: 50,
                 height: 10,
                 text: 'Peron I'
@@ -8304,7 +8392,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'trackMarker-ZakowicePoludniowe_11',
                 nodeType: 'trackMarker',
-                nodePos: { x: 580, y: 1700 },
+                nodePos: { x: 780, y: 1700 },
                 text: '11',
             },
         ]
@@ -8327,17 +8415,17 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 SW42/43 + SW38/39
                 */
                 trackSVG: `
-                M830,1680 940,1680 M950,1680 1030,1680 M1040,1680 1120,1680
-                M830,1700 900,1700 902.5,1695 902.5,1685 905,1680
+                M1030,1680 1140,1680 M1150,1680 1230,1680 M1240,1680 1320,1680
+                M1030,1700 1100,1700 1102.5,1695 1102.5,1685 1105,1680
 
-                M830,1720 850,1720 852.5,1715 852.5,1705 855,1700
-                M870,1680 872.5,1685 872.5,1695 875,1700 M885,1700 887.5,1705 887.5,1715 890,1720 940,1720 M950,1720 1030,1720 M1040,1720 1060,1720 1062.5,1715 1062.5,1705 1065,1700
+                M1030,1720 1050,1720 1052.5,1715 1052.5,1705 1055,1700
+                M1070,1680 1072.5,1685 1072.5,1695 1075,1700 M1085,1700 1087.5,1705 1087.5,1715 1090,1720 1140,1720 M1150,1720 1230,1720 M1240,1720 1260,1720 1262.5,1715 1262.5,1705 1265,1700
 
-                M925,1680 927.5,1675 927.5,1665 930,1660 940,1660 M950,1660 1030,1660 M1040,1660 1120,1660
-                M910,1720 912.5,1715 912.5,1705 915,1700 940,1700 M950,1700 1030,1700 M1040,1700 1075,1700 1077.5,1695 1077.5,1685 1080,1680
-                M925,1720 927.5,1725 927.5,1735 930,1740 940,1740 M950,1740 1030,1740 M1040,1740 1045,1740 1047.5,1735 1047.5,1725 1050,1720
+                M1125,1680 1127.5,1675 1127.5,1665 1130,1660 1140,1660 M1150,1660 1230,1660 M1240,1660 1320,1660
+                M1110,1720 1112.5,1715 1112.5,1705 1115,1700 1140,1700 M1150,1700 1230,1700 M1240,1700 1275,1700 1277.5,1695 1277.5,1685 1280,1680
+                M1125,1720 1127.5,1725 1127.5,1735 1130,1740 1140,1740 M1150,1740 1230,1740 M1240,1740 1245,1740 1247.5,1735 1247.5,1725 1250,1720
 
-                M1060,1660 1062.5,1665 1062.5,1675 1065,1680 M1095,1680 1097.5,1675 1097.5,1665 1100,1660
+                M1260,1660 1262.5,1665 1262.5,1675 1265,1680 M1295,1680 1297.5,1675 1297.5,1665 1300,1660
                 `,
                 trackColor: 'white'
             },
@@ -8345,109 +8433,109 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
         "SIGNALS": [
             {
                 signalName: '3928_Sl_A',
-                signalPos: { x: '830', y: '1680' },
-                trainPos: { x: '815', y: '1680' },
+                signalPos: { x: '1030', y: '1680' },
+                trainPos: { x: '1015', y: '1680' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '3928_Sl_B',
-                signalPos: { x: '830', y: '1700' },
-                trainPos: { x: '815', y: '1700' },
+                signalPos: { x: '1030', y: '1700' },
+                trainPos: { x: '1015', y: '1700' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '3928_Sl_C',
-                signalPos: { x: '830', y: '1720' },
-                trainPos: { x: '815', y: '1720' },
+                signalPos: { x: '1030', y: '1720' },
+                trainPos: { x: '1015', y: '1720' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
 
             {
                 signalName: '3928_Sl_F',
-                signalPos: { x: '940', y: '1660' },
-                trainPos: { x: '955', y: '1660' },
+                signalPos: { x: '1140', y: '1660' },
+                trainPos: { x: '1155', y: '1660' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '3928_Sl_G',
-                signalPos: { x: '940', y: '1680' },
-                trainPos: { x: '955', y: '1680' },
+                signalPos: { x: '1140', y: '1680' },
+                trainPos: { x: '1155', y: '1680' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '3928_Sl_D5',
-                signalPos: { x: '940', y: '1700' },
-                trainPos: { x: '955', y: '1700' },
+                signalPos: { x: '1140', y: '1700' },
+                trainPos: { x: '1155', y: '1700' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '3928_Sl_D7',
-                signalPos: { x: '940', y: '1720' },
-                trainPos: { x: '955', y: '1720' },
+                signalPos: { x: '1140', y: '1720' },
+                trainPos: { x: '1155', y: '1720' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '3928_Sl_D9',
-                signalPos: { x: '940', y: '1740' },
-                trainPos: { x: '955', y: '1740' },
+                signalPos: { x: '1140', y: '1740' },
+                trainPos: { x: '1155', y: '1740' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
 
             {
                 signalName: '3928_Sl_H',
-                signalPos: { x: '1040', y: '1660' },
-                trainPos: { x: '1025', y: '1660' },
+                signalPos: { x: '1240', y: '1660' },
+                trainPos: { x: '1225', y: '1660' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '3928_Sl_J',
-                signalPos: { x: '1040', y: '1680' },
-                trainPos: { x: '1025', y: '1680' },
+                signalPos: { x: '1240', y: '1680' },
+                trainPos: { x: '1225', y: '1680' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '3928_Sl_K5',
-                signalPos: { x: '1040', y: '1700' },
-                trainPos: { x: '1025', y: '1700' },
+                signalPos: { x: '1240', y: '1700' },
+                trainPos: { x: '1225', y: '1700' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '3928_Sl_K7',
-                signalPos: { x: '1040', y: '1720' },
-                trainPos: { x: '1025', y: '1720' },
+                signalPos: { x: '1240', y: '1720' },
+                trainPos: { x: '1225', y: '1720' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '3928_Sl_K9',
-                signalPos: { x: '1040', y: '1740' },
-                trainPos: { x: '1025', y: '1740' },
+                signalPos: { x: '1240', y: '1740' },
+                trainPos: { x: '1225', y: '1740' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
 
             {
                 signalName: '3928_Sl_M',
-                signalPos: { x: '1120', y: '1660' },
-                trainPos: { x: '1135', y: '1660' },
+                signalPos: { x: '1320', y: '1660' },
+                trainPos: { x: '1335', y: '1660' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '3928_Sl_N',
-                signalPos: { x: '1120', y: '1680' },
-                trainPos: { x: '1135', y: '1680' },
+                signalPos: { x: '1320', y: '1680' },
+                trainPos: { x: '1335', y: '1680' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
@@ -8458,21 +8546,21 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeType: 'stationName',
                 stationPrefix: 'Sł',
                 stationName: 'Słotwiny',
-                nodePos: { x: 990, y: 1615 },
-                nodePosFlipped: { x: 990, y: 1820 }
+                nodePos: { x: 1190, y: 1615 },
+                nodePosFlipped: { x: 1190, y: 1820 }
             },
             {
                 nodeID: 'simpleText-Slotwiny_Controlled',
                 nodeType: 'simpleText',
                 text: 'Controlled by Żakowice Południowe',
-                nodePos: { x: 990, y: 1630 },
-                nodePosFlipped: { x: 990, y: 1805 },
+                nodePos: { x: 1190, y: 1630 },
+                nodePosFlipped: { x: 1190, y: 1805 },
                 textSize: 10
             },
             {
                 nodeID: 'platform-Slotwiny-1',
                 nodeType: 'platform',
-                nodePos: { x: 960, y: 1647.5 },
+                nodePos: { x: 1160, y: 1647.5 },
                 width: 50,
                 height: 7.5,
                 text: 'Peron I'
@@ -8480,7 +8568,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'platform-Slotwiny-2',
                 nodeType: 'platform',
-                nodePos: { x: 960, y: 1685 },
+                nodePos: { x: 1160, y: 1685 },
                 width: 50,
                 height: 7.5,
                 text: 'Peron II'
@@ -8488,31 +8576,31 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'trackMarker-Slotwiny_2',
                 nodeType: 'trackMarker',
-                nodePos: { x: 990, y: 1660 },
+                nodePos: { x: 1190, y: 1660 },
                 text: '2',
             },
             {
                 nodeID: 'trackMarker-Slotwiny_1',
                 nodeType: 'trackMarker',
-                nodePos: { x: 990, y: 1680 },
+                nodePos: { x: 1190, y: 1680 },
                 text: '1',
             },
             {
                 nodeID: 'trackMarker-Slotwiny_5',
                 nodeType: 'trackMarker',
-                nodePos: { x: 990, y: 1700 },
+                nodePos: { x: 1190, y: 1700 },
                 text: '5',
             },
             {
                 nodeID: 'trackMarker-Slotwiny_7',
                 nodeType: 'trackMarker',
-                nodePos: { x: 990, y: 1720 },
+                nodePos: { x: 1190, y: 1720 },
                 text: '7',
             },
             {
                 nodeID: 'trackMarker-Slotwiny_9',
                 nodeType: 'trackMarker',
-                nodePos: { x: 990, y: 1740 },
+                nodePos: { x: 1190, y: 1740 },
                 text: '9',
             },
         ]
@@ -8525,14 +8613,14 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
 
                 */
                 trackSVG: `
-                M1240,1660 1320,1660 M1330,1660 1430,1660 M1440,1660 1445,1660 M1450,1660 1455,1660 M1460,1660 1465,1660
-                M1240,1680 1320,1680 M1330,1680 1430,1680 M1440,1680 1445,1680 M1450,1680 1455,1680 M1460,1680 1465,1680
+                M1440,1660 1520,1660 M1530,1660 1630,1660 M1640,1660 1645,1660 M1650,1660 1655,1660 M1660,1660 1665,1660
+                M1440,1680 1520,1680 M1530,1680 1630,1680 M1640,1680 1645,1680 M1650,1680 1655,1680 M1660,1680 1665,1680
 
-                M1240,1760 1260,1760 1262.5,1755 1262.5,1665 1265,1660
-                M1240,1780 1280,1780 1282.5,1775 1282.5,1685 1285,1680
+                M1440,1760 1460,1760 1462.5,1755 1462.5,1665 1465,1660
+                M1440,1780 1480,1780 1482.5,1775 1482.5,1685 1485,1680
 
-                M1300,1660 1302.5,1655 1302.5,1645 1305,1640 1320,1640 M1330,1640 1430,1640 M1440,1640 1445,1640 M1450,1640 1455,1640 M1460,1640 1465,1640
-                M1300,1680 1302.5,1685 1302.5,1695 1305,1700 1320,1700 M1330,1700 1430,1700 M1440,1700 1445,1700 M1450,1700 1455,1700 M1460,1700 1465,1700
+                M1500,1660 1502.5,1655 1502.5,1645 1505,1640 1520,1640 M1530,1640 1630,1640 M1640,1640 1645,1640 M1650,1640 1655,1640 M1660,1640 1665,1640
+                M1500,1680 1502.5,1685 1502.5,1695 1505,1700 1520,1700 M1530,1700 1630,1700 M1640,1700 1645,1700 M1650,1700 1655,1700 M1660,1700 1665,1700
                 `,
                 trackColor: 'white'
             },
@@ -8540,87 +8628,87 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
         "SIGNALS": [
             {
                 signalName: '2628_Mi_A',
-                signalPos: { x: '1240', y: '1660' },
-                trainPos: { x: '1225', y: '1660' },
+                signalPos: { x: '1440', y: '1660' },
+                trainPos: { x: '1425', y: '1660' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '2628_Mi_B',
-                signalPos: { x: '1240', y: '1680' },
-                trainPos: { x: '1225', y: '1680' },
+                signalPos: { x: '1440', y: '1680' },
+                trainPos: { x: '1425', y: '1680' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '2628_Mi_C',
-                signalPos: { x: '1240', y: '1760' },
-                trainPos: { x: '1225', y: '1760' },
+                signalPos: { x: '1440', y: '1760' },
+                trainPos: { x: '1425', y: '1760' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '2628_Mi_D',
-                signalPos: { x: '1240', y: '1780' },
-                trainPos: { x: '1225', y: '1780' },
+                signalPos: { x: '1440', y: '1780' },
+                trainPos: { x: '1425', y: '1780' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
 
             {
                 signalName: '2628_Mi_J',
-                signalPos: { x: '1320', y: '1640' },
-                trainPos: { x: '1335', y: '1640' },
+                signalPos: { x: '1520', y: '1640' },
+                trainPos: { x: '1535', y: '1640' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '2628_Mi_H',
-                signalPos: { x: '1320', y: '1660' },
-                trainPos: { x: '1335', y: '1660' },
+                signalPos: { x: '1520', y: '1660' },
+                trainPos: { x: '1535', y: '1660' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '2628_Mi_G',
-                signalPos: { x: '1320', y: '1680' },
-                trainPos: { x: '1335', y: '1680' },
+                signalPos: { x: '1520', y: '1680' },
+                trainPos: { x: '1535', y: '1680' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
             {
                 signalName: '2628_Mi_F',
-                signalPos: { x: '1320', y: '1700' },
-                trainPos: { x: '1335', y: '1700' },
+                signalPos: { x: '1520', y: '1700' },
+                trainPos: { x: '1535', y: '1700' },
                 signalDirectionOnMap: 'left',
                 signalType: 'station_standard',
             },
 
             {
                 signalName: '2628_Mi_M',
-                signalPos: { x: '1440', y: '1640' },
-                trainPos: { x: '1395', y: '1640' },
+                signalPos: { x: '1640', y: '1640' },
+                trainPos: { x: '1595', y: '1640' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '2628_Mi_N',
-                signalPos: { x: '1440', y: '1660' },
-                trainPos: { x: '1395', y: '1660' },
+                signalPos: { x: '1640', y: '1660' },
+                trainPos: { x: '1595', y: '1660' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '2628_Mi_O',
-                signalPos: { x: '1440', y: '1680' },
-                trainPos: { x: '1395', y: '1680' },
+                signalPos: { x: '1640', y: '1680' },
+                trainPos: { x: '1595', y: '1680' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
             {
                 signalName: '2628_Mi_P',
-                signalPos: { x: '1440', y: '1700' },
-                trainPos: { x: '1395', y: '1700' },
+                signalPos: { x: '1640', y: '1700' },
+                trainPos: { x: '1595', y: '1700' },
                 signalDirectionOnMap: 'right',
                 signalType: 'station_standard',
             },
@@ -8631,31 +8719,31 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeType: 'stationName',
                 stationPrefix: 'Mi',
                 stationName: 'Mikołajów',
-                nodePos: { x: 1360, y: 1615 },
-                nodePosFlipped: { x: 1360, y: 1730 }
+                nodePos: { x: 1560, y: 1615 },
+                nodePosFlipped: { x: 1560, y: 1730 }
             },
             {
                 nodeID: 'trackMarker-Mikolajow-2',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1380, y: 1640 },
+                nodePos: { x: 1580, y: 1640 },
                 text: '2',
             },
             {
                 nodeID: 'trackMarker-Mikolajow-1',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1380, y: 1660 },
+                nodePos: { x: 1580, y: 1660 },
                 text: '1',
             },
             {
                 nodeID: 'trackMarker-Mikolajow-3',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1380, y: 1680 },
+                nodePos: { x: 1580, y: 1680 },
                 text: '3',
             },
             {
                 nodeID: 'trackMarker-Mikolajow-5',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1380, y: 1700 },
+                nodePos: { x: 1580, y: 1700 },
                 text: '5',
             },
         ]
@@ -8711,54 +8799,54 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 *SW60/57 + SW52/51
                 */
                 trackSVG: `
-                M830,1340 900,1340 M910,1340 1000,1340 1002.5,1345 1002.5,1375 1005,1380 1070,1380 M1080,1380 1240,1380 M1250,1380 1350,1380 M1360,1380 1375,1380 1377.5,1385 1377.5,1395 1380,1400 1520,1400 M1530,1400 1630,1400 M1640,1400 1680,1400 1682.5,1405 1682.5,1415 1685,1420 1695,1420 1697.5,1425 1697.5,1435 1700,1440
-                M830,1360 900,1360 M910,1360 990,1360 992.5,1365 992.5,1415 995,1420 1070,1420 M1080,1420 1240,1420 M1250,1420 1350,1420 M1360,1420 1520,1420 M1530,1420 1630,1420 M1640,1420 1660,1420 1662.5,1425 1662.5,1435 1665,1440
+                M1030,1340 1100,1340 M1110,1340 1200,1340 1202.5,1345 1202.5,1375 1205,1380 1270,1380 M1280,1380 1440,1380 M1450,1380 1550,1380 M1560,1380 1575,1380 1577.5,1385 1577.5,1395 1580,1400 1720,1400 M1730,1400 1830,1400 M1840,1400 1880,1400 1882.5,1405 1882.5,1415 1885,1420 1895,1420 1897.5,1425 1897.5,1435 1900,1440
+                M1030,1360 1100,1360 M1110,1360 1190,1360 1192.5,1365 1192.5,1415 1195,1420 1270,1420 M1280,1420 1440,1420 M1450,1420 1550,1420 M1560,1420 1720,1420 M1730,1420 1830,1420 M1840,1420 1860,1420 1862.5,1425 1862.5,1435 1865,1440
 
-                M830,1460 900,1460 M910,1460 1070,1460 M1080,1460 1200,1460 1202.5,1455 1202.5,1445 1205,1440 1240,1440 M1250,1440 1350,1440 M1360,1440 1520,1440 M1530,1440 1630,1440 M1640,1440 1810,1440
-                M830,1480 900,1480 M910,1480 1070,1480 M1080,1480 1240,1480 M1250,1480 1350,1480 M1360,1480 1520,1480 M1530,1480 1630,1480 M1640,1480 1810,1480
+                M1030,1460 1100,1460 M1110,1460 1270,1460 M1280,1460 1400,1460 1402.5,1455 1402.5,1445 1405,1440 1440,1440 M1450,1440 1550,1440 M1560,1440 1720,1440 M1730,1440 1830,1440 M1840,1440 2010,1440
+                M1030,1480 1100,1480 M1110,1480 1270,1480 M1280,1480 1440,1480 M1450,1480 1550,1480 M1560,1480 1720,1480 M1730,1480 1830,1480 M1840,1480 2010,1480
 
-                M830,1550 1110,1550 1112.5,1545 1112.5,1505 1115,1500 1240,1500 M1250,1500 1350,1500 M1360,1500 1460,1500 1462.5,1495 1462.5,1485 1465,1480
-                M830,1570 1125,1570 1127.5,1565 1127.5,1525 1130,1520 1240,1520 M1250,1520 1350,1520 M1360,1520 1500,1520 M1510,1520 1610,1520 M1620,1520 1665,1520 1667.5,1515 1667.5,1485 1670,1480
+                M1030,1550 1310,1550 1312.5,1545 1312.5,1505 1315,1500 1440,1500 M1450,1500 1550,1500 M1560,1500 1660,1500 1662.5,1495 1662.5,1485 1665,1480
+                M1030,1570 1325,1570 1327.5,1565 1327.5,1525 1330,1520 1440,1520 M1450,1520 1550,1520 M1560,1520 1700,1520 M1710,1520 1810,1520 M1820,1520 1865,1520 1867.5,1515 1867.5,1485 1870,1480
 
 
 
-                M860,1340 862.5,1345 862.5,1355 865,1360
+                M1060,1340 1062.5,1345 1062.5,1355 1065,1360
 
-                M850,1360 852.5,1365 852.5,1395 855,1400 900,1400 M910,1400 970,1400 972.5,1405 972.5,1415 970,1420 910,1420 M900,1420 870,1420 867.5,1425 867.5,1455 865,1460
-                M880,1360 882.5,1365 882.5,1375 885,1380 900,1380 M910,1380 980,1380 982.5,1385 982.5,1435 980,1440 910,1440 M900,1440 880,1440 877.5,1445 877.5,1475 875,1480
-                M850,1460 852.5,1465 852.5,1475 855,1480
-                M865,1480 867.5,1485 867.5,1495 870,1500 900,1500 902.5,1505 902.5,1525 900,1530 830,1530
+                M1050,1360 1052.5,1365 1052.5,1395 1055,1400 1100,1400 M1110,1400 1170,1400 1172.5,1405 1172.5,1415 1170,1420 1110,1420 M1100,1420 1070,1420 1067.5,1425 1067.5,1455 1065,1460
+                M1080,1360 1082.5,1365 1082.5,1375 1085,1380 1100,1380 M1110,1380 1180,1380 1182.5,1385 1182.5,1435 1180,1440 1110,1440 M1100,1440 1080,1440 1077.5,1445 1077.5,1475 1075,1480
+                M1050,1460 1052.5,1465 1052.5,1475 1055,1480
+                M1065,1480 1067.5,1485 1067.5,1495 1070,1500 1100,1500 1102.5,1505 1102.5,1525 1100,1530 1030,1530
 
-                M1100,1460 1102.5,1455 1102.5,1445 1105,1440 1190,1440 1192.5,1435 1192.5,1405 1195,1400 1200,1400 1202.5,1395 1202.5,1385 1205,1380
-                M1180,1420 1182.5,1415 1182.5,1405 1185,1400 1200,1400
-                M1110,1460 1112.5,1465 1112.5,1475 1115,1480 M1125,1480 1127.5,1485 1127.5,1495 1130,1500
-                M1140,1520 1142.5,1515 1142.5,1505 1145,1500 M1155,1500 1157.5,1495 1157.5,1485 1160,1480
+                M1300,1460 1302.5,1455 1302.5,1445 1305,1440 1390,1440 1392.5,1435 1392.5,1405 1395,1400 1400,1400 1402.5,1395 1402.5,1385 1405,1380
+                M1380,1420 1382.5,1415 1382.5,1405 1385,1400 1400,1400
+                M1310,1460 1312.5,1465 1312.5,1475 1315,1480 M1325,1480 1327.5,1485 1327.5,1495 1330,1500
+                M1340,1520 1342.5,1515 1342.5,1505 1345,1500 M1355,1500 1357.5,1495 1357.5,1485 1360,1480
 
-                M1185,1500 1187.5,1505 1187.5,1515 1190,1520
-                M1190,1480 1192.5,1475 1192.5,1465 1195,1460
-                M1200,1480 1202.5,1485 1202.5,1495 1205,1500 M1215,1500 1217.5,1505 1217.5,1515 1220,1520
-                M1210,1440 1230,1420 M1210,1420 1230,1440
+                M1385,1500 1387.5,1505 1387.5,1515 1390,1520
+                M1390,1480 1392.5,1475 1392.5,1465 1395,1460
+                M1400,1480 1402.5,1485 1402.5,1495 1405,1500 M1415,1500 1417.5,1505 1417.5,1515 1420,1520
+                M1410,1440 1430,1420 M1410,1420 1430,1440
 
-                M1200,1520 1202.5,1525 1202.5,1555 1205,1560 1240,1560 M1250,1560 1350,1560 M1360,1560 1500,1560 M1510,1560 1610,1560 M1620,1560 1635,1560 1637.5,1555 1637.5,1545 1640,1540
-                M1215,1560 1217.5,1565 1217.5,1575 1220,1580 1240,1580 M1250,1580 1350,1580 M1360,1580 1375,1580 1377.5,1575 1377.5,1565 1380,1560
+                M1400,1520 1402.5,1525 1402.5,1555 1405,1560 1440,1560 M1450,1560 1550,1560 M1560,1560 1700,1560 M1710,1560 1810,1560 M1820,1560 1835,1560 1837.5,1555 1837.5,1545 1840,1540
+                M1415,1560 1417.5,1565 1417.5,1575 1420,1580 1440,1580 M1450,1580 1550,1580 M1560,1580 1575,1580 1577.5,1575 1577.5,1565 1580,1560
 
-                M1215,1380 1217.5,1375 1217.5,1365 1220,1360 1240,1360 M1250,1360 1350,1360 M1360,1360 1470,1360 1472.5,1365 1472.5,1375 1475,1380 1520,1380 M1530,1380 1610,1380 M1620,1380 1700,1380 1702.5,1385 1702.5,1405 1705,1410 1715,1410 1717.5,1415 1717.5,1435 1720,1440
+                M1415,1380 1417.5,1375 1417.5,1365 1420,1360 1440,1360 M1450,1360 1550,1360 M1560,1360 1670,1360 1672.5,1365 1672.5,1375 1675,1380 1720,1380 M1730,1380 1810,1380 M1820,1380 1900,1380 1902.5,1385 1902.5,1405 1905,1410 1915,1410 1917.5,1415 1917.5,1435 1920,1440
 
-                M1370,1500 1372.5,1505 1372.5,1515 1375,1520 M1385,1520 1387.5,1525 1387.5,1535 1390,1540 1500,1540 M1510,1540 1610,1540 M1620,1540 1650,1540 1652.5,1535 1652.5,1525 1655,1520
-                M1400,1540 1420,1560 M1400,1560 1420,1540
-                M1430,1540 1432.5,1535 1432.5,1525 1435,1520 M1445,1520 1447.5,1515 1447.5,1505 1450,1500
+                M1570,1500 1572.5,1505 1572.5,1515 1575,1520 M1585,1520 1587.5,1525 1587.5,1535 1590,1540 1700,1540 M1710,1540 1810,1540 M1820,1540 1850,1540 1852.5,1535 1852.5,1525 1855,1520
+                M1600,1540 1620,1560 M1600,1560 1620,1540
+                M1630,1540 1632.5,1535 1632.5,1525 1635,1520 M1645,1520 1647.5,1515 1647.5,1505 1650,1500
 
-                M1400,1400 1402.5,1395 1402.5,1385 1405,1380 1445,1380 1447.5,1375 1447.5,1365 1450,1360
-                M1410,1420 1412.5,1415 1412.5,1385 1415,1380
-                M1430,1380 1432.5,1375 1432.5,1345 1435,1340 1480,1340 1482.5,1345 1482.5,1355 1485,1360 1520,1360 M1530,1360 1610,1360 M1620,1360 1635,1360 1637.5,1365 1637.5,1375 1640,1380
-                M1445,1340 1447.5,1335 1447.5,1325 1450,1320 1490,1320 1492.5,1325 1492.5,1335 1495,1340 1520,1340 M1530,1340 1610,1340 M1620,1340 1655,1340 1657.5,1345 1657.5,1375 1660,1380
+                M1600,1400 1602.5,1395 1602.5,1385 1605,1380 1645,1380 1647.5,1375 1647.5,1365 1650,1360
+                M1610,1420 1612.5,1415 1612.5,1385 1615,1380
+                M1630,1380 1632.5,1375 1632.5,1345 1635,1340 1680,1340 1682.5,1345 1682.5,1355 1685,1360 1720,1360 M1730,1360 1810,1360 M1820,1360 1835,1360 1837.5,1365 1837.5,1375 1840,1380
+                M1645,1340 1647.5,1335 1647.5,1325 1650,1320 1690,1320 1692.5,1325 1692.5,1335 1695,1340 1720,1340 M1730,1340 1810,1340 M1820,1340 1855,1340 1857.5,1345 1857.5,1375 1860,1380
 
-                M1465,1420 1467.5,1425 1467.5,1435 1470,1440
-                M1480,1480 1482.5,1475 1482.5,1445 1485,1440 M1505,1440 1507.5,1445 1507.5,1475 1510,1480
+                M1665,1420 1667.5,1425 1667.5,1435 1670,1440
+                M1680,1480 1682.5,1475 1682.5,1445 1685,1440 M1705,1440 1707.5,1445 1707.5,1475 1710,1480
 
-                M1680,1440 1682.5,1445 1682.5,1475 1685,1480
-                M1730,1480 1732.5,1475 1732.5,1445 1735,1440
-                M1780,1440 1782.5,1445 1782.5,1475 1785,1480
+                M1880,1440 1882.5,1445 1882.5,1475 1885,1480
+                M1930,1480 1932.5,1475 1932.5,1445 1935,1440
+                M1980,1440 1982.5,1445 1982.5,1475 1985,1480
                 `,
                 trackColor: 'white'
             },
@@ -8767,423 +8855,423 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             //~ ENTRY SIGNALS LEFT SIDE
             {
                 signalName: '1803_KO_R2',
-                signalPos: { x: '830', y: '1340' },
-                trainPos: { x: '815', y: '1340' },
+                signalPos: { x: '1030', y: '1340' },
+                trainPos: { x: '1000', y: '1340' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_R1',
-                signalPos: { x: '830', y: '1360' },
-                trainPos: { x: '815', y: '1360' },
+                signalPos: { x: '1030', y: '1360' },
+                trainPos: { x: '1000', y: '1360' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
 
             {
                 signalName: '1803_KO_U1',
-                signalPos: { x: '830', y: '1460' },
-                trainPos: { x: '815', y: '1460' },
+                signalPos: { x: '1030', y: '1460' },
+                trainPos: { x: '1000', y: '1460' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_U2',
-                signalPos: { x: '830', y: '1480' },
-                trainPos: { x: '815', y: '1480' },
+                signalPos: { x: '1030', y: '1480' },
+                trainPos: { x: '1000', y: '1480' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
 
             {
                 signalName: '1803_KO_T',
-                signalPos: { x: '830', y: '1530' },
-                trainPos: { x: '815', y: '1530' },
+                signalPos: { x: '1030', y: '1530' },
+                trainPos: { x: '1015', y: '1530' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_M',
-                signalPos: { x: '830', y: '1550' },
-                trainPos: { x: '815', y: '1550' },
+                signalPos: { x: '1030', y: '1550' },
+                trainPos: { x: '1015', y: '1550' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_N',
-                signalPos: { x: '830', y: '1570' },
-                trainPos: { x: '815', y: '1570' },
+                signalPos: { x: '1030', y: '1570' },
+                trainPos: { x: '1015', y: '1570' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             //~ EXIT SIGNALS LEFT SIDE
             {
                 signalName: '1803_KO_O2',
-                signalPos: { x: '900', y: '1340' },
-                trainPos: { x: '915', y: '1340' },
+                signalPos: { x: '1100', y: '1340' },
+                trainPos: { x: '1115', y: '1340' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_O1',
-                signalPos: { x: '900', y: '1360' },
-                trainPos: { x: '915', y: '1360' },
+                signalPos: { x: '1100', y: '1360' },
+                trainPos: { x: '1115', y: '1360' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_P2',
-                signalPos: { x: '900', y: '1380' },
-                trainPos: { x: '915', y: '1380' },
+                signalPos: { x: '1100', y: '1380' },
+                trainPos: { x: '1115', y: '1380' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_P1',
-                signalPos: { x: '900', y: '1400' },
-                trainPos: { x: '915', y: '1400' },
+                signalPos: { x: '1100', y: '1400' },
+                trainPos: { x: '1115', y: '1400' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_S3',
-                signalPos: { x: '900', y: '1420' },
-                trainPos: { x: '915', y: '1420' },
+                signalPos: { x: '1100', y: '1420' },
+                trainPos: { x: '1115', y: '1420' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_S4',
-                signalPos: { x: '900', y: '1440' },
-                trainPos: { x: '915', y: '1440' },
+                signalPos: { x: '1100', y: '1440' },
+                trainPos: { x: '1115', y: '1440' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_S1',
-                signalPos: { x: '900', y: '1460' },
-                trainPos: { x: '915', y: '1460' },
+                signalPos: { x: '1100', y: '1460' },
+                trainPos: { x: '1115', y: '1460' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_S2',
-                signalPos: { x: '900', y: '1480' },
-                trainPos: { x: '915', y: '1480' },
+                signalPos: { x: '1100', y: '1480' },
+                trainPos: { x: '1115', y: '1480' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             //~ INTERMEDIATE SIGNALS LEFT TO RIGHT
             {
                 signalName: '1803_KO_K2',
-                signalPos: { x: '1080', y: '1380' },
-                trainPos: { x: '1065', y: '1380' },
+                signalPos: { x: '1280', y: '1380' },
+                trainPos: { x: '1265', y: '1380' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_K1',
-                signalPos: { x: '1080', y: '1420' },
-                trainPos: { x: '1065', y: '1420' },
+                signalPos: { x: '1280', y: '1420' },
+                trainPos: { x: '1265', y: '1420' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_L1',
-                signalPos: { x: '1080', y: '1460' },
-                trainPos: { x: '1065', y: '1460' },
+                signalPos: { x: '1280', y: '1460' },
+                trainPos: { x: '1265', y: '1460' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_L2',
-                signalPos: { x: '1080', y: '1480' },
-                trainPos: { x: '1065', y: '1480' },
+                signalPos: { x: '1280', y: '1480' },
+                trainPos: { x: '1265', y: '1480' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             //~ TRACK SIGNALS LEFT SIDE
             {
                 signalName: '1803_KO_J7',
-                signalPos: { x: '1240', y: '1360' },
-                trainPos: { x: '1275', y: '1360' },
+                signalPos: { x: '1440', y: '1360' },
+                trainPos: { x: '1475', y: '1360' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_J5',
-                signalPos: { x: '1240', y: '1380' },
-                trainPos: { x: '1275', y: '1380' },
+                signalPos: { x: '1440', y: '1380' },
+                trainPos: { x: '1475', y: '1380' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_J3',
-                signalPos: { x: '1240', y: '1420' },
-                trainPos: { x: '1275', y: '1420' },
+                signalPos: { x: '1440', y: '1420' },
+                trainPos: { x: '1475', y: '1420' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_J1',
-                signalPos: { x: '1240', y: '1440' },
-                trainPos: { x: '1275', y: '1440' },
+                signalPos: { x: '1440', y: '1440' },
+                trainPos: { x: '1475', y: '1440' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_J2',
-                signalPos: { x: '1240', y: '1480' },
-                trainPos: { x: '1275', y: '1480' },
+                signalPos: { x: '1440', y: '1480' },
+                trainPos: { x: '1475', y: '1480' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_J4',
-                signalPos: { x: '1240', y: '1500' },
-                trainPos: { x: '1275', y: '1500' },
+                signalPos: { x: '1440', y: '1500' },
+                trainPos: { x: '1475', y: '1500' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_J6',
-                signalPos: { x: '1240', y: '1520' },
-                trainPos: { x: '1275', y: '1520' },
+                signalPos: { x: '1440', y: '1520' },
+                trainPos: { x: '1475', y: '1520' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_J8',
-                signalPos: { x: '1240', y: '1560' },
-                trainPos: { x: '1275', y: '1560' },
+                signalPos: { x: '1440', y: '1560' },
+                trainPos: { x: '1475', y: '1560' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_J10',
-                signalPos: { x: '1240', y: '1580' },
-                trainPos: { x: '1275', y: '1580' },
+                signalPos: { x: '1440', y: '1580' },
+                trainPos: { x: '1475', y: '1580' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             //~ TRACK SIGNALS RIGHT SIDE
             {
                 signalName: '1803_KO_G7',
-                signalPos: { x: '1360', y: '1360' },
-                trainPos: { x: '1325', y: '1360' },
+                signalPos: { x: '1560', y: '1360' },
+                trainPos: { x: '1525', y: '1360' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_G5',
-                signalPos: { x: '1360', y: '1380' },
-                trainPos: { x: '1325', y: '1380' },
+                signalPos: { x: '1560', y: '1380' },
+                trainPos: { x: '1525', y: '1380' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_G3',
-                signalPos: { x: '1360', y: '1420' },
-                trainPos: { x: '1325', y: '1420' },
+                signalPos: { x: '1560', y: '1420' },
+                trainPos: { x: '1525', y: '1420' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_G1',
-                signalPos: { x: '1360', y: '1440' },
-                trainPos: { x: '1325', y: '1440' },
+                signalPos: { x: '1560', y: '1440' },
+                trainPos: { x: '1525', y: '1440' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_G2',
-                signalPos: { x: '1360', y: '1480' },
-                trainPos: { x: '1325', y: '1480' },
+                signalPos: { x: '1560', y: '1480' },
+                trainPos: { x: '1525', y: '1480' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_G4',
-                signalPos: { x: '1360', y: '1500' },
-                trainPos: { x: '1325', y: '1500' },
+                signalPos: { x: '1560', y: '1500' },
+                trainPos: { x: '1525', y: '1500' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_G6',
-                signalPos: { x: '1360', y: '1520' },
-                trainPos: { x: '1325', y: '1520' },
+                signalPos: { x: '1560', y: '1520' },
+                trainPos: { x: '1525', y: '1520' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_G8',
-                signalPos: { x: '1360', y: '1560' },
-                trainPos: { x: '1325', y: '1560' },
+                signalPos: { x: '1560', y: '1560' },
+                trainPos: { x: '1525', y: '1560' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_G10',
-                signalPos: { x: '1360', y: '1580' },
-                trainPos: { x: '1325', y: '1580' },
+                signalPos: { x: '1560', y: '1580' },
+                trainPos: { x: '1525', y: '1580' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             //~ GT TRACK SIGNALS LEFT SIDE
             {
                 signalName: '1803_KO_E111',
-                signalPos: { x: '1520', y: '1340' },
-                trainPos: { x: '1535', y: '1340' },
+                signalPos: { x: '1720', y: '1340' },
+                trainPos: { x: '1735', y: '1340' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_E109',
-                signalPos: { x: '1520', y: '1360' },
-                trainPos: { x: '1535', y: '1360' },
+                signalPos: { x: '1720', y: '1360' },
+                trainPos: { x: '1735', y: '1360' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_E107',
-                signalPos: { x: '1520', y: '1380' },
-                trainPos: { x: '1535', y: '1380' },
+                signalPos: { x: '1720', y: '1380' },
+                trainPos: { x: '1735', y: '1380' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_E105',
-                signalPos: { x: '1520', y: '1400' },
-                trainPos: { x: '1535', y: '1400' },
+                signalPos: { x: '1720', y: '1400' },
+                trainPos: { x: '1735', y: '1400' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_E103',
-                signalPos: { x: '1520', y: '1420' },
-                trainPos: { x: '1535', y: '1420' },
+                signalPos: { x: '1720', y: '1420' },
+                trainPos: { x: '1735', y: '1420' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_E101',
-                signalPos: { x: '1520', y: '1440' },
-                trainPos: { x: '1535', y: '1440' },
+                signalPos: { x: '1720', y: '1440' },
+                trainPos: { x: '1735', y: '1440' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_E102',
-                signalPos: { x: '1520', y: '1480' },
-                trainPos: { x: '1535', y: '1480' },
+                signalPos: { x: '1720', y: '1480' },
+                trainPos: { x: '1735', y: '1480' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_E104',
-                signalPos: { x: '1500', y: '1520' },
-                trainPos: { x: '1515', y: '1520' },
+                signalPos: { x: '1700', y: '1520' },
+                trainPos: { x: '1715', y: '1520' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_E106',
-                signalPos: { x: '1500', y: '1540' },
-                trainPos: { x: '1515', y: '1540' },
+                signalPos: { x: '1700', y: '1540' },
+                trainPos: { x: '1715', y: '1540' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_E108',
-                signalPos: { x: '1500', y: '1560' },
-                trainPos: { x: '1515', y: '1560' },
+                signalPos: { x: '1700', y: '1560' },
+                trainPos: { x: '1715', y: '1560' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             //~ GT TRACK SIGNALS RIGHT SIDE
             {
                 signalName: '1803_KO_C111',
-                signalPos: { x: '1620', y: '1340' },
-                trainPos: { x: '1605', y: '1340' },
+                signalPos: { x: '1820', y: '1340' },
+                trainPos: { x: '1805', y: '1340' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_C109',
-                signalPos: { x: '1620', y: '1360' },
-                trainPos: { x: '1605', y: '1360' },
+                signalPos: { x: '1820', y: '1360' },
+                trainPos: { x: '1805', y: '1360' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_C107',
-                signalPos: { x: '1620', y: '1380' },
-                trainPos: { x: '1605', y: '1380' },
+                signalPos: { x: '1820', y: '1380' },
+                trainPos: { x: '1805', y: '1380' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_C105',
-                signalPos: { x: '1640', y: '1400' },
-                trainPos: { x: '1625', y: '1400' },
+                signalPos: { x: '1840', y: '1400' },
+                trainPos: { x: '1825', y: '1400' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_C103',
-                signalPos: { x: '1640', y: '1420' },
-                trainPos: { x: '1625', y: '1420' },
+                signalPos: { x: '1840', y: '1420' },
+                trainPos: { x: '1825', y: '1420' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_C101',
-                signalPos: { x: '1640', y: '1440' },
-                trainPos: { x: '1625', y: '1440' },
+                signalPos: { x: '1840', y: '1440' },
+                trainPos: { x: '1825', y: '1440' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_C102',
-                signalPos: { x: '1640', y: '1480' },
-                trainPos: { x: '1625', y: '1480' },
+                signalPos: { x: '1840', y: '1480' },
+                trainPos: { x: '1825', y: '1480' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_C104',
-                signalPos: { x: '1620', y: '1520' },
-                trainPos: { x: '1605', y: '1520' },
+                signalPos: { x: '1820', y: '1520' },
+                trainPos: { x: '1805', y: '1520' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_C106',
-                signalPos: { x: '1620', y: '1540' },
-                trainPos: { x: '1605', y: '1540' },
+                signalPos: { x: '1820', y: '1540' },
+                trainPos: { x: '1805', y: '1540' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: '1803_KO_C108',
-                signalPos: { x: '1620', y: '1560' },
-                trainPos: { x: '1605', y: '1560' },
+                signalPos: { x: '1820', y: '1560' },
+                trainPos: { x: '1805', y: '1560' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'right',
             },
             //* ENTRY SIGNALS FROM ROGOW (RIGHT SIDE)
             {
                 signalName: '1803_KO_B',
-                signalPos: { x: '1810', y: '1440' },
-                trainPos: { x: '1840', y: '1440' },
+                signalPos: { x: '2010', y: '1440' },
+                trainPos: { x: '2040', y: '1440' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '1803_KO_A',
-                signalPos: { x: '1810', y: '1480' },
-                trainPos: { x: '1840', y: '1480' },
+                signalPos: { x: '2010', y: '1480' },
+                trainPos: { x: '2040', y: '1480' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
@@ -9192,21 +9280,22 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'dispatchingPost-Koluszki',
                 nodeType: 'dispatchingPost',
-                nodePos: { x: 1420, y: 1450 },
-                postType: 'computer'
+                nodePos: { x: 1620, y: 1450 },
+                postType: 'computer',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-Koluszki',
                 nodeType: 'stationName',
                 stationPrefix: 'Ko',
                 stationName: 'Koluszki',
-                nodePos: { x: 1250, y: 1330 },
-                nodePosFlipped: { x: 1300, y: 1620 }
+                nodePos: { x: 1450, y: 1330 },
+                nodePosFlipped: { x: 1500, y: 1620 }
             },
             {
                 nodeID: 'platform-Koluszki-Peron1',
                 nodeType: 'platform',
-                nodePos: { x: 1260, y: 1385 },
+                nodePos: { x: 1460, y: 1385 },
                 width: 80,
                 height: 30,
                 text: 'Peron I'
@@ -9214,7 +9303,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'platform-Koluszki-Peron2',
                 nodeType: 'platform',
-                nodePos: { x: 1260, y: 1445 },
+                nodePos: { x: 1460, y: 1445 },
                 width: 80,
                 height: 30,
                 text: 'Peron II'
@@ -9222,7 +9311,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'platform-Koluszki-Peron3',
                 nodeType: 'platform',
-                nodePos: { x: 1260, y: 1525 },
+                nodePos: { x: 1460, y: 1525 },
                 width: 80,
                 height: 30,
                 text: 'Peron III'
@@ -9230,153 +9319,153 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'trackMarker-Koluszki_5b',
                 nodeType: 'trackMarker',
-                nodePos: { x: 955, y: 1340 },
+                nodePos: { x: 1155, y: 1340 },
                 text: '5b',
             },
             {
                 nodeID: 'trackMarker-Koluszki_3b',
                 nodeType: 'trackMarker',
-                nodePos: { x: 955, y: 1360 },
+                nodePos: { x: 1155, y: 1360 },
                 text: '3b',
             },
             {
                 nodeID: 'trackMarker-Koluszki_4s',
                 nodeType: 'trackMarker',
-                nodePos: { x: 945, y: 1380 },
+                nodePos: { x: 1145, y: 1380 },
                 text: '4s',
             },
             {
                 nodeID: 'trackMarker-Koluszki_3s',
                 nodeType: 'trackMarker',
-                nodePos: { x: 940, y: 1420 },
+                nodePos: { x: 1140, y: 1420 },
                 text: '3s',
             },
             {
                 nodeID: 'trackMarker-Koluszki_1c',
                 nodeType: 'trackMarker',
-                nodePos: { x: 990, y: 1460 },
+                nodePos: { x: 1190, y: 1460 },
                 text: '1c',
             },
             {
                 nodeID: 'trackMarker-Koluszki_2c',
                 nodeType: 'trackMarker',
-                nodePos: { x: 990, y: 1480 },
+                nodePos: { x: 1190, y: 1480 },
                 text: '2c',
             },
             //~ TRACK MARKERS
             {
                 nodeID: 'trackMarker-Koluszki_7',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1300, y: 1360 },
+                nodePos: { x: 1500, y: 1360 },
                 text: '7',
             },
             {
                 nodeID: 'trackMarker-Koluszki_5',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1300, y: 1380 },
+                nodePos: { x: 1500, y: 1380 },
                 text: '5',
             },
             {
                 nodeID: 'trackMarker-Koluszki_3',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1300, y: 1420 },
+                nodePos: { x: 1500, y: 1420 },
                 text: '3',
             },
             {
                 nodeID: 'trackMarker-Koluszki_1',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1300, y: 1440 },
+                nodePos: { x: 1500, y: 1440 },
                 text: '1',
             },
             {
                 nodeID: 'trackMarker-Koluszki_2',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1300, y: 1480 },
+                nodePos: { x: 1500, y: 1480 },
                 text: '2',
             },
             {
                 nodeID: 'trackMarker-Koluszki_4',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1300, y: 1500 },
+                nodePos: { x: 1500, y: 1500 },
                 text: '4',
             },
             {
                 nodeID: 'trackMarker-Koluszki_6',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1300, y: 1520 },
+                nodePos: { x: 1500, y: 1520 },
                 text: '6',
             },
             {
                 nodeID: 'trackMarker-Koluszki_8',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1300, y: 1560 },
+                nodePos: { x: 1500, y: 1560 },
                 text: '8',
             },
             {
                 nodeID: 'trackMarker-Koluszki_10',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1300, y: 1580 },
+                nodePos: { x: 1500, y: 1580 },
                 text: '10',
             },
             //~ GT TRACK MARKERS
             {
                 nodeID: 'trackMarker-Koluszki_111',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1570, y: 1340 },
+                nodePos: { x: 1770, y: 1340 },
                 text: '111',
             },
             {
                 nodeID: 'trackMarker-Koluszki_109',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1570, y: 1360 },
+                nodePos: { x: 1770, y: 1360 },
                 text: '109',
             },
             {
                 nodeID: 'trackMarker-Koluszki_107',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1570, y: 1380 },
+                nodePos: { x: 1770, y: 1380 },
                 text: '107',
             },
             {
                 nodeID: 'trackMarker-Koluszki_105',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1580, y: 1400 },
+                nodePos: { x: 1780, y: 1400 },
                 text: '105',
             },
             {
                 nodeID: 'trackMarker-Koluszki_103',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1580, y: 1420 },
+                nodePos: { x: 1780, y: 1420 },
                 text: '103',
             },
             {
                 nodeID: 'trackMarker-Koluszki_101',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1580, y: 1440 },
+                nodePos: { x: 1780, y: 1440 },
                 text: '101',
             },
             {
                 nodeID: 'trackMarker-Koluszki_102',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1580, y: 1480 },
+                nodePos: { x: 1780, y: 1480 },
                 text: '102',
             },
             {
                 nodeID: 'trackMarker-Koluszki_104',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1560, y: 1520 },
+                nodePos: { x: 1760, y: 1520 },
                 text: '104',
             },
             {
                 nodeID: 'trackMarker-Koluszki_106',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1560, y: 1540 },
+                nodePos: { x: 1760, y: 1540 },
                 text: '106',
             },
             {
                 nodeID: 'trackMarker-Koluszki_108',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1560, y: 1560 },
+                nodePos: { x: 1760, y: 1560 },
                 text: '108',
             },
         ]
@@ -9386,8 +9475,8 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 trackID: 'KOLUSZKI_ROGOW',
                 trackSVG: `
-                M1820,1440 1920,1440 M1940,1440 2040,1440 M2060,1440 2160,1440 M2180,1440 2280,1440 M2290,1440 2300,1440 2310,1450
-                M1820,1480 1920,1480 M1940,1480 2040,1480 M2060,1480 2160,1480 M2180,1480 2280,1480 M2290,1480 2300,1480 2310,1490
+                M2020,1440 2120,1440 M2140,1440 2240,1440 M2260,1440 2360,1440 M2380,1440 2480,1440 M2490,1440 2500,1440 2510,1450
+                M2020,1480 2120,1480 M2140,1480 2240,1480 M2260,1480 2360,1480 M2380,1480 2480,1480 M2490,1480 2500,1480 2510,1490
                 `,
                 trackColor: 'gray'
             },
@@ -9395,102 +9484,102 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
         "SIGNALS": [
             {
                 signalName: 'L1_1021N',
-                signalPos: { x: '1930', y: '1440' },
-                trainPos: { x: '1900', y: '1440' },
+                signalPos: { x: '2130', y: '1440' },
+                trainPos: { x: '2100', y: '1440' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: 'L1_1020',
-                signalPos: { x: '1930', y: '1480' },
-                trainPos: { x: '1900', y: '1480' },
+                signalPos: { x: '2130', y: '1480' },
+                trainPos: { x: '2100', y: '1480' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: 'L1_1021',
-                signalPos: { x: '1930', y: '1440' },
-                trainPos: { x: '1960', y: '1440' },
+                signalPos: { x: '2130', y: '1440' },
+                trainPos: { x: '2160', y: '1440' },
                 signalType: 'abs_last',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: 'L1_1020N',
-                signalPos: { x: '1930', y: '1480' },
-                trainPos: { x: '1960', y: '1480' },
+                signalPos: { x: '2130', y: '1480' },
+                trainPos: { x: '2160', y: '1480' },
                 signalType: 'abs_last',
                 signalDirectionOnMap: 'left',
             },
 
             {
                 signalName: 'L1_1013N',
-                signalPos: { x: '2050', y: '1440' },
-                trainPos: { x: '2020', y: '1440' },
+                signalPos: { x: '2250', y: '1440' },
+                trainPos: { x: '2220', y: '1440' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: 'L1_1014',
-                signalPos: { x: '2050', y: '1480' },
-                trainPos: { x: '2020', y: '1480' },
+                signalPos: { x: '2250', y: '1480' },
+                trainPos: { x: '2220', y: '1480' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: 'L1_1013',
-                signalPos: { x: '2050', y: '1440' },
-                trainPos: { x: '2080', y: '1440' },
+                signalPos: { x: '2250', y: '1440' },
+                trainPos: { x: '2280', y: '1440' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: 'L1_1014N',
-                signalPos: { x: '2050', y: '1480' },
-                trainPos: { x: '2080', y: '1480' },
+                signalPos: { x: '2250', y: '1480' },
+                trainPos: { x: '2280', y: '1480' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'left',
             },
 
             {
                 signalName: 'L1_1003N',
-                signalPos: { x: '2170', y: '1440' },
-                trainPos: { x: '2140', y: '1440' },
+                signalPos: { x: '2370', y: '1440' },
+                trainPos: { x: '2340', y: '1440' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: 'L1_1002',
-                signalPos: { x: '2170', y: '1480' },
-                trainPos: { x: '2140', y: '1480' },
+                signalPos: { x: '2370', y: '1480' },
+                trainPos: { x: '2340', y: '1480' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: 'L1_1003',
-                signalPos: { x: '2170', y: '1440' },
-                trainPos: { x: '2200', y: '1440' },
+                signalPos: { x: '2370', y: '1440' },
+                trainPos: { x: '2400', y: '1440' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: 'L1_1002N',
-                signalPos: { x: '2170', y: '1480' },
-                trainPos: { x: '2200', y: '1480' },
+                signalPos: { x: '2370', y: '1480' },
+                trainPos: { x: '2400', y: '1480' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'left',
             },
 
             {
                 signalName: 'L1_987N',
-                signalPos: { x: '2290', y: '1440' },
-                trainPos: { x: '2260', y: '1440' },
+                signalPos: { x: '2490', y: '1440' },
+                trainPos: { x: '2460', y: '1440' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'right',
             },
             {
                 signalName: 'L1_988',
-                signalPos: { x: '2290', y: '1480' },
-                trainPos: { x: '2260', y: '1480' },
+                signalPos: { x: '2490', y: '1480' },
+                trainPos: { x: '2460', y: '1480' },
                 signalType: 'abs_standard',
                 signalDirectionOnMap: 'right',
             },
@@ -9499,54 +9588,54 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'trackMarker-Koluszki_Rogow_1021',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1870, y: 1440 },
+                nodePos: { x: 2070, y: 1440 },
                 text: '1021',
             },
             {
                 nodeID: 'trackMarker-Koluszki_Rogow_1036',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1870, y: 1480 },
+                nodePos: { x: 2070, y: 1480 },
                 text: '1036',
             },
             //
             {
                 nodeID: 'trackMarker-Koluszki_Rogow_1013',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1990, y: 1440 },
+                nodePos: { x: 2190, y: 1440 },
                 text: '1013',
             },
             {
                 nodeID: 'trackMarker-Koluszki_Rogow_1028',
                 nodeType: 'trackMarker',
-                nodePos: { x: 1990, y: 1480 },
+                nodePos: { x: 2190, y: 1480 },
                 text: '1028',
             },
             //
             {
                 nodeID: 'trackMarker-Koluszki_Rogow_1003',
                 nodeType: 'trackMarker',
-                nodePos: { x: 2110, y: 1440 },
+                nodePos: { x: 2310, y: 1440 },
                 text: '1003',
             },
             {
                 nodeID: 'trackMarker-Koluszki_Rogow_1014',
                 nodeType: 'trackMarker',
-                nodePos: { x: 2110, y: 1480 },
+                nodePos: { x: 2310, y: 1480 },
                 text: '1014',
             },
             //
             {
                 nodeID: "simpleText-po-Wągry",
                 nodeType: "simpleText",
-                nodePos: { x: 2230, y: 1410 },
-                nodePosFlipped: { x: 2230, y: 1510 },
+                nodePos: { x: 2430, y: 1410 },
+                nodePosFlipped: { x: 2430, y: 1510 },
                 text: "Wągry",
                 textSize: phFontSize
             },
             {
                 nodeID: 'platform-Wągry-1',
                 nodeType: 'platform',
-                nodePos: { x: 2200, y: 1425 },
+                nodePos: { x: 2400, y: 1425 },
                 width: 60,
                 height: 10,
                 text: ''
@@ -9554,7 +9643,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'platform-Wągry-2',
                 nodeType: 'platform',
-                nodePos: { x: 2200, y: 1485 },
+                nodePos: { x: 2400, y: 1485 },
                 width: 60,
                 height: 10,
                 text: ''
@@ -9562,13 +9651,13 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'trackMarker-Koluszki_Rogow_987',
                 nodeType: 'trackMarker',
-                nodePos: { x: 2230, y: 1440 },
+                nodePos: { x: 2430, y: 1440 },
                 text: '987',
             },
             {
                 nodeID: 'trackMarker-Koluszki_Rogow_1002',
                 nodeType: 'trackMarker',
-                nodePos: { x: 2230, y: 1480 },
+                nodePos: { x: 2430, y: 1480 },
                 text: '1002',
             },
         ]
@@ -10404,7 +10493,8 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: 'dispatchingPost-Plycwia',
                 nodeType: 'dispatchingPost',
                 nodePos: { x: 1850, y: 1870 },
-                postType: 'computer'
+                postType: 'computer',
+                postRotationAngle: 180,
             },
             {
                 nodeID: 'stationName-Plycwia',
@@ -10954,14 +11044,14 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 signalName: '113_Be_B',
                 signalPos: { x: '240', y: '2020' },
-                trainPos: { x: '255', y: '2020' },
+                trainPos: { x: '270', y: '2020' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
             {
                 signalName: '113_Be_A',
                 signalPos: { x: '240', y: '2050' },
-                trainPos: { x: '255', y: '2050' },
+                trainPos: { x: '270', y: '2050' },
                 signalType: 'station_standard',
                 signalDirectionOnMap: 'left',
             },
@@ -12036,23 +12126,1297 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             },
         ]
     },
-    "SKIERNIEWICE_RADZIWILLOWMAZOWIECKI": {
+    "3459_PM_PUSZCZAMARIANSKA": {
         "TRACKS": [
             {
-                trackID: 'SKIERNIEWICE_RADZIWILLOWMAZOWIECKI',
+                trackID: 'TRACKS_SKIERNIEWICE_PUSZCZAMARIANSKA',
                 trackSVG: `
-                M1980,2170 2080,2170 M2100,2170 2200,2170 M2220,2170 2320,2170 M2340,2170 2440,2170
-                M1980,2200 2080,2200 M2100,2200 2200,2200 M2220,2200 2320,2200 M2340,2200 2440,2200
+                M1970,2230 2147.2,2230 2150,2235 2150,2275 2152.5,2280 2310,2280
+                M1970,2260 2127.5,2260 2130,2265 2130,2295 2132.5,2300 2310,2300
+                `,
+                trackColor: 'gray'
+            },
+            {
+                trackID: '3459_PUSZCZAMARIANSKA',
+                /**/
+                trackSVG: `
+                M2320,2280 2410,2280 M2420,2280 2520,2280
+                M2320,2300 2410,2300 M2420,2300 2520,2300
+
+                M2340,2280 2342.5,2285 2342.5,2295 2345,2300 M2365,2300 2367.5,2295 2367.5,2285 2370,2280
+                M2380,2280 2382.5,2275 2382.5,2265 2385,2260 2395,2260 2397.5,2255 2397.5,2245 2400,2240 2410,2240 M2420,2240 2520,2240
+                M2390,2260 2410,2260 M2420,2260 2520,2260
+
+                M2535,2240 2540,2240 M2545,2240 2550,2240 M2555,2240 2560,2240 M2565,2240
+                M2535,2260 2540,2260 M2545,2260 2550,2260 M2555,2260 2560,2260 M2565,2260
+                M2535,2280 2540,2280 M2545,2280 2550,2280 M2555,2280 2560,2280 M2565,2280
+                M2535,2300 2540,2300 M2545,2300 2550,2300 M2555,2300 2560,2300 M2565,2300
+                `,
+                trackColor: 'white'
+            },
+        ],
+        "SIGNALS": [
+            {
+                signalName: '3459_PM_A',
+                signalPos: { x: '2320', y: '2280' },
+                trainPos: { x: '2300', y: '2280' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: '3459_PM_B',
+                signalPos: { x: '2320', y: '2300' },
+                trainPos: { x: '2300', y: '2300' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+
+            {
+                signalName: '3459_PM_F',
+                signalPos: { x: '2410', y: '2240' },
+                trainPos: { x: '2440', y: '2240' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: '3459_PM_E',
+                signalPos: { x: '2410', y: '2260' },
+                trainPos: { x: '2440', y: '2260' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: '3459_PM_D',
+                signalPos: { x: '2410', y: '2280' },
+                trainPos: { x: '2440', y: '2280' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: '3459_PM_C',
+                signalPos: { x: '2410', y: '2300' },
+                trainPos: { x: '2440', y: '2300' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+
+            {
+                signalName: '3459_PM_L',
+                signalPos: { x: '2532.5', y: '2240' },
+                trainPos: { x: '2505', y: '2240' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: '3459_PM_M',
+                signalPos: { x: '2532.5', y: '2260' },
+                trainPos: { x: '2505', y: '2260' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: '3459_PM_N',
+                signalPos: { x: '2532.5', y: '2280' },
+                trainPos: { x: '2505', y: '2280' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: '3459_PM_O',
+                signalPos: { x: '2532.5', y: '2300' },
+                trainPos: { x: '2505', y: '2300' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+        ],
+        "NODES": [
+            {
+                nodeID: 'stationName-Skierniewice',
+                nodeType: 'stationName',
+                stationPrefix: 'PM',
+                stationName: 'Puszcza Mariańska',
+                nodePos: { x: 2400, y: 2210 },
+                nodePosFlipped: { x: 2400, y: 2320 }
+            },
+        ]
+    },
+    "SKIERNIEWICE_ZYRARDOW_1": {
+        "TRACKS": [
+            {
+                trackID: 'TRACKS_SKIERNIEWICE_RADZIWILLOWMAZOWIECKI_1',
+                trackSVG: `
+                M1980,2170 2080,2170 M2100,2170 2200,2170 M2210,2170 2220,2170 2230,2180
+                M1980,2200 2080,2200 M2100,2200 2200,2200 M2210,2200 2220,2200 2230,2210
                 `,
                 trackColor: 'gray'
             },
         ],
-        "SIGNALS": [],
-        "NODES": []
+        "SIGNALS": [
+            {
+                signalName: 'L1_595N',
+                signalPos: { x: '2090', y: '2170' },
+                trainPos: { x: '2060', y: '2170' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_596',
+                signalPos: { x: '2090', y: '2200' },
+                trainPos: { x: '2060', y: '2200' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_595',
+                signalPos: { x: '2090', y: '2170' },
+                trainPos: { x: '2120', y: '2170' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_596N',
+                signalPos: { x: '2090', y: '2200' },
+                trainPos: { x: '2120', y: '2200' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_581N',
+                signalPos: { x: '2210', y: '2170' },
+                trainPos: { x: '2180', y: '2170' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_580',
+                signalPos: { x: '2210', y: '2200' },
+                trainPos: { x: '2180', y: '2200' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+        ],
+        "NODES": [
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_595',
+                nodeType: 'trackMarker',
+                nodePos: { x: 2030, y: 2170 },
+                text: '595',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_610',
+                nodeType: 'trackMarker',
+                nodePos: { x: 2030, y: 2200 },
+                text: '610',
+            },
+            //
+            {
+                nodeID: "simpleText-po-SkierniewiceRawka",
+                nodeType: "simpleText",
+                nodePos: { x: 2010, y: 2140 },
+                nodePosFlipped: { x: 2010, y: 2140 },
+                text: "Skierniewice Rawka",
+                textSize: phFontSize
+            },
+            {
+                nodeID: 'platform-SkierniewiceRawka-1',
+                nodeType: 'platform',
+                nodePos: { x: 1985, y: 2155 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            {
+                nodeID: 'platform-SkierniewiceRawka-2',
+                nodeType: 'platform',
+                nodePos: { x: 1985, y: 2205 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_581',
+                nodeType: 'trackMarker',
+                nodePos: { x: 2150, y: 2170 },
+                text: '581',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_596',
+                nodeType: 'trackMarker',
+                nodePos: { x: 2150, y: 2200 },
+                text: '596',
+            },
+        ]
     },
+    "SKIERNIEWICE_ZYRARDOW_2": {
+        "TRACKS": [
+            {
+                trackID: 'TRACKS_SKIERNIEWICE_RADZIWILLOWMAZOWIECKI_2',
+                trackSVG: `
+                M10,2390 20,2400 30,2400 M40,2400 140,2400 M160,2400 260,2400
+                M10,2410 20,2420 30,2420 M40,2420 140,2420 M160,2420 260,2420
+                `,
+                trackColor: 'gray'
+            },
+            {
+                trackID: 'TRACKS_RADZIWILLOWMAZOWIECKI_ZYRARDOW',
+                trackSVG: `
+                M350,2400 450,2400 M470,2400 570,2400 M590,2400 690,2400 M710,2400 810,2400 M830,2400 930,2400 M950,2400 1050,2400 M1070,2400 1170,2400
+                M350,2420 450,2420 M470,2420 570,2420 M590,2420 690,2420 M710,2420 810,2420 M830,2420 930,2420 M950,2420 1050,2420 M1070,2420 1170,2420
+                `,
+                trackColor: 'gray'
+            },
+        ],
+        "SIGNALS": [
+            {
+                signalName: 'L1_581',
+                signalPos: { x: '30', y: '2400' },
+                trainPos: { x: '60', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_580N',
+                signalPos: { x: '30', y: '2420' },
+                trainPos: { x: '60', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_565N',
+                signalPos: { x: '150', y: '2400' },
+                trainPos: { x: '120', y: '2400' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_566',
+                signalPos: { x: '150', y: '2420' },
+                trainPos: { x: '120', y: '2420' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_565',
+                signalPos: { x: '150', y: '2400' },
+                trainPos: { x: '180', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_566N',
+                signalPos: { x: '150', y: '2420' },
+                trainPos: { x: '180', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            // after RADZIWILLOW MAZOWIECKIE
+            {
+                signalName: 'L1_533N',
+                signalPos: { x: '460', y: '2400' },
+                trainPos: { x: '430', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_532',
+                signalPos: { x: '460', y: '2420' },
+                trainPos: { x: '430', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_533',
+                signalPos: { x: '460', y: '2400' },
+                trainPos: { x: '490', y: '2400' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_532N',
+                signalPos: { x: '460', y: '2420' },
+                trainPos: { x: '490', y: '2420' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_517N',
+                signalPos: { x: '580', y: '2400' },
+                trainPos: { x: '550', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_518',
+                signalPos: { x: '580', y: '2420' },
+                trainPos: { x: '550', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_517',
+                signalPos: { x: '580', y: '2400' },
+                trainPos: { x: '610', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_518N',
+                signalPos: { x: '580', y: '2420' },
+                trainPos: { x: '610', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_499N',
+                signalPos: { x: '700', y: '2400' },
+                trainPos: { x: '670', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_502',
+                signalPos: { x: '700', y: '2420' },
+                trainPos: { x: '670', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_499',
+                signalPos: { x: '700', y: '2400' },
+                trainPos: { x: '730', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_502N',
+                signalPos: { x: '700', y: '2420' },
+                trainPos: { x: '730', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_483N',
+                signalPos: { x: '820', y: '2400' },
+                trainPos: { x: '790', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_484',
+                signalPos: { x: '820', y: '2420' },
+                trainPos: { x: '790', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_483',
+                signalPos: { x: '820', y: '2400' },
+                trainPos: { x: '850', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_484N',
+                signalPos: { x: '820', y: '2420' },
+                trainPos: { x: '850', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_467N',
+                signalPos: { x: '940', y: '2400' },
+                trainPos: { x: '910', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_466',
+                signalPos: { x: '940', y: '2420' },
+                trainPos: { x: '910', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_467',
+                signalPos: { x: '940', y: '2400' },
+                trainPos: { x: '970', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_466N',
+                signalPos: { x: '940', y: '2420' },
+                trainPos: { x: '970', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_451N',
+                signalPos: { x: '1060', y: '2400' },
+                trainPos: { x: '1030', y: '2400' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_452',
+                signalPos: { x: '1060', y: '2420' },
+                trainPos: { x: '1030', y: '2420' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_451',
+                signalPos: { x: '1060', y: '2400' },
+                trainPos: { x: '1090', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_452N',
+                signalPos: { x: '1060', y: '2420' },
+                trainPos: { x: '1090', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+        ],
+        "NODES": [
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_565',
+                nodeType: 'trackMarker',
+                nodePos: { x: 90, y: 2400 },
+                text: '565',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_580',
+                nodeType: 'trackMarker',
+                nodePos: { x: 90, y: 2420 },
+                text: '580',
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_551',
+                nodeType: 'trackMarker',
+                nodePos: { x: 210, y: 2400 },
+                text: '551',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_566',
+                nodeType: 'trackMarker',
+                nodePos: { x: 210, y: 2420 },
+                text: '566',
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_533',
+                nodeType: 'trackMarker',
+                nodePos: { x: 400, y: 2400 },
+                text: '533',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_546',
+                nodeType: 'trackMarker',
+                nodePos: { x: 400, y: 2420 },
+                text: '546',
+            },
+            //
+            {
+                nodeID: "simpleText-po-Jesionka",
+                nodeType: "simpleText",
+                nodePos: { x: 540, y: 2370 },
+                nodePosFlipped: { x: 540, y: 2450 },
+                text: "Jesionka",
+                textSize: phFontSize
+            },
+            {
+                nodeID: 'platform-Jesionka-1',
+                nodeType: 'platform',
+                nodePos: { x: 515, y: 2385 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            {
+                nodeID: 'platform-Jesionka-2',
+                nodeType: 'platform',
+                nodePos: { x: 515, y: 2425 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_517',
+                nodeType: 'trackMarker',
+                nodePos: { x: 520, y: 2400 },
+                text: '517',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_532',
+                nodeType: 'trackMarker',
+                nodePos: { x: 520, y: 2420 },
+                text: '532',
+            },
+            //
+            {
+                nodeID: "simpleText-po-SuchaZyrardowska",
+                nodeType: "simpleText",
+                nodePos: { x: 700, y: 2370 },
+                nodePosFlipped: { x: 700, y: 2450 },
+                text: "Sucha Żyrardowska",
+                textSize: phFontSize
+            },
+            {
+                nodeID: 'platform-SuchaZyrardowska-1',
+                nodeType: 'platform',
+                nodePos: { x: 635, y: 2385 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            {
+                nodeID: 'platform-SuchaZyrardowska-2',
+                nodeType: 'platform',
+                nodePos: { x: 715, y: 2425 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_499',
+                nodeType: 'trackMarker',
+                nodePos: { x: 640, y: 2400 },
+                text: '499',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_518',
+                nodeType: 'trackMarker',
+                nodePos: { x: 640, y: 2420 },
+                text: '518',
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_483',
+                nodeType: 'trackMarker',
+                nodePos: { x: 760, y: 2400 },
+                text: '483',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_502',
+                nodeType: 'trackMarker',
+                nodePos: { x: 760, y: 2420 },
+                text: '502',
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_467',
+                nodeType: 'trackMarker',
+                nodePos: { x: 880, y: 2400 },
+                text: '467',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_484',
+                nodeType: 'trackMarker',
+                nodePos: { x: 880, y: 2420 },
+                text: '484',
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_451',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1000, y: 2400 },
+                text: '451',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_466',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1000, y: 2420 },
+                text: '466',
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_439',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1120, y: 2400 },
+                text: '439',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_452',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1120, y: 2420 },
+                text: '452',
+            },
+        ]
+    },
+    "3531_RM_RADZIWILLOWMAZOWIECKI": {
+        "TRACKS": [
+            {
+                trackID: '3531_RADZIWILLOWMAZOWIECKI',
+                trackSVG: `
+                M270,2400 340,2400
+                M270,2420 340,2420
+                M290,2420 292.5,2415 292.5,2405 295,2400 M315,2400 317.5,2405 317.5,2415 320,2420
+                `,
+                trackColor: 'white'
+            },
+        ],
+        "SIGNALS": [
+            {
+                signalName: '3531_RM_C',
+                signalPos: { x: '270', y: '2400' },
+                trainPos: { x: '240', y: '2400' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: '3531_RM_D',
+                signalPos: { x: '270', y: '2420' },
+                trainPos: { x: '240', y: '2420' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+
+            {
+                signalName: '3531_RM_B',
+                signalPos: { x: '340', y: '2400' },
+                trainPos: { x: '370', y: '2400' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: '3531_RM_A',
+                signalPos: { x: '340', y: '2420' },
+                trainPos: { x: '370', y: '2420' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+        ],
+        "NODES": [
+            {
+                nodeID: 'stationName-RadziwillowMazowiecki',
+                nodeType: 'stationName',
+                stationPrefix: 'RM',
+                stationName: 'Radziwiłłów Mazowiecki',
+                nodePos: { x: 305, y: 2350 },
+                nodePosFlipped: { x: 305, y: 2470 }
+            },
+            {
+                nodeID: "text-lcs-RadziwillowMazowiecki",
+                nodeType: "simpleText",
+                nodePos: { x: 305, y: 2365 },
+                nodePosFlipped: { x: 305, y: 2455 },
+                text: "Controlled by Żyrardów",
+                textSize: 10
+            },
+            {
+                nodeID: 'platform-RadziwillowMazowiecki-1',
+                nodeType: 'platform',
+                nodePos: { x: 205, y: 2382.5 },
+                width: 50,
+                height: 12.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-RadziwillowMazowiecki-2',
+                nodeType: 'platform',
+                nodePos: { x: 205, y: 2425 },
+                width: 50,
+                height: 12.5,
+                text: ''
+            },
+        ]
+    },
+    "5431_Zy_ZYRARDOW": {
+        "TRACKS": [
+            {
+                trackID: '5431_ZYRARDOW',
+                /*
+                T1
+                T2
+
+                SW40/39 + SW35/33
+                SW34/32 + T4 + SW7/4
+                SW31 + SW23 + T8 + SW8
+                SW22/21 + T3 + SW9/6
+
+                SW5/3 + SW2/1
+
+                */
+                trackSVG: `
+                M1180,2400 1240,2400 M1250,2400 1420,2400 M1430,2400 1520,2400
+                M1180,2420 1260,2420 M1270,2420 1420,2420 M1430,2420 1520,2420
+
+                M1200,2400 1202.5,2405 1202.5,2415 1205,2420 M1225,2420 1227.5,2415 1227.5,2405 1230,2400
+                M1245,2420 1247.5,2425 1247.5,2435 1250,2440 1280,2440 M1290,2440 1420,2440 M1430,2440 1465,2440 1467.5,2435 1467.5,2425 1470,2420
+                M1265,2440 1267.5,2445 1267.5,2475 1270,2480 1315,2480 1317.5,2475 1317.5,2465 1320,2460 1330,2460 M1340,2460 1420,2460 M1430,2460 1445,2460 1447.5,2455 1447.5,2445 1450,2440
+                M1295,2400 1297.5,2395 1297.5,2385 1300,2380 1310,2380 M1320,2380 1420,2380 M1430,2380 1445,2380 1447.5,2385 1447.5,2395 1450,2400
+                M1480,2400 1482.5,2405 1482.5,2415 1485,2420 M1495,2420 1497.5,2415 1497.5,2405 1500,2400
+                `,
+                trackColor: 'white'
+            },
+        ],
+        "SIGNALS": [
+            {
+                signalName: '5431_Zy_G',
+                signalPos: { x: '1180', y: '2400' },
+                trainPos: { x: '1150', y: '2400' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: '5431_Zy_H',
+                signalPos: { x: '1180', y: '2420' },
+                trainPos: { x: '1150', y: '2420' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+
+            {
+                signalName: '5431_Zy_E3',
+                signalPos: { x: '1310', y: '2380' },
+                trainPos: { x: '1330', y: '2380' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: '5431_Zy_F1',
+                signalPos: { x: '1240', y: '2400' },
+                trainPos: { x: '1255', y: '2400' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: '5431_Zy_F2',
+                signalPos: { x: '1260', y: '2420' },
+                trainPos: { x: '1290', y: '2420' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: '5431_Zy_F4',
+                signalPos: { x: '1280', y: '2440' },
+                trainPos: { x: '1295', y: '2440' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: '5431_Zy_F8',
+                signalPos: { x: '1330', y: '2460' },
+                trainPos: { x: '1350', y: '2460' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+
+            {
+                signalName: '5431_Zy_D3',
+                signalPos: { x: '1430', y: '2380' },
+                trainPos: { x: '1410', y: '2380' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: '5431_Zy_D1',
+                signalPos: { x: '1430', y: '2400' },
+                trainPos: { x: '1410', y: '2400' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: '5431_Zy_D2',
+                signalPos: { x: '1430', y: '2420' },
+                trainPos: { x: '1410', y: '2420' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: '5431_Zy_D4',
+                signalPos: { x: '1430', y: '2440' },
+                trainPos: { x: '1380', y: '2440' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: '5431_Zy_D8',
+                signalPos: { x: '1430', y: '2460' },
+                trainPos: { x: '1410', y: '2460' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'right',
+            },
+
+            {
+                signalName: '5431_Zy_B',
+                signalPos: { x: '1520', y: '2400' },
+                trainPos: { x: '1550', y: '2400' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: '5431_Zy_A',
+                signalPos: { x: '1520', y: '2420' },
+                trainPos: { x: '1550', y: '2420' },
+                signalType: 'station_standard',
+                signalDirectionOnMap: 'left',
+            },
+        ],
+        "NODES": [
+            {
+                nodeID: 'dispatchingPost-Zyrardow',
+                nodeType: 'dispatchingPost',
+                nodePos: { x: 1280, y: 2490 },
+                postType: 'computer'
+            },
+            {
+                nodeID: 'stationName-Zyrardow',
+                nodeType: 'stationName',
+                stationPrefix: 'Zy',
+                stationName: 'Żyrardów',
+                nodePos: { x: 1330, y: 2350 },
+                nodePosFlipped: { x: 1365, y: 2500 }
+            },
+            {
+                nodeID: 'platform-Zyrardow-1',
+                nodeType: 'platform',
+                nodePos: { x: 1250, y: 2382.5 },
+                width: 40,
+                height: 12.5,
+                text: 'Peron I'
+            },
+            {
+                nodeID: 'platform-Zyrardow-2',
+                nodeType: 'platform',
+                nodePos: { x: 1290, y: 2423.5 },
+                width: 50,
+                height: 12.5,
+                text: 'Peron II'
+            },
+            {
+                nodeID: 'trackMarker-Zyrardow-1a',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1275, y: 2400 },
+                text: '1a',
+            },
+            {
+                nodeID: 'trackMarker-Zyrardow-3',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1370, y: 2380 },
+                text: '3',
+            },
+            {
+                nodeID: 'trackMarker-Zyrardow-1',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1370, y: 2400 },
+                text: '1',
+            },
+            {
+                nodeID: 'trackMarker-Zyrardow-2',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1350, y: 2420 },
+                text: '2',
+            },
+            {
+                nodeID: 'trackMarker-Zyrardow-4',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1355, y: 2440 },
+                text: '4',
+            },
+            {
+                nodeID: 'trackMarker-Zyrardow-8',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1380, y: 2460 },
+                text: '8',
+            },
+        ]
+    },
+    "ZYRARDOW_GRODZISKMAZOWIECKI": {
+        "TRACKS": [
+            {
+                trackID: 'TRACKS_ZYRARDOW_GRODZISKMAZOWIECKI',
+                trackSVG: `
+                M1530,2400 1630,2400 M1650,2400 1750,2400 M1770,2400 1870,2400 M1890,2400 1990,2400 M2010,2400 2110,2400 M2130,2400 2230,2400 M2250,2400 2350,2400
+                M1530,2420 1630,2420 M1650,2420 1750,2420 M1770,2420 1870,2420 M1890,2420 1990,2420 M2010,2420 2110,2420 M2130,2420 2230,2420 M2250,2420 2350,2420
+
+                M2370,2400 2375,2400 M2380,2400 2385,2400 M2390,2400 2395,2400 M2400,2400 2405,2400 M2410,2400 2415,2400 M2420,2400 2425,2400 M2430,2400 2435,2400
+                M2370,2420 2375,2420 M2380,2420 2385,2420 M2390,2420 2395,2420 M2400,2420 2405,2420 M2410,2420 2415,2420 M2420,2420 2425,2420 M2430,2420 2435,2420
+                `,
+                trackColor: 'gray'
+            },
+        ],
+        "SIGNALS": [
+            {
+                signalName: 'L1_397N',
+                signalPos: { x: '1640', y: '2400' },
+                trainPos: { x: '1610', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_398',
+                signalPos: { x: '1640', y: '2420' },
+                trainPos: { x: '1610', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_397',
+                signalPos: { x: '1640', y: '2400' },
+                trainPos: { x: '1670', y: '2400' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_398N',
+                signalPos: { x: '1640', y: '2420' },
+                trainPos: { x: '1670', y: '2420' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_383N',
+                signalPos: { x: '1760', y: '2400' },
+                trainPos: { x: '1730', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_382',
+                signalPos: { x: '1760', y: '2420' },
+                trainPos: { x: '1730', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_383',
+                signalPos: { x: '1760', y: '2400' },
+                trainPos: { x: '1790', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_382N',
+                signalPos: { x: '1760', y: '2420' },
+                trainPos: { x: '1790', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_367N',
+                signalPos: { x: '1880', y: '2400' },
+                trainPos: { x: '1850', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_368',
+                signalPos: { x: '1880', y: '2420' },
+                trainPos: { x: '1850', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_367',
+                signalPos: { x: '1880', y: '2400' },
+                trainPos: { x: '1910', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_368N',
+                signalPos: { x: '1880', y: '2420' },
+                trainPos: { x: '1910', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_355N',
+                signalPos: { x: '2000', y: '2400' },
+                trainPos: { x: '1970', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_354',
+                signalPos: { x: '2000', y: '2420' },
+                trainPos: { x: '1970', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_355',
+                signalPos: { x: '2000', y: '2400' },
+                trainPos: { x: '2030', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_354N',
+                signalPos: { x: '2000', y: '2420' },
+                trainPos: { x: '2030', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_341N',
+                signalPos: { x: '2120', y: '2400' },
+                trainPos: { x: '2090', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_340',
+                signalPos: { x: '2120', y: '2420' },
+                trainPos: { x: '2090', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_341',
+                signalPos: { x: '2120', y: '2400' },
+                trainPos: { x: '2150', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_340N',
+                signalPos: { x: '2120', y: '2420' },
+                trainPos: { x: '2150', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            {
+                signalName: 'L1_327N',
+                signalPos: { x: '2240', y: '2400' },
+                trainPos: { x: '2210', y: '2400' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_328',
+                signalPos: { x: '2240', y: '2420' },
+                trainPos: { x: '2210', y: '2420' },
+                signalType: 'abs_last',
+                signalDirectionOnMap: 'right',
+            },
+            {
+                signalName: 'L1_327',
+                signalPos: { x: '2240', y: '2400' },
+                trainPos: { x: '2270', y: '2400' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            {
+                signalName: 'L1_328N',
+                signalPos: { x: '2240', y: '2420' },
+                trainPos: { x: '2270', y: '2420' },
+                signalType: 'abs_standard',
+                signalDirectionOnMap: 'left',
+            },
+            //
+            //^ ENTRY AND EXIT SIGNALS OF GRODZISK MAZOWIECKI
+            //
+            {
+                signalName: 'Gr_Y',
+                signalPos: { x: '2360', y: '2400' },
+                trainPos: { x: '2330', y: '2400' },
+                signalDirectionOnMap: 'right',
+                signalType: 'station_standard',
+            },
+            {
+                signalName: 'Gr_Z',
+                signalPos: { x: '2360', y: '2420' },
+                trainPos: { x: '2330', y: '2420' },
+                signalDirectionOnMap: 'right',
+                signalType: 'station_standard',
+            },
+            {
+                signalName: 'Gr_P3',
+                signalPos: { x: '2360', y: '2400' },
+                trainPos: { x: '2375', y: '2400' },
+                signalDirectionOnMap: 'left',
+                signalType: 'station_standard',
+            },
+            {
+                signalName: 'Gr_P4',
+                signalPos: { x: '2360', y: '2420' },
+                trainPos: { x: '2375', y: '2420' },
+                signalDirectionOnMap: 'left',
+                signalType: 'station_standard',
+            },
+        ],
+        "NODES": [
+            {
+                nodeID: "simpleText-po-Międzyborów",
+                nodeType: "simpleText",
+                nodePos: { x: 1580, y: 2370 },
+                nodePosFlipped: { x: 1580, y: 2450 },
+                text: "Międzyborów",
+                textSize: phFontSize
+            },
+            {
+                nodeID: 'platform-Międzyborów-1',
+                nodeType: 'platform',
+                nodePos: { x: 1555, y: 2385 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            {
+                nodeID: 'platform-Międzyborów-2',
+                nodeType: 'platform',
+                nodePos: { x: 1555, y: 2425 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_397',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1580, y: 2400 },
+                text: '397',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_412',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1580, y: 2420 },
+                text: '412',
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_383',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1700, y: 2400 },
+                text: '383',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_398',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1700, y: 2420 },
+                text: '398',
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_367',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1820, y: 2400 },
+                text: '367',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_382',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1820, y: 2420 },
+                text: '382',
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_355',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1940, y: 2400 },
+                text: '355',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_368',
+                nodeType: 'trackMarker',
+                nodePos: { x: 1940, y: 2420 },
+                text: '368',
+            },
+            //
+            {
+                nodeID: "simpleText-po-Jaktorow",
+                nodeType: "simpleText",
+                nodePos: { x: 2060, y: 2370 },
+                nodePosFlipped: { x: 2060, y: 2450 },
+                text: "Jaktorów",
+                textSize: phFontSize
+            },
+            {
+                nodeID: 'platform-Jaktorow-1',
+                nodeType: 'platform',
+                nodePos: { x: 2035, y: 2385 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            {
+                nodeID: 'platform-Jaktorw-2',
+                nodeType: 'platform',
+                nodePos: { x: 2035, y: 2425 },
+                width: 50,
+                height: 10,
+                text: ''
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_341',
+                nodeType: 'trackMarker',
+                nodePos: { x: 2060, y: 2400 },
+                text: '341',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_354',
+                nodeType: 'trackMarker',
+                nodePos: { x: 2060, y: 2420 },
+                text: '354',
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_327',
+                nodeType: 'trackMarker',
+                nodePos: { x: 2180, y: 2400 },
+                text: '327',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_340',
+                nodeType: 'trackMarker',
+                nodePos: { x: 2180, y: 2420 },
+                text: '340',
+            },
+            //
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_315',
+                nodeType: 'trackMarker',
+                nodePos: { x: 2300, y: 2400 },
+                text: '315',
+            },
+            {
+                nodeID: 'trackMarker-Skierniewice_Zyrardow_328',
+                nodeType: 'trackMarker',
+                nodePos: { x: 2300, y: 2420 },
+                text: '328',
+            },
+        ]
+    },
+
     // "__TEMPLATE__": {
-    //     "TRACKS": [],
-    //     "SIGNALS": [],
+    //     "TRACKS": [
+    //         {
+    //             trackID: '',
+    //             /**/
+    //             trackSVG: ``,
+    //             trackColor: 'white'
+    //         },
+    //     ],
+    //     "SIGNALS": [
+    //         {
+    //             signalName: '',
+    //             signalPos: { x: '0', y: '0' },
+    //             trainPos: { x: '0', y: '0' },
+    //             signalType: 'station_standard',
+    //             signalDirectionOnMap: 'right',
+    //         },
+    //     ],
     //     "NODES": []
     // },
 }
