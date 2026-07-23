@@ -372,14 +372,25 @@ export namespace CanvasDrawer {
             }
             return signals
         }
+
+        const nearestTrainBySignal = new Map<string, SimRailDataTypes.FilteredTrainList>();
         for (const train of trainData) {
+            const signalName = train.TrainData.SignalInFront ?? train.TrainData.SignalInFrontPredictive ?? null;
+            if (!signalName) continue;
 
-            const signalOfTrain = train.TrainData.SignalInFront ?? train.TrainData.SignalInFrontPredictive ?? null
-            if (!signalOfTrain) continue;
+            const existing = nearestTrainBySignal.get(signalName);
+            if (existing) console.log(`Two Trains on the same signal:
+${train.TrainNoLocal} | ${train.TrainData.DistanceToSignalInFront}
+${existing.TrainNoLocal} | ${existing.TrainData.DistanceToSignalInFront}`)
+            if (!existing || train.TrainData.DistanceToSignalInFront < existing.TrainData.DistanceToSignalInFront) {
+                nearestTrainBySignal.set(signalName, train);
+            }
+        }
 
-            const trainOnSignals = searchSignal(signalOfTrain)
+        for (const [signalName, train] of nearestTrainBySignal) {
+
+            const trainOnSignals = searchSignal(signalName)
             if (!trainOnSignals) continue;
-
 
             const trainCoordsAndDirection = (signal: SRTO_DataTypes.SIGNAL) => {
                 const positions = signal.trainPosDistance

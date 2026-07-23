@@ -45,10 +45,9 @@ const SCREEN_DATA: Record<SCREENID, SRTO_DataTypes.ScreenProps> = {
 }
 const SCREEN_DIMENSIONS: Record<SCREENID, { width: number, height: number }> = {
     'srto_screen1': { width: 2560, height: 2400 },
-    'srto_screen2': { width: 2560, height: 3000 },
+    'srto_screen2': { width: 2560, height: 2540 },
     'srto_screen3': { width: 2560, height: 1800 },
     'srto_screen4': { width: 2560, height: 1800 },
-    // ...
 }
 function loadScreenDataFromFiles(screenid: SCREENID) {
     const DATA = SCREEN_DATA[screenid];
@@ -74,7 +73,7 @@ export default function SRTO_Canvas({ DATA, CONSTANTS, OPTIONS }: ISelfProps) {
         CANVAS_WORLD_HEIGHT: WORLD_H,
         MIN_ZOOM_FIT: 1,
         MIN_ZOOM_EXTENDED: 0.25,
-        MAX_ZOOM: 5,
+        MAX_ZOOM: 4,
         TOOLTIP_MARGIN: 30,
         TOOLTIP_OFFSET: 16,
     }
