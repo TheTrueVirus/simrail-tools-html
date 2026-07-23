@@ -10051,7 +10051,7 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 stationPrefix: 'Pl',
                 stationName: 'Pilichowice',
                 nodePos: { x: 465, y: 1400 },
-                nodePosFlipped: { x: 465, y: 1500 }
+                nodePosFlipped: { x: 465, y: 1495 }
             },
             {
                 nodeID: 'simpleText_Pilichowice_Olszamowice',
@@ -10194,7 +10194,7 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 stationPrefix: 'Op',
                 stationName: 'Opoczno Południe',
                 nodePos: { x: 1205, y: 1380 },
-                nodePosFlipped: { x: 1235, y: 1515 }
+                nodePosFlipped: { x: 1180, y: 1515 }
             },
             {
                 nodeID: 'platform-OpocnoPoludnie',
@@ -12423,7 +12423,7 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 stationPrefix: 'BR',
                 stationName: 'Biała Rawska',
                 nodePos: { x: 1725, y: 1540 },
-                nodePosFlipped: { x: 1725, y: 1640 }
+                nodePosFlipped: { x: 1725, y: 1635 }
             },
             {
                 nodeID: 'simpleText-BialaRawska',
@@ -15138,16 +15138,15 @@ export const SRTO_SCREEN1_DATA: SRTO_DataTypes.ScreenProps = {
                 stationPrefix: 'Jz',
                 stationName: 'Józefinów',
                 nodePos: { x: 1710, y: 1845 },
-                nodePosFlipped: { x: 1710, y: 1845 }
+                nodePosFlipped: { x: 1710, y: 1860 }
             },
             {
                 nodeID: 'simpleText-LCS_Jozefinow',
                 nodeType: 'simpleText',
                 nodePos: { x: 1710, y: 1860 },
+                nodePosFlipped: { x: 1710, y: 1845 },
                 text: 'Controlled by Pruszkow',
                 textSize: phFontSize,
-                strokeWidth: 0.5,
-                textColor: 'white'
             },
         ]
     },
