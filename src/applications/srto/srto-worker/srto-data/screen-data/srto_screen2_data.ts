@@ -6055,7 +6055,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 nodeID: "simpleText-po-Zakowice-2",
                 nodeType: "simpleText",
                 nodePos: { x: 990, y: 1310 },
-                nodePosFlipped: { x: 990, y: 1310 },
+                nodePosFlipped: { x: 990, y: 1390 },
                 text: "Żakowice",
                 textSize: phFontSize
             },
@@ -8029,7 +8029,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 stationPrefix: 'Ro',
                 stationName: 'Rokiciny',
                 nodePos: { x: 420, y: 1410 },
-                nodePosFlipped: { x: 420, y: 1540 }
+                nodePosFlipped: { x: 420, y: 1530 }
             },
             {
                 nodeID: 'platform-Rokiciny-2',
@@ -9314,7 +9314,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 stationPrefix: 'Ko',
                 stationName: 'Koluszki',
                 nodePos: { x: 1450, y: 1330 },
-                nodePosFlipped: { x: 1500, y: 1620 }
+                nodePosFlipped: { x: 1500, y: 1605 }
             },
             {
                 nodeID: 'platform-Koluszki-Peron1',
