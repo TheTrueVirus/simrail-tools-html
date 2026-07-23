@@ -38,8 +38,8 @@ export default function SRTO_Footer({ DATA, CONSTANTS, OPTIONS }: ISelfProps) {
     return (
         <>
             <div className="srtoFooterContainer">
-                <div className="trainsCounter">{trainsCounter()}</div>
-                <div className="stationsCounter">{stationsCounter()}</div>
+                <div className="trainsCounter" title='Occupied / Total'>{trainsCounter()}</div>
+                <div className="stationsCounter" title='Occupied / Total'>{stationsCounter()}</div>
                 <div className='copyrightVersionInfo'>
                     <div className='copyrightInfo'>Copyright (c) 2026 TheTrueVirus</div>
                     <div className='versionInfo'>{`SRTO-Version: ${CONSTANTS.CURRENT_VERSION ?? '?.?.?'}`}</div>
