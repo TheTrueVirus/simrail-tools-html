@@ -3167,6 +3167,30 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
         "SIGNALS": [], //! NO SIGNALS IN THIS CLUSTER
         "NODES": [
             {
+                nodeID: "text-po-LodzRadogoszczZachod",
+                nodeType: "simpleText",
+                nodePos: { x: 1950, y: 360 },
+                nodePosFlipped: { x: 1950, y: 445 },
+                text: "Łódź Radogoszcz Zachód",
+                textSize: 12
+            },
+            {
+                nodeID: 'platform-LodzRadogoszczZachod-1',
+                nodeType: 'platform',
+                nodePos: { x: 1930, y: 387.5 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
+                nodeID: 'platform-LodzRadogoszczZachod-2',
+                nodeType: 'platform',
+                nodePos: { x: 1930, y: 425 },
+                width: 40,
+                height: 7.5,
+                text: ''
+            },
+            {
                 nodeID: 'trackMarker-LodzZabieniec_Zgierz_1Z',
                 nodeType: 'trackMarker',
                 nodePos: { x: 1950, y: 400 },
@@ -13398,7 +13422,6 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             },
         ]
     },
-
     // "__TEMPLATE__": {
     //     "TRACKS": [
     //         {
