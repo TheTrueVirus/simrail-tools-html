@@ -7,6 +7,22 @@ export const CHANGELOG_DATA = [
     //     additional_changes: null
     // },
     {
+        version: '0.4.0-alpha',
+        subtitle: 'MAJOR UPDATE',
+        release_date: '23.07.2026',
+        major_changes: `The "Łódź Voivodeship" screen has received a significant update and is nearing completion. Further changes are expected in upcoming updates as part of the planned track expansion (see Roadmap on GitHub).
+
+The train hover tooltip now displays the name of the player currently driving the train. Dispatcher names for stations will follow in a future update, where they will be shown in a dedicated station information tooltip.`,
+        additional_changes: `- Reworked signal box symbols
+    - Signal boxes now render with proper rotation, matching the orientation of the dispatcher's panel
+- Added a "New Version" notification for returning users on each new release — first-time visitors will not see this notification
+- Added missing label "Józefinów"
+- Added missing switch at Łódź Lublinek
+- Corrected position of the Opoczno Południe signal box
+- Added missing po "Łódź Radogoszcz Zachód" between Łódź Żabieniec and Zgierz
+- Removed "to Koluszki" and "to Gałkówek" labels and added missing po "Żakowice"`
+    },
+    {
         version: '0.3.2-alpha',
         subtitle: 'Small fixes',
         release_date: '25.05.2026',
