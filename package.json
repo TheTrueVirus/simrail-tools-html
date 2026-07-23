@@ -1,6 +1,6 @@
 {
   "name": "simrail-tools-html",
-  "version": "0.3.2-alpha",
+  "version": "0.4.0-alpha",
   "private": true,
   "homepage": "https://thetruevirus.github.io/simrail-tools-html",
   "dependencies": {
@@ -21,7 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set REACT_APP_VERSION=%npm_package_version%&& react-scripts start",
     "build": "react-scripts build",
     "build:versioned": "node scripts/build-versioned.js",
     "serve:local": "node srto_testing_webserver/server.js",

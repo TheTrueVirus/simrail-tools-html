@@ -6,6 +6,35 @@
 > ### **This project is still under full development. You may encounter bugs!**
 > #### _If you encounter any bugs or have any suggestions for improvements, let me now by writing a post into the forum thread or by opening an issue in the github repository. This will help me a lot!_
 
+## **Version 0.4.0-alpha | MAJOR UPDATE**
+Released on 23.07.2026
+#### Overview: Pre-Finished Screen "Łódź Voivodeship", Player Names and more!
+> **Note:** This is an early release after a two-month gap. Some features may be incomplete or contain minor bugs. Thank you for your patience!
+
+### <u>Major Changes</u>
+The **"Łódź Voivodeship"** screen has received a significant update and is nearing completion. Further changes are expected in upcoming updates as part of the planned track expansion (see Roadmap).
+
+The **train hover tooltip** now displays the name of the player currently driving the train. Dispatcher names for stations will follow in a future update, where they will be shown in a dedicated station information tooltip.
+
+### <u>Additional Changes</u>
+- Reworked signal box symbols
+    - Signal boxes now render with proper rotation, matching the orientation of the dispatcher's panel
+- Added a <i>"New Version"</i> notification for returning users on each new release — first-time visitors will not see this notification
+
+### <u>Bugs Fixed</u>
+- Added missing label *"Józefinów"*
+- Added missing switch at Łódź Lublinek
+- Corrected position of the Opoczno Południe signal box
+- Added missing passing opportunity *"Łódź Radogoszcz Zachód"* between Łódź Żabieniec and Zgierz
+- Replaced *"to Koluszki"* and *"to Gałkówek"* labels with passing opportunity *"Żakowice"*
+
+### <u>Roadmap</u>
+Upcoming updates will bring significant reworks to tracks on the first and second screens as part of a planned expansion from 60px to 100px track width — enabling future features such as train delay visualization. This wider layout is already visible around Koluszki and continuing towards Żyrardów.
+
+A dedicated **train information window** is also planned: clicking a train will open a movable popup with full details, including the signal view, that persists while you continue using the map.
+
+All future plans are tracked on the <a href='https://trello.com/b/GOW2Mzpf/simrail-track-overview'>SRTO Trello Board</a>.
+
 ## **Version 0.3.2-alpha | Small fixes**
 Released on 25.05.2026
 #### Overview: Small fixes on the available Łódź Area
