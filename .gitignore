@@ -27,9 +27,6 @@ yarn-debug.log*
 yarn-error.log*
 notizen.md
 changelog.md
-src/functions/customErrorHandler/errorHandler.tsx
-src/functions/customErrorHandler/errorHandlerStyles.css
-src/functions/appcontext/appcontext.tsx
-__stw-bilder
+__SimRail_Stations
 old_folder
 src/applications/srto/srto-worker/srto-data/simrail-vehicles-list.ts

@@ -17,10 +17,24 @@ interface CanvasSettingsProps {
 }
 
 interface HandlerProps {
-    trainList: SimRailDataTypes.FilteredTrainList[],
-    stationList: SimRailDataTypes.StationData[]
-    userOptions: typeof USER_OPTIONS
-    devRenderOptions: RenderOptionsProps
+    DATA: {
+        trainList: SimRailDataTypes.FilteredTrainList[]
+        lastSignalMapRef: React.RefObject<Map<string, string>>
+        stationList: SimRailDataTypes.StationData[]
+        steamUserList: Map<string, SimRailDataTypes.SteamUser>
+    }
+    CONSTANTS: {
+        CURRENT_VERSION: string | undefined
+        FORUM_LINK: string
+        GITHUB_REPO_LINK: string
+        GITHUB_PAGE_LINK: string
+    }
+    OPTIONS: {
+        userOptions: typeof USER_OPTIONS
+        devRenderOptions: RenderOptionsProps
+    }
+    canvasSettings: CanvasSettingsProps
+    trainHoverEntries?: { train: SimRailDataTypes.FilteredTrainList, signal: SRTO_DataTypes.SIGNAL }[]
 }
 
 interface viewRefProp {
@@ -30,77 +44,72 @@ interface viewRefProp {
 }
 
 interface CanvasEventHandlerProps {
-    canvasRef: React.RefObject<HTMLCanvasElement | null>
-    viewRef: React.RefObject<viewRefProp>
-    dragRef: React.RefObject<{ isDragging: boolean; lastX: number; lastY: number }>
-    scheduleDraw: () => void
+    REFS: {
+        canvasRef: React.RefObject<HTMLCanvasElement | null>
+        viewRef: React.RefObject<viewRefProp>
+        dragRef: React.RefObject<{ isDragging: boolean; lastX: number; lastY: number }>
+        signalDataRef?: React.RefObject<SRTO_DataTypes.SIGNAL[] | null>
+        minZoomRef: React.RefObject<number>
+        mouseWorldPosRef?: React.RefObject<{ x: number, y: number } | null>
+        hoveredTargetRef?: React.RefObject<HoveredTargetType>
+    }
+    FUNCS: {
+        scheduleDraw: () => void
+        setMouseWorldPos?: React.Dispatch<SetStateAction<{ x: number, y: number } | null>>
+        setHoveredTarget?: React.Dispatch<SetStateAction<HoveredTargetType>>,
+    }
     SRTO_PROPS: HandlerProps
-    signalDataRef?: React.RefObject<SRTO_DataTypes.SIGNAL_SECTIONS>
-    canvasSettings: CanvasSettingsProps,
-    minZoomRef: React.RefObject<number>
-    mouseWorldPosRef?: React.RefObject<{ x: number, y: number } | null>
-    setMouseWorldPos?: React.Dispatch<SetStateAction<{ x: number, y: number } | null>>
-    hoveredTargetRef?: React.RefObject<HoveredTargetType>
-    setHoveredTarget?: React.Dispatch<SetStateAction<HoveredTargetType>>,
-    trainHoverEntries?: { train: SimRailDataTypes.FilteredTrainList, signal: SRTO_DataTypes.SIGNAL }[]
 }
 
-export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
-
-    const canvasRef = deps.canvasRef
-    const viewRef = deps.viewRef
-    const dragRef = deps.dragRef
-    const scheduleDraw = deps.scheduleDraw
-    const SRTO_PROPS = deps.SRTO_PROPS
-    const CanvasSettings = deps.canvasSettings
+export function createCanvasEventHandler({ REFS, FUNCS, SRTO_PROPS: { DATA, OPTIONS, CONSTANTS, canvasSettings, trainHoverEntries } }: CanvasEventHandlerProps) {
 
     function clampViewToBounds(rect: DOMRect) {
 
-        if (SRTO_PROPS.userOptions.allowExtendedView) return
-        const fitScale = rect.width / CanvasSettings.CANVAS_WORLD_WIDTH
-        const scale = fitScale * viewRef.current.zoom
+        if (OPTIONS.userOptions.allowExtendedView) return
+        const fitScale = rect.width / canvasSettings.CANVAS_WORLD_WIDTH
+        const scale = fitScale * REFS.viewRef.current.zoom
 
-        const scaledWorldWidth = CanvasSettings.CANVAS_WORLD_WIDTH * scale
-        const scaledWorldHeight = CanvasSettings.CANVAS_WORLD_HEIGHT * scale
+        const scaledWorldWidth = canvasSettings.CANVAS_WORLD_WIDTH * scale
+        const scaledWorldHeight = canvasSettings.CANVAS_WORLD_HEIGHT * scale
 
         if (scaledWorldWidth <= rect.width) {
-            viewRef.current.panX = (rect.width - scaledWorldWidth) / 2
+            REFS.viewRef.current.panX = (rect.width - scaledWorldWidth) / 2
         } else {
             const minPanX = rect.width - scaledWorldWidth
             const maxPanX = 0
-            viewRef.current.panX = Math.min(maxPanX, Math.max(minPanX, viewRef.current.panX))
+            REFS.viewRef.current.panX = Math.min(maxPanX, Math.max(minPanX, REFS.viewRef.current.panX))
         }
 
         if (scaledWorldHeight <= rect.height) {
-            viewRef.current.panY = (rect.height - scaledWorldHeight) / 2
+            REFS.viewRef.current.panY = (rect.height - scaledWorldHeight) / 2
         } else {
             const minPanY = rect.height - scaledWorldHeight
             const maxPanY = 0
-            viewRef.current.panY = Math.min(maxPanY, Math.max(minPanY, viewRef.current.panY))
+            REFS.viewRef.current.panY = Math.min(maxPanY, Math.max(minPanY, REFS.viewRef.current.panY))
         }
     }
 
     function resetView(rect: DOMRect) {
-        viewRef.current.panY = viewRef.current.panY / viewRef.current.zoom
-        viewRef.current.panX = 0
-        viewRef.current.zoom = 1
+        REFS.viewRef.current.panY = REFS.viewRef.current.panY / REFS.viewRef.current.zoom
+        REFS.viewRef.current.panX = 0
+        REFS.viewRef.current.zoom = 1
         clampViewToBounds(rect)
     }
 
     function handleWheel(event: WheelEvent) {
         event.preventDefault()
 
-        const canvas = canvasRef.current
+        const canvas = REFS.canvasRef.current
         if (!canvas) return
 
         const rect = canvas.getBoundingClientRect()
         const mouseX = event.clientX - rect.left
         const mouseY = event.clientY - rect.top
-        const fitScale = rect.width / CanvasSettings.CANVAS_WORLD_WIDTH
+        const fitScale = rect.width / canvasSettings.CANVAS_WORLD_WIDTH
 
         const zoomFactor = event.deltaY < 0 ? 1.1 : 0.9
-        const prevZoom = viewRef.current.zoom
-        const nextZoom = Math.min(CanvasSettings.MAX_ZOOM, Math.max(deps.minZoomRef.current, prevZoom * zoomFactor))
+        const prevZoom = REFS.viewRef.current.zoom
+        const nextZoom = Math.min(canvasSettings.MAX_ZOOM, Math.max(REFS.minZoomRef.current, prevZoom * zoomFactor))
 
         if (nextZoom === prevZoom) return
 
@@ -108,64 +117,64 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
         const nextScale = fitScale * nextZoom
 
         // Keep the world point under the cursor fixed while zooming.
-        const worldX = (mouseX - viewRef.current.panX) / prevScale
-        const worldY = (mouseY - viewRef.current.panY) / prevScale
+        const worldX = (mouseX - REFS.viewRef.current.panX) / prevScale
+        const worldY = (mouseY - REFS.viewRef.current.panY) / prevScale
 
-        viewRef.current.zoom = nextZoom
-        viewRef.current.panX = mouseX - worldX * nextScale
-        viewRef.current.panY = mouseY - worldY * nextScale
+        REFS.viewRef.current.zoom = nextZoom
+        REFS.viewRef.current.panX = mouseX - worldX * nextScale
+        REFS.viewRef.current.panY = mouseY - worldY * nextScale
         clampViewToBounds(rect)
 
-        scheduleDraw()
+        FUNCS.scheduleDraw()
     }
 
     function handleMouseDown(event: React.MouseEvent<HTMLCanvasElement>) {
         if (event.button === 1) {
             event.preventDefault()
 
-            const canvas = canvasRef.current
+            const canvas = REFS.canvasRef.current
             if (!canvas) return
 
             const rect = canvas.getBoundingClientRect()
             resetView(rect)
-            scheduleDraw()
+            FUNCS.scheduleDraw()
             return
         }
 
         if (event.button !== 0) return
 
-        dragRef.current.isDragging = true
-        dragRef.current.lastX = event.clientX
-        dragRef.current.lastY = event.clientY
-        if (!deps.setHoveredTarget) return;
-        deps.setHoveredTarget(null)
+        REFS.dragRef.current.isDragging = true
+        REFS.dragRef.current.lastX = event.clientX
+        REFS.dragRef.current.lastY = event.clientY
+        if (!FUNCS.setHoveredTarget) return;
+        FUNCS.setHoveredTarget(null)
     }
 
     function handleMouseMove(event: React.MouseEvent<HTMLCanvasElement>) {
-        const canvas = canvasRef.current
+        const canvas = REFS.canvasRef.current
         if (canvas) {
             const rect = canvas.getBoundingClientRect()
             const mouseX = event.clientX - rect.left
             const mouseY = event.clientY - rect.top
-            const fitScale = rect.width / CanvasSettings.CANVAS_WORLD_WIDTH
-            const scale = fitScale * viewRef.current.zoom
-            const worldX = (mouseX - viewRef.current.panX) / scale
-            const worldY = (mouseY - viewRef.current.panY) / scale
-            if (deps.setMouseWorldPos) {
-                deps.setMouseWorldPos({ x: Math.round(worldX), y: Math.round(worldY) })
+            const fitScale = rect.width / canvasSettings.CANVAS_WORLD_WIDTH
+            const scale = fitScale * REFS.viewRef.current.zoom
+            const worldX = (mouseX - REFS.viewRef.current.panX) / scale
+            const worldY = (mouseY - REFS.viewRef.current.panY) / scale
+            if (FUNCS.setMouseWorldPos) {
+                FUNCS.setMouseWorldPos({ x: Math.round(worldX), y: Math.round(worldY) })
             }
 
-            if (deps.hoveredTargetRef && deps.trainHoverEntries && deps.setHoveredTarget)
-                if (!dragRef.current.isDragging) {
+            if (REFS.hoveredTargetRef && trainHoverEntries && FUNCS.setHoveredTarget)
+                if (!REFS.dragRef.current.isDragging) {
                     const ctx = canvas.getContext('2d')
-                    if (ctx && deps.signalDataRef) {
-                        let hit: typeof deps.hoveredTargetRef.current = null
+                    if (ctx && REFS.signalDataRef) {
+                        let hit: typeof REFS.hoveredTargetRef.current = null
 
                         function flipCoords({ x, y }: { x: string | number, y: string | number }) {
-                            if (deps.SRTO_PROPS.userOptions.flipScreen) {
+                            if (OPTIONS.userOptions.flipScreen) {
                                 return {
-                                    x: deps.canvasSettings.CANVAS_WORLD_WIDTH - Number(x),
-                                    y: deps.canvasSettings.CANVAS_WORLD_HEIGHT - Number(y)
+                                    x: canvasSettings.CANVAS_WORLD_WIDTH - Number(x),
+                                    y: canvasSettings.CANVAS_WORLD_HEIGHT - Number(y)
                                 }
                             } else {
                                 return {
@@ -175,7 +184,7 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
                             }
                         }
 
-                        for (const { train, signal } of deps.trainHoverEntries) {
+                        for (const { train, signal } of trainHoverEntries) {
 
                             const trainCoordsAndDirection = () => {
                                 const positions = signal.trainPosDistance
@@ -193,7 +202,7 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
 
                             const { x, y } = flipCoords(trainCoordsAndDirection());
                             const dir = trainCoordsAndDirection().dir
-                            const signalDirectionOnFlip = deps.SRTO_PROPS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
+                            const signalDirectionOnFlip = OPTIONS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
                             const signalDirectionOnDistance = dir ? signalDirectionOnFlip === 'left' ? 'right' : 'left' : signalDirectionOnFlip
                             const path = TRAIN_BASE_PATH[signalDirectionOnDistance]
                             if (ctx.isPointInPath(path, worldX - x, worldY - y)) {
@@ -201,67 +210,66 @@ export function createCanvasEventHandler(deps: CanvasEventHandlerProps) {
                                     type: 'train',
                                     train,
                                     signal,
-                                    screenX: (x + (signalDirectionOnDistance === 'right' ? -25 : 25)) * scale + viewRef.current.panX,
-                                    screenY: (y) * scale + viewRef.current.panY
+                                    screenX: (x + (signalDirectionOnDistance === 'right' ? -25 : 25)) * scale + REFS.viewRef.current.panX,
+                                    screenY: (y) * scale + REFS.viewRef.current.panY
                                 }
                                 break
                             }
                         }
 
                         if (!hit) {
-                            for (const signalid in deps.signalDataRef.current) {
-                                for (const signal of deps.signalDataRef.current[signalid]) {
-                                    if(signal.invisibleSignal) continue;
-                                    const { x, y } = flipCoords(signal.signalPos);
-                                    const signalDirection = deps.SRTO_PROPS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
-                                    const signalPath = SIGNAL_BASE_PATH[signalDirection]
-                                    if (ctx.isPointInPath(signalPath, worldX - x, worldY - y)) {
-                                        hit = {
-                                            type: 'signal',
-                                            signal,
-                                            screenX: x * scale + viewRef.current.panX,
-                                            screenY: y * scale + viewRef.current.panY,
-                                        }
+                            if(REFS.signalDataRef.current === null) return;
+                            for (const signal of REFS.signalDataRef.current) {
+                                if (signal.invisibleSignal) continue;
+                                const { x, y } = flipCoords(signal.signalPos);
+                                const signalDirection = OPTIONS.userOptions.flipScreen ? signal.signalDirectionOnMap === 'right' ? 'left' : 'right' : signal.signalDirectionOnMap
+                                const signalPath = SIGNAL_BASE_PATH[signalDirection]
+                                if (ctx.isPointInPath(signalPath, worldX - x, worldY - y)) {
+                                    hit = {
+                                        type: 'signal',
+                                        signal,
+                                        screenX: x * scale + REFS.viewRef.current.panX,
+                                        screenY: y * scale + REFS.viewRef.current.panY,
                                     }
                                 }
                             }
                         }
 
                         canvas.style.cursor = hit ? 'pointer' : 'default'
-                        deps.setHoveredTarget(hit)
+                        FUNCS.setHoveredTarget(hit)
                     }
                 }
         }
 
-        if (!dragRef.current.isDragging) return
+        if (!REFS.dragRef.current.isDragging) return
 
-        const deltaX = event.clientX - dragRef.current.lastX
-        const deltaY = event.clientY - dragRef.current.lastY
+        const deltaX = event.clientX - REFS.dragRef.current.lastX
+        const deltaY = event.clientY - REFS.dragRef.current.lastY
 
-        dragRef.current.lastX = event.clientX
-        dragRef.current.lastY = event.clientY
+        REFS.dragRef.current.lastX = event.clientX
+        REFS.dragRef.current.lastY = event.clientY
 
-        viewRef.current.panX += deltaX
-        viewRef.current.panY += deltaY
+        REFS.viewRef.current.panX += deltaX
+        REFS.viewRef.current.panY += deltaY
 
         if (canvas) {
             const rect = canvas.getBoundingClientRect()
             clampViewToBounds(rect)
         }
-        scheduleDraw()
+        FUNCS.scheduleDraw()
     }
 
     function handleMouseUpOrLeave(event: React.MouseEvent<HTMLCanvasElement>) {
-        dragRef.current.isDragging = false
+        REFS.dragRef.current.isDragging = false
     }
 
     function handleMouseLeave(event: React.MouseEvent<HTMLCanvasElement>) {
-        dragRef.current.isDragging = false
-        if (!deps.setMouseWorldPos || !deps.setHoveredTarget) return;
-        deps.setMouseWorldPos(null)
-        deps.setHoveredTarget(null)
+        REFS.dragRef.current.isDragging = false
+        if (!FUNCS.setMouseWorldPos || !FUNCS.setHoveredTarget) return;
+        FUNCS.setMouseWorldPos(null)
+        FUNCS.setHoveredTarget(null)
 
-        const canvas = canvasRef.current
+        const canvas = REFS.canvasRef.current
         if (canvas) {
             canvas.style.cursor = 'default'
         }

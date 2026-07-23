@@ -78,18 +78,15 @@ export const DiffAreaIcon: Path2D = (() => {
 
 export const DispatchingPost: Record<'relay' | 'computer', Path2D> = {
     'relay': (() => {
-        let p = new Path2D(`
-M24 0 L30 5 M16 0 L30 10 M8 0 L30 15 M0 0 L30 20 M0 5 L22 20 M0 10 L14 20 M0 15 L6 20
-M24 20 L30 15M16 20 L30 10 M8 20 L30 5 M0 20 L30 0 M0 15 L22 0 M0 10 L14 0 M0 5 L6 0
-`);
-        p.rect(-2, -2, 34, 24);
-        p.rect(0, 0, 30, 20);
+        let p = new Path2D(`M0 0 L21 18 M7 0 L28 18 M14 0 L28 12 M21 0 L28 6 M0 6 L14 18 M0 12 L7 18 M0 18 L21 0 M7 18 L28 0 M14 18 L28 6 M21 18 L28 12 M0 12 L14 0 M0 6 L7 0`);
+        p.rect(-2, -2, 32, 22);
+        p.rect(0, 0, 28, 18);
         return p;
     })(),
     'computer': (() => {
         const p = new Path2D();
-        p.rect(-2, -2, 34, 24);
-        p.rect(0, 0, 30, 20);
+        p.rect(-2, -2, 32, 22);
+        p.rect(0, 0, 28, 18);
         return p;
     })()
 }
@@ -97,19 +94,19 @@ M24 20 L30 15M16 20 L30 10 M8 20 L30 5 M0 20 L30 0 M0 15 L22 0 M0 10 L14 0 M0 5 
 export namespace CanvasDrawer {
 
     export function drawTracks(
-        track_data: SRTO_DataTypes.TRACK_SECTIONS,
+        screenData: SRTO_DataTypes.ScreenProps | null,
         ctx: CanvasRenderingContext2D,
         trackPathCache: WeakMap<SRTO_DataTypes.TRACK_NODE, Path2D>
     ) {
-        if (!track_data) return;
+        if (!screenData) return;
         if (!ctx) return;
 
         ctx.lineWidth = 2.5
         ctx.lineCap = 'butt'
         ctx.lineJoin = 'bevel'
 
-        for (const trackid in track_data) {
-            for (const tracknode of track_data[trackid]) {
+        for (const node in screenData) {
+            for (const tracknode of screenData[node].TRACKS) {
                 if (tracknode.trackColor === 'none') continue;
 
                 let path = trackPathCache.get(tracknode)
@@ -125,12 +122,12 @@ export namespace CanvasDrawer {
     }
 
     export function drawSignals(
-        signal_data: SRTO_DataTypes.SIGNAL_SECTIONS,
+        screenData: SRTO_DataTypes.ScreenProps | null,
         train_data: SimRailDataTypes.FilteredTrainList[],
         ctx: CanvasRenderingContext2D,
         SRTO_PROPS: SRTO_PROPS,
     ) {
-        if (!signal_data) return;
+        if (!screenData) return;
         if (!train_data) return;
         if (!ctx) return;
 
@@ -140,7 +137,7 @@ export namespace CanvasDrawer {
         // Build a per-frame lookup to avoid O(signals * trains) scans.
         const signalColorByName = new Map<string, 'lime' | 'orange' | 'red'>()
         for (const train of train_data) {
-            const signalName = train.TrainData.SignalInFront?.split('@')[0]
+            const signalName = train.TrainData.SignalInFront ?? train.TrainData.SignalInFrontPredictive ?? null
             if (!signalName) continue
 
             const nextColor: 'lime' | 'orange' | 'red' = train.TrainData.SignalInFrontSpeed === 0 ? 'red' : train.TrainData.SignalInFrontSpeed < 100 ? 'orange' : 'lime'
@@ -152,8 +149,8 @@ export namespace CanvasDrawer {
             }
         }
 
-        for (const signalid in signal_data) {
-            for (const signal of signal_data[signalid]) {
+        for (const node in screenData) {
+            for (const signal of screenData[node].SIGNALS) {
                 if (signal.invisibleSignal) continue;
                 const { sx, sy } = { sx: Number(signal.signalPos.x), sy: Number(signal.signalPos.y) }
                 const signalColor = signalColorByName.get(signal.signalName) ?? defaultSignalColor
@@ -176,19 +173,19 @@ export namespace CanvasDrawer {
     }
 
     export function drawNotations(
-        node_data: SRTO_DataTypes.NODE_SECTIONS,
+        screenData: SRTO_DataTypes.ScreenProps | null,
         ctx: CanvasRenderingContext2D,
         SRTO_PROPS: SRTO_PROPS,
         canvasSettings: CanvasSettingsProps
     ) {
-        if (!node_data) return;
+        if (!screenData) return;
         if (!SRTO_PROPS.stationList) return;
         if (!ctx) return;
 
         const userOptions = SRTO_PROPS.userOptions
         const stationData = SRTO_PROPS.stationList
-        for (const nodeid in node_data) {
-            for (const node of node_data[nodeid]) {
+        for (const nodeid in screenData) {
+            for (const node of screenData[nodeid].NODES) {
                 const { x, y } = ((SRTO_PROPS.userOptions.flipScreen && node.nodePosFlipped) ? node.nodePosFlipped : node.nodePos) ?? { x: 0, y: 0 }
                 ctx.save();
                 ctx.translate(x, y);
@@ -328,19 +325,23 @@ export namespace CanvasDrawer {
                     case 'dispatchingPost':
                         ctx.save();
                         if (userOptions.flipScreen) ctx.translate(-30, -20);
+                        ctx.translate(14, 9);
+                        const angle = (node.postRotationAngle ?? 0) * Math.PI / 180;
+                        ctx.rotate(userOptions.flipScreen ? angle - Math.PI : angle);
+                        ctx.translate(-14, -9);
                         const post = DispatchingPost[node.postType ?? 'computer'];
-                        ctx.lineWidth = 1
+                        ctx.lineWidth = 0.5
                         ctx.strokeStyle = 'white';
                         ctx.stroke(post);
 
                         ctx.fillStyle = 'white';
                         ctx.strokeStyle = 'black';
-                        ctx.lineWidth = 5;
-                        ctx.strokeRect(7, 4, 16, 3);
-                        ctx.fillRect(7, 4, 16, 3);
+                        ctx.lineWidth = 3;
+                        ctx.strokeRect(6, 4, 16, 3);
+                        ctx.fillRect(6, 4, 16, 3);
                         ctx.beginPath();
                         ctx.lineWidth = 1.5;
-                        ctx.arc(15, 14, 3, 0, 2 * Math.PI)
+                        ctx.arc(14, 12.5, 3, 0, 2 * Math.PI)
                         ctx.fill()
                         ctx.stroke();
                         ctx.restore();
@@ -352,44 +353,44 @@ export namespace CanvasDrawer {
     }
 
     export function drawTrains(
-        signal_data: SRTO_DataTypes.SIGNAL_SECTIONS,
+        screenData: SRTO_DataTypes.ScreenProps | null,
         ctx: CanvasRenderingContext2D,
         SRTO_PROPS: SRTO_PROPS
     ) {
         if (!ctx) return;
         if (!SRTO_PROPS.trainList) return;
-        if (!signal_data) return;
+        if (!screenData) return;
 
         const userOptions = SRTO_PROPS.userOptions
         const trainData = SRTO_PROPS.trainList
 
-        function getTrainSignal(train: SimRailDataTypes.FilteredTrainList) {
-            const signalName = train.TrainData.SignalInFront?.split('@')[0] ?? null
-
-            if (!signalName) {
-                const lastSignal = SRTO_PROPS.lastSignalMapRef.current.get(train.TrainNoLocal)
-                if (!lastSignal) return null;
-                return getNextSignalFromLastSignal(SRTO_PROPS.lastSignalMapRef.current.get(train.TrainNoLocal)) ?? null
-            }
-            return signalName
-        }
-
         function searchSignal(signalName: string | null) {
-            let signals : SRTO_DataTypes.SIGNAL[] = []
-            for (const signalid in signal_data) {
-                const foundSignal = signal_data[signalid].filter((signal) => signalName === signal.signalName);
+            let signals: SRTO_DataTypes.SIGNAL[] = []
+            for (const node in screenData) {
+                const foundSignal = screenData[node].SIGNALS.filter((signal) => signalName === signal.signalName);
                 if (foundSignal) signals.push(...foundSignal);
             }
             return signals
         }
+
+        const nearestTrainBySignal = new Map<string, SimRailDataTypes.FilteredTrainList>();
         for (const train of trainData) {
+            const signalName = train.TrainData.SignalInFront ?? train.TrainData.SignalInFrontPredictive ?? null;
+            if (!signalName) continue;
 
-            const signalOfTrain = getTrainSignal(train)
-            if (!signalOfTrain) continue;
+            const existing = nearestTrainBySignal.get(signalName);
+            if (existing) console.log(`Two Trains on the same signal:
+${train.TrainNoLocal} | ${train.TrainData.DistanceToSignalInFront}
+${existing.TrainNoLocal} | ${existing.TrainData.DistanceToSignalInFront}`)
+            if (!existing || train.TrainData.DistanceToSignalInFront < existing.TrainData.DistanceToSignalInFront) {
+                nearestTrainBySignal.set(signalName, train);
+            }
+        }
 
-            const trainOnSignals = searchSignal(signalOfTrain)
+        for (const [signalName, train] of nearestTrainBySignal) {
+
+            const trainOnSignals = searchSignal(signalName)
             if (!trainOnSignals) continue;
-
 
             const trainCoordsAndDirection = (signal: SRTO_DataTypes.SIGNAL) => {
                 const positions = signal.trainPosDistance
@@ -447,11 +448,11 @@ export namespace CanvasDrawer {
     }
 
     export function drawGhostTrains(
-        signal_data: SRTO_DataTypes.SIGNAL_SECTIONS,
+        screenData: SRTO_DataTypes.ScreenProps | null,
         ctx: CanvasRenderingContext2D
     ) {
-        for (const signalid in signal_data) {
-            for (const signal of signal_data[signalid]) {
+        for (const node in screenData) {
+            for (const signal of screenData[node].SIGNALS) {
 
                 const distancePos = signal.trainPosDistance
                 ctx.lineWidth = 4

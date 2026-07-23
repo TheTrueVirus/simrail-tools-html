@@ -1,10 +1,11 @@
-import { useRef, useEffect, useLayoutEffect, useMemo, useState } from 'react'
+import { useRef, useEffect, useLayoutEffect, useMemo, useState, SetStateAction } from 'react'
 import './srto-canvas.css'
-import { AreaProps, RenderOptionsProps, USER_OPTIONS } from '../../srto';
+import { SRTO_SCREEN1_DATA } from '../srto-data/screen-data/srto_screen1_data';
+import { SRTO_SCREEN2_DATA } from '../srto-data/screen-data/srto_screen2_data';
+import { SRTO_SCREEN3_DATA } from '../srto-data/screen-data/srto_screen3_data';
+import { SRTO_SCREEN4_DATA } from '../srto-data/screen-data/srto_screen4_data';
+import { RenderOptionsProps, SCREENID, USER_OPTIONS } from '../../srto';
 import { SimRailDataTypes } from '../../../../types/simrail-data-types';
-import { SRTO_Tracks } from '../srto-data/srto-trackData';
-import { SRTO_Nodes } from '../srto-data/srto-nodeData';
-import { SRTO_Signals } from '../srto-data/srto-signalData';
 import { SRTO_DataTypes } from '../srto-data/srto-dataTypes';
 import { CanvasDrawer } from './srto-canvas-worker/srto-canvas-drawer';
 import { createCanvasEventHandler } from './srto-canvas-worker/srto-canvas-eventHandler';
@@ -12,22 +13,20 @@ import HoverToolTipSignal from './tooltip-signal';
 import { getNextSignalFromLastSignal } from '../srto-data/srto-nextSignalList';
 const inDev = process.env.NODE_ENV === 'development'
 
-const canvasSettings = {
-    CANVAS_WORLD_WIDTH: 2560,
-    CANVAS_WORLD_HEIGHT: 2450,
-    MIN_ZOOM_FIT: 1,
-    MIN_ZOOM_EXTENDED: 0.25,
-    MAX_ZOOM: 4,
-    TOOLTIP_MARGIN: 30,
-    TOOLTIP_OFFSET: 16,
-}
-
 interface ISelfProps {
-    SRTO_PROPS: {
+    DATA: {
         trainList: SimRailDataTypes.FilteredTrainList[]
         lastSignalMapRef: React.RefObject<Map<string, string>>
         stationList: SimRailDataTypes.StationData[]
-        // userList: SimRailDataTypes.SteamUser[] | null
+        steamUserList: Map<string, SimRailDataTypes.SteamUser>
+    }
+    CONSTANTS: {
+        CURRENT_VERSION: string | undefined
+        FORUM_LINK: string
+        GITHUB_REPO_LINK: string
+        GITHUB_PAGE_LINK: string
+    }
+    OPTIONS: {
         userOptions: typeof USER_OPTIONS
         devRenderOptions: RenderOptionsProps
     }
@@ -38,20 +37,27 @@ export type HoveredTargetType =
     { type: 'signal', signal: SRTO_DataTypes.SIGNAL, screenX: number, screenY: number } |
     null
 
-function loadDataFromFile(area: AreaProps) {
-    const TRACK_DATA = SRTO_Tracks[area.areaID];
-    const SIGNAL_DATA = SRTO_Signals[area.areaID];
-    const NODE_DATA = SRTO_Nodes[area.areaID];
-    return {
-        TRACK_DATA,
-        SIGNAL_DATA,
-        NODE_DATA
-    }
+const SCREEN_DATA: Record<SCREENID, SRTO_DataTypes.ScreenProps> = {
+    'srto_screen1': SRTO_SCREEN1_DATA,
+    'srto_screen2': SRTO_SCREEN2_DATA,
+    'srto_screen3': SRTO_SCREEN3_DATA,
+    'srto_screen4': SRTO_SCREEN4_DATA,
+}
+const SCREEN_DIMENSIONS: Record<SCREENID, { width: number, height: number }> = {
+    'srto_screen1': { width: 2560, height: 2400 },
+    'srto_screen2': { width: 2560, height: 2540 },
+    'srto_screen3': { width: 2560, height: 1800 },
+    'srto_screen4': { width: 2560, height: 1800 },
+}
+function loadScreenDataFromFiles(screenid: SCREENID) {
+    const DATA = SCREEN_DATA[screenid];
+
+    return DATA;
 }
 
-export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
+export default function SRTO_Canvas({ DATA, CONSTANTS, OPTIONS }: ISelfProps) {
 
-    const { TRACK_DATA, SIGNAL_DATA, NODE_DATA } = loadDataFromFile(SRTO_PROPS.userOptions.selectedArea);
+    const screenData = loadScreenDataFromFiles(OPTIONS.userOptions.selectedArea.areaID);
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const trackPathCacheRef = useRef(new WeakMap<SRTO_DataTypes.TRACK_NODE, Path2D>());
@@ -61,18 +67,37 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
     const canvasSizeRef = useRef({ width: 0, height: 0, dpr: 0 })
     const tooltipRef = useRef<HTMLDivElement | null>(null);
 
+    const { width: WORLD_W, height: WORLD_H } = SCREEN_DIMENSIONS[OPTIONS.userOptions.selectedArea.areaID];
+    const canvasSettings = {
+        CANVAS_WORLD_WIDTH: WORLD_W,
+        CANVAS_WORLD_HEIGHT: WORLD_H,
+        MIN_ZOOM_FIT: 1,
+        MIN_ZOOM_EXTENDED: 0.25,
+        MAX_ZOOM: 4,
+        TOOLTIP_MARGIN: 30,
+        TOOLTIP_OFFSET: 16,
+    }
+
     const [showDevMenu, toggleDevMenu] = useState<boolean>(false);
 
-    const allowExtendedViewRef = useRef(SRTO_PROPS.userOptions.allowExtendedView);
+    const allowExtendedViewRef = useRef(OPTIONS.userOptions.allowExtendedView);
     const minZoomRef = useRef(canvasSettings.MIN_ZOOM_FIT)
     useEffect(() => {
-        allowExtendedViewRef.current = SRTO_PROPS.userOptions.allowExtendedView
-        minZoomRef.current = SRTO_PROPS.userOptions.allowExtendedView ? canvasSettings.MIN_ZOOM_EXTENDED : canvasSettings.MIN_ZOOM_FIT
-    }, [SRTO_PROPS.userOptions.allowExtendedView])
-    const signalDataRef = useRef(SIGNAL_DATA);
+        allowExtendedViewRef.current = OPTIONS.userOptions.allowExtendedView
+        minZoomRef.current = OPTIONS.userOptions.allowExtendedView ? canvasSettings.MIN_ZOOM_EXTENDED : canvasSettings.MIN_ZOOM_FIT
+    }, [OPTIONS.userOptions.allowExtendedView])
+    const signalDataRef = useRef<SRTO_DataTypes.SIGNAL[]>(null);
     useEffect(() => {
-        signalDataRef.current = SIGNAL_DATA;
-    }, [SIGNAL_DATA])
+
+        const signalDataOfScreen = []
+
+        for (const node in screenData) {
+            const signalNode = screenData[node].SIGNALS;
+            signalDataOfScreen.push(...signalNode)
+        }
+
+        signalDataRef.current = signalDataOfScreen;
+    }, [screenData])
 
     const [mouseWorldPos, setMouseWorldPos] = useState<{ x: number, y: number } | null>(null)
     const mouseWorldPosRef = useRef(mouseWorldPos);
@@ -90,15 +115,15 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
         viewRef.current.zoom = 1
         viewRef.current.panX = 0
         viewRef.current.panY = 0
-    }, [SRTO_PROPS.userOptions.selectedArea])
+    }, [OPTIONS.userOptions.selectedArea])
 
     const signalsByName = useMemo(() => {
         const map = new Map<string | null, SRTO_DataTypes.SIGNAL[]>()
-        for (const sectionid in SIGNAL_DATA) {
-            for(const signal of SIGNAL_DATA[sectionid]) {
+        for (const node in screenData) {
+            for (const signal of screenData[node].SIGNALS) {
                 const mapKey = signal.signalName;
                 const list = map.get(mapKey);
-                if(list) {
+                if (list) {
                     list.push(signal)
                 } else {
                     map.set(mapKey, [signal])
@@ -106,19 +131,19 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
             }
         }
         return map
-    }, [SIGNAL_DATA])
+    }, [screenData])
 
     const trainHoverEntries = useMemo(() => {
-        return SRTO_PROPS.trainList
+        return DATA.trainList
             .flatMap((train) => {
-                const signalName = train.TrainData.SignalInFront?.split('@')[0] ?? getNextSignalFromLastSignal(SRTO_PROPS.lastSignalMapRef.current.get(train.TrainNoLocal))
-                if(!signalName) return []
+                const signalName = train.TrainData.SignalInFront?.split('@')[0] ?? getNextSignalFromLastSignal(DATA.lastSignalMapRef.current.get(train.TrainNoLocal))
+                if (!signalName) return []
 
                 const signals = signalsByName.get(signalName) ?? []
-                return signals.map((signal) => ({train, signal}))
+                return signals.map((signal) => ({ train, signal }))
             })
             .filter((entry): entry is { train: SimRailDataTypes.FilteredTrainList, signal: SRTO_DataTypes.SIGNAL } => entry !== null)
-    }, [SRTO_PROPS.trainList, signalsByName])
+    }, [DATA.trainList, signalsByName])
 
     useLayoutEffect(() => {
         if (!hoveredTarget) {
@@ -167,11 +192,9 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
             }
         }
     }, [
-        TRACK_DATA,
-        SIGNAL_DATA,
-        NODE_DATA,
-        SRTO_PROPS.userOptions,
-        SRTO_PROPS.trainList,
+        screenData,
+        OPTIONS.userOptions,
+        DATA.trainList,
     ])
 
     function drawCanvas() {
@@ -207,41 +230,42 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
 
         ctx.fillStyle = 'rgb(0, 0, 0)'
         ctx.fillRect(0, 0, rect.width, rect.height)
-        
+
         // Base scale always fits world width (2560) into current viewport width.
         const fitScale = rect.width / canvasSettings.CANVAS_WORLD_WIDTH
         const { zoom, panX, panY } = viewRef.current
-        
+
         ctx.save()
         ctx.translate(panX, panY)
         ctx.scale(fitScale * zoom, fitScale * zoom)
 
-        if(SRTO_PROPS.userOptions.flipScreen) {
+        if (OPTIONS.userOptions.flipScreen) {
             ctx.scale(-1, -1);
             ctx.translate(-canvasSettings.CANVAS_WORLD_WIDTH, -canvasSettings.CANVAS_WORLD_HEIGHT)
         }
-                
-        if (!TRACK_DATA) return;
-        if (SRTO_PROPS.devRenderOptions.renderTracks)
-            CanvasDrawer.drawTracks(TRACK_DATA, ctx, trackPathCacheRef.current);
-        if (!SIGNAL_DATA) return;
-        if (SRTO_PROPS.devRenderOptions.renderSignals)
-            CanvasDrawer.drawSignals(SIGNAL_DATA, SRTO_PROPS.trainList, ctx, SRTO_PROPS);
-        if (!NODE_DATA || !SRTO_PROPS.stationList) return;
-        if (SRTO_PROPS.devRenderOptions.renderNodes)
-            CanvasDrawer.drawNotations(NODE_DATA, ctx, SRTO_PROPS, canvasSettings);
-        if (!SRTO_PROPS.trainList) return;
+
+
+        if (!screenData) return;
+        if (OPTIONS.devRenderOptions.renderTracks)
+            CanvasDrawer.drawTracks(screenData, ctx, trackPathCacheRef.current);
+        if (OPTIONS.devRenderOptions.renderSignals)
+            CanvasDrawer.drawSignals(screenData, DATA.trainList, ctx, { ...DATA, ...CONSTANTS, ...OPTIONS });
+
+        if (!DATA.stationList) return;
+        if (OPTIONS.devRenderOptions.renderNodes)
+            CanvasDrawer.drawNotations(screenData, ctx, { ...DATA, ...CONSTANTS, ...OPTIONS }, canvasSettings);
+        if (!DATA.trainList) return;
         if (inDev) {
-            if (SRTO_PROPS.devRenderOptions.renderGhostTrains) {
-                CanvasDrawer.drawTrains(SIGNAL_DATA, ctx, SRTO_PROPS)
-                CanvasDrawer.drawGhostTrains(SIGNAL_DATA, ctx);
+            if (OPTIONS.devRenderOptions.renderGhostTrains) {
+                CanvasDrawer.drawTrains(screenData, ctx, { ...DATA, ...CONSTANTS, ...OPTIONS })
+                CanvasDrawer.drawGhostTrains(screenData, ctx);
             } else {
-                if (SRTO_PROPS.devRenderOptions.renderTrains)
-                    CanvasDrawer.drawTrains(SIGNAL_DATA, ctx, SRTO_PROPS)
+                if (OPTIONS.devRenderOptions.renderTrains)
+                    CanvasDrawer.drawTrains(screenData, ctx, { ...DATA, ...CONSTANTS, ...OPTIONS })
             }
         } else {
-            if (SRTO_PROPS.devRenderOptions.renderTrains)
-                CanvasDrawer.drawTrains(SIGNAL_DATA, ctx, SRTO_PROPS)
+            if (OPTIONS.devRenderOptions.renderTrains)
+                CanvasDrawer.drawTrains(screenData, ctx, { ...DATA, ...CONSTANTS, ...OPTIONS })
         }
         ctx.restore()
     }
@@ -256,19 +280,21 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
     }
 
     const CanvasEventHandler = createCanvasEventHandler({
-        canvasRef,
-        viewRef,
-        dragRef,
-        scheduleDraw,
-        SRTO_PROPS,
-        signalDataRef,
-        canvasSettings,
-        minZoomRef,
-        mouseWorldPosRef,
-        setMouseWorldPos,
-        hoveredTargetRef,
-        setHoveredTarget,
-        trainHoverEntries
+        REFS: {
+            canvasRef,
+            viewRef,
+            dragRef,
+            signalDataRef,
+            minZoomRef,
+            mouseWorldPosRef,
+            hoveredTargetRef,
+        },
+        FUNCS: {
+            scheduleDraw,
+            setMouseWorldPos,
+            setHoveredTarget,
+        },
+        SRTO_PROPS: { DATA, CONSTANTS, OPTIONS, canvasSettings, trainHoverEntries }
     })
 
     return (
@@ -297,7 +323,7 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
                                     <div className='tooltip-traindata-nextSignal'>{`${hoveredTarget.train.TrainData.DistanceToSignalInFront !== 0 ? `Next Signal: ${hoveredTarget.signal.signalName.split('@')[0]} [${hoveredTarget.train.TrainData.DistanceToSignalInFront > 1000 ? `${(hoveredTarget.train.TrainData.DistanceToSignalInFront / 1000).toFixed(1)} km` : `${(hoveredTarget.train.TrainData.DistanceToSignalInFront).toFixed(1)} m`}]` : 'Next Signal: > 5 km'}`}</div>
                                     <div className='tooltip-traindata-nextSignalSpeed'>Speed on Next Signal: {hoveredTarget.train.TrainData.SignalInFrontSpeed > 160 ? 'vMax' : `${hoveredTarget.train.TrainData.SignalInFrontSpeed} km/h`}</div>
                                     {/* <div className='tooltip-control'>{hoveredTarget.train.ControlledBy === 'user' ? getUsername(hoveredTarget.train.TrainData.ControlledBySteamID) : 'Bot'}</div> */}
-                                    <div className='tooltip-control'>{hoveredTarget.train.ControlledBy === 'user' ? 'Player' : 'Bot'}</div>
+                                    <div className='tooltip-control'>{hoveredTarget.train.TrainData.ControlledBySteamID !== null ? `User: ${(DATA.steamUserList.get(hoveredTarget.train.TrainData.ControlledBySteamID)?.personaname ?? 'Unknown Player')}` : 'Bot'}</div>
                                 </div>
                                 <div className='trainTooltip-signalImage'>
                                     <HoverToolTipSignal hoveredTarget={hoveredTarget} />
@@ -307,8 +333,8 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
                         {hoveredTarget.type === 'signal' && (
                             <>
                                 <div>
-                                        <div className='trainTooltip-title'>{hoveredTarget.signal.signalName}</div>
-                                        <div className='trainTooltip-subtitle'>{hoveredTarget.signal.isSignalABS ?? hoveredTarget.signal.signalType?.split('-')[0].split('_')[0] === 'abs' ? 'ABS-Signal' : 'Station-Signal'}</div>
+                                    <div className='trainTooltip-title'>{hoveredTarget.signal.signalName}</div>
+                                    <div className='trainTooltip-subtitle'>{hoveredTarget.signal.isSignalABS ?? hoveredTarget.signal.signalType?.split('-')[0].split('_')[0] === 'abs' ? 'ABS-Signal' : 'Station-Signal'}</div>
                                 </div>
                             </>
                         )}
@@ -331,22 +357,22 @@ export default function SRTO_Canvas({ SRTO_PROPS }: ISelfProps) {
             {inDev &&
                 <div className={`devInfoContainer ${showDevMenu ? 'devInfoVisible' : 'devInfoHidden'}`} onClick={() => toggleDevMenu(!showDevMenu)}>
                     <div className='devInfo-title'>DEV INFO</div>
-                    {/* <div className="devInfoBox">
+                    <div className="devInfoBox">
                         <div className='devInfo-title'>SRTO-DATA Info:</div>
-                        <div className="tracksCount">{`Track Count:`}</div>
-                        <div className="signalCount">{`Signal Count:`}</div>
-                        <div className="nodesCount">{`Nodes Count:`}</div>
-                    </div> */}
+                        <div className="tracksCount">{`Track Count: ${(() => { let v = 0; for (const nodeid in screenData) { v = v + screenData[nodeid].TRACKS.length }; return v.toString() })()}`}</div>
+                        <div className="signalCount">{`Signal Count: ${(() => { let v = 0; for (const nodeid in screenData) { v = v + screenData[nodeid].SIGNALS.length }; return v.toString() })()}`}</div>
+                        <div className="nodesCount">{`Nodes Count: ${(() => { let v = 0; for (const nodeid in screenData) { v = v + screenData[nodeid].NODES.length }; return v.toString() })()}`}</div>
+                    </div>
                     <div className='devInfo-statesContainer'>
                         <div className='devInfo-title'>States Info:</div>
                         <div className='devInfo-stateRef'>{`Is Canvas: ${canvasRef ? 'Yes' : 'No'}`}</div>
                         {mouseWorldPos
-                            ? <div className='devInfo-stateRef'>{`Mouse: [ ${Object.entries(mouseWorldPos).map(([key, value]) => {return ` ${key}: ${value.toFixed(1)}`})} ]`}</div>
+                            ? <div className='devInfo-stateRef'>{`Mouse: [ ${Object.entries(mouseWorldPos).map(([key, value]) => { return ` ${key}: ${value.toFixed(1)}` })} ]`}</div>
                             : <div className='devInfo-stateRef'>{`Mouse: [ x: - , y: - ]`}</div>
                         }
-                        <div className='devInfo-stateRef'>{`viewRef: ${Object.entries(viewRef.current).map(([key, value]) => {return `${key}: ${value.toFixed(1)} `})}`}</div>
-                        <div className='devInfo-stateRef'>{`dragRef: ${Object.entries(dragRef.current).map(([key, value]) => {return `${key}: ${value} `})}`}</div>
-                        <div className='devInfo-stateRef'>{`dragRef: ${Object.entries(canvasSizeRef.current).map(([key, value]) => {return `${key}: ${value} `})}`}</div>
+                        <div className='devInfo-stateRef'>{`viewRef: ${Object.entries(viewRef.current).map(([key, value]) => { return `${key}: ${value.toFixed(1)} ` })}`}</div>
+                        <div className='devInfo-stateRef'>{`dragRef: ${Object.entries(dragRef.current).map(([key, value]) => { return `${key}: ${value} ` })}`}</div>
+                        <div className='devInfo-stateRef'>{`dragRef: ${Object.entries(canvasSizeRef.current).map(([key, value]) => { return `${key}: ${value} ` })}`}</div>
                     </div>
                 </div>
             }

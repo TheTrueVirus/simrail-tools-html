@@ -1,42 +1,52 @@
 import './srto-footer-styles.css'
 import { SimRailDataTypes } from "../../../types/simrail-data-types"
 import { RenderOptionsProps, USER_OPTIONS } from "../srto"
-
-const appVersion = process.env.REACT_APP_VERSION || 'dev'
+import { SetStateAction } from 'react'
 
 interface ISelfProps {
-    SRTO_PROPS: {
+    DATA: {
         trainList: SimRailDataTypes.FilteredTrainList[]
         lastSignalMapRef: React.RefObject<Map<string, string>>
         stationList: SimRailDataTypes.StationData[]
-        // userList: SimRailDataTypes.SteamUser[] | null
+        steamUserList: Map<string, SimRailDataTypes.SteamUser>
+    }
+    CONSTANTS: {
+        CURRENT_VERSION: string | undefined
+        FORUM_LINK: string
+        GITHUB_REPO_LINK: string
+        GITHUB_PAGE_LINK: string
+    }
+    OPTIONS: {
         userOptions: typeof USER_OPTIONS
         devRenderOptions: RenderOptionsProps
     }
+    statusInformation: string
+    setStatusInformation: React.Dispatch<SetStateAction<string>>
 }
 
-export default function SRTO_Footer({SRTO_PROPS}: ISelfProps) {
+export default function SRTO_Footer({ DATA, CONSTANTS, OPTIONS, statusInformation }: ISelfProps) {
 
     function trainsCounter() {
-        const trainsControlledByPlayers = SRTO_PROPS.trainList.filter((train) => train.ControlledBy === 'user').length
-        const allTrainsCount = SRTO_PROPS.trainList.length;
+        const trainsControlledByPlayers = DATA.trainList.filter((train) => train.ControlledBy === 'user').length
+        const allTrainsCount = DATA.trainList.length;
         return `Trains: ${trainsControlledByPlayers}/${allTrainsCount}`
     }
 
     function stationsCounter() {
-        const stationsControlledByPlayers = SRTO_PROPS.stationList.filter((station) => station.DispatchedBy.length > 0).length
-        const allStationsCount = SRTO_PROPS.stationList.length
+        const stationsControlledByPlayers = DATA.stationList.filter((station) => station.DispatchedBy.length > 0).length
+        const allStationsCount = DATA.stationList.length
         return `Stations: ${stationsControlledByPlayers}/${allStationsCount}`
     }
 
     return (
         <>
             <div className="srtoFooterContainer">
-                <div className="trainsCounter">{trainsCounter()}</div>
-                <div className="stationsCounter">{stationsCounter()}</div>
+                <div className="trainsCounter" title='Occupied / Total'>{trainsCounter()}</div>
+                <div className="stationsCounter" title='Occupied / Total'>{stationsCounter()}</div>
+                <div className='statusInformation'>{statusInformation}</div>
                 <div className='copyrightVersionInfo'>
                     <div className='copyrightInfo'>Copyright (c) 2026 TheTrueVirus</div>
-                    <div className='versionInfo'>{`SRTO-Version: ${appVersion}`}</div>
+                    <div className='versionInfo'>{`SRTO-Version: ${CONSTANTS.CURRENT_VERSION ?? '?.?.?'}`}</div>
                 </div>
             </div>
         </>

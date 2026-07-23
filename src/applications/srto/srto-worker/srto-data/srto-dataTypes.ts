@@ -2,6 +2,19 @@ import { SCREENID } from "../../srto"
 
 export namespace SRTO_DataTypes {
 
+/*
+^           NEW TYPES FOR NEW DATA STRUCTURE
+*/
+
+    export type ScreenProps = {
+        [screenNode: string]: ScreenNodeType
+    }
+    export type ScreenNodeType = {
+        TRACKS: TRACK_NODE[]
+        SIGNALS: SIGNAL[]
+        NODES: NODE[]
+    }
+
     export type TRACKS = {
         [K in SCREENID]: TRACK_SECTIONS
     }
@@ -40,7 +53,7 @@ export namespace SRTO_DataTypes {
          *      - "abs_last"
          *      - "apo-red-green"
          *      - "apo-red-green-white" (Sz??)
-         *      - "station_standard" // 5 lamps and bars of needed
+         *      - "station_standard" // 5 lamps and bars if needed
          *      - "station_sz" // only 2 lamps (red-white)
          */
     }
@@ -72,9 +85,11 @@ export namespace SRTO_DataTypes {
             }
         }
         postType?: 'relay' | 'computer'
+        postRotationAngle?: number,
         stationPrefix?: string
         stationName?: string
         seperateDisplayName?: string
+        lcsControlledBy?: string
         botStation?: boolean
         height?: number,
         width?: number,

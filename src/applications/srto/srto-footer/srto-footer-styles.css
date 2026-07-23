@@ -26,3 +26,7 @@
     align-items: end;
     font-size: 10px;
 }
+
+.trainsCounter, .stationsCounter {
+    pointer-events: auto;
+}

@@ -10,7 +10,7 @@ export namespace SimRailDataTypes {
         ServerName: string,
         ServerRegion: string,
         IsActive: boolean,
-        id: string
+        id?: string
     }
 
     export interface RAW_STATIONS {
@@ -33,7 +33,7 @@ export namespace SimRailDataTypes {
                 SteamId: string | null,
                 XboxId: string | null
             }
-        ]
+        ] | []
         id: string
     }
 
@@ -69,7 +69,7 @@ export namespace SimRailDataTypes {
 
     export interface FilteredTrainList {
         TrainNoLocal: string
-        Type: string
+        Type: string //TrainName
         StartStation: string
         EndStation: string
         Vehicles: string[]
@@ -78,6 +78,7 @@ export namespace SimRailDataTypes {
             ControlledByXboxID: string | null,
             Velocity: number
             SignalInFront: string | null
+            SignalInFrontPredictive?: string | null
             SignalInFrontSpeed: number
             DistanceToSignalInFront: number
         }

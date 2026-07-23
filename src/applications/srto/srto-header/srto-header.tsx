@@ -14,6 +14,8 @@ interface ISelfProps {
     srtoHeaderOptions: {
         userOptions: typeof USER_OPTIONS
         setUserOptions: React.Dispatch<SetStateAction<typeof USER_OPTIONS>>
+        showChangelog: boolean
+        setShowChangelog: React.Dispatch<SetStateAction<boolean>>
         serverList: SimRailDataTypes.ServerData[]
         AreaList: AreaProps[]
         renderOptions: {
@@ -44,7 +46,6 @@ const serverTimeOffset = {
 export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
 
     const [isOptionsOpen, setOptionsOpen] = useState<boolean>(false);
-    const optionListRef = useRef<HTMLDivElement>(null);
     const [openServerList, setOpenServerList] = useState<boolean>(false);
     const serverListRef = useRef<HTMLDivElement>(null);
     const [openAreaList, setOpenAreaList] = useState<boolean>(false);
@@ -64,12 +65,6 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
             areaListRef.current.focus();
         }
     }, [openAreaList])
-
-    useEffect(() => {
-        if (isOptionsOpen && optionListRef.current) {
-            optionListRef.current.focus();
-        }
-    }, [isOptionsOpen])
 
     useEffect(() => {
         const intervalID = setInterval(getCurrentTime, 5000);
@@ -219,8 +214,8 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                     <div className='srtoClock'>{timeString}</div>
                 </div>
                 <div className='headerOptionsContainer'>
-                    <div className='switchScreenButton'>
-                        <div className='switchScreenText' onClick={() => setOpenAreaList(true)}>Switch Screen</div>
+                    <div className='switchScreenButton' onClick={() => setOpenAreaList(true)}>
+                        <div>Switch Screen</div>
                     </div>
                     <div className='switchServerButton' onClick={() => setOpenServerList(prev => !prev)}>
                         <div>Change Server</div>
@@ -229,7 +224,7 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                         <div className={`optionsButtonCogWheel ${isOptionsOpen ? 'rotateCogWheel' : ''}`}>⛯</div>
                         <div className={`optionsButtonText ${isOptionsOpen ? 'optionsOpenText' : ''}`}>Settings<br /><br />Close</div>
                     </div>
-                    <div ref={optionListRef} className={`optionListContainer ${isOptionsOpen ? 'openOptionsList' : ''}`} tabIndex={0}>
+                    <div className={`optionListContainer ${isOptionsOpen ? 'openOptionsList' : ''}`}>
                         <div className='optionListTitle'>SETTINGS</div>
                         <div className='optionList'>
                             {
@@ -256,19 +251,24 @@ export default function SRTO_Header({ srtoHeaderOptions }: ISelfProps) {
                                 ))
                             }
                         </div>
-                        <div className='siteButtonContainer'>
-                            <a className='siteButtonLink' target='_blank' rel="noopener noreferrer" href={SR_FORUM_THREAD_LINK}>
-                                <div className='siteButton siteForumThread'>
-                                    <img className='siteButtonImage' src={process.env.PUBLIC_URL + '/assets/images/social-buttons/simrail-forum-logo.png'} />
-                                    <div className='siteButtonText'>Forum Thread</div>
-                                </div>
-                            </a>
-                            <a className='siteButtonLink' target='_blank' rel="noopener noreferrer" href={GITHUB_REPOSITORY_LINK}>
-                                <div className='siteButton siteGithubRepo'>
-                                    <img className='siteButtonImage' src={process.env.PUBLIC_URL + '/assets/images/social-buttons/github-white-icon.png'} />
-                                    <div className='siteButtonText'>GitHub Repo</div>
-                                </div>
-                            </a>
+                        <div className='optionsMenuButtonContainer'>
+                            <div className='openChangelogButtonContainer buttonRowContainer'>
+                                <div className='openChangelogButton optionsMenuButton' onClick={() => {srtoHeaderOptions.setShowChangelog(true); setOptionsOpen(false)}}>Open Changelog</div>
+                            </div>
+                            <div className='siteButtonContainer buttonRowContainer'>
+                                <a className='siteButtonLink' target='_blank' rel="noopener noreferrer" href={SR_FORUM_THREAD_LINK}>
+                                    <div className='optionsMenuButton siteForumThread'>
+                                        <img className='siteButtonImage' src={process.env.PUBLIC_URL + '/assets/images/social-buttons/simrail-forum-logo.png'} />
+                                        <div className='siteButtonText'>Forum Thread</div>
+                                    </div>
+                                </a>
+                                <a className='siteButtonLink' target='_blank' rel="noopener noreferrer" href={GITHUB_REPOSITORY_LINK}>
+                                    <div className='optionsMenuButton siteGithubRepo'>
+                                        <img className='siteButtonImage' src={process.env.PUBLIC_URL + '/assets/images/social-buttons/github-white-icon.png'} />
+                                        <div className='siteButtonText'>GitHub Repo</div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                         {inDev &&
                             <>
