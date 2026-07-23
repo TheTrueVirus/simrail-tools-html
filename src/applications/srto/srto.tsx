@@ -55,6 +55,7 @@ export default function SimRailTrackOverview() {
     const [trainList, setTrainList] = useState<SimRailDataTypes.FilteredTrainList[]>([]);
     const lastSignalMapRef = useRef<Map<string, string>>(new Map())
     const steamUserMapRef = useRef<Map<string, SimRailDataTypes.SteamUser>>(new Map());
+    const [statusInformation, setStatusInformation] = useState<string>('');
 
     const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
     const [showChangelog, setShowChangelog] = useState<boolean>(false);
@@ -240,6 +241,7 @@ export default function SimRailTrackOverview() {
 
                 const steamIDSet = collectSteamIDs(TRAINDATA, STATIONDATA);
 
+                if(steamUserMapRef.current.size === 0) setStatusInformation('Loading user data...');
                 await getSimRailUserData(steamIDSet, controller.signal);
                 updateLatestSignal(TRAINDATA)
                 setStationList(STATIONDATA);
@@ -254,12 +256,14 @@ export default function SimRailTrackOverview() {
                 }
 
                 console.error(e);
+                setStatusInformation('Error on loading data!');
                 setStationList([]);
                 setTrainList([]);
             } finally {
                 window.clearTimeout(FETCH_TIMEOUTID);
                 if (activeController === controller) activeController = null;
                 isFetching = false;
+                setStatusInformation('');
             }
         }
 
@@ -327,7 +331,7 @@ export default function SimRailTrackOverview() {
 
                 <SRTO_Header srtoHeaderOptions={srtoHeaderOptions} />
                 <SRTO_Canvas {...SRTO_PROPS} />
-                <SRTO_Footer {...SRTO_PROPS} />
+                <SRTO_Footer {...SRTO_PROPS} statusInformation={statusInformation} setStatusInformation={setStatusInformation} />
 
             </div>
         </>
