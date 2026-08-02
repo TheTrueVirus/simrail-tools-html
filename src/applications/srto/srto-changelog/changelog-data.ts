@@ -7,6 +7,14 @@ export const CHANGELOG_DATA = [
     //     additional_changes: null
     // },
     {
+        version: '0.4.1-alpha',
+        subtitle: 'Small fixes',
+        release_date: '02.08.2026',
+        additional_changes: `- fixed wrong signal type at station "Góra Włodowska"
+- added break markers between Łódź Widzew and Łódź Marysin
+- fixed wrong station prefix for Łódź Marysin`
+    },
+    {
         version: '0.4.0-alpha',
         subtitle: 'MAJOR UPDATE',
         release_date: '23.07.2026',

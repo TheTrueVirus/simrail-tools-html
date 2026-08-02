@@ -40,6 +40,16 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                 text: 'A'
             },
             {
+                nodeID: 'tbm-LodzWidzew_LodzMarysin',
+                nodeType: 'trackBreakMarker',
+                nodePos: { x: 0, y: 0 },
+                breakMarker: {
+                    firstMarker: { x: 740, y: 730 },
+                    secondMarker: { x: 1195, y: 625 },
+                },
+                text: 'B'
+            },
+            {
                 nodeID: 'tbm-Galkoweg_Koluszki',
                 nodeType: 'trackBreakMarker',
                 nodePos: { x: 0, y: 0 },
@@ -47,7 +57,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                     firstMarker: { x: 2400, y: 745 },
                     secondMarker: { x: 790, y: 1310 },
                 },
-                text: 'B'
+                text: 'C'
             },
             {
                 nodeID: 'tbm-Galkoweg_Zakowice',
@@ -57,7 +67,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                     firstMarker: { x: 2400, y: 805 },
                     secondMarker: { x: 360, y: 1730 },
                 },
-                text: 'C'
+                text: 'D'
             },
             {
                 nodeID: 'tbm-Baby_Rokiciny',
@@ -67,7 +77,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                     firstMarker: { x: 510, y: 960 },
                     secondMarker: { x: 30, y: 1170 },
                 },
-                text: 'D'
+                text: 'E'
             },
             {
                 nodeID: 'tbm-Baby_Rokiciny',
@@ -77,7 +87,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                     firstMarker: { x: 2520, y: 1180 },
                     secondMarker: { x: 30, y: 1430 },
                 },
-                text: 'E'
+                text: 'F'
             },
             {
                 nodeID: 'tbm-Koluszki_Rogow',
@@ -87,7 +97,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                     firstMarker: { x: 2510, y: 1420 },
                     secondMarker: { x: 30, y: 1870 },
                 },
-                text: 'F'
+                text: 'G'
             },
             {
                 nodeID: 'tbm-Plycwia_Skierniewice',
@@ -97,7 +107,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                     firstMarker: { x: 2530, y: 1870 },
                     secondMarker: { x: 470, y: 2170 },
                 },
-                text: 'G'
+                text: 'H'
             },
             {
                 nodeID: 'tbm-Skierniewice_Zyrardow',
@@ -107,7 +117,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
                     firstMarker: { x: 2230, y: 2150 },
                     secondMarker: { x: 30, y: 2370 },
                 },
-                text: 'H'
+                text: 'J'
             },
         ]
     },
@@ -4670,7 +4680,7 @@ export const SRTO_SCREEN2_DATA: SRTO_DataTypes.ScreenProps = {
             {
                 nodeID: 'stationName-LodzMarysin',
                 nodeType: 'stationName',
-                stationPrefix: 'Zg',
+                stationPrefix: 'LM',
                 stationName: 'Łódź Marysin',
                 nodePos: { x: 1460, y: 545 },
                 nodePosFlipped: { x: 1460, y: 670 }
