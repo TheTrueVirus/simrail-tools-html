@@ -1,25 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import SimRailTrackOverview from './applications/srto/srto';
 import './index.css';
-// import CustomErrorHandler from './functions/customErrorHandler/errorHandler';
-// import Main from './main-page/main';
-// import SideBar from './main-page/sidebar/sidebar';
-// import { AppProviders } from './functions/appcontext/appcontext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-          <BrowserRouter basename='/simrail-tools-html'>
-            {/* <div className='index_main'>
-              <SideBar />
-            </div> */}
+          <BrowserRouter>
             <Routes>
-              <Route path='/' element={<SimRailTrackOverview />} />
+              <Route path='*' element={<Navigate to='/projects/srto' replace />} />
+              <Route path='/projects/srto' element={<SimRailTrackOverview />} />
             </Routes>
           </BrowserRouter>
   </React.StrictMode>

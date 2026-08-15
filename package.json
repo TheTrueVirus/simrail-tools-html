@@ -1,8 +1,7 @@
 {
-  "name": "simrail-tools-html",
-  "version": "0.4.1-alpha",
+  "name": "simrail-expert.de",
+  "version": "0.4.2-alpha",
   "private": true,
-  "homepage": "https://thetruevirus.github.io/simrail-tools-html",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
