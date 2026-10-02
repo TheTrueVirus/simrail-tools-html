@@ -1,0 +1,15 @@
+{
+  "short_name": "SimRail-Expert",
+  "name": "SimRail-Expert",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "type": "image/ico",
+      "sizes": "32x32"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
